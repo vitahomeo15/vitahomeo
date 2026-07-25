@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="primary-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3FA535"/>
+      <stop offset="100%" stop-color="#276B20"/>
+    </linearGradient>
+    <linearGradient id="teal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0EA98B"/>
+      <stop offset="100%" stop-color="#0B8E75"/>
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8AD97D"/>
+      <stop offset="100%" stop-color="#3FA535"/>
+    </linearGradient>
+    <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0F1A0D" flood-opacity="0.05"/>
+    </filter>
+  </defs>
+  
+  <rect width="600" height="350" fill="#F6FAF4" rx="16"/>
+  
+  <text x="300" y="45" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="22" fill="#0F1A0D" text-anchor="middle">Three Core Principles of Homeopathy</text>
+  <text x="300" y="68" font-family="'Inter', sans-serif" font-weight="500" font-size="12" fill="#4D5A48" text-anchor="middle">The foundational laws guiding safe, natural, and holistic recovery</text>
+
+  <!-- Principle 1 -->
+  <g transform="translate(40, 100)" filter="url(#card-shadow)">
+    <rect width="160" height="200" rx="12" fill="white"/>
+    <rect width="160" height="6" rx="3" fill="url(#primary-grad)"/>
+    <circle cx="80" cy="50" r="28" fill="#F0F8EE"/>
+    <!-- Icon Similars: Balance Scale / YinYang outline -->
+    <path d="M 72,50 C 72,42 88,42 88,50 C 88,58 72,58 72,50 Z" fill="none" stroke="#3FA535" stroke-width="2.5"/>
+    <line x1="68" y1="50" x2="92" y2="50" stroke="#3FA535" stroke-width="2"/>
+    <text x="80" y="105" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="13" fill="#0F1A0D" text-anchor="middle">1. Law of Similars</text>
+    <text x="80" y="125" font-family="'Inter', sans-serif" font-weight="700" font-size="11" fill="#3FA535" text-anchor="middle">"Like Cures Like"</text>
+    <text x="80" y="148" font-family="'Inter', sans-serif" font-size="10" fill="#4D5A48" text-anchor="middle">
+      <tspan x="80" dy="0">Remedies triggering</tspan>
+      <tspan x="80" dy="13">mild healthy symptoms</tspan>
+      <tspan x="80" dy="13">activate natural bodily</tspan>
+      <tspan x="80" dy="13">defense mechanisms.</tspan>
+    </text>
+  </g>
+
+  <!-- Principle 2 -->
+  <g transform="translate(220, 100)" filter="url(#card-shadow)">
+    <rect width="160" height="200" rx="12" fill="white"/>
+    <rect width="160" height="6" rx="3" fill="url(#teal-grad)"/>
+    <circle cx="80" cy="50" r="28" fill="#EAF6F4"/>
+    <!-- Icon Dilution: Graduated Droplets -->
+    <path d="M 80,38 C 84,38 88,46 80,56 C 72,46 76,38 80,38 Z" fill="#0EA98B"/>
+    <path d="M 80,48 C 82,48 84,52 80,57 C 76,52 78,48 80,48 Z" fill="white" opacity="0.6"/>
+    <circle cx="70" cy="58" r="4" fill="#0EA98B" opacity="0.5"/>
+    <circle cx="92" cy="54" r="5" fill="#0EA98B" opacity="0.8"/>
+    <text x="80" y="105" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="13" fill="#0F1A0D" text-anchor="middle">2. Law of Infinitesimals</text>
+    <text x="80" y="125" font-family="'Inter', sans-serif" font-weight="700" font-size="11" fill="#0EA98B" text-anchor="middle">"Minimum Dose"</text>
+    <text x="80" y="148" font-family="'Inter', sans-serif" font-size="10" fill="#4D5A48" text-anchor="middle">
+      <tspan x="80" dy="0">Serially diluted doses</tspan>
+      <tspan x="80" dy="13">minimize side-effects</tspan>
+      <tspan x="80" dy="13">while boosting the</tspan>
+      <tspan x="80" dy="13">remedy's vital power.</tspan>
+    </text>
+  </g>
+
+  <!-- Principle 3 -->
+  <g transform="translate(400, 100)" filter="url(#card-shadow)">
+    <rect width="160" height="200" rx="12" fill="white"/>
+    <rect width="160" height="6" rx="3" fill="url(#accent-grad)"/>
+    <circle cx="80" cy="50" r="28" fill="#FDFEEF"/>
+    <!-- Icon Individualization: Silhouette with sparkles -->
+    <path d="M 80,38 A 6,6 0 1 0 80,50 A 6,6 0 1 0 80,38 Z" fill="#3FA535"/>
+    <path d="M 68,62 C 68,54 92,54 92,62 Z" fill="#3FA535"/>
+    <path d="M 94,36 L 96,38 L 98,36 L 96,42 Z" fill="#8AD97D"/>
+    <text x="80" y="105" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="13" fill="#0F1A0D" text-anchor="middle">3. Individualization</text>
+    <text x="80" y="125" font-family="'Inter', sans-serif" font-weight="700" font-size="11" fill="#8AD97D" text-anchor="middle">"Holistic Profiling"</text>
+    <text x="80" y="148" font-family="'Inter', sans-serif" font-size="10" fill="#4D5A48" text-anchor="middle">
+      <tspan x="80" dy="0">Treating the whole</tspan>
+      <tspan x="80" dy="13">person—physical,</tspan>
+      <tspan x="80" dy="13">mental, and emotional</tspan>
+      <tspan x="80" dy="13">traits—not just a disease.</tspan>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="100%" height="100%">
+  <defs>
+    <filter id="c-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F1A0D" flood-opacity="0.04"/>
+    </filter>
+  </defs>
+  
+  <rect width="600" height="350" fill="#FAF8F5" rx="16"/>
+  
+  <text x="300" y="45" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="22" fill="#0F1A0D" text-anchor="middle">Eczema &amp; Skin Allergy Triggers</text>
+  <text x="300" y="68" font-family="'Inter', sans-serif" font-weight="500" font-size="12" fill="#4D5A48" text-anchor="middle">Addressing skin symptoms by understanding the core triggers</text>
+
+  <!-- Left: Skin Barrier -->
+  <g transform="translate(160, 150)" filter="url(#c-shadow)">
+    <rect x="-80" y="-45" width="160" height="90" rx="10" fill="white" stroke="#3FA535" stroke-width="1.5"/>
+    <text x="0" y="-20" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0F1A0D" text-anchor="middle">1. Barrier Dysfunction</text>
+    <text x="0" y="-2" font-family="'Inter', sans-serif" font-size="9" fill="#4D5A48" text-anchor="middle">
+      <tspan x="0" dy="0">Loss of moisture barrier</tspan>
+      <tspan x="0" dy="12">allows irritants, soaps,</tspan>
+      <tspan x="0" dy="12">and synthetics to penetrate.</tspan>
+    </text>
+  </g>
+
+  <!-- Right: Immune System / Allergens -->
+  <g transform="translate(440, 150)" filter="url(#c-shadow)">
+    <rect x="-80" y="-45" width="160" height="90" rx="10" fill="white" stroke="#0EA98B" stroke-width="1.5"/>
+    <text x="0" y="-20" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0F1A0D" text-anchor="middle">2. Immune Response</text>
+    <text x="0" y="-2" font-family="'Inter', sans-serif" font-size="9" fill="#4D5A48" text-anchor="middle">
+      <tspan x="0" dy="0">Overreaction to dust,</tspan>
+      <tspan x="0" dy="12">pollen, pet dander, or</tspan>
+      <tspan x="0" dy="12">specific dietary allergens.</tspan>
+    </text>
+  </g>
+
+  <!-- Bottom Left: Stress / Nervous System -->
+  <g transform="translate(160, 270)" filter="url(#c-shadow)">
+    <rect x="-80" y="-45" width="160" height="90" rx="10" fill="white" stroke="#0EA98B" stroke-width="1.5"/>
+    <text x="0" y="-20" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0F1A0D" text-anchor="middle">3. Neurogenic Stress</text>
+    <text x="0" y="-2" font-family="'Inter', sans-serif" font-size="9" fill="#4D5A48" text-anchor="middle">
+      <tspan x="0" dy="0">Anxiety triggers inflammatory</tspan>
+      <tspan x="0" dy="12">cytokines that exacerbate</tspan>
+      <tspan x="0" dy="12">itch-scratch flare-up cycles.</tspan>
+    </text>
+  </g>
+
+  <!-- Bottom Right: Gut / Detox Axis -->
+  <g transform="translate(440, 270)" filter="url(#c-shadow)">
+    <rect x="-80" y="-45" width="160" height="90" rx="10" fill="white" stroke="#3FA535" stroke-width="1.5"/>
+    <text x="0" y="-20" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0F1A0D" text-anchor="middle">4. Internal Toxicity Axis</text>
+    <text x="0" y="-2" font-family="'Inter', sans-serif" font-size="9" fill="#4D5A48" text-anchor="middle">
+      <tspan x="0" dy="0">Poor digestion or sluggish</tspan>
+      <tspan x="0" dy="12">liver detox releases systemic</tspan>
+      <tspan x="0" dy="12">toxins through the skin.</tspan>
+    </text>
+  </g>
+
+  <!-- Connecting arrows/lines -->
+  <path d="M 240,150 L 360,150" stroke="#E3EAE0" stroke-width="2" stroke-dasharray="4"/>
+  <path d="M 240,270 L 360,270" stroke="#E3EAE0" stroke-width="2" stroke-dasharray="4"/>
+  <path d="M 160,195 L 160,225" stroke="#E3EAE0" stroke-width="2" stroke-dasharray="4"/>
+  <path d="M 440,195 L 440,225" stroke="#E3EAE0" stroke-width="2" stroke-dasharray="4"/>
+</svg>

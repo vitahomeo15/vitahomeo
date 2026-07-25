@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCFAF6"/>
+      <stop offset="100%" stop-color="#F2EFE8"/>
+    </linearGradient>
+    <linearGradient id="primary-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3FA535"/>
+      <stop offset="100%" stop-color="#0EA98B"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="8" stdDeviation="6" flood-color="#0F1A0D" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  
+  <rect width="800" height="450" fill="url(#bg-grad)"/>
+  
+  <!-- Calming botanical curves -->
+  <path d="M 0,330 Q 150,300 350,350 T 800,310 L 800,450 L 0,450 Z" fill="#EAE5DC" opacity="0.6"/>
+  <path d="M 0,270 Q 200,240 450,290 T 800,250 L 800,450 L 0,450 Z" fill="#DFD9CD" opacity="0.4"/>
+  
+  <!-- Elegant Silhouette & Balance Scale -->
+  <g transform="translate(200, 200)" filter="url(#shadow)">
+    <!-- Shield/Circle behind -->
+    <circle cx="0" cy="0" r="90" fill="url(#primary-grad)" opacity="0.12"/>
+    <circle cx="0" cy="0" r="75" fill="white"/>
+    
+    <!-- Balance Scale of Hormones -->
+    <line x1="-40" y1="0" x2="40" y2="0" stroke="#3FA535" stroke-width="3"/>
+    <line x1="0" y1="-30" x2="0" y2="35" stroke="#3FA535" stroke-width="3"/>
+    <!-- Hanging pans -->
+    <line x1="-40" y1="0" x2="-40" y2="25" stroke="#4D5A48" stroke-width="1.5"/>
+    <line x1="40" y1="0" x2="40" y2="25" stroke="#4D5A48" stroke-width="1.5"/>
+    <path d="M -50,25 L -30,25 Q -40,35 -50,25 Z" fill="#0EA98B"/>
+    <path d="M 30,25 L 50,25 Q 40,35 30,25 Z" fill="#0EA98B"/>
+    
+    <!-- Botanical vine wrapping the scale -->
+    <path d="M -25,25 Q -5,-10 15,-20" fill="none" stroke="#3FA535" stroke-width="2"/>
+    <path d="M 15,-20 C 20,-30 30,-30 35,-20" fill="none" stroke="#3FA535" stroke-width="2"/>
+    <path d="M 20,-28 Q 23,-33 26,-30 Z" fill="#8AD97D"/>
+  </g>
+
+  <!-- Flowing Leaf Patterns on Right -->
+  <g transform="translate(560, 200)" filter="url(#shadow)">
+    <!-- Sun/Moon background -->
+    <circle cx="0" cy="-20" r="80" fill="#FDFEEF" opacity="0.8"/>
+    <!-- Abstract Flower/Leaf petals representing ovary/fertility health in constitutional terms -->
+    <path d="M -30,20 C -60,-20 -20,-60 10,-30 C 30,-10 20,30 -10,30 Z" fill="#3FA535" opacity="0.85"/>
+    <path d="M 10,-30 C 40,-60 70,-40 50,0 C 30,30 -10,10 10,-30 Z" fill="#0EA98B" opacity="0.8"/>
+    <circle cx="10" cy="-10" r="8" fill="white"/>
+  </g>
+  
+  <!-- Text Elements -->
+  <text x="50" y="380" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#0F1A0D">Constitutional PCOS Care</text>
+  <text x="50" y="410" font-family="'Inter', sans-serif" font-weight="600" font-size="16" fill="#4D5A48">Restoring Natural Balance &amp; Endocrine Harmony</text>
+</svg>

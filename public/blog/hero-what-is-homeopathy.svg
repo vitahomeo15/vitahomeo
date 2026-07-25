@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F6FAF4"/>
+      <stop offset="100%" stop-color="#EAF7E6"/>
+    </linearGradient>
+    <linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3FA535"/>
+      <stop offset="100%" stop-color="#0EA98B"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="8" stdDeviation="6" flood-color="#0F1A0D" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg-grad)"/>
+  
+  <!-- Abstract natural background shapes -->
+  <path d="M 0,350 Q 200,380 400,320 T 800,360 L 800,450 L 0,450 Z" fill="#E2F0DD" opacity="0.6"/>
+  <path d="M 0,280 Q 250,220 500,290 T 800,240 L 800,450 L 0,450 Z" fill="#D3E8CD" opacity="0.4"/>
+  
+  <!-- Healing Cross/Star Symbol with Gradient -->
+  <g transform="translate(180, 200)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="90" fill="url(#brand-grad)" opacity="0.15"/>
+    <circle cx="0" cy="0" r="75" fill="white"/>
+    <path d="M -12,-35 L 12,-35 L 12,-12 L 35,-12 L 35,12 L 12,12 L 12,35 L -12,35 L -12,12 L -35,12 L -35,-12 L -12,-12 Z" fill="url(#brand-grad)"/>
+  </g>
+
+  <!-- Dropper and Leaf Illustration -->
+  <g transform="translate(560, 220)" filter="url(#shadow)">
+    <!-- Dropper Bottle -->
+    <rect x="-35" y="-10" width="70" height="120" rx="12" fill="white"/>
+    <rect x="-35" y="-10" width="70" height="40" rx="4" fill="#0EA98B" opacity="0.8"/>
+    <line x1="-25" y1="50" x2="25" y2="50" stroke="#E3EAE0" stroke-width="3"/>
+    <line x1="-25" y1="70" x2="15" y2="70" stroke="#E3EAE0" stroke-width="3"/>
+    <line x1="-25" y1="90" x2="5" y2="90" stroke="#E3EAE0" stroke-width="3"/>
+    
+    <!-- Dropper Cap & Pipette -->
+    <rect x="-15" y="-35" width="30" height="25" rx="5" fill="#3FA535"/>
+    <rect x="-4" y="-70" width="8" height="35" rx="4" fill="#4D5A48"/>
+    
+    <!-- Big Leaf Behind Bottle -->
+    <path d="M 30,-50 C 70,-90 100,-70 120,-30 C 130,10 90,40 50,0 Z" fill="#3FA535" opacity="0.85"/>
+    <path d="M 30,-50 Q 80,-30 50,0" stroke="white" stroke-width="2" fill="none"/>
+    
+    <!-- Floating Droplet -->
+    <path d="M 0,135 C 10,135 15,150 0,165 C -15,150 -10,135 0,135 Z" fill="#0EA98B"/>
+  </g>
+  
+  <!-- Connecting dots and atoms representing dilution/infinitesimals -->
+  <g opacity="0.3">
+    <circle cx="360" cy="80" r="6" fill="#0EA98B"/>
+    <circle cx="390" cy="110" r="10" fill="#3FA535"/>
+    <circle cx="430" cy="90" r="4" fill="#0EA98B"/>
+    <line x1="360" y1="80" x2="390" y2="110" stroke="#3FA535" stroke-width="1.5"/>
+    <line x1="390" y1="110" x2="430" y2="90" stroke="#0EA98B" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Text Elements -->
+  <text x="50" y="380" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#0F1A0D">Introduction to Homeopathy</text>
+  <text x="50" y="410" font-family="'Inter', sans-serif" font-weight="600" font-size="16" fill="#4D5A48">Core Principles of Natural &amp; Holistic Healing</text>
+</svg>

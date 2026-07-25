@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is([data-theme="dark"] *));
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-light: var(--brand-light);
+  --color-teal-brand: var(--teal);
+  --color-ink: var(--ink);
+  --color-body-text: var(--body);
+  --color-muted-text: var(--muted);
+  --color-bg-custom: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-bg-soft-2: var(--bg-soft-2);
+  --color-line-custom: var(--line);
+  --color-card-custom: var(--card);
+  --color-glass-custom: var(--glass);
+  
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+:root {
+  --brand: #3FA535;
+  --brand-dark: #276B20;
+  --brand-light: #8AD97D;
+  --teal: #0EA98B;
+  --ink: #0F1A0D;
+  --body: #4D5A48;
+  --muted: #8B968A;
+  --bg: #FFFFFF;
+  --bg-soft: #F6FAF4;
+  --bg-soft-2: #EAF7E6;
+  --line: #E3EAE0;
+  --card: #FFFFFF;
+  --glass: rgba(255,255,255,.72);
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --primary: oklch(0.627 0.194 149.251); /* custom brand-like primary */
+  --primary-foreground: oklch(0.985 0 0);
+  --border: oklch(0.922 0 0);
+}
+
+[data-theme="dark"] {
+  --ink: #ECF3E8;
+  --body: #AEBBA8;
+  --muted: #71806C;
+  --bg: #0A120A;
+  --bg-soft: #0E1A0D;
+  --bg-soft-2: #0B1B12;
+  --line: #1D2A1A;
+  --card: #101C0F;
+  --glass: rgba(14,22,12,.7);
+
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+}
+
+@layer base {
+  body {
+    background-color: var(--bg);
+    color: var(--body);
+    font-family: var(--font-sans);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--ink);
+    font-weight: 700;
+  }
+}

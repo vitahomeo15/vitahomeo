@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4FAF8"/>
+      <stop offset="100%" stop-color="#E5F3F0"/>
+    </linearGradient>
+    <linearGradient id="primary-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0EA98B"/>
+      <stop offset="100%" stop-color="#3FA535"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="8" stdDeviation="6" flood-color="#0F1A0D" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  
+  <rect width="800" height="450" fill="url(#bg-grad)"/>
+  
+  <!-- Wave backgrounds -->
+  <path d="M 0,380 Q 200,340 450,400 T 800,350 L 800,450 L 0,450 Z" fill="#D5EAE4" opacity="0.6"/>
+  <path d="M 0,300 Q 250,350 500,280 T 800,320 L 800,450 L 0,450 Z" fill="#C2E2DA" opacity="0.4"/>
+  
+  <!-- Laptop / Video Consulting Mockup -->
+  <g transform="translate(180, 80)" filter="url(#shadow)">
+    <!-- Laptop screen border -->
+    <rect x="0" y="0" width="280" height="180" rx="10" fill="#2E3A2F"/>
+    <!-- Screen content area -->
+    <rect x="8" y="8" width="264" height="152" rx="4" fill="#1A251B"/>
+    <!-- Laptop Keyboard Base -->
+    <path d="M -20,180 L 300,180 L 310,192 L -30,192 Z" fill="#4B564A"/>
+    <!-- Laptop Lip indent -->
+    <rect x="110" y="180" width="60" height="4" rx="2" fill="#202A20"/>
+    
+    <!-- Doctor on Screen -->
+    <g transform="translate(140, 90)">
+      <!-- Background of video call -->
+      <rect x="-80" y="-60" width="160" height="110" rx="6" fill="#143A2B"/>
+      <!-- Doctor silhouette -->
+      <path d="M -30,50 C -30,20 -15,10 0,10 C 15,10 30,20 30,50 Z" fill="#0EA98B"/>
+      <circle cx="0" cy="-5" r="18" fill="white"/>
+      <!-- Stethoscope on doctor -->
+      <path d="M -8,10 A 8,8 0 0,0 8,10" fill="none" stroke="#3FA535" stroke-width="2.5"/>
+      <circle cx="0" cy="18" r="4" fill="#3FA535"/>
+      
+      <!-- Video call interface overlays -->
+      <circle cx="-65" cy="-45" r="5" fill="#EF4444"/> <!-- Rec dot -->
+      <rect x="40" y="-50" width="30" height="16" rx="4" fill="white" opacity="0.2"/>
+      <text x="55" y="-38" font-family="sans-serif" font-size="8" fill="white" text-anchor="middle">LIVE</text>
+    </g>
+  </g>
+
+  <!-- Mobile phone on the right with Prescription & Pills -->
+  <g transform="translate(530, 110)" filter="url(#shadow)">
+    <!-- Smartphone frame -->
+    <rect x="0" y="0" width="120" height="220" rx="18" fill="#2E3A2F"/>
+    <!-- Phone Screen -->
+    <rect x="5" y="5" width="110" height="210" rx="14" fill="white"/>
+    <!-- Phone Camera notch -->
+    <rect x="40" y="10" width="40" height="5" rx="2" fill="#2E3A2F"/>
+    
+    <!-- Digital Prescription content -->
+    <g transform="translate(15, 30)">
+      <text x="45" y="12" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="#0F1A0D" text-anchor="middle">Prescription</text>
+      <rect x="5" y="24" width="80" height="3" rx="1.5" fill="#3FA535"/>
+      
+      <rect x="5" y="38" width="80" height="20" rx="4" fill="#F4FAF8"/>
+      <circle cx="15" cy="48" r="6" fill="#0EA98B"/>
+      <rect x="28" y="44" width="50" height="3" rx="1.5" fill="#4D5A48"/>
+      <rect x="28" y="50" width="30" height="2.5" rx="1.2" fill="#8B968A"/>
+      
+      <rect x="5" y="66" width="80" height="20" rx="4" fill="#F4FAF8"/>
+      <circle cx="15" cy="76" r="6" fill="#3FA535"/>
+      <rect x="28" y="72" width="50" height="3" rx="1.5" fill="#4D5A48"/>
+      <rect x="28" y="78" width="35" height="2.5" rx="1.2" fill="#8B968A"/>
+
+      <!-- QR Code placeholder -->
+      <rect x="30" y="110" width="30" height="30" fill="#2E3A2F"/>
+      <rect x="33" y="113" width="8" height="8" fill="white"/>
+      <rect x="49" y="113" width="8" height="8" fill="white"/>
+      <rect x="33" y="129" width="8" height="8" fill="white"/>
+      
+      <!-- Secure badge -->
+      <rect x="10" y="160" width="70" height="15" rx="7.5" fill="#3FA535" opacity="0.1"/>
+      <text x="45" y="171" font-family="'Inter', sans-serif" font-weight="700" font-size="7" fill="#3FA535" text-anchor="middle">✓ SSL SECURE</text>
+    </g>
+  </g>
+  
+  <!-- Text Elements -->
+  <text x="50" y="380" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#0F1A0D">Online Homeopathy Care</text>
+  <text x="50" y="410" font-family="'Inter', sans-serif" font-weight="600" font-size="16" fill="#4D5A48">Consult Top Doctors &amp; Get Prescriptions Online</text>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" width="100%" height="100%">
+  <defs>
+    <filter id="c-shd" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F1A0D" flood-opacity="0.04"/>
+    </filter>
+  </defs>
+  
+  <rect width="600" height="250" fill="#ECF2EC" rx="16"/>
+  
+  <text x="300" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="18" fill="#0F1A0D" text-anchor="middle">The Hair Growth Cycle</text>
+  <text x="300" y="53" font-family="'Inter', sans-serif" font-weight="500" font-size="11" fill="#4D5A48" text-anchor="middle">Understanding the stages of follicle life to diagnose shedding patterns</text>
+
+  <!-- Stage 1: Anagen -->
+  <g transform="translate(100, 140)" filter="url(#c-shd)">
+    <rect x="-70" y="-60" width="140" height="110" rx="8" fill="white" stroke="#3FA535" stroke-width="1.5"/>
+    <text x="0" y="-40" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0F1A0D" text-anchor="middle">1. Anagen Phase</text>
+    <text x="0" y="-24" font-family="'Inter', sans-serif" font-weight="700" font-size="9" fill="#3FA535" text-anchor="middle">Active Growth</text>
+    <!-- Follicle graphic -->
+    <path d="M 0,-10 Q -5,15 0,30" fill="none" stroke="#3FA535" stroke-width="3"/>
+    <ellipse cx="0" cy="30" rx="4" ry="5" fill="#3FA535"/>
+    <text x="0" y="24" font-family="'Inter', sans-serif" font-size="8" fill="#4D5A48" text-anchor="middle">Duration: 2 - 7 Years</text>
+    <text x="0" y="36" font-family="'Inter', sans-serif" font-size="8" fill="#4D5A48" text-anchor="middle">90% of follicles active</text>
+  </g>
+
+  <!-- Stage 2: Catagen -->
+  <g transform="translate(300, 140)" filter="url(#c-shd)">
+    <rect x="-70" y="-60" width="140" height="110" rx="8" fill="white" stroke="#0EA98B" stroke-width="1.5"/>
+    <text x="0" y="-40" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0F1A0D" text-anchor="middle">2. Catagen Phase</text>
+    <text x="0" y="-24" font-family="'Inter', sans-serif" font-weight="700" font-size="9" fill="#0EA98B" text-anchor="middle">Transition Stage</text>
+    <!-- Follicle graphic -->
+    <path d="M 0,-10 Q -2,10 0,20" fill="none" stroke="#0EA98B" stroke-width="2.5"/>
+    <ellipse cx="0" cy="20" rx="3" ry="4" fill="#0EA98B"/>
+    <text x="0" y="24" font-family="'Inter', sans-serif" font-size="8" fill="#4D5A48" text-anchor="middle">Duration: 2 - 3 Weeks</text>
+    <text x="0" y="36" font-family="'Inter', sans-serif" font-size="8" fill="#4D5A48" text-anchor="middle">Follicle shrinks</text>
+  </g>
+
+  <!-- Stage 3: Telogen -->
+  <g transform="translate(500, 140)" filter="url(#c-shd)">
+    <rect x="-70" y="-60" width="140" height="110" rx="8" fill="white" stroke="#3FA535" stroke-width="1.5"/>
+    <text x="0" y="-40" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0F1A0D" text-anchor="middle">3. Telogen Phase</text>
+    <text x="0" y="-24" font-family="'Inter', sans-serif" font-weight="700" font-size="9" fill="#3FA535" text-anchor="middle">Resting &amp; Shedding</text>
+    <!-- Follicle graphic -->
+    <path d="M 0,-10 L 0,8" fill="none" stroke="#4D5A48" stroke-width="2"/>
+    <ellipse cx="0" cy="8" rx="2" ry="3" fill="#4D5A48"/>
+    <text x="0" y="24" font-family="'Inter', sans-serif" font-size="8" fill="#4D5A48" text-anchor="middle">Duration: 3 - 4 Months</text>
+    <text x="0" y="36" font-family="'Inter', sans-serif" font-size="8" fill="#4D5A48" text-anchor="middle">Hair falls, cycle resets</text>
+  </g>
+
+  <!-- Arrows -->
+  <path d="M 180,140 L 220,140" stroke="#0EA98B" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M 215,137 L 220,140 L 215,143" stroke="#0EA98B" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+  <path d="M 380,140 L 420,140" stroke="#3FA535" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M 415,137 L 420,140 L 415,143" stroke="#3FA535" stroke-width="2" stroke-linecap="round" fill="none"/>
+</svg>

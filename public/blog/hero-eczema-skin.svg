@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF8F5"/>
+      <stop offset="100%" stop-color="#ECE7DE"/>
+    </linearGradient>
+    <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3FA535"/>
+      <stop offset="100%" stop-color="#0EA98B"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="8" stdDeviation="6" flood-color="#0F1A0D" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  
+  <rect width="800" height="450" fill="url(#bg-grad)"/>
+  
+  <path d="M 0,360 Q 200,330 400,380 T 800,340 L 800,450 L 0,450 Z" fill="#EAE5DC" opacity="0.6"/>
+  <path d="M 0,300 Q 250,260 500,320 T 800,280 L 800,450 L 0,450 Z" fill="#DFD9CE" opacity="0.4"/>
+  
+  <!-- Skin Protection Shield / Cell barrier representation -->
+  <g transform="translate(200, 200)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="90" fill="url(#shield-grad)" opacity="0.12"/>
+    <circle cx="0" cy="0" r="75" fill="white"/>
+    
+    <!-- Shield Outline -->
+    <path d="M -25,-35 L 25,-35 C 25,-35 35,5 0,45 C -35,5 -25,-35 -25,-35 Z" fill="none" stroke="url(#shield-grad)" stroke-width="4"/>
+    <!-- Shield Check -->
+    <path d="M -12,2 L -3,11 L 14,-8" fill="none" stroke="#3FA535" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Soothing Skin / Leaf Drops on Right -->
+  <g transform="translate(560, 200)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="80" fill="white" stroke="#E3EAE0" stroke-width="2"/>
+    <!-- Soothing Leaf Drop -->
+    <path d="M 0,-40 C 20,-40 30,-20 30,0 C 30,20 15,35 0,35 C -15,35 -30,20 -30,0 C -30,-20 -20,-40 0,-40 Z" fill="url(#shield-grad)" opacity="0.8"/>
+    <path d="M 0,-25 Q 12,-10 0,15" stroke="white" stroke-width="2" fill="none"/>
+    <circle cx="0" cy="50" r="8" fill="#0EA98B" opacity="0.5"/>
+    <circle cx="-25" cy="40" r="5" fill="#3FA535" opacity="0.4"/>
+  </g>
+  
+  <!-- Text Elements -->
+  <text x="50" y="380" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#0F1A0D">Skin Allergy &amp; Eczema Care</text>
+  <text x="50" y="410" font-family="'Inter', sans-serif" font-weight="600" font-size="16" fill="#4D5A48">Holistic Treatments Addressing Root Immune Disruption</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAFBF9"/>
+      <stop offset="100%" stop-color="#ECF2EC"/>
+    </linearGradient>
+    <linearGradient id="hair-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3FA535"/>
+      <stop offset="100%" stop-color="#0EA98B"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="8" stdDeviation="6" flood-color="#0F1A0D" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  
+  <rect width="800" height="450" fill="url(#bg-grad)"/>
+  
+  <path d="M 0,360 Q 200,330 400,380 T 800,340 L 800,450 L 0,450 Z" fill="#DAE8DA" opacity="0.6"/>
+  <path d="M 0,300 Q 250,260 500,320 T 800,280 L 800,450 L 0,450 Z" fill="#C5DEC5" opacity="0.4"/>
+  
+  <!-- Strong follicle outline / magnifying glass style -->
+  <g transform="translate(200, 200)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="90" fill="url(#hair-grad)" opacity="0.12"/>
+    <circle cx="0" cy="0" r="75" fill="white"/>
+    
+    <!-- Hair Follicle Loop -->
+    <path d="M -30,40 C -30,0 -15,-30 0,-45 C 15,-30 30,0 30,40" fill="none" stroke="url(#hair-grad)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M -15,40 C -15,10 -5,-15 0,-25" fill="none" stroke="#8AD97D" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Sparkle -->
+    <path d="M 35,-35 L 39,-31 L 35,-27 L 31,-31 Z" fill="#0EA98B"/>
+  </g>
+
+  <!-- Hair Strand Roots representation on Right -->
+  <g transform="translate(560, 200)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="80" fill="white" stroke="#E3EAE0" stroke-width="2"/>
+    
+    <!-- Follicle Root diagram detail -->
+    <path d="M 0,80 Q -15,30 0,-20 Q 15,-40 30,-50" fill="none" stroke="#3FA535" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M -20,80 Q -25,40 -15,0 Q -5,-25 5,-35" fill="none" stroke="#0EA98B" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Root bulb -->
+    <ellipse cx="0" cy="80" rx="6" ry="8" fill="#3FA535"/>
+    <ellipse cx="-20" cy="80" rx="4" ry="6" fill="#0EA98B"/>
+  </g>
+  
+  <!-- Text Elements -->
+  <text x="50" y="380" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#0F1A0D">Holistic Hair Fall Solutions</text>
+  <text x="50" y="410" font-family="'Inter', sans-serif" font-weight="600" font-size="16" fill="#4D5A48">Restoring Scalp Nutrition &amp; Constitutional Balance</text>
+</svg>

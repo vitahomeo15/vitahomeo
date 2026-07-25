@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="100%" height="100%">
+  <defs>
+    <filter id="card-sh" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F1A0D" flood-opacity="0.04"/>
+    </filter>
+  </defs>
+  
+  <rect width="600" height="350" fill="#F2FAF4" rx="16"/>
+  
+  <text x="300" y="45" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="22" fill="#0F1A0D" text-anchor="middle">Common Migraine Triggers</text>
+  <text x="300" y="68" font-family="'Inter', sans-serif" font-weight="500" font-size="12" fill="#4D5A48" text-anchor="middle">Understanding the factors that set off neurological sensitivities</text>
+
+  <!-- Central Target -->
+  <circle cx="300" cy="200" r="40" fill="#0EA98B" opacity="0.1"/>
+  <circle cx="300" cy="200" r="30" fill="white" filter="url(#card-sh)"/>
+  <text x="300" y="204" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="#0EA98B" text-anchor="middle">Triggers</text>
+
+  <!-- Trigger 1: Stress (Top Center) -->
+  <g transform="translate(300, 110)" filter="url(#card-sh)">
+    <rect x="-60" y="-20" width="120" height="40" rx="6" fill="white" stroke="#3FA535" stroke-width="1.5"/>
+    <text x="0" y="4" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#0F1A0D" text-anchor="middle">Stress &amp; Anxiety</text>
+    <text x="0" y="16" font-family="'Inter', sans-serif" font-size="8" fill="#4D5A48" text-anchor="middle">Emotional tension</text>
+  </g>
+  <line x1="300" y1="130" x2="300" y2="170" stroke="#3FA535" stroke-dasharray="3" stroke-width="1.5"/>
+
+  <!-- Trigger 2: Sleep (Right Middle) -->
+  <g transform="translate(470, 175)" filter="url(#card-sh)">
+    <rect x="-60" y="-20" width="120" height="40" rx="6" fill="white" stroke="#0EA98B" stroke-width="1.5"/>
+    <text x="0" y="4" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#0F1A0D" text-anchor="middle">Sleep Deprivation</text>
+    <text x="0" y="16" font-family="'Inter', sans-serif" font-size="8" fill="#4D5A48" text-anchor="middle">Irregular sleep cycle</text>
+  </g>
+  <line x1="410" y1="180" x2="330" y2="195" stroke="#0EA98B" stroke-dasharray="3" stroke-width="1.5"/>
+
+  <!-- Trigger 3: Dietary (Right Bottom) -->
+  <g transform="translate(410, 275)" filter="url(#card-sh)">
+    <rect x="-60" y="-20" width="120" height="40" rx="6" fill="white" stroke="#3FA535" stroke-width="1.5"/>
+    <text x="0" y="4" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#0F1A0D" text-anchor="middle">Dietary Choices</text>
+    <text x="0" y="16" font-family="'Inter', sans-serif" font-size="8" fill="#4D5A48" text-anchor="middle">Caffeine, aged cheese</text>
+  </g>
+  <line x1="375" y1="260" x2="325" y2="220" stroke="#3FA535" stroke-dasharray="3" stroke-width="1.5"/>
+
+  <!-- Trigger 4: Environmental (Left Bottom) -->
+  <g transform="translate(190, 275)" filter="url(#card-sh)">
+    <rect x="-60" y="-20" width="120" height="40" rx="6" fill="white" stroke="#0EA98B" stroke-width="1.5"/>
+    <text x="0" y="4" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#0F1A0D" text-anchor="middle">Sensory Overload</text>
+    <text x="0" y="16" font-family="'Inter', sans-serif" font-size="8" fill="#4D5A48" text-anchor="middle">Bright lights, loud noise</text>
+  </g>
+  <line x1="225" y1="260" x2="275" y2="220" stroke="#0EA98B" stroke-dasharray="3" stroke-width="1.5"/>
+
+  <!-- Trigger 5: Hormonal (Left Middle) -->
+  <g transform="translate(130, 175)" filter="url(#card-sh)">
+    <rect x="-60" y="-20" width="120" height="40" rx="6" fill="white" stroke="#3FA535" stroke-width="1.5"/>
+    <text x="0" y="4" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#0F1A0D" text-anchor="middle">Hormonal Shifts</text>
+    <text x="0" y="16" font-family="'Inter', sans-serif" font-size="8" fill="#4D5A48" text-anchor="middle">Estrogen fluctuations</text>
+  </g>
+  <line x1="190" y1="180" x2="270" y2="195" stroke="#3FA535" stroke-dasharray="3" stroke-width="1.5"/>
+</svg>

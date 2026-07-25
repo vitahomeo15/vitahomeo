@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3FA535"/>
+      <stop offset="100%" stop-color="#0EA98B"/>
+    </linearGradient>
+    <filter id="flow-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#0F1A0D" flood-opacity="0.04"/>
+    </filter>
+  </defs>
+  
+  <rect width="600" height="200" fill="#F4FAF8" rx="12"/>
+  
+  <!-- Flow Line connecting circles -->
+  <line x1="90" y1="90" x2="510" y2="90" stroke="url(#line-grad)" stroke-width="4" stroke-dasharray="8 6"/>
+
+  <!-- Step 1 -->
+  <g transform="translate(90, 90)" filter="url(#flow-shadow)">
+    <circle cx="0" cy="0" r="30" fill="white" stroke="#3FA535" stroke-width="3"/>
+    <text x="0" y="5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="16" fill="#3FA535" text-anchor="middle">01</text>
+    <text x="0" y="48" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0F1A0D" text-anchor="middle">Book Slot</text>
+    <text x="0" y="62" font-family="'Inter', sans-serif" font-size="9" fill="#4D5A48" text-anchor="middle">Select doctor &amp; time</text>
+  </g>
+
+  <!-- Step 2 -->
+  <g transform="translate(230, 90)" filter="url(#flow-shadow)">
+    <circle cx="0" cy="0" r="30" fill="white" stroke="#0EA98B" stroke-width="3"/>
+    <text x="0" y="5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="16" fill="#0EA98B" text-anchor="middle">02</text>
+    <text x="0" y="48" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0F1A0D" text-anchor="middle">Video Consult</text>
+    <text x="0" y="62" font-family="'Inter', sans-serif" font-size="9" fill="#4D5A48" text-anchor="middle">Detailed case-taking</text>
+  </g>
+
+  <!-- Step 3 -->
+  <g transform="translate(370, 90)" filter="url(#flow-shadow)">
+    <circle cx="0" cy="0" r="30" fill="white" stroke="#3FA535" stroke-width="3"/>
+    <text x="0" y="5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="16" fill="#3FA535" text-anchor="middle">03</text>
+    <text x="0" y="48" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0F1A0D" text-anchor="middle">Rx Generated</text>
+    <text x="0" y="62" font-family="'Inter', sans-serif" font-size="9" fill="#4D5A48" text-anchor="middle">Constitutional plan</text>
+  </g>
+
+  <!-- Step 4 -->
+  <g transform="translate(510, 90)" filter="url(#flow-shadow)">
+    <circle cx="0" cy="0" r="30" fill="white" stroke="#0EA98B" stroke-width="3"/>
+    <text x="0" y="5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="16" fill="#0EA98B" text-anchor="middle">04</text>
+    <text x="0" y="48" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0F1A0D" text-anchor="middle">Follow-Up</text>
+    <text x="0" y="62" font-family="'Inter', sans-serif" font-size="9" fill="#4D5A48" text-anchor="middle">Track progress online</text>
+  </g>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2FAF4"/>
+      <stop offset="100%" stop-color="#E1F3E6"/>
+    </linearGradient>
+    <linearGradient id="cool-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0EA98B"/>
+      <stop offset="100%" stop-color="#3FA535"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="8" stdDeviation="6" flood-color="#0F1A0D" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  
+  <rect width="800" height="450" fill="url(#bg-grad)"/>
+  
+  <path d="M 0,350 Q 200,320 400,370 T 800,330 L 800,450 L 0,450 Z" fill="#D2EDD8" opacity="0.6"/>
+  <path d="M 0,290 Q 250,250 500,310 T 800,270 L 800,450 L 0,450 Z" fill="#C1E7C9" opacity="0.4"/>
+  
+  <!-- Calming Head / Brain Rays -->
+  <g transform="translate(200, 200)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="90" fill="url(#cool-grad)" opacity="0.12"/>
+    <circle cx="0" cy="0" r="75" fill="white"/>
+    
+    <!-- Concentric calm ripples representing sensory relief -->
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#0EA98B" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.8"/>
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#3FA535" stroke-width="2" opacity="0.9"/>
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#0EA98B" stroke-width="2.5"/>
+    
+    <!-- Sparkles of clarity -->
+    <path d="M -50,-40 L -46,-36 L -50,-32 L -54,-36 Z" fill="#3FA535"/>
+    <path d="M 45,-45 L 49,-41 L 45,-37 L 41,-41 Z" fill="#0EA98B"/>
+  </g>
+
+  <!-- Soothing Plant Silhouette on Right -->
+  <g transform="translate(560, 200)" filter="url(#shadow)">
+    <!-- Soothing Leaf stalk -->
+    <path d="M 0,100 Q -30,0 20,-80" fill="none" stroke="#3FA535" stroke-width="4"/>
+    <!-- Leaves -->
+    <path d="M 20,-80 C 40,-80 50,-60 30,-50 C 10,-40 0,-60 20,-80 Z" fill="#3FA535" opacity="0.85"/>
+    <path d="M -5,-30 C -25,-40 -35,-20 -20,-10 C -5,0 10,-20 -5,-30 Z" fill="#0EA98B" opacity="0.8"/>
+    <path d="M -15,20 C -35,10 -40,30 -25,40 C -10,50 5,30 -15,20 Z" fill="#3FA535" opacity="0.7"/>
+    <path d="M 5,60 C 25,60 30,80 15,90 C 0,100 -10,80 5,60 Z" fill="#0EA98B" opacity="0.6"/>
+  </g>
+  
+  <!-- Text Elements -->
+  <text x="50" y="380" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#0F1A0D">Holistic Migraine Relief</text>
+  <text x="50" y="410" font-family="'Inter', sans-serif" font-weight="600" font-size="16" fill="#4D5A48">Individualized Constitutional Support for Chronic Headaches</text>
+</svg>
