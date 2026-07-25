@@ -527,7 +527,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-ink dark:text-white mb-0.5">Email Support</h4>
-                  <p className="text-[11px] text-body-text dark:text-[#aebba8] font-bold">[email]</p>
+                  <a href="mailto:akshraj2255@gmail.com" className="text-[11px] text-body-text dark:text-[#aebba8] font-bold hover:text-brand transition-colors block">akshraj2255@gmail.com</a>
                 </div>
               </div>
 
@@ -538,7 +538,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-ink dark:text-white mb-0.5">Call Support</h4>
-                  <p className="text-[11px] text-body-text dark:text-[#aebba8] font-bold">[phone]</p>
+                  <a href="tel:+917765991145" className="text-[11px] text-body-text dark:text-[#aebba8] font-bold hover:text-brand transition-colors block">+91 77659 91145</a>
                 </div>
               </div>
 

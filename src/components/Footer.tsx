@@ -80,15 +80,11 @@ export function Footer() {
             <ul className="flex flex-col gap-3 text-xs text-body-text dark:text-[#aebba8] font-medium">
               <li>
                 <span className="font-bold text-ink dark:text-white block">Email:</span>
-                <span className="block mt-0.5">[email]</span>
+                <a href="mailto:akshraj2255@gmail.com" className="block mt-0.5 hover:text-brand transition-colors">akshraj2255@gmail.com</a>
               </li>
               <li>
                 <span className="font-bold text-ink dark:text-white block">Phone:</span>
-                <span className="block mt-0.5">[phone]</span>
-              </li>
-              <li>
-                <span className="font-bold text-ink dark:text-white block">Address:</span>
-                <span className="block mt-0.5 leading-relaxed">[address]</span>
+                <a href="tel:+917765991145" className="block mt-0.5 hover:text-brand transition-colors">+91 77659 91145</a>
               </li>
               <li className="pt-2 border-t border-line-custom/50 dark:border-[#1d2a1a]/50">
                 <p className="text-[10px] text-brand-dark dark:text-brand font-bold leading-normal">

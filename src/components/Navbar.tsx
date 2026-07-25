@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTheme } from "@/components/ThemeProvider";
-import { Calendar } from "lucide-react";
+import { Calendar, Stethoscope } from "lucide-react";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,7 +25,7 @@ export function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-50 bg-white/95 dark:bg-[#0a120a]/95 border-b border-[#e3eae0]/50 dark:border-[#1d2a1a]/50 transition-all duration-300">
-        <div className="w-full px-4 md:px-6 py-2.5 flex items-center justify-between gap-6">
+        <div className="w-full px-4 md:px-6 py-2.5 flex items-center justify-between gap-4">
           
           {/* Logo Aligned to Left */}
           <Link href="/" className="flex items-center hover:opacity-90 transition-opacity select-none">
@@ -40,7 +40,7 @@ export function Navbar() {
           </Link>
           
           {/* Animated Centered Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-5 xl:gap-6">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -63,7 +63,7 @@ export function Navbar() {
           </nav>
 
           {/* Action CTAs */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3">
             
 
 
@@ -84,13 +84,22 @@ export function Navbar() {
               )}
             </button>
 
-            {/* Book CTA button hover animation */}
+            {/* Join as Doctor button */}
+            <Link
+              href="/join"
+              className="hidden lg:inline-flex items-center justify-center h-10 px-4 rounded-xl text-sm font-bold border border-brand/50 text-brand-dark dark:text-white dark:border-white/30 hover:bg-brand/5 dark:hover:bg-white/5 transition-all gap-1.5"
+            >
+              <Stethoscope className="w-4.5 h-4.5" />
+              Join as Doctor
+            </Link>
+
+            {/* Book consultation button */}
             <Link
               href="/book"
-              className="hidden md:inline-flex items-center justify-center h-10 px-5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-brand to-[#0ea98b] hover:shadow-lg hover:brightness-105 active:scale-[0.98] transition-all gap-1.5"
+              className="hidden md:inline-flex items-center justify-center h-10 px-5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-brand to-[#0ea98b] hover:shadow-lg hover:brightness-105 active:scale-[0.98] transition-all gap-1.5"
             >
               <Calendar className="w-4 h-4" />
-              Book appointment
+              Book consultation
             </Link>
 
             {/* Mobile Menu trigger */}
@@ -131,14 +140,24 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/book"
-              onClick={() => setMenuOpen(false)}
-              className="w-full mt-6 flex items-center justify-center h-11 rounded-xl font-semibold text-white bg-gradient-to-r from-brand to-[#0ea98b] gap-1.5"
-            >
-              <Calendar className="w-4 h-4" />
-              Book appointment
-            </Link>
+            <div className="flex flex-col gap-3 mt-6">
+              <Link
+                href="/join"
+                onClick={() => setMenuOpen(false)}
+                className="w-full flex items-center justify-center h-11 rounded-xl font-bold border border-brand/50 text-brand-dark dark:text-white dark:border-white/30 hover:bg-brand/5 dark:hover:bg-white/5 transition-all gap-1.5"
+              >
+                <Stethoscope className="w-4.5 h-4.5" />
+                Join as Doctor
+              </Link>
+              <Link
+                href="/book"
+                onClick={() => setMenuOpen(false)}
+                className="w-full flex items-center justify-center h-11 rounded-xl font-semibold text-white bg-gradient-to-r from-brand to-[#0ea98b] gap-1.5"
+              >
+                <Calendar className="w-4 h-4" />
+                Book consultation
+              </Link>
+            </div>
           </div>
         </div>
       )}

@@ -29,8 +29,8 @@ export default function ContactPage() {
             {/* Info */}
             <div className="flex flex-col gap-6">
               {[
-                { icon: <Mail className="w-5 h-5" />, label: "Email", value: "support@sociveda.com" },
-                { icon: <Phone className="w-5 h-5" />, label: "Phone", value: "+91 99887 76655" },
+                { icon: <Mail className="w-5 h-5" />, label: "Email", value: "akshraj2255@gmail.com" },
+                { icon: <Phone className="w-5 h-5" />, label: "Phone", value: "+91 77659 91145" },
                 { icon: <MapPin className="w-5 h-5" />, label: "Location", value: "India (Remote)" },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-4 bg-bg-soft dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-2xl p-5">

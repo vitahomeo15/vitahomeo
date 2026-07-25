@@ -149,7 +149,7 @@ export default function Home() {
     { q: "What is your refund and cancellation policy?", a: "If you cancel your appointment at least 12 hours before the scheduled time, you are eligible for a full refund. Refunds for missed sessions or cancellations within 12 hours are governed by our refund terms." },
     { q: "What should I do in case of a medical emergency?", a: "SociVeda consultations are for non-emergency constitutional care. If you have an acute, life-threatening condition, please contact local emergency services or visit the nearest hospital immediately." },
     { q: "Can I consult a homeopathic doctor from home if I live in a rural area?", a: "Yes. SociVeda is accessible across India. As long as you have a basic internet connection and a browser, you can consult verified specialists without traveling to major cities." },
-    { q: "How do I contact customer support if I run into technical issues?", a: "Our support desk is active Monday–Sunday, 9 AM–9 PM IST. You can email us at [email] or call [phone]. Our average response time is under 15 minutes." }
+    { q: "How do I contact customer support if I run into technical issues?", a: "Our support desk is active Monday–Sunday, 9 AM–9 PM IST. You can email us at akshraj2255@gmail.com or call +91 77659 91145. Our average response time is under 15 minutes." }
   ];
 
   // 13. Blog Previews (sourced dynamically from blogData)
