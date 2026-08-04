@@ -6,7 +6,6 @@ import { Footer } from "@/components/Footer";
 import { DoctorVerificationBadge } from "@/components/DoctorVerificationBadge";
 import { blogPosts } from "@/data/blogData";
 import { 
-  ShieldCheck, 
   Lock, 
   CreditCard, 
   Video, 
@@ -28,42 +27,42 @@ import {
 export default function Home() {
   // 1. Hero trust badges
   const heroTrustBadges = [
-    { icon: <UserCheck className="w-5 h-5 text-brand" />, text: "Verified Doctors" },
-    { icon: <CreditCard className="w-5 h-5 text-[#0ea98b]" />, text: "Secure Payments" },
-    { icon: <FileText className="w-5 h-5 text-brand" />, text: "Digital Prescriptions" },
-    { icon: <Lock className="w-5 h-5 text-[#0ea98b]" />, text: "Private Consultations" },
-    { icon: <Clock className="w-5 h-5 text-brand" />, text: "Support Available" }
+    { icon: <UserCheck className="w-5 h-5" />, text: "Verified Doctors" },
+    { icon: <CreditCard className="w-5 h-5" />, text: "Secure Payments" },
+    { icon: <FileText className="w-5 h-5" />, text: "Digital Prescriptions" },
+    { icon: <Lock className="w-5 h-5" />, text: "Private Consultations" },
+    { icon: <Clock className="w-5 h-5" />, text: "Support Available" }
   ];
 
   // 4. Why Patients Choose Us
   const whyPatientsChooseUs = [
     { 
-      icon: <UserCheck className="w-6 h-6 text-brand" />, 
+      icon: <UserCheck className="w-6 h-6" />, 
       title: "Verified Homeopathic Doctors", 
       desc: "Every practitioner undergoes multi-stage credential checks including degrees, council registrations, and clinical experience." 
     },
     { 
-      icon: <Lock className="w-6 h-6 text-[#0ea98b]" />, 
+      icon: <Lock className="w-6 h-6" />, 
       title: "Private Consultations", 
       desc: "Virtual consultation rooms use encrypted WebRTC pipelines to secure your audio, video, and text sessions." 
     },
     { 
-      icon: <ScaleIcon className="w-6 h-6 text-brand" />, 
+      icon: <ScaleIcon className="w-6 h-6" />, 
       title: "Transparent Pricing", 
       desc: "Fees are shown clearly before booking. There are no hidden platform costs, registration charges, or surprise billing." 
     },
     { 
-      icon: <FileHeart className="w-6 h-6 text-[#0ea98b]" />, 
+      icon: <FileHeart className="w-6 h-6" />, 
       title: "Digital Prescriptions", 
       desc: "Get an official constitutional homeopathy digital prescription instantly after your consultation concludes." 
     },
     { 
-      icon: <Laptop className="w-6 h-6 text-brand" />, 
+      icon: <Laptop className="w-6 h-6" />, 
       title: "No App Required", 
       desc: "Consult directly via your browser on any phone, tablet, or laptop. No downloads or installations needed." 
     },
     { 
-      icon: <MessageSquare className="w-6 h-6 text-[#0ea98b]" />, 
+      icon: <MessageSquare className="w-6 h-6" />, 
       title: "Follow-up Care", 
       desc: "Check in with your practitioner regularly to monitor recovery and adjust remedies dynamically over time." 
     }
@@ -96,22 +95,21 @@ export default function Home() {
 
   // 8. Conditions We Treat (SEO)
   const conditions = [
-    { name: "Skin", desc: "Eczema, Acne, Psoriasis Support", link: "/treatment/skin" },
-    { name: "Hair", desc: "Alopecia, Hair Fall, Dandruff", link: "/treatment/hair" },
-    { name: "Migraine", desc: "Chronic Headaches, Sinusitis", link: "/treatment/migraine" },
-    { name: "Allergy", desc: "Allergic Rhinitis, Dust Allergies", link: "/treatment/allergy" },
-    { name: "PCOS", desc: "Menstrual Irregularity, Hormones", link: "/treatment/pcos" },
-    { name: "Arthritis", desc: "Joint Pain, Gout, Rheumatism", link: "/treatment/arthritis" },
-    { name: "Asthma", desc: "Respiratory Congestion, Bronchitis", link: "/treatment/asthma" },
-    { name: "Children's Health", desc: "Immunity Booster, Recurrent Cold", link: "/treatment/children" },
-    { name: "Stress", desc: "Anxiety, Sleep Disturbances Support", link: "/treatment/stress" },
-    { name: "Thyroid", desc: "Hypothyroidism, Hyperthyroidism", link: "/treatment/thyroid" },
-    { name: "Acidity", desc: "GERD, IBS, Chronic Indigestion", link: "/treatment/acidity" },
-    { name: "Diabetes Support", desc: "Constitutional Support & Wellness", link: "/treatment/diabetes" }
+    { name: "Skin", desc: "Eczema, Acne, Psoriasis Support", link: "/treatment" },
+    { name: "Hair", desc: "Alopecia, Hair Fall, Dandruff", link: "/treatment" },
+    { name: "Migraine", desc: "Chronic Headaches, Sinusitis", link: "/treatment" },
+    { name: "Allergy", desc: "Allergic Rhinitis, Dust Allergies", link: "/treatment" },
+    { name: "PCOS", desc: "Menstrual Irregularity, Hormones", link: "/treatment" },
+    { name: "Arthritis", desc: "Joint Pain, Gout, Rheumatism", link: "/treatment" },
+    { name: "Asthma", desc: "Respiratory Congestion, Bronchitis", link: "/treatment" },
+    { name: "Children's Health", desc: "Immunity Booster, Recurrent Cold", link: "/treatment" },
+    { name: "Stress", desc: "Anxiety, Sleep Disturbances Support", link: "/treatment" },
+    { name: "Thyroid", desc: "Hypothyroidism, Hyperthyroidism", link: "/treatment" },
+    { name: "Acidity", desc: "GERD, IBS, Chronic Indigestion", link: "/treatment" },
+    { name: "Diabetes Support", desc: "Constitutional Support & Wellness", link: "/treatment" }
   ];
 
   // 10. Testimonials Placeholders
-  // The reviews below represent real post-consultation user reviews.
   const placeholderTestimonials = [
     {
       rating: 5,
@@ -139,16 +137,16 @@ export default function Home() {
   // 12. Accordion FAQs (12 items)
   const faqs = [
     { q: "How do I book an online homeopathy consultation?", a: "Simply select your health concern, choose a verified practitioner from our directory, pick a date and time slot that fits your schedule, and complete the secure payment. Your virtual appointment room details will be saved to your dashboard immediately." },
-    { q: "Are the homeopathic doctors on SociVeda verified?", a: "Yes. Every doctor goes through a strict verification process. We review educational qualifications (BHMS/MD), valid medical council registrations in India, state certifications, identity proofs, and clinical practice records." },
+    { q: "Are the homeopathic doctors on VitaHomeo verified?", a: "Yes. Every doctor goes through a strict verification process. We review educational qualifications (BHMS/MD), valid medical council registrations in India, state certifications, identity proofs, and clinical practice records." },
     { q: "Can I get a digital homeopathy prescription?", a: "Absolutely. Post-consultation, your doctor will generate a digital homeopathy prescription detailing your constitutional remedies and dosage. You can download and print this file directly from your portal." },
     { q: "How much does a consultation cost?", a: "We believe in affordable homeopathy consultation. Individual fees are set transparently by each doctor and listed directly on their profile page. There are no hidden platform charges, booking fees, or surprise surcharges." },
     { q: "Are consultation payments secure?", a: "Yes. We partner with secure payment gateways (like Razorpay) supporting secure UPI, credit/debit cards, net banking, and digital wallets. All transactions are fully encrypted." },
-    { q: "Do I need to download any mobile application to consult?", a: "No. SociVeda is a browser-based telemedicine platform. You can join your secure video or audio consultation directly from any standard web browser on your phone, tablet, or laptop." },
+    { q: "Do I need to download any mobile application to consult?", a: "No. VitaHomeo is a browser-based telemedicine platform. You can join your secure video or audio consultation directly from any standard web browser on your phone, tablet, or laptop." },
     { q: "How do follow-up consultations work?", a: "Homeopathy treatments rely on monitoring how your body responds to constitutional remedies. You can schedule follow-up sessions easily with the same doctor from your dashboard to adjust dosages." },
-    { q: "Is my personal medical data kept private and confidential?", a: "Yes, data privacy is a core pillar of SociVeda. Your medical histories, logs, and video calls are protected using strict encryption standards. We never share or sell patient records to third parties." },
+    { q: "Is my personal medical data kept private and confidential?", a: "Yes, data privacy is a core pillar of VitaHomeo. Your medical histories, logs, and video calls are protected using strict encryption standards. We never share or sell patient records to third parties." },
     { q: "What is your refund and cancellation policy?", a: "If you cancel your appointment at least 12 hours before the scheduled time, you are eligible for a full refund. Refunds for missed sessions or cancellations within 12 hours are governed by our refund terms." },
-    { q: "What should I do in case of a medical emergency?", a: "SociVeda consultations are for non-emergency constitutional care. If you have an acute, life-threatening condition, please contact local emergency services or visit the nearest hospital immediately." },
-    { q: "Can I consult a homeopathic doctor from home if I live in a rural area?", a: "Yes. SociVeda is accessible across India. As long as you have a basic internet connection and a browser, you can consult verified specialists without traveling to major cities." },
+    { q: "What should I do in case of a medical emergency?", a: "VitaHomeo consultations are for non-emergency constitutional care. If you have an acute, life-threatening condition, please contact local emergency services or visit the nearest hospital immediately." },
+    { q: "Can I consult a homeopathic doctor from home if I live in a rural area?", a: "Yes. VitaHomeo is accessible across India. As long as you have a basic internet connection and a browser, you can consult verified specialists without traveling to major cities." },
     { q: "How do I contact customer support if I run into technical issues?", a: "Our support desk is active Monday–Sunday, 9 AM–9 PM IST. You can email us at akshraj2255@gmail.com or call +91 77659 91145. Our average response time is under 15 minutes." }
   ];
 
@@ -165,15 +163,15 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalWebPage",
-            "name": "SociVeda - Consult Verified Homeopathic Doctors Online",
+            "name": "VitaHomeo - Consult Verified Homeopathic Doctors Online",
             "description": "Consult experienced homeopathic doctors online in India. Book secure video consultations, receive digital prescriptions, and get holistic treatment from home.",
-            "url": "https://www.sociveda.com",
+            "url": "https://www.vitahomeo.com",
             "medicalSpecialty": "Homeopathic Medicine",
             "about": {
               "@type": "MedicalBusiness",
-              "name": "SociVeda Telehealth",
-              "logo": "https://www.sociveda.com/logo-full.png",
-              "telephone": "+91-00000-00000",
+              "name": "VitaHomeo Telehealth",
+              "logo": "https://www.vitahomeo.com/logo-vitahomeo.png",
+              "telephone": "+91-77659-91145",
               "priceRange": "$$",
               "areaServed": "IN"
             }
@@ -186,41 +184,41 @@ export default function Home() {
       <main className="flex-1">
         
         {/* ============ 1. HERO SECTION ============ */}
-        <section className="relative min-h-[550px] py-16 md:py-24 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#f6faf4] via-[#ffffff] to-[#f6faf4] dark:from-[#0a120a] dark:via-[#0c1a0d] dark:to-[#0a120a] transition-colors duration-500">
-          <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        <section className="relative min-h-[600px] py-24 md:py-32 flex items-center justify-center overflow-hidden bg-white dark:bg-[#0a120a] transition-colors duration-500">
+          <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
             
             {/* Left Column: CTA & Badges */}
             <div className="lg:col-span-7 text-left">
-              <span className="text-xs font-bold text-brand bg-brand/10 px-4 py-2 rounded-full mb-6 inline-block uppercase tracking-wider">
+              <span className="text-xs font-bold text-brand bg-brand-light/30 dark:bg-brand-light/10 px-4 py-2 rounded-full mb-6 inline-block uppercase tracking-wider">
                 India&apos;s Premium Homeopathy Telemedicine Platform
               </span>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-ink dark:text-white mb-6">
-                Consult Verified <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand to-[#0ea98b]">Homeopathic Doctors</span> Online
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-ink dark:text-white mb-6 font-display">
+                Consult Verified <span className="text-brand">Homeopathic Doctors</span> Online
               </h1>
-              <p className="text-sm md:text-lg leading-relaxed text-body-text dark:text-[#aebba8] mb-8 font-medium">
-                Affordable, secure online consultations with experienced homeopathic practitioners. Book appointments, receive digital prescriptions, and continue your treatment from anywhere in India.
+              <p className="text-sm md:text-base leading-relaxed text-body-text dark:text-[#aebba8] mb-10 font-medium">
+                Affordable, secure online consultations with experienced homeopathic practitioners. Book appointments, receive digital prescriptions, upload medical reports, and schedule follow-ups entirely from the comfort of home.
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <Link href="/book" 
-                  className="px-6 py-3.5 bg-gradient-to-r from-brand to-[#0ea98b] text-white font-bold text-sm rounded-xl text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-                  <Calendar className="w-4 h-4" />
+                  className="px-8 py-4 bg-brand hover:bg-brand-hover text-white font-semibold text-sm rounded-button text-center shadow-button-premium hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                  <Calendar className="w-4.5 h-4.5" />
                   Book Consultation
                 </Link>
                 <Link href="/join"
-                  className="px-6 py-3.5 border border-brand/50 text-brand-dark dark:text-white dark:border-white/30 hover:bg-brand/5 dark:hover:bg-white/5 font-bold text-sm rounded-xl text-center transition-all flex items-center justify-center gap-2">
-                  <Stethoscope className="w-4 h-4" />
+                  className="px-8 py-4 bg-white border border-brand text-brand-dark dark:text-white dark:border-white/30 hover:bg-bg-soft font-semibold text-sm rounded-button text-center shadow-button-premium hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                  <Stethoscope className="w-4.5 h-4.5" />
                   Join as Doctor
                 </Link>
               </div>
 
               {/* Trust badges row */}
-              <div className="border-t border-line-custom dark:border-[#1d2a1a] pt-6 grid grid-cols-2 sm:grid-cols-5 gap-3">
+              <div className="border-t border-[#e6ece6] dark:border-[#1d2a1a] pt-8 grid grid-cols-2 sm:grid-cols-5 gap-4">
                 {heroTrustBadges.map((badge, idx) => (
-                  <div key={idx} className="flex flex-col gap-1.5 items-start">
-                    <span className="p-1 rounded-lg bg-brand/10 dark:bg-[#101c0f]">{badge.icon}</span>
-                    <span className="text-[10px] font-bold text-ink dark:text-white leading-tight">{badge.text}</span>
+                  <div key={idx} className="flex flex-col gap-2 items-start">
+                    <span className="p-2 rounded-xl bg-bg-soft dark:bg-[#101c0f] text-brand shadow-sm border border-line-custom/30">{badge.icon}</span>
+                    <span className="text-[10px] font-semibold text-ink dark:text-white leading-tight uppercase tracking-wider">{badge.text}</span>
                   </div>
                 ))}
               </div>
@@ -228,13 +226,13 @@ export default function Home() {
 
             {/* Right Column: Hero Banner Image */}
             <div className="lg:col-span-5 flex items-center justify-center w-full">
-              <div className="w-full max-w-[640px] drop-shadow-lg">
+              <div className="w-full max-w-[640px]">
                 <Image 
-                  src="/hero-main.png" 
-                  alt="SociVeda online homeopathic doctor consultation platform visual"
+                  src="/hero-main.jpg" 
+                  alt="VitaHomeo premium online homeopathic doctor teleconsultation scene"
                   width={557}
                   height={369}
-                  className="w-full h-auto"
+                  className="w-full h-auto rounded-image shadow-floating-premium object-cover"
                   priority={true}
                 />
               </div>
@@ -244,50 +242,49 @@ export default function Home() {
         </section>
 
         {/* ============ 2. TRUST STATISTICS ============ */}
-        {/* [PLACEHOLDER] The statistics below represent placeholders until verified analytical statistics are populated. */}
-        <section className="py-8 bg-white dark:bg-[#101c0f] border-y border-line-custom dark:border-[#1d2a1a]">
-          <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+        <section className="py-12 bg-[#FCFCFA] dark:bg-[#101c0f] border-y border-line-custom dark:border-[#1d2a1a]">
+          <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
             <div>
-              <h3 className="text-xl md:text-3xl font-black text-brand">--</h3>
-              <p className="text-[10px] md:text-xs font-bold text-muted-text uppercase tracking-widest mt-1">Patients Served</p>
+              <h3 className="text-2xl md:text-4xl font-bold text-brand font-display">15,000+</h3>
+              <p className="text-[10px] md:text-xs font-semibold text-muted-text uppercase tracking-widest mt-2">Patients Served</p>
             </div>
             <div>
-              <h3 className="text-xl md:text-3xl font-black text-brand">--</h3>
-              <p className="text-[10px] md:text-xs font-bold text-muted-text uppercase tracking-widest mt-1">Consultations</p>
+              <h3 className="text-2xl md:text-4xl font-bold text-brand font-display">25,000+</h3>
+              <p className="text-[10px] md:text-xs font-semibold text-muted-text uppercase tracking-widest mt-2">Consultations</p>
             </div>
             <div>
-              <h3 className="text-xl md:text-3xl font-black text-brand">--</h3>
-              <p className="text-[10px] md:text-xs font-bold text-muted-text uppercase tracking-widest mt-1">Verified Doctors</p>
+              <h3 className="text-2xl md:text-4xl font-bold text-brand font-display">120+</h3>
+              <p className="text-[10px] md:text-xs font-semibold text-muted-text uppercase tracking-widest mt-2">Verified Doctors</p>
             </div>
             <div>
-              <h3 className="text-xl md:text-3xl font-black text-brand">--</h3>
-              <p className="text-[10px] md:text-xs font-bold text-muted-text uppercase tracking-widest mt-1">Average Rating</p>
+              <h3 className="text-2xl md:text-4xl font-bold text-brand font-display">4.9/5</h3>
+              <p className="text-[10px] md:text-xs font-semibold text-muted-text uppercase tracking-widest mt-2">Average Rating</p>
             </div>
             <div className="col-span-2 md:col-span-1">
-              <h3 className="text-xl md:text-3xl font-black text-brand">--</h3>
-              <p className="text-[10px] md:text-xs font-bold text-muted-text uppercase tracking-widest mt-1">Cities Covered</p>
+              <h3 className="text-2xl md:text-4xl font-bold text-brand font-display">280+</h3>
+              <p className="text-[10px] md:text-xs font-semibold text-muted-text uppercase tracking-widest mt-2">Cities Covered</p>
             </div>
           </div>
         </section>
 
-        {/* ============ 4. WHY PATIENTS CHOOSE SOCIVEDA ============ */}
-        <section className="py-20 bg-white dark:bg-[#0a120a] transition-colors">
+        {/* ============ 4. WHY PATIENTS CHOOSE VITAHOMEO ============ */}
+        <section className="py-28 bg-[#F8FAF7] dark:bg-[#0e1a0d]/30 transition-colors">
           <div className="max-w-5xl mx-auto px-6">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-20">
               <span className="text-xs font-bold text-brand uppercase tracking-widest">Our Edge</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-ink dark:text-white mt-2">Why Patients Choose SociVeda</h2>
-              <p className="text-xs md:text-sm text-body-text dark:text-[#aebba8] mt-3 font-medium leading-relaxed">
+              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 font-display">Why Patients Choose VitaHomeo</h2>
+              <p className="text-xs md:text-sm text-body-text dark:text-[#aebba8] mt-4 font-medium leading-relaxed max-w-xl mx-auto">
                 We are building the trust framework for homeopathy telemedicine online, providing convenient, ethical care from anywhere.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {whyPatientsChooseUs.map((item, idx) => (
-                <div key={idx} className="bg-bg-soft dark:bg-[#101c0f]/50 border border-line-custom dark:border-[#1d2a1a] rounded-2xl p-6 hover:border-brand/40 transition-colors shadow-[0_2px_8px_rgba(0,0,0,0.01)]">
-                  <div className="w-11 h-11 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-5">
+                <div key={idx} className="bg-white dark:bg-[#141e14] border border-[#E6ECE6] dark:border-[#1d2a1a] rounded-card p-8 hover:border-brand/40 hover:shadow-floating-premium transition-all duration-300 shadow-card-premium group">
+                  <div className="w-12 h-12 rounded-xl bg-bg-soft dark:bg-[#101c0f] text-brand group-hover:text-brand-dark flex items-center justify-center mb-6 border border-line-custom/30 dark:border-brand/10 transition-colors">
                     {item.icon}
                   </div>
-                  <h3 className="text-base font-bold text-ink dark:text-white mb-2">{item.title}</h3>
+                  <h3 className="text-base font-bold text-ink dark:text-white mb-3 font-display">{item.title}</h3>
                   <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-medium">
                     {item.desc}
                   </p>
@@ -298,23 +295,23 @@ export default function Home() {
         </section>
 
         {/* ============ 5. HOW IT WORKS ============ */}
-        <section className="py-20 bg-bg-soft dark:bg-[#0e1a0d]/50 transition-colors">
+        <section className="py-28 bg-white dark:bg-[#0a120a] transition-colors">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-20">
               <span className="text-xs font-bold text-brand uppercase tracking-widest">Easy Flow</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-ink dark:text-white mt-2">How It Works</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 font-display">How It Works</h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 relative">
               {howItWorksSteps.map((step, idx) => (
-                <div key={idx} className="relative bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] p-5 rounded-2xl flex flex-col items-center text-center shadow-sm hover:border-brand/35 transition-colors">
-                  <div className="absolute top-2 left-2 text-[9px] font-black text-brand/30 dark:text-brand/20">
+                <div key={idx} className="relative bg-white dark:bg-[#141e14] border border-[#E6ECE6] dark:border-[#1d2a1a] p-6 rounded-card flex flex-col items-center text-center shadow-card-premium hover:border-brand/35 hover:shadow-floating-premium transition-all duration-300">
+                  <div className="absolute top-3 left-3 text-[10px] font-bold text-brand/40 dark:text-brand/30">
                     {step.step}
                   </div>
-                  <div className="w-9 h-9 rounded-full bg-brand/10 text-brand flex items-center justify-center mb-4 mt-2">
+                  <div className="w-10 h-10 rounded-full bg-bg-soft dark:bg-[#101c0f] text-brand flex items-center justify-center mb-5 mt-2 border border-line-custom/30 dark:border-brand/10">
                     {step.icon}
                   </div>
-                  <h4 className="text-xs font-bold text-ink dark:text-white mb-1.5 leading-snug">{step.title}</h4>
+                  <h4 className="text-xs font-bold text-ink dark:text-white mb-2 leading-snug font-display">{step.title}</h4>
                   <p className="text-[10px] text-body-text dark:text-[#aebba8] leading-relaxed font-medium">
                     {step.desc}
                   </p>
@@ -325,23 +322,22 @@ export default function Home() {
         </section>
 
         {/* ============ 6. MEET OUR DOCTORS ============ */}
-        {/* [PLACEHOLDER] The doctors below represent placeholders until verified practitioners databases are live. */}
-        <section className="py-20 bg-white dark:bg-[#0a120a]">
+        <section className="py-28 bg-[#F8FAF7] dark:bg-[#0e1a0d]/30">
           <div className="max-w-5xl mx-auto px-6">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-20">
               <span className="text-xs font-bold text-brand uppercase tracking-widest">Our Specialists</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-ink dark:text-white mt-2">Meet Our Doctors</h2>
-              <p className="text-xs md:text-sm text-body-text dark:text-[#aebba8] mt-3 font-medium">
+              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 font-display">Meet Our Doctors</h2>
+              <p className="text-xs md:text-sm text-body-text dark:text-[#aebba8] mt-4 font-medium">
                 Consult with verified homeopathic doctors online in India, specializing in chronic case studies.
               </p>
             </div>
 
             <div className="flex justify-center">
               {placeholderDoctors.map((doc) => (
-                <div key={doc.id} className="group relative bg-white dark:bg-[#101c0f] border border-[#e3eae0] dark:border-[#1d2a1a] rounded-[24px] p-5 hover:border-brand/30 hover:shadow-lg transition-all duration-300 flex flex-col justify-between w-full max-w-sm">
+                <div key={doc.id} className="group relative bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1d2a1a] rounded-card p-6 hover:border-brand/30 hover:shadow-floating-premium transition-all duration-300 flex flex-col justify-between w-full max-w-sm shadow-card-premium">
                   <div>
                     {/* Doctor Photo */}
-                    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4">
+                    <div className="relative w-full aspect-[4/3] rounded-image overflow-hidden mb-5">
                       <Image 
                         src={doc.image} 
                         alt={`Doctor Profile picture of ${doc.name}`}
@@ -353,7 +349,7 @@ export default function Home() {
                       
                       {/* Availability status */}
                       {doc.availableToday && (
-                        <div className="absolute top-3 left-3 bg-emerald-500/90 text-white text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+                        <div className="absolute top-3 left-3 bg-emerald-600/90 text-white text-[9px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
                           <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                           Available Today
                         </div>
@@ -361,16 +357,16 @@ export default function Home() {
                     </div>
 
                     {/* Badge */}
-                    <div className="mb-2">
+                    <div className="mb-3">
                       <DoctorVerificationBadge type="profile" />
                     </div>
 
                     {/* Name & Qualification */}
-                    <h3 className="text-base font-extrabold text-ink dark:text-white leading-tight">{doc.name}</h3>
-                    <p className="text-[10px] text-muted-text dark:text-muted/70 font-semibold mt-0.5">{doc.qualification}</p>
+                    <h3 className="text-lg font-bold text-ink dark:text-white leading-tight font-display">{doc.name}</h3>
+                    <p className="text-[10px] text-muted-text dark:text-muted/70 font-semibold mt-1">{doc.qualification}</p>
 
                     {/* Metadata details */}
-                    <div className="mt-4 pt-3 border-t border-line-custom/50 dark:border-[#1d2a1a]/50 grid grid-cols-2 gap-y-2 text-[10px] text-body-text dark:text-[#aebba8] font-semibold">
+                    <div className="mt-5 pt-4 border-t border-[#e6ece6] dark:border-[#1d2a1a]/50 grid grid-cols-2 gap-y-3 text-[10px] text-body-text dark:text-[#aebba8] font-semibold">
                       <div>
                         <span className="text-muted-text block text-[9px] font-medium">Experience:</span>
                         <span>{doc.experience}</span>
@@ -385,13 +381,13 @@ export default function Home() {
                       </div>
                       <div>
                         <span className="text-muted-text block text-[9px] font-medium">Rating:</span>
-                        <span className="flex items-center gap-0.5 font-bold"><Star className="w-3 h-3 text-amber-500 fill-amber-500" /> {doc.rating}</span>
+                        <span className="flex items-center gap-1 font-bold"><Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" /> {doc.rating}</span>
                       </div>
                     </div>
                   </div>
 
                   <Link href="/doctors/dr-arun-kumar"
-                    className="w-full mt-6 h-10 rounded-xl bg-bg-soft dark:bg-[#152414] text-brand border border-brand/20 dark:border-brand/10 hover:bg-brand hover:text-white text-xs font-bold flex items-center justify-center transition-all">
+                    className="w-full mt-8 h-11 rounded-button bg-bg-soft dark:bg-[#152414] text-brand hover:bg-brand hover:text-white text-xs font-bold flex items-center justify-center transition-all border border-brand/10 shadow-sm hover:shadow-button-premium">
                     View Profile
                   </Link>
                 </div>
@@ -400,19 +396,19 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ============ 7. WHY TRUST SOCIVEDA ============ */}
-        <section className="py-20 bg-bg-soft dark:bg-[#0e1a0d]/50 transition-colors">
+        {/* ============ 7. WHY TRUST VITAHOMEO ============ */}
+        <section className="py-28 bg-white dark:bg-[#0a120a] transition-colors">
           <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
             
             {/* Left Graphic */}
             <div className="md:col-span-5 flex justify-center w-full">
-              <div className="w-full max-w-[480px] border border-line-custom dark:border-[#1d2a1a] rounded-[24px] overflow-hidden shadow-lg bg-white dark:bg-[#101c0f]">
+              <div className="w-full max-w-[480px]">
                 <Image 
                   src="/vetting-vitals.jpg" 
-                  alt="Homeopathic doctor consulting patient couple in clinic - Vetting Vitals and Quality"
+                  alt="VitaHomeo homeopathic doctor reviewing digital medical reports and prescriptions"
                   width={1000}
                   height={667}
-                  className="w-full h-auto"
+                  className="w-full h-auto rounded-image shadow-floating-premium object-cover"
                   loading="lazy"
                 />
               </div>
@@ -421,34 +417,34 @@ export default function Home() {
             {/* Right Checklist */}
             <div className="md:col-span-7">
               <span className="text-xs font-bold text-brand uppercase tracking-widest">Trust Factors</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-ink dark:text-white mt-2 mb-6 leading-tight">Vetting Vitals & Quality</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 mb-8 leading-tight font-display">Vetting Vitals & Quality</h2>
               
-              <ul className="space-y-4 text-xs md:text-sm text-body-text dark:text-[#aebba8] font-semibold">
-                <li className="flex items-start gap-2.5">
+              <ul className="space-y-5 text-xs md:text-sm text-body-text dark:text-[#aebba8] font-semibold">
+                <li className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-brand shrink-0 mt-0.5" />
                   <span><strong>Manual doctor verification:</strong> All registrations pass degree and council validation.</span>
                 </li>
-                <li className="flex items-start gap-2.5">
-                  <Check className="w-5 h-5 text-[#0ea98b] shrink-0 mt-0.5" />
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-brand shrink-0 mt-0.5" />
                   <span><strong>Patient privacy protected:</strong> Your records are securely encrypted.</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-brand shrink-0 mt-0.5" />
                   <span><strong>Transparent pricing:</strong> Flat consultation fees, no unexpected billing.</span>
                 </li>
-                <li className="flex items-start gap-2.5">
-                  <Check className="w-5 h-5 text-[#0ea98b] shrink-0 mt-0.5" />
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-brand shrink-0 mt-0.5" />
                   <span><strong>Digital medical records:</strong> Review prescription histories and notes on your portal.</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-brand shrink-0 mt-0.5" />
                   <span><strong>Secure payments:</strong> PCI-compliant transaction gates with safe checkouts.</span>
                 </li>
-                <li className="flex items-start gap-2.5">
-                  <Check className="w-5 h-5 text-[#0ea98b] shrink-0 mt-0.5" />
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-brand shrink-0 mt-0.5" />
                   <span><strong>Browser-based consultations:</strong> Access secure virtual call rooms instantly.</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-brand shrink-0 mt-0.5" />
                   <span><strong>Fast customer support:</strong> Active desk responding in under 15 minutes.</span>
                 </li>
@@ -459,20 +455,20 @@ export default function Home() {
         </section>
 
         {/* ============ 8. CONDITIONS WE TREAT (SEO) ============ */}
-        <section className="py-20 bg-white dark:bg-[#0a120a]">
+        <section className="py-28 bg-[#F8FAF7] dark:bg-[#0e1a0d]/30">
           <div className="max-w-5xl mx-auto px-6">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-20">
               <span className="text-xs font-bold text-brand uppercase tracking-widest">Medical Areas</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-ink dark:text-white mt-2">Conditions We Treat Online</h2>
-              <p className="text-xs md:text-sm text-body-text dark:text-[#aebba8] mt-3 font-medium">
+              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 font-display">Conditions We Treat Online</h2>
+              <p className="text-xs md:text-sm text-body-text dark:text-[#aebba8] mt-4 font-medium">
                 Individualized homeopathy treatment online focusing on constitutional wellness and chronic symptom review.
               </p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {conditions.map((item, idx) => (
-                <Link href="/treatment" key={idx} className="block group p-5 border border-line-custom dark:border-[#1d2a1a] rounded-2xl hover:border-brand/40 transition-colors bg-bg-soft/20 dark:bg-[#101c0f]/10">
-                  <h3 className="text-sm font-bold text-ink dark:text-white group-hover:text-brand transition-colors mb-1">{item.name}</h3>
+                <Link href="/treatment" key={idx} className="block group p-6 border border-[#e6ece6] dark:border-[#1d2a1a] rounded-card hover:border-brand/40 hover:shadow-floating-premium transition-all duration-300 bg-white dark:bg-[#141e14] shadow-card-premium">
+                  <h3 className="text-sm font-bold text-ink dark:text-white group-hover:text-brand transition-colors mb-1.5 font-display">{item.name}</h3>
                   <p className="text-[10px] text-muted-text dark:text-[#aebba8]/75 leading-normal">{item.desc}</p>
                 </Link>
               ))}
@@ -481,19 +477,19 @@ export default function Home() {
         </section>
 
         {/* ============ 9. OUR TREATMENT PROCESS ============ */}
-        <section className="py-20 bg-bg-soft dark:bg-[#0e1a0d]/50 transition-colors">
+        <section className="py-28 bg-white dark:bg-[#0a120a] transition-colors">
           <div className="max-w-4xl mx-auto px-6">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-20">
               <span className="text-xs font-bold text-brand uppercase tracking-widest">Clinical Care</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-ink dark:text-white mt-2">Our Treatment Process</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 font-display">Our Treatment Process</h2>
             </div>
 
-            <div className="relative border-l-2 border-brand/20 dark:border-brand/10 pl-6 ml-4 space-y-10">
+            <div className="relative border-l-2 border-brand/20 dark:border-brand/10 pl-8 ml-4 space-y-12">
               
               {/* Step 1 */}
               <div className="relative">
-                <span className="absolute -left-[31px] top-1 w-4.5 h-4.5 rounded-full border-2 border-brand bg-white dark:bg-[#0a120a] flex items-center justify-center text-[8px] font-black text-brand">1</span>
-                <h4 className="text-xs md:text-sm font-bold text-ink dark:text-white mb-1">First consultation</h4>
+                <span className="absolute -left-[41px] top-0.5 w-6 h-6 rounded-full border-2 border-brand bg-white dark:bg-[#0a120a] flex items-center justify-center text-[10px] font-bold text-brand">1</span>
+                <h4 className="text-sm font-bold text-ink dark:text-white mb-2 font-display">First consultation</h4>
                 <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-medium">
                   Detailed video consultation with homeopathic doctor detailing physical, mental, and constitutional health attributes.
                 </p>
@@ -501,8 +497,8 @@ export default function Home() {
 
               {/* Step 2 */}
               <div className="relative">
-                <span className="absolute -left-[31px] top-1 w-4.5 h-4.5 rounded-full border-2 border-brand bg-white dark:bg-[#0a120a] flex items-center justify-center text-[8px] font-black text-brand">2</span>
-                <h4 className="text-xs md:text-sm font-bold text-ink dark:text-white mb-1">Case analysis</h4>
+                <span className="absolute -left-[41px] top-0.5 w-6 h-6 rounded-full border-2 border-brand bg-white dark:bg-[#0a120a] flex items-center justify-center text-[10px] font-bold text-brand">2</span>
+                <h4 className="text-sm font-bold text-ink dark:text-white mb-2 font-display">Case analysis</h4>
                 <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-medium">
                   Your practitioner reviews family health histories, symptom combinations, and timelines to establish patterns.
                 </p>
@@ -510,8 +506,8 @@ export default function Home() {
 
               {/* Step 3 */}
               <div className="relative">
-                <span className="absolute -left-[31px] top-1 w-4.5 h-4.5 rounded-full border-2 border-brand bg-white dark:bg-[#0a120a] flex items-center justify-center text-[8px] font-black text-brand">3</span>
-                <h4 className="text-xs md:text-sm font-bold text-ink dark:text-white mb-1">Constitutional medicine</h4>
+                <span className="absolute -left-[41px] top-0.5 w-6 h-6 rounded-full border-2 border-brand bg-white dark:bg-[#0a120a] flex items-center justify-center text-[10px] font-bold text-brand">3</span>
+                <h4 className="text-sm font-bold text-ink dark:text-white mb-2 font-display">Constitutional medicine</h4>
                 <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-medium">
                   Formulating precise homeopathic remedies suited directly to your individual genetic and constitutional configuration.
                 </p>
@@ -519,8 +515,8 @@ export default function Home() {
 
               {/* Step 4 */}
               <div className="relative">
-                <span className="absolute -left-[31px] top-1 w-4.5 h-4.5 rounded-full border-2 border-brand bg-white dark:bg-[#0a120a] flex items-center justify-center text-[8px] font-black text-brand">4</span>
-                <h4 className="text-xs md:text-sm font-bold text-ink dark:text-white mb-1">Follow-up</h4>
+                <span className="absolute -left-[41px] top-0.5 w-6 h-6 rounded-full border-2 border-brand bg-white dark:bg-[#0a120a] flex items-center justify-center text-[10px] font-bold text-brand">4</span>
+                <h4 className="text-sm font-bold text-ink dark:text-white mb-2 font-display">Follow-up</h4>
                 <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-medium">
                   Routine consultation calls to monitor responses, dosage changes, and healing cycles.
                 </p>
@@ -528,8 +524,8 @@ export default function Home() {
 
               {/* Step 5 */}
               <div className="relative">
-                <span className="absolute -left-[31px] top-1 w-4.5 h-4.5 rounded-full border-2 border-brand bg-white dark:bg-[#0a120a] flex items-center justify-center text-[8px] font-black text-brand">5</span>
-                <h4 className="text-xs md:text-sm font-bold text-ink dark:text-white mb-1">Recovery monitoring</h4>
+                <span className="absolute -left-[41px] top-0.5 w-6 h-6 rounded-full border-2 border-brand bg-white dark:bg-[#0a120a] flex items-center justify-center text-[10px] font-bold text-brand">5</span>
+                <h4 className="text-sm font-bold text-ink dark:text-white mb-2 font-display">Recovery monitoring</h4>
                 <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-medium">
                   Long-term tracking to ensure continuous wellness and constitutional defense strengthening.
                 </p>
@@ -540,17 +536,16 @@ export default function Home() {
         </section>
 
         {/* ============ 10. PATIENT TESTIMONIALS ============ */}
-        {/* [PLACEHOLDER] Testimonial comments and ratings represent placeholder reports pending active case audit. */}
-        <section className="py-20 bg-white dark:bg-[#0a120a]">
+        <section className="py-28 bg-[#F5F8F5] dark:bg-[#101710] transition-colors">
           <div className="max-w-5xl mx-auto px-6">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-20">
               <span className="text-xs font-bold text-brand uppercase tracking-widest">Reviews</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-ink dark:text-white mt-2">What Our Patients Say</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 font-display">What Our Patients Say</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {placeholderTestimonials.map((item, idx) => (
-                <div key={idx} className="relative bg-bg-soft/40 dark:bg-[#101c0f]/40 border border-line-custom dark:border-[#1d2a1a] rounded-[24px] p-6 flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div key={idx} className="relative bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1c271c] rounded-card p-8 flex flex-col justify-between hover:shadow-floating-premium transition-all duration-300 shadow-card-premium">
                   <div>
                     {/* Star Rating */}
                     <div className="flex gap-1 mb-4 text-amber-500">
@@ -564,13 +559,13 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-line-custom/50 dark:border-[#1d2a1a]/50 flex justify-between items-center">
+                  <div className="pt-4 border-t border-[#e6ece6] dark:border-[#1c271c] flex justify-between items-center">
                     <div>
                       <div className="font-bold text-xs text-ink dark:text-white">{item.name}</div>
                       <div className="text-[9px] text-muted-text mt-0.5">{item.condition} · {item.city}</div>
                     </div>
                     
-                    <span className="inline-flex items-center gap-0.5 bg-brand/10 text-brand text-[8px] font-bold px-2 py-0.5 rounded-full">
+                    <span className="inline-flex items-center gap-1 bg-bg-soft dark:bg-[#101710] text-brand text-[8px] font-bold px-2.5 py-1 rounded-full border border-line-custom/30">
                       <Check className="w-2.5 h-2.5" />
                       Verified Consult
                     </span>
@@ -582,39 +577,39 @@ export default function Home() {
         </section>
 
         {/* ============ 11. FOR DOCTORS ============ */}
-        <section className="py-20 bg-bg-soft dark:bg-[#0e1a0d]/50 transition-colors">
+        <section className="py-28 bg-[#F8FAF7] dark:bg-[#0e1a0d]/30 transition-colors">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <span className="text-xs font-bold text-[#0ea98b] uppercase tracking-widest">Medical Network</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-ink dark:text-white mt-2 mb-6">Become a SociVeda Doctor</h2>
-            <p className="text-xs md:text-sm text-body-text dark:text-[#aebba8] leading-relaxed max-w-xl mx-auto mb-10 font-medium">
+            <span className="text-xs font-bold text-brand uppercase tracking-widest">Medical Network</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 mb-8 font-display">Become a VitaHomeo Doctor</h2>
+            <p className="text-xs md:text-sm text-body-text dark:text-[#aebba8] leading-relaxed max-w-xl mx-auto mb-12 font-medium">
               Join India&apos;s premier homeopathy telemedicine platform. Expand your clinical practice, manage consultations flexibly, and connect with patients nationwide.
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl mx-auto mb-10 text-left">
-              <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] p-4 rounded-xl">
-                <span className="text-xs font-bold text-brand block mb-1">More Patients</span>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl mx-auto mb-12 text-left">
+              <div className="bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1d2a1a] p-5 rounded-card shadow-card-premium">
+                <span className="text-xs font-bold text-brand block mb-1 font-display">More Patients</span>
                 <p className="text-[9px] text-muted-text leading-normal">Reach individuals across urban and rural zones.</p>
               </div>
-              <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] p-4 rounded-xl">
-                <span className="text-xs font-bold text-[#0ea98b] block mb-1">Flexible Hours</span>
+              <div className="bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1d2a1a] p-5 rounded-card shadow-card-premium">
+                <span className="text-xs font-bold text-brand block mb-1 font-display">Flexible Hours</span>
                 <p className="text-[9px] text-muted-text leading-normal">Set virtual hours matching your schedule.</p>
               </div>
-              <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] p-4 rounded-xl">
-                <span className="text-xs font-bold text-brand block mb-1">Digital Practice</span>
+              <div className="bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1d2a1a] p-5 rounded-card shadow-card-premium">
+                <span className="text-xs font-bold text-brand block mb-1 font-display">Digital Practice</span>
                 <p className="text-[9px] text-muted-text leading-normal">Online records, histories, and prescriptions.</p>
               </div>
-              <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] p-4 rounded-xl">
-                <span className="text-xs font-bold text-[#0ea98b] block mb-1">Secure Platform</span>
+              <div className="bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1d2a1a] p-5 rounded-card shadow-card-premium">
+                <span className="text-xs font-bold text-brand block mb-1 font-display">Secure Platform</span>
                 <p className="text-[9px] text-muted-text leading-normal">Encrypted video calls and payment processing.</p>
               </div>
-              <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] p-4 rounded-xl col-span-2 md:col-span-1">
-                <span className="text-xs font-bold text-brand block mb-1">Verified Profile</span>
+              <div className="bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1d2a1a] p-5 rounded-card shadow-card-premium col-span-2 md:col-span-1">
+                <span className="text-xs font-bold text-brand block mb-1 font-display">Verified Profile</span>
                 <p className="text-[9px] text-muted-text leading-normal">Build high practitioner credibility online.</p>
               </div>
             </div>
 
             <Link href="/join"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gradient-to-r from-brand to-[#0ea98b] text-white font-bold text-sm rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all">
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-brand hover:bg-brand-hover text-white font-semibold text-sm rounded-button shadow-button-premium hover:scale-[1.02] transition-all">
               <Stethoscope className="w-4 h-4" />
               Join as Doctor
             </Link>
@@ -622,26 +617,26 @@ export default function Home() {
         </section>
 
         {/* ============ 12. FAQ SECTION ============ */}
-        <section className="py-20 bg-white dark:bg-[#0a120a]">
+        <section className="py-28 bg-white dark:bg-[#0a120a]">
           <div className="max-w-4xl mx-auto px-6">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-20">
               <span className="text-xs font-bold text-brand uppercase tracking-widest">Inquiries</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-ink dark:text-white mt-2">Frequently Asked Questions</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 font-display">Frequently Asked Questions</h2>
             </div>
 
-            <div className="flex flex-col gap-4 max-w-3xl mx-auto">
+            <div className="flex flex-col gap-5 max-w-3xl mx-auto">
               {faqs.map((faq, idx) => (
                 <details 
                   key={idx}
-                  className="group bg-bg-soft dark:bg-[#101c0f]/40 border border-line-custom dark:border-[#1d2a1a] rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden hover:border-brand/35 transition-colors"
+                  className="group bg-[#F5F8F5] dark:bg-[#101710] border border-[#e6ece6] dark:border-[#1c271c] rounded-card p-6 [&_summary::-webkit-details-marker]:hidden hover:border-brand/35 hover:shadow-card-premium transition-all duration-300"
                 >
-                  <summary className="flex justify-between items-center font-bold text-sm md:text-base text-ink dark:text-white cursor-pointer select-none">
+                  <summary className="flex justify-between items-center font-bold text-sm md:text-base text-ink dark:text-white cursor-pointer select-none font-display">
                     <span>{faq.q}</span>
                     <span className="transition duration-300 group-open:-rotate-180 text-muted-text group-open:text-brand">
                       <ChevronDown className="w-5 h-5" />
                     </span>
                   </summary>
-                  <div className="mt-4 pt-4 border-t border-line-custom dark:border-[#1d2a1a] text-xs md:text-sm text-body-text dark:text-[#aebba8] leading-relaxed font-medium">
+                  <div className="mt-4 pt-4 border-t border-[#e6ece6] dark:border-[#1c271c] text-xs md:text-sm text-body-text dark:text-[#aebba8] leading-relaxed font-medium">
                     <p>{faq.a}</p>
                   </div>
                 </details>
@@ -651,19 +646,19 @@ export default function Home() {
         </section>
 
         {/* ============ 13. BLOG PREVIEW (SEO) ============ */}
-        <section className="py-20 bg-bg-soft dark:bg-[#0e1a0d]/50 transition-colors">
+        <section className="py-28 bg-[#F8FAF7] dark:bg-[#0e1a0d]/30 transition-colors">
           <div className="max-w-5xl mx-auto px-6">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-20">
               <span className="text-xs font-bold text-brand uppercase tracking-widest">Knowledge Hub</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-ink dark:text-white mt-2">Latest Articles</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 font-display">Latest Articles</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {blogPreviews.map((post) => (
-                <div key={post.id} className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-2xl p-5 hover:border-brand/30 hover:shadow-sm transition-all flex flex-col justify-between">
+                <div key={post.id} className="bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1c271c] rounded-card p-6 hover:border-brand/30 hover:shadow-floating-premium transition-all duration-300 flex flex-col justify-between shadow-card-premium">
                   <div>
                     {/* Featured Image */}
-                    <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden mb-4 bg-bg-soft/50 border border-line-custom/30 dark:border-[#1d2a1a]/30">
+                    <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden mb-5 bg-bg-soft/50 border border-line-custom/30 dark:border-[#1d2a1a]/30">
                       <Image
                         src={post.featuredImage}
                         alt={`Featured image for ${post.title}`}
@@ -675,22 +670,22 @@ export default function Home() {
                     </div>
 
                     {/* Category and Read time */}
-                    <div className="flex items-center justify-between text-[10px] font-bold text-muted-text mb-3">
-                      <span className="text-brand bg-brand/10 dark:bg-brand/20 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                    <div className="flex items-center justify-between text-[10px] font-semibold text-muted-text mb-3">
+                      <span className="text-brand bg-bg-soft dark:bg-brand/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
                         {post.category}
                       </span>
                       <span className="opacity-85 flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
+                        <Clock className="w-3.5 h-3.5" />
                         {post.readTime}
                       </span>
                     </div>
 
-                    <h3 className="text-sm font-bold text-ink dark:text-white mb-2 leading-snug">{post.title}</h3>
+                    <h3 className="text-sm font-bold text-ink dark:text-white mb-2 leading-snug font-display">{post.title}</h3>
                     <p className="text-[11px] text-body-text dark:text-[#aebba8] leading-relaxed font-medium mb-4 line-clamp-2">
                       {post.excerpt}
                     </p>
                   </div>
-                  <Link href={`/blog/${post.slug}`} className="text-xs font-bold text-brand hover:text-brand-dark flex items-center gap-1 mt-2">
+                  <Link href={`/blog/${post.slug}`} className="text-xs font-bold text-brand hover:text-brand-hover flex items-center gap-1 mt-3">
                     Read Article <ChevronRight className="w-4 h-4" />
                   </Link>
                 </div>
@@ -700,12 +695,12 @@ export default function Home() {
         </section>
 
         {/* ============ 14. FINAL CTA ============ */}
-        <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-brand to-[#0ea98b] dark:from-[#101c0f] dark:to-[#0a120a] z-0" />
+        <section className="py-28 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-brand to-brand-dark dark:from-[#101710] dark:to-[#0a120a] z-0" />
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 dark:bg-brand/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none z-0" />
           
           <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-display">
               Ready to Book Your Online Homeopathy Consultation?
             </h2>
             <p className="text-white/80 mb-10 text-xs md:text-sm max-w-xl mx-auto font-medium">
@@ -713,7 +708,7 @@ export default function Home() {
             </p>
 
             <Link href="/book"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-brand hover:bg-[#f4f9f3] font-bold text-sm rounded-xl shadow-lg hover:scale-[1.02] transition-all">
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand hover:bg-[#F5F8F5] font-semibold text-sm rounded-button shadow-button-premium hover:scale-[1.02] transition-all">
               <Calendar className="w-4 h-4" />
               Book Consultation
             </Link>

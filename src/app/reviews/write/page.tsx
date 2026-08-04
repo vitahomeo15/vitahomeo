@@ -108,7 +108,7 @@ export default function WriteReviewPage() {
 
     if (step === 2) {
       if (!formData.recommend) {
-        newErrors.recommend = "Please specify if you would recommend SociVeda";
+        newErrors.recommend = "Please specify if you would recommend VitaHomeo";
       }
     }
 
@@ -242,7 +242,7 @@ export default function WriteReviewPage() {
               {/* STEP 1: OVERALL EXPERIENCE */}
               {currentStep === 1 && (
                 <div className="space-y-4 animate-in fade-in duration-200">
-                  <h2 className="text-base font-extrabold text-ink dark:text-white">Rate your overall experience with SociVeda</h2>
+                  <h2 className="text-base font-bold text-ink dark:text-white font-display">Rate your overall experience with VitaHomeo</h2>
                   <div className="flex items-center gap-2">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <button
@@ -262,7 +262,7 @@ export default function WriteReviewPage() {
               {/* STEP 2: RECOMMENDATION */}
               {currentStep === 2 && (
                 <div className="space-y-4 animate-in fade-in duration-200">
-                  <h2 className="text-base font-extrabold text-ink dark:text-white">Would you recommend SociVeda to family or friends?</h2>
+                  <h2 className="text-base font-bold text-ink dark:text-white font-display">Would you recommend VitaHomeo to family or friends?</h2>
                   <div className="flex items-center gap-4">
                     <label className={`px-5 py-3 border rounded-xl flex items-center gap-2 cursor-pointer font-bold text-xs select-none ${
                       formData.recommend === "yes" ? "border-brand bg-brand/5 text-brand" : "border-line-custom dark:border-[#1d2a1a] text-body-text"

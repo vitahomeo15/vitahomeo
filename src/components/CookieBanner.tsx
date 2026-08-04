@@ -8,7 +8,7 @@ export function CookieBanner() {
 
   useEffect(() => {
     // Show banner after 2 seconds if consent is not yet set
-    const consent = localStorage.getItem("sociveda_consent");
+    const consent = localStorage.getItem("vitahomeo_consent");
     if (!consent) {
       const timer = setTimeout(() => {
         setVisible(true);
@@ -18,12 +18,12 @@ export function CookieBanner() {
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem("sociveda_consent", "accepted");
+    localStorage.setItem("vitahomeo_consent", "accepted");
     setVisible(false);
   };
 
   const handleDecline = () => {
-    localStorage.setItem("sociveda_consent", "declined");
+    localStorage.setItem("vitahomeo_consent", "declined");
     setVisible(false);
   };
 

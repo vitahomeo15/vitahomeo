@@ -30,8 +30,8 @@ export function Navbar() {
           {/* Logo Aligned to Left */}
           <Link href="/" className="flex items-center hover:opacity-90 transition-opacity select-none">
             <Image
-              src="/logo-full.png"
-              alt="SociVeda Logo"
+              src="/logo-vitahomeo.png"
+              alt="VitaHomeo Logo"
               width={120}
               height={36}
               className="h-7.5 w-auto object-contain dark:brightness-110"
@@ -87,7 +87,7 @@ export function Navbar() {
             {/* Join as Doctor button */}
             <Link
               href="/join"
-              className="hidden lg:inline-flex items-center justify-center h-10 px-4 rounded-xl text-sm font-bold border border-brand/50 text-brand-dark dark:text-white dark:border-white/30 hover:bg-brand/5 dark:hover:bg-white/5 transition-all gap-1.5"
+              className="hidden lg:inline-flex items-center justify-center h-10 px-4 rounded-button text-sm font-semibold border border-brand text-brand-dark dark:text-white dark:border-white/30 hover:bg-bg-soft transition-all gap-1.5"
             >
               <Stethoscope className="w-4.5 h-4.5" />
               Join as Doctor
@@ -96,7 +96,7 @@ export function Navbar() {
             {/* Book consultation button */}
             <Link
               href="/book"
-              className="hidden md:inline-flex items-center justify-center h-10 px-5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-brand to-[#0ea98b] hover:shadow-lg hover:brightness-105 active:scale-[0.98] transition-all gap-1.5"
+              className="hidden md:inline-flex items-center justify-center h-10 px-5 rounded-button text-sm font-semibold text-white bg-brand hover:bg-brand-hover shadow-button-premium active:scale-[0.98] transition-all gap-1.5"
             >
               <Calendar className="w-4 h-4" />
               Book consultation
@@ -120,7 +120,7 @@ export function Navbar() {
         <div className="fixed inset-0 bg-black/40 z-50 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="fixed right-0 top-0 bottom-0 w-[280px] bg-white dark:bg-[#0a120a] p-6 shadow-xl flex flex-col gap-4 animate-in slide-in-from-right duration-300">
             <div className="flex justify-between items-center mb-6">
-              <span className="brand"><Image src="/logo-full.png" alt="SociVeda Logo" width={110} height={40} className="object-contain" /></span>
+              <span className="brand"><Image src="/logo-vitahomeo.png" alt="VitaHomeo Logo" width={110} height={40} className="object-contain" /></span>
               <button
                 onClick={() => setMenuOpen(false)}
                 className="w-9 h-9 rounded-full border border-[#e3eae0] dark:border-[#1d2a1a] flex items-center justify-center"
@@ -144,7 +144,7 @@ export function Navbar() {
               <Link
                 href="/join"
                 onClick={() => setMenuOpen(false)}
-                className="w-full flex items-center justify-center h-11 rounded-xl font-bold border border-brand/50 text-brand-dark dark:text-white dark:border-white/30 hover:bg-brand/5 dark:hover:bg-white/5 transition-all gap-1.5"
+                className="w-full flex items-center justify-center h-11 rounded-button font-bold border border-brand text-brand-dark dark:text-white dark:border-white/30 hover:bg-bg-soft transition-all gap-1.5"
               >
                 <Stethoscope className="w-4.5 h-4.5" />
                 Join as Doctor
@@ -152,7 +152,7 @@ export function Navbar() {
               <Link
                 href="/book"
                 onClick={() => setMenuOpen(false)}
-                className="w-full flex items-center justify-center h-11 rounded-xl font-semibold text-white bg-gradient-to-r from-brand to-[#0ea98b] gap-1.5"
+                className="w-full flex items-center justify-center h-11 rounded-button font-semibold text-white bg-brand hover:bg-brand-hover shadow-button-premium gap-1.5"
               >
                 <Calendar className="w-4 h-4" />
                 Book consultation

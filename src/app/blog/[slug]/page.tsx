@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   if (!post) {
     return {
-      title: "Article Not Found - SociVeda",
+      title: "Article Not Found - VitaHomeo",
     };
   }
 
@@ -41,19 +41,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: post.metaTitle,
     description: post.metaDescription,
     alternates: {
-      canonical: `https://www.sociveda.com/blog/${post.slug}`,
+      canonical: `https://www.vitahomeo.com/blog/${post.slug}`,
     },
     openGraph: {
       title: post.metaTitle,
       description: post.metaDescription,
-      url: `https://www.sociveda.com/blog/${post.slug}`,
-      siteName: "SociVeda",
+      url: `https://www.vitahomeo.com/blog/${post.slug}`,
+      siteName: "VitaHomeo",
       type: "article",
       publishedTime: new Date(post.date).toISOString(),
       authors: [post.author],
       images: [
         {
-          url: `https://www.sociveda.com${post.featuredImage}`,
+          url: `https://www.vitahomeo.com${post.featuredImage}`,
           width: 800,
           height: 450,
           alt: post.title,
@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: post.metaTitle,
       description: post.metaDescription,
-      images: [`https://www.sociveda.com${post.featuredImage}`],
+      images: [`https://www.vitahomeo.com${post.featuredImage}`],
     },
   };
 }
@@ -97,7 +97,7 @@ export default async function ArticlePage({ params }: PageProps) {
             "@type": "BlogPosting",
             "headline": post.title,
             "image": [
-              `https://www.sociveda.com${post.featuredImage}`
+              `https://www.vitahomeo.com${post.featuredImage}`
             ],
             "datePublished": new Date(post.date).toISOString(),
             "dateModified": new Date(post.date).toISOString(),
@@ -105,19 +105,19 @@ export default async function ArticlePage({ params }: PageProps) {
             "author": [{
               "@type": "Person",
               "name": post.author.replace(/,.*$/, ""), // Strip qualification for schema author name
-              "url": "https://www.sociveda.com/doctors"
+              "url": "https://www.vitahomeo.com/doctors"
             }],
             "publisher": {
               "@type": "Organization",
-              "name": "SociVeda",
+              "name": "VitaHomeo",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.sociveda.com/logo-full.png"
+                "url": "https://www.vitahomeo.com/logo-vitahomeo.png"
               }
             },
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": `https://www.sociveda.com/blog/${post.slug}`
+              "@id": `https://www.vitahomeo.com/blog/${post.slug}`
             }
           })
         }}
@@ -148,7 +148,7 @@ export default async function ArticlePage({ params }: PageProps) {
             <span className="inline-block text-xs font-extrabold text-brand bg-brand/10 dark:bg-brand/20 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
               {post.category}
             </span>
-            <h1 className="text-3xl md:text-5xl font-black text-ink dark:text-white mt-4 mb-6 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold text-ink dark:text-white mt-4 mb-6 leading-tight font-display">
               {post.title}
             </h1>
             
@@ -198,11 +198,11 @@ export default async function ArticlePage({ params }: PageProps) {
                     <div key={idx} className="space-y-4">
                       {/* Section Headings */}
                       {section.level === 2 ? (
-                        <h2 id={headingId} className="text-2xl md:text-3xl font-extrabold text-ink dark:text-white pt-4 border-t border-line-custom/30 dark:border-[#1d2a1a]/30 first:border-0 first:pt-0 scroll-mt-24">
+                        <h2 id={headingId} className="text-2xl md:text-3xl font-bold text-ink dark:text-white pt-4 border-t border-[#e6ece6] dark:border-[#1c271c] first:border-0 first:pt-0 scroll-mt-24 font-display">
                           {section.heading}
                         </h2>
                       ) : (
-                        <h3 id={headingId} className="text-xl font-bold text-ink dark:text-white pt-2 scroll-mt-24">
+                        <h3 id={headingId} className="text-xl font-bold text-ink dark:text-white pt-2 scroll-mt-24 font-display">
                           {section.heading}
                         </h3>
                       )}
@@ -254,14 +254,14 @@ export default async function ArticlePage({ params }: PageProps) {
               </div>
 
               {/* In-Article CTA Button */}
-              <div className="mt-8 p-6 bg-gradient-to-br from-brand/10 to-[#0ea98b]/15 dark:from-[#101c0f] dark:to-[#0e1a0d]/50 border border-brand/20 dark:border-brand/10 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="mt-8 p-6 bg-[#F5F8F5] dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1c271c] rounded-card flex flex-col sm:flex-row items-center justify-between gap-6 shadow-card-premium">
                 <div>
-                  <h4 className="text-base font-extrabold text-ink dark:text-white">Ready for constitutional care?</h4>
+                  <h4 className="text-base font-bold text-ink dark:text-white font-display">Ready for constitutional care?</h4>
                   <p className="text-xs text-body-text dark:text-[#aebba8] mt-1">Book a secure virtual consultation with verified practitioners.</p>
                 </div>
                 <Link
                   href="/book"
-                  className="px-6 py-3 bg-gradient-to-r from-brand to-[#0ea98b] text-white font-bold text-xs rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] transition-all whitespace-nowrap"
+                  className="px-6 py-3 bg-brand hover:bg-brand-hover text-white font-semibold text-xs rounded-button shadow-button-premium hover:scale-[1.02] transition-all whitespace-nowrap"
                 >
                   Book a Consultation
                 </Link>
@@ -298,15 +298,15 @@ export default async function ArticlePage({ params }: PageProps) {
                 )}
 
                 {/* 2. Book Consultation Card */}
-                <div className="bg-gradient-to-br from-brand to-[#0ea98b] text-white rounded-2xl p-6 shadow-md relative overflow-hidden">
+                <div className="bg-gradient-to-br from-brand to-brand-dark text-white rounded-card p-6 shadow-card-premium relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-xl translate-x-1/3 -translate-y-1/3 pointer-events-none" />
-                  <h3 className="text-lg font-black leading-tight mb-2">Consult Top Homeopathic Doctors Online</h3>
+                  <h3 className="text-lg font-bold leading-tight mb-2 font-display">Consult Top Homeopathic Doctors Online</h3>
                   <p className="text-xs text-white/80 leading-relaxed mb-6 font-semibold">
                     Receive individualized constitutional treatment plans from the comfort of your home. Verified practitioners, secure video sessions, and digital prescriptions.
                   </p>
                   <Link
                     href="/book"
-                    className="w-full h-11 bg-white text-brand hover:bg-[#f4f9f3] active:scale-[0.98] transition-all font-bold text-xs rounded-xl flex items-center justify-center gap-2 shadow-sm"
+                    className="w-full h-11 bg-white text-brand hover:bg-[#F5F8F5] active:scale-[0.98] transition-all font-semibold text-xs rounded-button flex items-center justify-center gap-2 shadow-button-premium"
                   >
                     <CalendarDays className="w-4 h-4" />
                     Book a Consultation
@@ -332,12 +332,12 @@ export default async function ArticlePage({ params }: PageProps) {
           </div>
 
           {/* Related Articles Section */}
-          <div className="mt-20 border-t border-line-custom dark:border-[#1d2a1a] pt-12">
-            <h2 className="text-2xl font-extrabold text-ink dark:text-white mb-8">Related Articles</h2>
+          <div className="mt-20 border-t border-[#e6ece6] dark:border-[#1c271c] pt-12">
+            <h2 className="text-2xl font-bold text-ink dark:text-white mb-8 font-display">Related Articles</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {relatedPosts.map((rPost) => (
-                <div key={rPost.id} className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-2xl overflow-hidden hover:border-brand/35 hover:shadow-md transition-all flex flex-col sm:flex-row h-full">
+                <div key={rPost.id} className="bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1c271c] rounded-card overflow-hidden hover:border-brand/35 hover:shadow-floating-premium shadow-card-premium transition-all duration-300 flex flex-col sm:flex-row h-full">
                   {/* Image side */}
                   <div className="w-full sm:w-2/5 aspect-video sm:aspect-auto relative bg-bg-soft min-h-[140px]">
                     <Image
@@ -352,10 +352,10 @@ export default async function ArticlePage({ params }: PageProps) {
                   {/* Details side */}
                   <div className="p-5 flex-1 flex flex-col justify-between">
                     <div>
-                      <span className="text-[10px] font-extrabold text-brand bg-brand/10 dark:bg-brand/20 px-2 py-0.5 rounded-full uppercase tracking-wider mb-2.5 inline-block">
+                      <span className="text-[10px] font-semibold text-brand bg-bg-soft dark:bg-brand/20 px-2.5 py-1 rounded-full uppercase tracking-wider mb-2.5 inline-block">
                         {rPost.category}
                       </span>
-                      <h3 className="text-sm font-extrabold text-ink dark:text-white leading-snug line-clamp-2">
+                      <h3 className="text-sm font-bold text-ink dark:text-white leading-snug line-clamp-2 font-display">
                         {rPost.title}
                       </h3>
                       <p className="text-[11px] text-body-text dark:text-[#aebba8] leading-relaxed mt-2 line-clamp-2 font-medium">
@@ -364,7 +364,7 @@ export default async function ArticlePage({ params }: PageProps) {
                     </div>
                     <Link
                       href={`/blog/${rPost.slug}`}
-                      className="text-xs font-bold text-brand hover:text-brand-dark flex items-center gap-1 mt-4"
+                      className="text-xs font-bold text-brand hover:text-brand-hover flex items-center gap-1 mt-4"
                     >
                       Read Article <ChevronRight className="w-3.5 h-3.5" />
                     </Link>

@@ -509,7 +509,7 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     duration: "3 to 6 months for chronic urticaria.",
     faqs: [
       { q: "How fast do hives respond to homeopathy?", a: "Acute hives can show improvement in hours. Chronic urticaria requires 3+ months to stabilize the immune response." },
-      { q: "Do these medicines contain steroids?", a: "No. SociVeda remedies are verified natural dilutions, free from steroids or antihistamine chemicals." }
+      { q: "Do these medicines contain steroids?", a: "No. VitaHomeo remedies are verified natural dilutions, free from steroids or antihistamine chemicals." }
     ],
     related: [
       { name: "Allergic Rhinitis", slug: "allergic-rhinitis" },

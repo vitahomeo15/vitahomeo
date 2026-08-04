@@ -35,7 +35,7 @@ export const blogPosts: BlogPost[] = [
     date: "July 12, 2026",
     readTime: "8 min read",
     featuredImage: "/blog/what-is-homeopathy.jpg",
-    metaTitle: "What is Homeopathy? Introduction to Natural Healing - SociVeda",
+    metaTitle: "What is Homeopathy? Introduction to Natural Healing - VitaHomeo",
     metaDescription: "Understand the history, science, and core principles of homeopathy. Learn how custom constitutional remedies trigger natural recovery processes safely.",
     didYouKnow: "Homeopathy was developed in Germany by Dr. Samuel Hahnemann in the late 18th century and is today practiced in over 80 countries globally.",
     sections: [
@@ -172,7 +172,7 @@ export const blogPosts: BlogPost[] = [
     date: "July 18, 2026",
     readTime: "7 min read",
     featuredImage: "/blog/online-homeopathy-benefits.jpg",
-    metaTitle: "Benefits of Homeopathy Treatment Online - SociVeda",
+    metaTitle: "Benefits of Homeopathy Treatment Online - VitaHomeo",
     metaDescription: "Discover how online homeopathy consultations offer accessibility, privacy, and expert care. Consult top homeopathic doctors in India from the comfort of home.",
     didYouKnow: "Telemedicine use in India has grown by over 300% since 2020, making digital healthcare a mainstream option for rural and urban areas alike.",
     sections: [
@@ -213,7 +213,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Maximum Flexibility",
         level: 3,
         paragraphs: [
-          "SociVeda's browser-based platform allows you to book appointments, reschedule when needed, and consult without downloading any additional mobile applications. This flexibility makes it easy to fit healthcare appointments into a busy modern lifestyle."
+          "VitaHomeo's browser-based platform allows you to book appointments, reschedule when needed, and consult without downloading any additional mobile applications. This flexibility makes it easy to fit healthcare appointments into a busy modern lifestyle."
         ]
       },
       {
@@ -239,7 +239,7 @@ export const blogPosts: BlogPost[] = [
         ]
       },
       {
-        heading: "How Online Homeopathy Works on SociVeda",
+        heading: "How Online Homeopathy Works on VitaHomeo",
         level: 2,
         paragraphs: [
           "Consulting a doctor online is a straightforward, three-step process:",
@@ -252,7 +252,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Technology & Safety: Protecting Your Data",
         level: 2,
         paragraphs: [
-          "Security is a core priority for online medical care. SociVeda uses WebRTC technology to secure video and audio streams, protecting your consultation from unauthorized access.",
+          "Security is a core priority for online medical care. VitaHomeo uses WebRTC technology to secure video and audio streams, protecting your consultation from unauthorized access.",
           "All patient records, medical histories, and digital prescriptions are stored in an encrypted database. This ensures your private medical data remains confidential and accessible only to you and your authorized practitioner."
         ]
       },
@@ -328,7 +328,7 @@ export const blogPosts: BlogPost[] = [
     date: "July 24, 2026",
     readTime: "9 min read",
     featuredImage: "/blog/hero-pcos-treatment.svg",
-    metaTitle: "PCOS Treatment via Constitutional Homeopathy - SociVeda",
+    metaTitle: "PCOS Treatment via Constitutional Homeopathy - VitaHomeo",
     metaDescription: "Learn how constitutional homeopathy addresses PCOS naturally. Explore holistic remedies for irregular cycles, fertility support, and hormonal balance.",
     didYouKnow: "Polycystic Ovary Syndrome (PCOS) affects nearly 1 in 5 women of reproductive age in India, often linked to lifestyle and endocrine changes.",
     sections: [
@@ -457,7 +457,7 @@ export const blogPosts: BlogPost[] = [
     date: "July 30, 2026",
     readTime: "8 min read",
     featuredImage: "/blog/hero-migraine-relief.svg",
-    metaTitle: "Homeopathic Migraine Relief: A Comprehensive Guide - SociVeda",
+    metaTitle: "Homeopathic Migraine Relief: A Comprehensive Guide - VitaHomeo",
     metaDescription: "Learn how homeopathy provides long-term relief from chronic migraines. Discover how constitutional treatment addresses triggers naturally without side effects.",
     didYouKnow: "Migraines affect approximately 15% of the global population, and are three times more common in women due to hormonal fluctuations.",
     sections: [
@@ -604,7 +604,7 @@ export const blogPosts: BlogPost[] = [
     date: "August 05, 2026",
     readTime: "9 min read",
     featuredImage: "/blog/hero-eczema-skin.svg",
-    metaTitle: "Skin Allergies & Eczema: Homeopathic Solutions - SociVeda",
+    metaTitle: "Skin Allergies & Eczema: Homeopathic Solutions - VitaHomeo",
     metaDescription: "Explore how homeopathy addresses skin allergies and chronic eczema naturally. Learn about non-suppressive, constitutional treatments for lasting skin relief.",
     didYouKnow: "Eczema is not just a skin condition; it is often linked to an overactive immune response and can be associated with asthma or hay fever (the atopic triad).",
     sections: [
@@ -767,7 +767,7 @@ export const blogPosts: BlogPost[] = [
     date: "August 12, 2026",
     readTime: "9 min read",
     featuredImage: "/blog/hero-hair-fall.svg",
-    metaTitle: "Preventing Hair Fall: A Homeopathic Perspective - SociVeda",
+    metaTitle: "Preventing Hair Fall: A Homeopathic Perspective - VitaHomeo",
     metaDescription: "Understand the root causes of hair fall and explore holistic homeopathic solutions. Learn how constitutional remedies support scalp health and hair density.",
     didYouKnow: "A person naturally sheds about 50 to 100 strands of hair a day. Excessive shedding, however, can be a sign of underlying nutritional or hormonal changes.",
     sections: [

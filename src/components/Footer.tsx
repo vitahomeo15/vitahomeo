@@ -10,15 +10,15 @@ export function Footer() {
   const { theme } = useTheme();
 
   return (
-    <footer className="bg-bg-soft dark:bg-bg-soft-2 border-t border-line-custom dark:border-[#1d2a1a] py-12 transition-colors">
-      <div className="max-w-6xl mx-auto px-6">
+    <footer className="bg-[#F7F5EF] dark:bg-bg-soft-2 border-t border-line-custom dark:border-[#1d2a1a] py-12 transition-colors">
+      <div className="w-full px-4 md:px-8 lg:px-12">
 
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
 
           {/* Brand Column */}
-          <div className="flex flex-col gap-5 md:col-span-1">
-            <Image src="/logo-full.png" alt="Sociveda" width={150} height={56} className="h-12 w-auto object-contain" />
+          <div className="flex flex-col gap-5 md:col-span-1 items-start">
+            <Image src="/logo-vitahomeo.png" alt="VitaHomeo" width={150} height={56} className="h-12 w-auto object-contain" />
             <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed max-w-[240px] font-medium">
               Natural healing, trusted care — anytime, anywhere. Connecting patients with verified homeopathic doctors across India.
             </p>
@@ -27,11 +27,11 @@ export function Footer() {
                 className="w-9 h-9 rounded-full border border-line-custom dark:border-[#1d2a1a] flex items-center justify-center text-body-text hover:text-brand hover:border-brand transition-all hover:scale-105" aria-label="Facebook">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
               </a>
-              <a href="https://x.com/SociVeda" target="_blank" rel="noopener noreferrer"
+              <a href="https://x.com/VitaHomeo" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full border border-line-custom dark:border-[#1d2a1a] flex items-center justify-center text-body-text hover:text-brand hover:border-brand transition-all hover:scale-105" aria-label="X (Twitter)">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path d="M4 4l11.733 16h4.267l-11.733 -16z M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
               </a>
-              <a href="https://www.instagram.com/sociveda.heal" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.instagram.com/vitahomeo.heal" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full border border-line-custom dark:border-[#1d2a1a] flex items-center justify-center text-body-text hover:text-brand hover:border-brand transition-all hover:scale-105" aria-label="Instagram">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
               </a>
@@ -109,7 +109,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-line-custom dark:border-[#1d2a1a] pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-text dark:text-[#71806c]">
-          <span>© {new Date().getFullYear()} SociVeda. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} VitaHomeo. All rights reserved.</span>
           <span>Made for natural healing, across India.</span>
         </div>
 

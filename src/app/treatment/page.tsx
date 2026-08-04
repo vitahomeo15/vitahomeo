@@ -166,10 +166,10 @@ export default function TreatmentHubPage() {
 
   const faqs = [
     { q: "Does homeopathy really work?", a: "Yes. Homeopathy operates on the principle of individual constitutional prescribing, utilizing highly diluted natural substances to trigger the body's self-healing mechanisms. Modern clinical studies continue to document its efficacy." },
-    { q: "Is consultation online?", a: "Absolutely. SociVeda provides a 100% virtual clinic where you can schedule sessions, join encrypted video consultations, and store digital records safely." },
+    { q: "Is consultation online?", a: "Absolutely. VitaHomeo provides a 100% virtual clinic where you can schedule sessions, join encrypted video consultations, and store digital records safely." },
     { q: "How long is treatment?", a: "Treatment duration varies. Acute conditions can respond in days, whereas chronic conditions like eczema, PCOS, or migraines typically require 3 to 6 months of constitutional care." },
     { q: "Can I upload reports?", a: "Yes. During or after booking, you can upload clinical lab reports directly to your profile for the doctor to review." },
-    { q: "Are medicines delivered?", a: "Yes. SociVeda offers optional home delivery of original, verified homeopathic remedies across India." },
+    { q: "Are medicines delivered?", a: "Yes. VitaHomeo offers optional home delivery of original, verified homeopathic remedies across India." },
     { q: "Is follow-up included?", a: "Yes. Constitutional plans typically include monthly follow-up reviews to track your recovery progress." },
     { q: "Can I choose my doctor?", a: "Yes. You can consult with our verified practitioners based on their specialty areas." },
     { q: "How much does consultation cost?", a: "Consultation fees are displayed transparently before booking. Dr. Arun Kumar's session fee is ₹499." },
@@ -192,9 +192,9 @@ export default function TreatmentHubPage() {
               <span className="inline-block text-xs font-bold text-brand bg-brand/10 dark:bg-brand/20 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
                 Constitutional Homeopathy Hub
               </span>
-              <h1 className="text-4xl md:text-6xl font-black text-black dark:text-white leading-[1.05] tracking-tight">
+              <h1 className="text-4xl md:text-6xl font-bold text-ink dark:text-white leading-[1.05] tracking-tight font-display">
                 Complete Homeopathic Care <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand to-[#0ea98b]">Designed Around Your Health</span>
+                <span className="text-brand">Designed Around Your Health</span>
               </h1>
               <p className="text-base md:text-lg text-body-text dark:text-[#aebba8] leading-relaxed font-semibold max-w-xl">
                 Consult experienced homeopathic doctors online. Personalized constitutional treatment. Follow-up care included.
@@ -203,13 +203,13 @@ export default function TreatmentHubPage() {
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link 
                   href="/book" 
-                  className="px-8 py-4 bg-gradient-to-r from-brand to-[#0ea98b] text-white font-bold text-sm rounded-xl text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="px-8 py-4 bg-brand hover:bg-brand-hover text-white font-semibold text-sm rounded-button text-center shadow-button-premium hover:scale-[1.02] transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   Book Consultation
                 </Link>
                 <a 
                   href="#categories" 
-                  className="px-8 py-4 border border-brand/50 text-brand hover:bg-brand/5 font-bold text-sm rounded-xl text-center transition-all flex items-center justify-center gap-2"
+                  className="px-8 py-4 border border-brand text-brand hover:bg-bg-soft font-semibold text-sm rounded-button text-center shadow-button-premium transition-all flex items-center justify-center gap-2"
                 >
                   Find Your Condition
                 </a>
@@ -218,10 +218,10 @@ export default function TreatmentHubPage() {
 
             {/* Right: Mockup Hero Image */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-[500px] aspect-[3/2] rounded-[32px] overflow-hidden border border-line-custom dark:border-[#1d2a1a] shadow-md bg-white dark:bg-[#101c0f]">
+              <div className="relative w-full max-w-[500px] aspect-[3/2] rounded-image overflow-hidden shadow-floating-premium bg-white dark:bg-[#101c0f]">
                 <img 
                   src="/treatment-hero.jpg" 
-                  alt="SociVeda Treatment Consultation mockup"
+                  alt="VitaHomeo Treatment Consultation mockup"
                   className="w-full h-full object-cover"
                 />
               </div>

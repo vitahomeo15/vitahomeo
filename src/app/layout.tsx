@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { CookieBanner } from "@/components/CookieBanner";
 import Script from "next/script";
 
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const inter = Inter({
@@ -19,7 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SociVeda | Online Homeopathy Consultation & Verified Doctors",
+  title: "VitaHomeo | Premium Online Homeopathy Consultation & Verified Doctors",
   description: "Consult experienced homeopathic doctors online in India. Book secure video consultations, receive digital homeopathy prescriptions, and get personalized holistic treatment from the comfort of home.",
   icons: {
     icon: "/icon-mark.png",
@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${inter.variable}`}
+      className={`${cormorantGaramond.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <head>

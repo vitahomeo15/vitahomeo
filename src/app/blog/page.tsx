@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { blogPosts } from "@/data/blogData";
-import { Calendar, Clock, User, ArrowRight, BookOpen, Search } from "lucide-react";
+import { Clock, User, ArrowRight, BookOpen, Search } from "lucide-react";
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -33,10 +33,10 @@ export default function BlogPage() {
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           
           {/* Header Section */}
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold text-brand uppercase tracking-widest">Knowledge Base</span>
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-brand to-[#0ea98b] mt-2 mb-4">
-              SociVeda Wellness Blog
+            <h1 className="text-4xl md:text-5xl font-bold mt-2 mb-4 text-ink dark:text-white font-display">
+              VitaHomeo Wellness Blog
             </h1>
             <p className="text-base text-body-text dark:text-[#aebba8] leading-relaxed">
               Explore health insights, lifestyle guidance, and homeopathic wisdom curated by our practitioners to nurture your mind, body, and spirit.
@@ -44,17 +44,17 @@ export default function BlogPage() {
           </div>
 
           {/* Search & Category Filter Section */}
-          <div className="flex flex-col md:flex-row gap-4 justify-between items-center mb-10 pb-6 border-b border-line-custom dark:border-[#1d2a1a]">
+          <div className="flex flex-col md:flex-row gap-4 justify-between items-center mb-10 pb-6 border-b border-[#e6ece6] dark:border-[#1c271c]">
             {/* Category Tabs */}
             <div className="flex flex-wrap gap-2 justify-center md:justify-start">
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 text-sm font-bold rounded-full transition-all duration-200 cursor-pointer ${
+                  className={`px-5 py-2 text-sm font-semibold rounded-button transition-all duration-200 cursor-pointer shadow-sm ${
                     selectedCategory === category
-                      ? "bg-brand text-white shadow-sm"
-                      : "bg-white dark:bg-[#101c0f]/55 text-body-text dark:text-[#aebba8] border border-line-custom dark:border-[#1d2a1a] hover:border-brand/40"
+                      ? "bg-brand text-white hover:bg-brand-hover shadow-button-premium"
+                      : "bg-white dark:bg-[#141e14] text-body-text dark:text-[#aebba8] border border-[#e6ece6] dark:border-[#1c271c] hover:border-brand/40"
                   }`}
                 >
                   {category}
@@ -69,9 +69,9 @@ export default function BlogPage() {
                 placeholder="Search articles..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-2 pl-10 text-sm rounded-full bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] text-ink dark:text-white focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium"
+                className="w-full px-4 py-2.5 pl-10 text-sm rounded-input bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1c271c] text-ink dark:text-white focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium shadow-sm"
               />
-              <Search className="absolute left-3.5 top-2.5 h-4.5 w-4.5 text-body-text dark:text-[#aebba8] opacity-60" />
+              <Search className="absolute left-3.5 top-3 h-4.5 w-4.5 text-body-text dark:text-[#aebba8] opacity-60" />
             </div>
           </div>
 
@@ -81,7 +81,7 @@ export default function BlogPage() {
               {filteredPosts.map((post) => (
                 <div
                   key={post.id}
-                  className="bg-white dark:bg-[#101c0f] rounded-2xl border border-line-custom dark:border-[#1d2a1a] shadow-sm overflow-hidden hover:shadow-md hover:border-brand/35 transition-all flex flex-col h-full group"
+                  className="bg-white dark:bg-[#141e14] rounded-card border border-[#e6ece6] dark:border-[#1c271c] shadow-card-premium overflow-hidden hover:shadow-floating-premium hover:border-brand/35 transition-all duration-300 flex flex-col h-full group"
                 >
                   {/* Card Image */}
                   <Link href={`/blog/${post.slug}`} className="block relative w-full aspect-[16/10] overflow-hidden bg-bg-soft">
@@ -98,8 +98,8 @@ export default function BlogPage() {
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
                       {/* Category and Read time */}
-                      <div className="flex items-center justify-between gap-2 mb-4 text-xs font-bold">
-                        <span className="px-2.5 py-1 rounded-full bg-brand/10 text-brand dark:bg-brand/20">
+                      <div className="flex items-center justify-between gap-2 mb-4 text-xs font-semibold">
+                        <span className="px-2.5 py-1 rounded-full bg-bg-soft dark:bg-brand/20 text-brand border border-line-custom/30">
                           {post.category}
                         </span>
                         <span className="text-body-text dark:text-[#aebba8] opacity-80 flex items-center gap-1">
@@ -109,7 +109,7 @@ export default function BlogPage() {
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-lg font-extrabold text-ink dark:text-white leading-snug mb-3 hover:text-brand transition-colors">
+                      <h3 className="text-lg font-bold text-ink dark:text-white leading-snug mb-3 hover:text-brand transition-colors font-display">
                         <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                       </h3>
 
@@ -120,7 +120,7 @@ export default function BlogPage() {
                     </div>
 
                     {/* Metadata & Read Button */}
-                    <div className="border-t border-line-custom dark:border-[#1d2a1a] pt-4 mt-auto flex items-center justify-between text-xs text-body-text dark:text-[#aebba8] font-bold">
+                    <div className="border-t border-[#e6ece6] dark:border-[#1c271c] pt-4 mt-auto flex items-center justify-between text-xs text-body-text dark:text-[#aebba8] font-semibold">
                       <div className="flex items-center">
                         <User className="w-3.5 h-3.5 mr-1.5 opacity-70" />
                         <span>{post.author.replace(/,.*$/, "")}</span>
@@ -128,7 +128,7 @@ export default function BlogPage() {
                       
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="text-brand hover:text-brand-dark dark:hover:text-brand text-xs font-bold flex items-center gap-1 group cursor-pointer"
+                        className="text-brand hover:text-brand-hover text-xs font-bold flex items-center gap-1 group cursor-pointer"
                       >
                         Read More
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -139,9 +139,9 @@ export default function BlogPage() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-20 bg-white dark:bg-[#101c0f] rounded-2xl border border-line-custom dark:border-[#1d2a1a]">
+            <div className="text-center py-20 bg-white dark:bg-[#141e14] rounded-card border border-[#e6ece6] dark:border-[#1c271c] shadow-card-premium">
               <BookOpen className="w-14 h-14 text-body-text dark:text-[#aebba8] opacity-40 mx-auto mb-4" />
-              <p className="text-base text-body-text dark:text-[#aebba8] font-bold">No articles found matching your criteria.</p>
+              <p className="text-base text-body-text dark:text-[#aebba8] font-bold font-display">No articles found matching your criteria.</p>
               <button
                 onClick={() => {
                   setSelectedCategory("All");

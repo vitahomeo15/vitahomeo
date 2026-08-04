@@ -36,7 +36,7 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
     duration: "Typically 3 to 6 months of constitutional treatment is recommended for chronic complaints.",
     faqs: [
       { q: "Is homeopathy suitable for chronic conditions?", a: "Yes, constitutional homeopathy is designed specifically to trace back chronic symptoms to their metabolic roots for long-term relief." },
-      { q: "Can I consult online?", a: "Yes, SociVeda offers complete online consultations via secure video/audio calls with verified doctors." }
+      { q: "Can I consult online?", a: "Yes, VitaHomeo offers complete online consultations via secure video/audio calls with verified doctors." }
     ],
     related: [
       { name: "Skin Care", slug: "eczema" },

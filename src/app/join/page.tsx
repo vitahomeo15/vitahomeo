@@ -6,8 +6,8 @@ import { DoctorJoinForm } from "@/components/DoctorJoinForm";
 import { Stethoscope, Globe, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Join as a Homeopathic Doctor - SociVeda",
-  description: "Expand your practice and reach patients across India. Apply to join SociVeda's network of verified homeopathic practitioners.",
+  title: "Join as a Homeopathic Doctor - VitaHomeo",
+  description: "Expand your practice and reach patients across India. Apply to join VitaHomeo's network of verified homeopathic practitioners.",
 };
 
 export default function JoinPage() {
@@ -23,7 +23,7 @@ export default function JoinPage() {
             <span className="text-xs font-bold text-[#0ea98b] bg-[#0ea98b]/10 dark:bg-[#0ea98b]/20 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
               Practitioner Registration
             </span>
-            <h1 className="text-3xl md:text-5xl font-black text-ink dark:text-white mt-4 mb-4 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold text-ink dark:text-white mt-4 mb-4 leading-tight font-display">
               Grow Your Digital Practice
             </h1>
             <p className="text-sm text-body-text dark:text-[#aebba8] leading-relaxed font-semibold">

@@ -6,7 +6,7 @@ import { PatientBookingForm } from "@/components/PatientBookingForm";
 import { ShieldCheck, Lock, CalendarCheck } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Book an Online Homeopathy Consultation - SociVeda",
+  title: "Book an Online Homeopathy Consultation - VitaHomeo",
   description: "Schedule a secure, private online teleconsultation with verified homeopathic doctors. Get personalized constitutional remedies from the comfort of home.",
 };
 
@@ -23,7 +23,7 @@ export default function BookPage() {
             <span className="inline-block text-xs font-bold text-brand bg-brand/10 dark:bg-brand/20 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
               Secure Telehealth Portal
             </span>
-            <h1 className="text-3xl md:text-5xl font-black text-ink dark:text-white mt-4 mb-4 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold text-ink dark:text-white mt-4 mb-4 leading-tight font-display">
               Begin Your Healing Journey
             </h1>
             <p className="text-sm text-body-text dark:text-[#aebba8] leading-relaxed font-semibold">

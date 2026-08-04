@@ -111,7 +111,7 @@ const initialWrittenReviews = [
     id: "r1",
     rating: 5,
     title: "Incredible Eczema cure",
-    comment: "I suffered from severe eczema on my hands for 4 years. Tried everything. Dr. Arun Kumar's constitutional homeopathy treatment cleared it completely within 4 months. Deeply grateful to SociVeda.",
+    comment: "I suffered from severe eczema on my hands for 4 years. Tried everything. Dr. Arun Kumar's constitutional homeopathy treatment cleared it completely within 4 months. Deeply grateful to VitaHomeo.",
     name: "Rohit Raj",
     city: "Hajipur",
     date: "July 18, 2026",
@@ -159,7 +159,7 @@ const initialWrittenReviews = [
     id: "r5",
     rating: 5,
     title: "Asthma symptoms halved",
-    comment: "Was dependent on inhalers daily. After 3 months of homeopathy prescribed by SociVeda specialists, my breathing has improved remarkably and inhaler dependency is now occasional.",
+    comment: "Was dependent on inhalers daily. After 3 months of homeopathy prescribed by VitaHomeo specialists, my breathing has improved remarkably and inhaler dependency is now occasional.",
     name: "Manoj K.",
     city: "Pune",
     date: "June 05, 2026",
@@ -228,7 +228,7 @@ export default function ReviewsPage() {
     },
     {
       thumbnail: "/blog/migraine-relief-homeopathy.svg",
-      quote: "Was suffering from migraine for 6 years. SociVeda's consultation changed my life.",
+      quote: "Was suffering from migraine for 6 years. VitaHomeo's consultation changed my life.",
       duration: "2:10",
       name: "Vipul",
       city: "Patna",
@@ -282,8 +282,8 @@ export default function ReviewsPage() {
   const jsonLdSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "SociVeda Telehomeopathy Services",
-    "image": "https://sociveda.com/logo-full.png",
+    "name": "VitaHomeo Telehomeopathy Services",
+    "image": "https://vitahomeo.com/logo-vitahomeo.png",
     "description": "Verified online consultation platform with certified homeopathic doctors.",
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -329,13 +329,13 @@ export default function ReviewsPage() {
             {/* Left side text */}
             <div className="lg:col-span-7 space-y-6">
               <span className="inline-block text-xs font-bold text-brand bg-brand/10 dark:bg-brand/20 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
-                SociVeda Trust Center
+                VitaHomeo Trust Center
               </span>
-              <h1 className="text-4xl md:text-6xl font-black text-ink dark:text-white leading-[1.05] tracking-tight">
+              <h1 className="text-4xl md:text-6xl font-bold text-ink dark:text-white leading-[1.05] tracking-tight font-display">
                 Real Stories From <br/>Real Patients
               </h1>
               <p className="text-base md:text-lg text-body-text dark:text-[#aebba8] leading-relaxed font-semibold max-w-xl">
-                Thousands of patients trust SociVeda for convenient, affordable, and personalized homeopathic care. Read how constitutional care has helped patients across India.
+                Thousands of patients trust VitaHomeo for convenient, affordable, and personalized homeopathic care. Read how constitutional care has helped patients across India.
               </p>
               
               {/* Stats Row */}

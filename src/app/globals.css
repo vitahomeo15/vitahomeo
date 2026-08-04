@@ -8,6 +8,7 @@
   --color-brand: var(--brand);
   --color-brand-dark: var(--brand-dark);
   --color-brand-light: var(--brand-light);
+  --color-brand-hover: var(--brand-hover);
   --color-teal-brand: var(--teal);
   --color-ink: var(--ink);
   --color-body-text: var(--body);
@@ -16,44 +17,62 @@
   --color-bg-soft: var(--bg-soft);
   --color-bg-soft-2: var(--bg-soft-2);
   --color-line-custom: var(--line);
+  --color-divider-custom: var(--divider);
   --color-card-custom: var(--card);
   --color-glass-custom: var(--glass);
   
-  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --shadow-card-premium: 0 12px 40px rgba(79, 107, 82, 0.08);
+  --shadow-button-premium: 0 8px 20px rgba(79, 107, 82, 0.12);
+  --shadow-floating-premium: 0 20px 50px rgba(79, 107, 82, 0.10);
+  
+  --radius-button: 18px;
+  --radius-card: 24px;
+  --radius-image: 28px;
+  --radius-input: 16px;
+  
+  --font-display: 'Cormorant Garamond', serif;
   --font-sans: 'Inter', sans-serif;
 }
 
 :root {
-  --brand: #3FA535;
-  --brand-dark: #276B20;
-  --brand-light: #8AD97D;
+  --brand: #6F8F72;
+  --brand-dark: #4F6B52;
+  --brand-hover: #5E7D61;
+  --brand-light: #DDE8DD;
   --teal: #0EA98B;
-  --ink: #0F1A0D;
-  --body: #4D5A48;
-  --muted: #8B968A;
+  --ink: #222222;
+  --body: #555555;
+  --muted: #7B7B7B;
   --bg: #FFFFFF;
-  --bg-soft: #F6FAF4;
-  --bg-soft-2: #EAF7E6;
-  --line: #E3EAE0;
+  --bg-soft: #F5F8F5;
+  --bg-soft-2: #F8F6F2;
+  --line: #E6ECE6;
+  --divider: #D9E2D9;
   --card: #FFFFFF;
   --glass: rgba(255,255,255,.72);
 
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
-  --primary: oklch(0.627 0.194 149.251); /* custom brand-like primary */
+  --primary: oklch(0.601 0.052 144.15); /* Sage green primary */
   --primary-foreground: oklch(0.985 0 0);
   --border: oklch(0.922 0 0);
 }
 
 [data-theme="dark"] {
-  --ink: #ECF3E8;
-  --body: #AEBBA8;
-  --muted: #71806C;
+  --brand: #8BA38B;
+  --brand-dark: #6F8F72;
+  --brand-hover: #7DA17D;
+  --brand-light: #253625;
+  --teal: #0EA98B;
+  --ink: #F5F8F5;
+  --body: #C0D1C0;
+  --muted: #8BA38B;
   --bg: #0A120A;
-  --bg-soft: #0E1A0D;
-  --bg-soft-2: #0B1B12;
-  --line: #1D2A1A;
-  --card: #101C0F;
+  --bg-soft: #101710;
+  --bg-soft-2: #141F14;
+  --line: #1C271C;
+  --divider: #253625;
+  --card: #141E14;
   --glass: rgba(14,22,12,.7);
 
   --background: oklch(0.145 0 0);
