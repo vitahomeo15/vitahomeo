@@ -19,10 +19,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "VitaHomeo | Premium Online Homeopathy Consultation & Verified Doctors",
+  title: "VitaHomeo | Homeopathic Treatment",
   description: "Consult experienced homeopathic doctors online in India. Book secure video consultations, receive digital homeopathy prescriptions, and get personalized holistic treatment from the comfort of home.",
   icons: {
     icon: "/icon-mark.png",
+    shortcut: "/icon-mark.png",
+    apple: "/icon-mark.png",
   },
 };
 
@@ -38,7 +40,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="icon" href="/icon-mark.png" type="image/png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
