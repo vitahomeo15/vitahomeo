@@ -14,11 +14,9 @@ export function Navbar() {
 
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "Treatment", href: "/treatment" },
-    { label: "Doctors", href: "/doctors" },
-    { label: "Testimonials", href: "/reviews" },
+    { label: "Find Doctors", href: "/doctors" },
+    { label: "For Doctors", href: "/join" },
     { label: "About", href: "/about" },
-    { label: "Blog", href: "/blog" },
   ];
 
 
@@ -90,16 +88,16 @@ export function Navbar() {
               className="hidden lg:inline-flex items-center justify-center h-10 px-4 rounded-button text-sm font-semibold border border-brand text-brand-dark dark:text-white dark:border-white/30 hover:bg-bg-soft transition-all gap-1.5"
             >
               <Stethoscope className="w-4.5 h-4.5" />
-              Join as Doctor
+              Join as a Doctor
             </Link>
 
-            {/* Book consultation button */}
+            {/* Find a Doctor button */}
             <Link
-              href="/book"
+              href="/doctors"
               className="hidden md:inline-flex items-center justify-center h-10 px-5 rounded-button text-sm font-semibold text-white bg-brand hover:bg-brand-hover shadow-button-premium active:scale-[0.98] transition-all gap-1.5"
             >
-              <Calendar className="w-4 h-4" />
-              Book consultation
+              <Stethoscope className="w-4 h-4" />
+              Find a Doctor
             </Link>
 
             {/* Mobile Menu trigger */}
@@ -147,15 +145,15 @@ export function Navbar() {
                 className="w-full flex items-center justify-center h-11 rounded-button font-bold border border-brand text-brand-dark dark:text-white dark:border-white/30 hover:bg-bg-soft transition-all gap-1.5"
               >
                 <Stethoscope className="w-4.5 h-4.5" />
-                Join as Doctor
+                Join as a Doctor
               </Link>
               <Link
-                href="/book"
+                href="/doctors"
                 onClick={() => setMenuOpen(false)}
                 className="w-full flex items-center justify-center h-11 rounded-button font-semibold text-white bg-brand hover:bg-brand-hover shadow-button-premium gap-1.5"
               >
-                <Calendar className="w-4 h-4" />
-                Book consultation
+                <Stethoscope className="w-4 h-4" />
+                Find a Doctor
               </Link>
             </div>
           </div>

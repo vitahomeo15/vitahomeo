@@ -73,9 +73,9 @@
     <text x="80" y="125" font-family="'Inter', sans-serif" font-weight="700" font-size="11" fill="#8AD97D" text-anchor="middle">"Holistic Profiling"</text>
     <text x="80" y="148" font-family="'Inter', sans-serif" font-size="10" fill="#4D5A48" text-anchor="middle">
       <tspan x="80" dy="0">Treating the whole</tspan>
-      <tspan x="80" dy="13">person—physical,</tspan>
+      <tspan x="80" dy="13">person, physical,</tspan>
       <tspan x="80" dy="13">mental, and emotional</tspan>
-      <tspan x="80" dy="13">traits—not just a disease.</tspan>
+      <tspan x="80" dy="13">traits, not just a disease.</tspan>
     </text>
   </g>
 </svg>

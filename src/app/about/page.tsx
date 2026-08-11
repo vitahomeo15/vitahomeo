@@ -1,7 +1,6 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
+import { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { 
@@ -27,33 +26,41 @@ import {
   Stethoscope
 } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: "About Us | VitaHomeo",
+  description: "Learn more about VitaHomeo. We are dedicated to connecting patients across India with verified homeopathic doctors for safe, private, and online care.",
+  alternates: {
+    canonical: "https://www.vitahomeo.com/about",
+  },
+};
+
 export default function AboutPage() {
   // Trust Badges for Hero Section
   const trustBadges = [
-    { icon: <Scale className="w-5 h-5" />, text: "Affordable Consultations" },
-    { icon: <Award className="w-5 h-5" />, text: "Experienced Doctors" },
-    { icon: <Lock className="w-5 h-5" />, text: "Secure Online Platform" },
-    { icon: <Globe className="w-5 h-5" />, text: "Accessible Across India" }
+    { icon: <Scale className="w-5 h-5" />, text: "Affordable Pricing" },
+    { icon: <Award className="w-5 h-5" />, text: "Verified Doctors" },
+    { icon: <Lock className="w-5 h-5" />, text: "Secure Platform" },
+    { icon: <Globe className="w-5 h-5" />, text: "Pan-India Access" }
   ];
 
   // What We Do list
   const whatWeDoList = [
-    "Search & find verified homeopathic specialists",
-    "Book convenient online appointments 24/7",
-    "Consult via secure video or audio calls",
-    "Receive instant digital prescriptions safely",
-    "Seamless follow-up consultations in one click",
-    "Maintain digital health records securely"
+    "Connect patients with verified homeopathic specialists",
+    "Enable convenient online consultations 24/7",
+    "Consult via secure video or audio sessions",
+    "Deliver signed digital prescriptions safely",
+    "Support monthly follow-up consultations in one click",
+    "Keep patient history and records fully private"
   ];
 
   // How VitaHomeo Works flow
   const howItWorksSteps = [
-    { step: "1", title: "Choose a Doctor", desc: "Browse and select from verified homeopathic practitioners.", icon: <Search className="w-5 h-5" /> },
-    { step: "2", title: "Book Appointment", desc: "Select a date and time slot that fits your schedule.", icon: <Calendar className="w-5 h-5" /> },
-    { step: "3", title: "Pay Consultation Fee", desc: "Pay securely online with transparent pricing shown upfront.", icon: <CreditCard className="w-5 h-5" /> },
-    { step: "4", title: "Consult Online", desc: "Meet your doctor over a secure call right in your browser.", icon: <Video className="w-5 h-5" /> },
-    { step: "5", title: "Receive Prescription", desc: "Download your digital constitutional prescription instantly.", icon: <FileText className="w-5 h-5" /> },
-    { step: "6", title: "Follow-up if Needed", desc: "Check in with your doctor easily for continuity of care.", icon: <MessageSquare className="w-5 h-5" /> }
+    { step: "1", title: "Choose a Doctor", desc: "Browse available verified homeopathic practitioners in our directory.", icon: <Search className="w-5 h-5" /> },
+    { step: "2", title: "Book Appointment", desc: "Select a convenient date and time slot that fits your schedule.", icon: <Calendar className="w-5 h-5" /> },
+    { step: "3", title: "Pay Securely", desc: "Pay consultation fees directly and safely with upfront pricing.", icon: <CreditCard className="w-5 h-5" /> },
+    { step: "4", title: "Consult Online", desc: "Meet your doctor over a secure call right inside your browser.", icon: <Video className="w-5 h-5" /> },
+    { step: "5", title: "Get Prescription", desc: "Receive your constitutional prescription digitally post-session.", icon: <FileText className="w-5 h-5" /> },
+    { step: "6", title: "Schedule Follow-up", desc: "Book review sessions easily with the same practitioner.", icon: <MessageSquare className="w-5 h-5" /> }
   ];
 
   // Why Choose VitaHomeo grid advantages
@@ -72,7 +79,7 @@ export default function AboutPage() {
   const coreValues = [
     { icon: <Heart className="w-5 h-5 text-brand" />, label: "Compassion", desc: "Empathy and care are at the center of every consultation." },
     { icon: <Shield className="w-5 h-5 text-brand" />, label: "Trust", desc: "Building strong bonds between patients and verified practitioners." },
-    { icon: <Scale className="w-5 h-5 text-brand" />, label: "Ethical Healthcare", desc: "Promoting constitutional care without unscientific or fabricated claims." },
+    { icon: <Scale className="w-5 h-5 text-brand" />, label: "Ethical Healthcare", desc: "Promoting constitutional care without exaggerated or fabricated claims." },
     { icon: <Globe className="w-5 h-5 text-brand" />, label: "Accessibility", desc: "Reaching urban and rural areas across India equally." },
     { icon: <Lock className="w-5 h-5 text-brand" />, label: "Privacy", desc: "Absolute confidentiality for patient records and virtual consults." },
     { icon: <Zap className="w-5 h-5 text-brand" />, label: "Continuous Improvement", desc: "Always upgrading technology to refine the patient experience." }
@@ -80,8 +87,8 @@ export default function AboutPage() {
 
   // Doctor Verification Steps
   const verificationSteps = [
-    { label: "Educational Qualification", desc: "Vetting BHMS/MD (Homeopathy) degrees from recognized universities." },
-    { label: "Medical Registration", desc: "Verifying credentials with state councils or the National Commission for Homeopathy." },
+    { label: "Educational Qualification", desc: "Vetting BHMS/DHMS/MD (Homeopathy) degrees from recognized universities." },
+    { label: "Medical Registration", desc: "Verifying credentials with state medical councils or national commission boards." },
     { label: "Identity Verification", desc: "Confirming identity using government-issued photo identification documents." },
     { label: "Experience Review", desc: "Reviewing professional history and past clinical practice records." },
     { label: "Profile Approval", desc: "Activating the profile on the platform only after successful checks." }
@@ -143,14 +150,14 @@ export default function AboutPage() {
                   Finding a trusted, experienced homeopathic practitioner often presents significant hurdles. Many patients across India face long travel times to specialized clinics, high consultation costs, or find it difficult to fit physical visits into busy daily schedules.
                 </p>
                 <p>
-                  We created VitaHomeo to address these exact limitations. By taking homeopathic care online, we provide patients in any city or village with a direct path to verified specialists, digital prescriptions, and continuity of care—without travel stress or clinic waiting times.
+                  We created VitaHomeo to address these exact limitations. By taking homeopathic care online, we provide patients in any city or village with a direct path to verified specialists, digital prescriptions, and continuity of care, without travel stress or clinic waiting times.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ============ 3. MISSION & 4. VISION ============ */}
+        {/* ============ 3. MISSION & VISION ============ */}
         <section className="py-28 bg-white dark:bg-[#0a120a] transition-colors">
           <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
             
@@ -245,7 +252,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ============ 8. FOR PATIENTS & 9. FOR DOCTORS ============ */}
+        {/* ============ 8. FOR PATIENTS & FOR DOCTORS ============ */}
         <section className="py-28 bg-white dark:bg-[#0a120a] transition-colors">
           <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
             
@@ -273,8 +280,8 @@ export default function AboutPage() {
                   </li>
                 </ul>
               </div>
-              <Link href="/book" className="w-full h-11 rounded-button bg-brand text-white text-xs font-bold flex items-center justify-center gap-2 hover:bg-brand-hover hover:shadow-button-premium transition-all">
-                <Calendar className="w-4 h-4" /> Book Consultation
+              <Link href="/doctors" className="w-full h-11 rounded-button bg-brand text-white text-xs font-bold flex items-center justify-center gap-2 hover:bg-brand-hover hover:shadow-button-premium transition-all">
+                <Stethoscope className="w-4 h-4" /> Find a Doctor
               </Link>
             </div>
 
@@ -304,7 +311,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <p className="text-[10px] text-muted-text dark:text-[#71806c] mb-4 text-center leading-normal">
-                  Interested in joining? Click below to submit your credentials and credentials verification form.
+                  Interested in joining? Click below to submit your credentials and verification details.
                 </p>
                 <Link href="/join" className="w-full h-11 rounded-button border border-[#0ea98b]/50 text-[#0ea98b] dark:text-[#32d8b8] text-xs font-bold flex items-center justify-center gap-2 hover:bg-[#0ea98b]/5 transition-all">
                   <Stethoscope className="w-4 h-4" /> Join as Practitioner
@@ -365,7 +372,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ============ 12. PRIVACY & SECURITY & 13. QUALITY STANDARDS ============ */}
+        {/* ============ 12. PRIVACY & SECURITY & QUALITY STANDARDS ============ */}
         <section className="py-28 bg-[#F8FAF7] dark:bg-[#0e1a0d]/30">
           <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
             
@@ -387,13 +394,13 @@ export default function AboutPage() {
                 <h3 className="text-lg font-bold text-ink dark:text-white font-display">Quality Standards</h3>
               </div>
               <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-medium">
-                We believe in providing access to quality homeopathic healthcare. This is ensured through mandatory credentials vetting for all doctors, guidelines promoting ethical and evidence-informed consults, completely clear pricing patterns, and a continuous focus on maintaining high patient satisfaction rates.
+                We believe in providing access to quality homeopathic healthcare. This is ensured through mandatory credentials vetting for all doctors, guidelines promoting ethical and evidence-informed consults, completely clear pricing patterns, and a continuous focus on maintaining patient satisfaction.
               </p>
             </div>
           </div>
         </section>
 
-        {/* ============ 14. TRANSPARENT PRICING & 15. OUR COMMITMENT ============ */}
+        {/* ============ 14. TRANSPARENT PRICING & OUR COMMITMENT ============ */}
         <section className="py-28 bg-white dark:bg-[#0a120a] transition-colors">
           <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
             
@@ -415,7 +422,7 @@ export default function AboutPage() {
                 <h3 className="text-lg font-bold text-ink dark:text-white font-display">Our Commitment</h3>
               </div>
               <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-medium">
-                We commit to making natural, homeopathic healthcare affordable, accessible, reliable, transparent, and strictly patient-focused. Our team works continuously to refine the platform features, ensuring smooth video/audio sessions and secure prescription delivery.
+                We commit to making homeopathic healthcare affordable, accessible, reliable, transparent, and strictly patient-focused. Our team works continuously to refine the platform features, ensuring smooth video/audio sessions and secure prescription delivery.
               </p>
             </div>
           </div>
@@ -451,7 +458,7 @@ export default function AboutPage() {
         </section>
 
         {/* ============ 17. CONTACT INFORMATION ============ */}
-        <section className="py-28 bg-white dark:bg-[#0a120a] transition-colors">
+        <section className="py-28 bg-white dark:bg-[#0a120a] transition-colors border-t border-line-custom/50 dark:border-[#1d2a1a]/50">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <span className="text-xs font-bold text-brand uppercase tracking-widest">Get In Touch</span>
             <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 mb-12 font-display">Contact Information</h2>
@@ -465,7 +472,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-ink dark:text-white mb-0.5 font-display">Email Support</h4>
-                  <a href="mailto:akshraj2255@gmail.com" className="text-[11px] text-body-text dark:text-[#aebba8] font-bold hover:text-brand transition-colors block">akshraj2255@gmail.com</a>
+                  <a href="mailto:vitahomeo15@gmail.com" className="text-[11px] text-body-text dark:text-[#aebba8] font-bold hover:text-brand transition-colors block">vitahomeo15@gmail.com</a>
                 </div>
               </div>
 
@@ -488,8 +495,8 @@ export default function AboutPage() {
                 <div>
                   <h4 className="text-xs font-bold text-ink dark:text-white mb-0.5 font-display">Support Hours</h4>
                   <p className="text-[11px] text-body-text dark:text-[#aebba8] font-medium leading-none mt-1">
-                    Monday - Saturday<br/>
-                    <span className="font-bold text-[10px]">10:00 AM - 6:00 PM IST</span>
+                    Monday - Sunday<br/>
+                    <span className="font-bold text-[10px]">9:00 AM - 9:00 PM IST</span>
                   </p>
                 </div>
               </div>
@@ -506,7 +513,7 @@ export default function AboutPage() {
               <div>
                 <h4 className="text-xs font-bold text-red-700 dark:text-red-400 mb-1 font-display">Medical Disclaimer</h4>
                 <p className="text-[10px] text-red-600 dark:text-red-300 leading-relaxed font-semibold">
-                  VitaHomeo consultations and digital records are not a substitute for physical emergency medical care. In case of a medical emergency or acute life-threatening situation, please contact your nearest hospital or emergency services immediately. Online homeopathic consultations are supplementary support based solely on the details, symptoms, and health histories shared by the patient during the consult session.
+                  VitaHomeo consultations and digital records are not a substitute for physical emergency medical care. In case of a medical emergency or acute life-threatening situation, please contact your nearest hospital or emergency services immediately. Online homeopathic consultations are supplementary support based solely on details, symptoms, and health histories shared by the patient during the consult session.
                 </p>
               </div>
             </div>
@@ -523,24 +530,24 @@ export default function AboutPage() {
               Start Your Holistic Health Journey Today
             </h2>
             <p className="text-white/80 mb-12 text-xs md:text-sm max-w-xl mx-auto font-medium">
-              Join thousands of patients across India consulting with verified homeopathic practitioners from the comfort of their homes.
+              Consult with verified homeopathic practitioners from the comfort of your home.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
               <Link 
-                href="/book" 
-                className="w-[280px] h-12 bg-white text-brand hover:bg-[#F5F8F5] text-[10px] sm:text-xs font-bold flex items-center justify-center rounded-button shadow-button-premium hover:scale-[1.02] transition-all p-3 gap-1.5"
+                href="/doctors" 
+                className="px-8 py-4 bg-white text-brand hover:bg-[#F5F8F5] text-xs font-bold flex items-center justify-center rounded-button shadow-button-premium hover:scale-[1.02] transition-all gap-1.5"
               >
-                <Calendar className="w-4 h-4 shrink-0" />
-                Book your consultation with a verified doctor today
+                <Stethoscope className="w-4.5 h-4.5 shrink-0" />
+                Find a Doctor
               </Link>
               
               <Link 
                 href="/join" 
-                className="w-[280px] h-12 border border-white/40 text-white hover:bg-white/10 text-[10px] sm:text-xs font-bold flex items-center justify-center rounded-button transition-all p-3 gap-1.5"
+                className="px-8 py-4 border border-white/40 text-white hover:bg-white/10 text-xs font-bold flex items-center justify-center rounded-button transition-all gap-1.5"
               >
-                <Stethoscope className="w-4 h-4 shrink-0" />
-                Join VitaHomeo and connect with patients across India
+                <Stethoscope className="w-4.5 h-4.5 shrink-0" />
+                Join as a Doctor
               </Link>
             </div>
           </div>

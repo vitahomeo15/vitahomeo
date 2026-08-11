@@ -29,7 +29,7 @@ export default function ContactPage() {
             {/* Info */}
             <div className="flex flex-col gap-6">
               {[
-                { icon: <Mail className="w-5 h-5" />, label: "Email", value: "akshraj2255@gmail.com" },
+                { icon: <Mail className="w-5 h-5" />, label: "Email", value: "vitahomeo15@gmail.com" },
                 { icon: <Phone className="w-5 h-5" />, label: "Phone", value: "+91 77659 91145" },
                 { icon: <MapPin className="w-5 h-5" />, label: "Location", value: "India (Remote)" },
               ].map((item, i) => (

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://vitahomeo.sociusin.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.vitahomeo.com'
 
   const routes = [
     '',
@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/terms',
     '/privacy',
     '/refund-policy',
+    '/disclaimer',
   ]
 
   return routes.map((route) => ({

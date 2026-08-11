@@ -52,9 +52,9 @@ export const blogPosts: BlogPost[] = [
         heading: "A Brief History of Homeopathy: Dr. Samuel Hahnemann",
         level: 2,
         paragraphs: [
-          "To appreciate homeopathy, we must travel back to late 18th-century Germany. The system was founded by Dr. Samuel Hahnemann (1755–1843), a brilliant German physician, chemist, and linguist. Dissatisfied with the harsh medical practices of his era—which included bloodletting, toxic mercury dosing, and purging—Hahnemann sought a gentler, more rational path to healing.",
+          "To appreciate homeopathy, we must travel back to late 18th-century Germany. The system was founded by Dr. Samuel Hahnemann (1755–1843), a brilliant German physician, chemist, and linguist. Dissatisfied with the harsh medical practices of his era, which included bloodletting, toxic mercury dosing, and purging, Hahnemann sought a gentler, more rational path to healing.",
           "While translating a treatise by Scottish physician William Cullen, Hahnemann encountered the claim that cinchona bark (quinine) cured malaria because of its bitter taste. Skeptical of this explanation, Hahnemann began taking small doses of cinchona bark himself. To his surprise, he developed symptoms identical to those of malaria: fever, chills, joint pain, and sweating. When he stopped taking the bark, the symptoms subsided.",
-          "This experiment led to the rebirth of a long-forgotten medical principle first noted by Hippocrates: 'like cures like.' Hahnemann reasoned that a substance that can produce disease symptoms in a healthy person can cure those same symptoms in a diseased person. Over the next several decades, Hahnemann systematically tested thousands of plant, mineral, and organic substances on healthy volunteers—a process known as 'proving'—to establish the first comprehensive pharmacopoeia of homeopathic remedies."
+          "This experiment led to the rebirth of a long-forgotten medical principle first noted by Hippocrates: 'like cures like.' Hahnemann reasoned that a substance that can produce disease symptoms in a healthy person can cure those same symptoms in a diseased person. Over the next several decades, Hahnemann systematically tested thousands of plant, mineral, and organic substances on healthy volunteers, a process known as 'proving', to establish the first comprehensive pharmacopoeia of homeopathic remedies."
         ]
       },
       {
@@ -103,7 +103,7 @@ export const blogPosts: BlogPost[] = [
         heading: "How Homeopathic Treatment Works",
         level: 2,
         paragraphs: [
-          "The ultimate goal of homeopathy is to stimulate the body's natural defensive and regenerative capabilities. Every individual possesses what Hahnemann called the 'Vital Force'—an intelligent, dynamic energy that coordinates bodily functions, maintains health, and drives recovery.",
+          "The ultimate goal of homeopathy is to stimulate the body's natural defensive and regenerative capabilities. Every individual possesses what Hahnemann called the 'Vital Force', which is an intelligent, dynamic energy that coordinates bodily functions, maintains health, and drives recovery.",
           "When the Vital Force is disrupted by stress, toxins, poor nutrition, or genetic factors, disease symptoms appear. Conventional drugs often suppress these symptoms (for example, using antihistamines to block allergies or steroids to suppress skin inflammation). While this provides temporary relief, it can sometimes push the imbalance deeper into the system.",
           "Homeopathic remedies act as a gentle stimulus to the Vital Force. The remedy provides a subtle, energetic signal that mimics the disease state just enough to prompt the body's defense systems to react. By responding to this stimulus, the body naturally corrects the internal imbalance, leading to a gentle, gradual resolution of symptoms from the inside out."
         ]
@@ -113,7 +113,7 @@ export const blogPosts: BlogPost[] = [
         level: 2,
         paragraphs: [
           "Despite its global popularity, several myths surround homeopathy. Let's look at the facts behind the most common misconceptions:",
-          "Myth 1: 'Homeopathy is just a placebo effect.' Fact: Numerous double-blind, placebo-controlled studies, as well as laboratory testing on cell cultures and plant models, show that homeopathic remedies produce biological effects. Furthermore, homeopathy is highly effective in infants and animals—demolishing the claim that it relies on psychological suggestion.",
+          "Myth 1: 'Homeopathy is just a placebo effect.' Fact: Numerous double-blind, placebo-controlled studies, as well as laboratory testing on cell cultures and plant models, show that homeopathic remedies produce biological effects. Furthermore, homeopathy is highly effective in infants and animals, demolishing the claim that it relies on psychological suggestion.",
           "Myth 2: 'Homeopathy is slow to act.' Fact: For acute conditions like flu, acute diarrhea, or minor injuries, the correct remedy can act within minutes. For chronic conditions like PCOS, eczema, or migraines that have developed over years, treatment does take time. However, this is because the therapy is working to heal root systemic imbalances rather than just suppressing symptoms.",
           "Myth 3: 'Homeopathic remedies contain steroids.' Fact: This is completely false. Legitimate homeopathic remedies are prepared under strict quality control standards according to official pharmacopoeias. They are composed of natural source materials and contain zero chemical additions or steroids. Always consult verified homeopathic doctors in India to ensure authentic prescriptions."
         ]
@@ -227,7 +227,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Complete Privacy & Confidentiality",
         level: 3,
         paragraphs: [
-          "Certain health concerns—such as PCOS, skin allergies, hair fall, or anxiety—can be deeply personal. Some patients feel self-conscious discussing these issues in a busy public clinic.",
+          "Certain health concerns, such as PCOS, skin allergies, hair fall, or anxiety, can be deeply personal. Some patients feel self-conscious discussing these issues in a busy public clinic.",
           "Online sessions provide a private, confidential space. Consultations are conducted via encrypted, secure video links, and your medical histories and digital prescriptions are stored securely."
         ]
       },
@@ -550,7 +550,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Mental & Emotional Aspects of Migraines",
         level: 2,
         paragraphs: [
-          "Stress is a primary trigger for many migraine sufferers. Homeopathy addresses this connection by selecting remedies that match the patient's emotional response to stress—whether they experience anxiety, irritability, or withdrawal—helping to build emotional resilience alongside physical relief."
+          "Stress is a primary trigger for many migraine sufferers. Homeopathy addresses this connection by selecting remedies that match the patient's emotional response to stress, whether they experience anxiety, irritability, or withdrawal, helping to build emotional resilience alongside physical relief."
         ]
       },
       {
@@ -880,7 +880,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Scalp Analysis and Symptom Review",
         level: 2,
         paragraphs: [
-          "A detailed review of your scalp condition—checking for oiliness, dryness, itching, or inflammation—helps your practitioner identify the appropriate therapeutic approach, ensuring the remedies address both local and systemic health factors."
+          "A detailed review of your scalp condition, checking for oiliness, dryness, itching, or inflammation, helps your practitioner identify the appropriate therapeutic approach, ensuring the remedies address both local and systemic health factors."
         ]
       },
       {
@@ -915,7 +915,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Stress Management for Hair Health",
         level: 2,
         paragraphs: [
-          "Since stress can trigger hair shedding, incorporating stress-reduction techniques—such as regular exercise, yoga, meditation, or ensuring adequate sleep—is an important part of a holistic hair care plan."
+          "Since stress can trigger hair shedding, incorporating stress-reduction techniques, such as regular exercise, yoga, meditation, or ensuring adequate sleep, is an important part of a holistic hair care plan."
         ]
       },
       {

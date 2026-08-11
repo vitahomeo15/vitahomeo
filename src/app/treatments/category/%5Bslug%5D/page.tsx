@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArrowRight, Activity, BookOpen, Clock, Heart } from "lucide-react";
@@ -127,6 +128,24 @@ const categoriesData: Record<string, CategoryInfo> = {
     ]
   }
 };
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const slug = (resolvedParams?.slug || "").toLowerCase();
+  const category = categoriesData[slug];
+  const title = category ? `${category.title} Homeopathic Care | VitaHomeo` : "Homeopathic Care | VitaHomeo";
+  const description = category 
+    ? `Browse homeopathic treatment guides and conditions supported under our ${category.title} department.`
+    : "Browse homeopathic treatments and consult verified specialists online.";
+  
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://www.vitahomeo.com/treatments/category/${slug}`,
+    },
+  };
+}
 
 export async function generateStaticParams() {
   return Object.keys(categoriesData).map((slug) => ({ slug }));

@@ -41,11 +41,15 @@ function doPost(e) {
     }
 
     // 3. Open the spreadsheet directly by ID to work standalone or bound
-    var sheet = SpreadsheetApp.openById("1kcy2uvjZxLZ1VQb4s0nQ9r6hdC9FiQeuzN79OXA0HeE");
+    // 3. Get target spreadsheet (uses bound sheet automatically, fallback to ID if standalone)
+    var sheet = SpreadsheetApp.getActiveSpreadsheet();
+    if (!sheet) {
+      sheet = SpreadsheetApp.openById("YOUR_SPREADSHEET_ID_HERE");
+    }
     if (!sheet) {
       return createJsonResponse({
         status: "error",
-        message: "Target Spreadsheet not found by ID."
+        message: "Target Spreadsheet not found."
       }, 500);
     }
     

@@ -1,22 +1,19 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
+import { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Check, ChevronDown, ChevronUp, Clock, FileText, ArrowRight, Activity, Video } from "lucide-react";
+import { Check, ChevronDown, Clock, FileText, ArrowRight, Activity, Video } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Homeopathy Treatment Library | VitaHomeo",
+  description: "Explore our comprehensive directory of homeopathic treatments and constitutional care department folders. Learn about symptoms, causes, and supportive remedies.",
+  alternates: {
+    canonical: "https://www.vitahomeo.com/treatment",
+  },
+};
 
 export default function TreatmentHubPage() {
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
-
-  // [PLACEHOLDER] Statistics data for outcomes and trust bar
-  const stats = {
-    consultations: "10,000+",
-    rating: "4.9★",
-    conditions: "250+",
-    outcomes: "94%"
-  };
-
   const categories = [
     {
       id: "chronic-diseases",
@@ -155,25 +152,17 @@ export default function TreatmentHubPage() {
 
   const processSteps = [
     { label: "Book Consultation", desc: "Select timings and request a slot." },
-    { label: "Complete Health Questionnaire", desc: "Share details on your case history." },
+    { label: "Share Case History", desc: "Share details on your physical and emotional symptoms." },
     { label: "Video Consultation", desc: "Private encrypted call with the doctor." },
     { label: "Constitutional Analysis", desc: "Doctor evaluates systemic root causes." },
-    { label: "Digital Prescription", desc: "Access customized prescription from your panel." },
-    { label: "Medicine Delivery", desc: "Remedies shipped securely (Optional)." },
-    { label: "Monthly Follow-up", desc: "Regular reviews to map body response." },
-    { label: "Recovery Tracking", desc: "Continuous improvement tracing." }
+    { label: "Digital Prescription", desc: "Receive customized prescription post-session." }
   ];
 
   const faqs = [
     { q: "Does homeopathy really work?", a: "Yes. Homeopathy operates on the principle of individual constitutional prescribing, utilizing highly diluted natural substances to trigger the body's self-healing mechanisms. Modern clinical studies continue to document its efficacy." },
-    { q: "Is consultation online?", a: "Absolutely. VitaHomeo provides a 100% virtual clinic where you can schedule sessions, join encrypted video consultations, and store digital records safely." },
+    { q: "Is consultation online?", a: "Absolutely. VitaHomeo provides a virtual clinic where you can schedule sessions, join encrypted video consultations, and store digital records safely." },
     { q: "How long is treatment?", a: "Treatment duration varies. Acute conditions can respond in days, whereas chronic conditions like eczema, PCOS, or migraines typically require 3 to 6 months of constitutional care." },
-    { q: "Can I upload reports?", a: "Yes. During or after booking, you can upload clinical lab reports directly to your profile for the doctor to review." },
-    { q: "Are medicines delivered?", a: "Yes. VitaHomeo offers optional home delivery of original, verified homeopathic remedies across India." },
-    { q: "Is follow-up included?", a: "Yes. Constitutional plans typically include monthly follow-up reviews to track your recovery progress." },
-    { q: "Can I choose my doctor?", a: "Yes. You can consult with our verified practitioners based on their specialty areas." },
-    { q: "How much does consultation cost?", a: "Consultation fees are displayed transparently before booking. Dr. Arun Kumar's session fee is ₹499." },
-    { q: "Can I get prescriptions?", a: "Yes. A signed, digital medical prescription is saved securely in your patient profile after each session." },
+    { q: "How much does a consultation cost?", a: "Consultation fees are displayed transparently before booking. Dr. Arun Kumar's session fee is ₹499." },
     { q: "Are doctors verified?", a: "Yes. All doctors undergo strict qualification and registration council verification before onboarding." }
   ];
 
@@ -202,10 +191,10 @@ export default function TreatmentHubPage() {
               
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link 
-                  href="/book" 
+                  href="/doctors" 
                   className="px-8 py-4 bg-brand hover:bg-brand-hover text-white font-semibold text-sm rounded-button text-center shadow-button-premium hover:scale-[1.02] transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  Book Consultation
+                  Find a Doctor
                 </Link>
                 <a 
                   href="#categories" 
@@ -234,18 +223,13 @@ export default function TreatmentHubPage() {
         {/* ============ 2. TRUST BAR SECTION ============ */}
         <section className="bg-bg-soft dark:bg-[#0e1a0d]/30 border-y border-line-custom dark:border-[#1d2a1a] py-6 overflow-x-auto">
           <div className="max-w-6xl mx-auto px-4 md:px-6 flex flex-nowrap md:flex-wrap items-center justify-between gap-6 text-[11px] font-black text-ink dark:text-white uppercase tracking-wider whitespace-nowrap min-w-[800px] md:min-w-0">
-            {/* [PLACEHOLDER] Stats row */}
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-brand" />
-              <span>{stats.consultations} Consultations</span>
+              <span>Verified Homeopathic Consultations</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-brand" />
               <span>Certified Doctors Only</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-brand" />
-              <span>{stats.rating} Patient Rating</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-brand" />
@@ -269,7 +253,7 @@ export default function TreatmentHubPage() {
                 Why Choose Constitutional Homeopathy?
               </h2>
               <p className="text-sm font-semibold text-brand tracking-wide uppercase">
-                We treat the root cause — not just symptoms.
+                We treat the root cause, not just symptoms.
               </p>
               
               <ul className="space-y-4">
@@ -399,16 +383,16 @@ export default function TreatmentHubPage() {
                         </span>
                         <span className="text-sm font-black text-ink dark:text-white">{step.label}</span>
                       </div>
-                      <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-semibold pl-8">
+                      <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-semibold">
                         {step.desc}
                       </p>
                     </div>
 
-                    {/* Timeline dot */}
-                    <div className="absolute left-4 sm:left-1/2 w-4 h-4 rounded-full bg-brand border-4 border-white dark:border-[#0a120a] -translate-x-1/2 hidden sm:block" />
+                    {/* Timeline bullet marker point */}
+                    <div className="absolute left-4 sm:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-brand border-4 border-white dark:border-[#0a120a] z-10 hidden sm:block" />
 
-                    {/* Empty spacer block for balance */}
-                    <div className="w-full sm:w-[45%] hidden sm:block" />
+                    {/* Placeholder space for the other side */}
+                    <div className="hidden sm:block w-[45%]" />
 
                   </div>
                 );
@@ -418,126 +402,32 @@ export default function TreatmentHubPage() {
         </section>
 
 
-        {/* ============ 7. MEET YOUR DOCTORS SECTION ============ */}
-        <section className="max-w-6xl mx-auto px-4 md:px-6 space-y-8">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="text-xs font-bold text-brand uppercase tracking-widest block">Verified Staff</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-ink dark:text-white">Meet Our Doctors</h2>
-          </div>
-
-          {/* Centered Doctor Card */}
-          <div className="flex justify-center">
-            {/* [PLACEHOLDER] Verified Doctor Listing */}
-            <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[28px] p-6 shadow-sm w-full max-w-lg space-y-6">
-              
-              <div className="flex flex-col sm:flex-row items-center gap-6">
-                <div className="w-24 h-24 rounded-full overflow-hidden border border-brand bg-white shrink-0">
-                  <img src="/Doc photo/dr.arun kr.jpeg" alt="Dr. Arun Kumar" className="w-full h-full object-cover object-top" />
-                </div>
-                <div className="text-center sm:text-left space-y-2">
-                  <h3 className="text-lg font-black text-ink dark:text-white">Dr. Arun Kumar</h3>
-                  <span className="text-xs text-muted-text dark:text-[#71806c] font-bold block">DHMS · Constitutional Specialist</span>
-                  
-                  <div className="flex items-center justify-center sm:justify-start gap-1 text-xs font-bold text-body-text dark:text-[#aebba8]">
-                    <Clock className="w-4 h-4 text-brand" />
-                    <span>19 Years Experience</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 text-xs font-semibold text-body-text dark:text-[#aebba8] border-y border-line-custom/50 dark:border-[#1d2a1a]/50 py-4">
-                <div>
-                  <span className="text-[10px] text-muted-text uppercase tracking-wider block font-bold">Specialization</span>
-                  <span className="font-bold text-ink dark:text-white">Constitutional Homeopathy</span>
-                </div>
-                <div>
-                  <span className="text-[10px] text-muted-text uppercase tracking-wider block font-bold">Languages</span>
-                  <span>English, Hindi</span>
-                </div>
-                <div>
-                  <span className="text-[10px] text-muted-text uppercase tracking-wider block font-bold">Patients Treated</span>
-                  <span>15,000+ Case Studies</span>
-                </div>
-                <div>
-                  <span className="text-[10px] text-muted-text uppercase tracking-wider block font-bold">Consultation Fee</span>
-                  <span className="font-bold text-brand">₹499</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link 
-                  href="/book" 
-                  className="flex-1 h-11 bg-brand hover:bg-brand-dark text-white font-bold text-xs rounded-xl flex items-center justify-center transition-all shadow-sm"
-                >
-                  Book Consultation
-                </Link>
-                <Link 
-                  href="/doctors/dr-arun-kumar" 
-                  className="flex-1 h-11 border border-line-custom dark:border-[#1d2a1a] hover:border-brand/40 text-ink dark:text-white font-bold text-xs rounded-xl flex items-center justify-center transition-all"
-                >
-                  View Full Profile
-                </Link>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-
-        {/* ============ 8. TREATMENT OUTCOMES SECTION ============ */}
-        <section className="bg-bg-soft dark:bg-[#0e1a0d]/30 border-y border-line-custom dark:border-[#1d2a1a] py-16">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              {/* [PLACEHOLDER] Stats cards */}
-              <div className="p-6 bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[24px]">
-                <span className="text-3xl md:text-4xl font-black text-brand block">{stats.outcomes}</span>
-                <span className="text-[10px] text-muted-text dark:text-[#71806c] font-bold uppercase tracking-wider block mt-2">Improvement Rate</span>
-              </div>
-              <div className="p-6 bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[24px]">
-                <span className="text-3xl md:text-4xl font-black text-[#0ea98b] block">{stats.rating}</span>
-                <span className="text-[10px] text-muted-text dark:text-[#71806c] font-bold uppercase tracking-wider block mt-2">Patient Rating</span>
-              </div>
-              <div className="p-6 bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[24px]">
-                <span className="text-3xl md:text-4xl font-black text-ink dark:text-white block">{stats.consultations}</span>
-                <span className="text-[10px] text-muted-text dark:text-[#71806c] font-bold uppercase tracking-wider block mt-2">Consultations</span>
-              </div>
-              <div className="p-6 bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[24px]">
-                <span className="text-3xl md:text-4xl font-black text-brand block">{stats.conditions}</span>
-                <span className="text-[10px] text-muted-text dark:text-[#71806c] font-bold uppercase tracking-wider block mt-2">Conditions Managed</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-
         {/* ============ 10. FAQ SECTION ============ */}
         <section className="max-w-3xl mx-auto px-4 space-y-8">
           <div className="text-center space-y-3">
             <span className="text-xs font-bold text-brand uppercase tracking-widest block">Inquiries</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-ink dark:text-white">FAQs</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-ink dark:text-white">Frequently Asked Questions</h2>
           </div>
 
           <div className="space-y-3">
             {faqs.map((faq, idx) => {
-              const isOpen = activeFaq === idx;
               return (
-                <div 
+                <details 
                   key={idx}
-                  className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-2xl overflow-hidden transition-all shadow-sm"
+                  className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-2xl overflow-hidden transition-all shadow-sm group"
                 >
-                  <button
-                    onClick={() => setActiveFaq(isOpen ? null : idx)}
-                    className="w-full px-5 py-4 flex items-center justify-between text-left font-bold text-xs md:text-sm text-ink dark:text-white cursor-pointer select-none hover:bg-bg-soft/40 dark:hover:bg-[#162315]/20"
+                  <summary
+                    className="w-full px-5 py-4 flex items-center justify-between text-left font-bold text-xs md:text-sm text-ink dark:text-white cursor-pointer select-none hover:bg-bg-soft/40 dark:hover:bg-[#162315]/20 [&::-webkit-details-marker]:hidden"
                   >
                     <span>{faq.q}</span>
-                    {isOpen ? <ChevronUp className="w-4 h-4 text-brand" /> : <ChevronDown className="w-4 h-4 text-brand" />}
-                  </button>
-                  {isOpen && (
-                    <div className="px-5 pb-5 pt-1 text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-semibold border-t border-line-custom/50 dark:border-[#1d2a1a]/50 animate-in fade-in duration-200">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
+                    <span className="transition duration-300 group-open:-rotate-180 text-brand">
+                      <ChevronDown className="w-4 h-4" />
+                    </span>
+                  </summary>
+                  <div className="px-5 pb-5 pt-1 text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-semibold border-t border-line-custom/50 dark:border-[#1d2a1a]/50">
+                    <p>{faq.a}</p>
+                  </div>
+                </details>
               );
             })}
           </div>
@@ -567,10 +457,11 @@ export default function TreatmentHubPage() {
             </p>
 
             <Link 
-              href="/book" 
+              href="/doctors" 
               className="px-8 py-3.5 bg-white text-brand hover:bg-[#f4f9f3] active:scale-[0.98] transition-all font-bold text-sm rounded-xl inline-flex items-center gap-1.5 shadow-sm"
             >
-              Book Your Consultation Today
+              <Video className="w-4 h-4" />
+              Find a Doctor
             </Link>
           </div>
         </section>

@@ -20,7 +20,7 @@ export function Footer() {
           <div className="flex flex-col gap-5 md:col-span-1 items-start">
             <Image src="/logo-vitahomeo.png" alt="VitaHomeo" width={150} height={56} className="h-12 w-auto object-contain" />
             <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed max-w-[240px] font-medium">
-              Natural healing, trusted care — anytime, anywhere. Connecting patients with verified homeopathic doctors across India.
+              Natural healing, trusted care, anytime, anywhere. Connecting patients with verified homeopathic doctors across India.
             </p>
             <div className="flex gap-2">
               <a href="https://www.facebook.com/profile.php?id=61590313869958" target="_blank" rel="noopener noreferrer"
@@ -46,19 +46,14 @@ export function Footer() {
               <SecurityBadgeRow />
             </div>
           </div>
-
-          {/* Company Column */}
+          {/* Platform Column */}
           <div className="flex flex-col gap-4">
-            <h5 className="font-bold text-xs text-ink dark:text-white uppercase tracking-widest">Company</h5>
+            <h5 className="font-bold text-xs text-ink dark:text-white uppercase tracking-widest">Platform</h5>
             <ul className="flex flex-col gap-3 text-xs text-body-text dark:text-[#aebba8] font-medium">
-              <li><Link href="/" className="hover:text-brand transition-colors">Home</Link></li>
-              <li><Link href="/about" className="hover:text-brand transition-colors">About Us</Link></li>
-              <li><Link href="/treatment" className="hover:text-brand transition-colors">Treatment Library</Link></li>
-              <li><Link href="/treatment" className="hover:text-brand transition-colors">Homeopathy Guide</Link></li>
               <li><Link href="/doctors" className="hover:text-brand transition-colors">Find Doctors</Link></li>
-              <li><Link href="/reviews" className="hover:text-brand transition-colors">Testimonials</Link></li>
-              <li><Link href="/reviews" className="hover:text-brand transition-colors">FAQs</Link></li>
-              <li><Link href="/blog" className="hover:text-brand transition-colors">Blog</Link></li>
+              <li><Link href="/join" className="hover:text-brand transition-colors">For Doctors</Link></li>
+              <li><Link href="/about" className="hover:text-brand transition-colors">About Us</Link></li>
+              <li><Link href="/contact" className="hover:text-brand transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -68,19 +63,17 @@ export function Footer() {
             <ul className="flex flex-col gap-3 text-xs text-body-text dark:text-[#aebba8] font-medium">
               <li><Link href="/privacy" className="hover:text-brand transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-brand transition-colors">Terms & Conditions</Link></li>
-              <li><Link href="/refund-policy" className="hover:text-brand transition-colors">Refund Policy</Link></li>
-              <li><Link href="/contact" className="hover:text-brand transition-colors">Contact Us</Link></li>
-              <li><Link href="/join" className="hover:text-brand transition-colors">Become a Doctor</Link></li>
+              <li><Link href="/disclaimer" className="hover:text-brand transition-colors">Medical Disclaimer</Link></li>
             </ul>
           </div>
 
           {/* Support Column */}
           <div className="flex flex-col gap-4">
-            <h5 className="font-bold text-xs text-ink dark:text-white uppercase tracking-widest">Support & Join</h5>
+            <h5 className="font-bold text-xs text-ink dark:text-white uppercase tracking-widest">Support & Contact</h5>
             <ul className="flex flex-col gap-3 text-xs text-body-text dark:text-[#aebba8] font-medium">
               <li>
                 <span className="font-bold text-ink dark:text-white block">Email:</span>
-                <a href="mailto:akshraj2255@gmail.com" className="block mt-0.5 hover:text-brand transition-colors">akshraj2255@gmail.com</a>
+                <a href="mailto:vitahomeo15@gmail.com" className="block mt-0.5 hover:text-brand transition-colors">vitahomeo15@gmail.com</a>
               </li>
               <li>
                 <span className="font-bold text-ink dark:text-white block">Phone:</span>
@@ -88,23 +81,12 @@ export function Footer() {
               </li>
               <li className="pt-2 border-t border-line-custom/50 dark:border-[#1d2a1a]/50">
                 <p className="text-[10px] text-brand-dark dark:text-brand font-bold leading-normal">
-                  Customer Support: Monday–Sunday, 9 AM–9 PM <br/>
-                  Average Response Time: &lt;15 minutes
+                  Support: Monday–Sunday, 9 AM–9 PM IST <br/>
+                  Response Time: Under 15 minutes
                 </p>
-              </li>
-              <li className="pt-2 flex flex-col gap-2">
-                <Link href="/book"
-                  className="hover:text-brand transition-colors text-[11px] font-bold">
-                  Book Appointment
-                </Link>
-                <Link href="/join"
-                  className="hover:text-brand transition-colors text-[11px] font-bold">
-                  Doctor Registration
-                </Link>
               </li>
             </ul>
           </div>
-
         </div>
 
         {/* Bottom Bar */}

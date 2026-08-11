@@ -1,9 +1,28 @@
 import React from "react";
 import Link from "next/link";
+import { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { treatmentsData, ConditionInfo } from "@/data/treatmentsData";
 import { Check, Clock, FileText, ArrowRight, Activity } from "lucide-react";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const slug = (resolvedParams?.slug || "").toLowerCase();
+  const condition = treatmentsData[slug];
+  const title = condition ? `${condition.title} Homeopathy Treatment | VitaHomeo` : "Homeopathy Treatment | VitaHomeo";
+  const description = condition 
+    ? `Learn about the symptoms, causes, and homeopathic treatment approach for ${condition.title}. Consult verified doctors online.`
+    : "Consult experienced homeopathic doctors online for constitutional care.";
+  
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://www.vitahomeo.com/treatments/${slug}`,
+    },
+  };
+}
 
 export async function generateStaticParams() {
   return Object.keys(treatmentsData).map((slug) => ({ slug }));

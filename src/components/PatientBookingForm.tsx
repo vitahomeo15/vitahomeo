@@ -11,7 +11,6 @@ export function PatientBookingForm() {
     email: "",
     preferredDate: "",
     symptoms: "",
-    videoConsent: false,
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -57,10 +56,6 @@ export function PatientBookingForm() {
       newErrors.symptoms = "Please provide a bit more detail (at least 10 characters)";
     }
 
-    if (!formData.videoConsent) {
-      newErrors.videoConsent = "You must consent to video-recording for consultation";
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -92,7 +87,6 @@ export function PatientBookingForm() {
       Email: formData.email,
       PreferredDate: formData.preferredDate,
       ReasonforConsultation: formData.symptoms,
-      videoConsent: formData.videoConsent,
     };
 
     const result = await submitToSheet("patient", payload);
@@ -105,7 +99,6 @@ export function PatientBookingForm() {
         email: "",
         preferredDate: "",
         symptoms: "",
-        videoConsent: false,
       });
     } else {
       setStatus("error");
@@ -246,26 +239,7 @@ export function PatientBookingForm() {
           {errors.symptoms && <p className="text-[10px] text-red-500 font-bold">{errors.symptoms}</p>}
         </div>
 
-        {/* Video Recording Consent */}
-        <div className="space-y-1.5">
-          <label htmlFor="videoConsent" className="flex items-start gap-2.5 text-xs font-semibold text-body-text dark:text-[#aebba8] cursor-pointer select-none">
-            <input
-              type="checkbox"
-              id="videoConsent"
-              name="videoConsent"
-              checked={formData.videoConsent}
-              onChange={handleChange}
-              disabled={status === "submitting"}
-              className={`rounded text-brand focus:ring-brand border w-4 h-4 cursor-pointer accent-brand mt-0.5 shrink-0 ${
-                errors.videoConsent ? "border-red-500" : "border-line-custom dark:border-[#1d2a1a]"
-              }`}
-            />
-            <span>
-              I consent to this consultation being recorded for accurate case documentation and continuity of care. Recordings are stored securely and used only by my treating doctor.
-            </span>
-          </label>
-          {errors.videoConsent && <p className="text-[10px] text-red-500 font-bold">{errors.videoConsent}</p>}
-        </div>
+        {/* Video Recording Consent Removed */}
 
         {/* Error Alert Box */}
         {status === "error" && (
