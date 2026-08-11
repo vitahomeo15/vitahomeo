@@ -122,8 +122,12 @@ export default function Home() {
     { q: "What is your refund policy?", a: "If you cancel your appointment at least 12 hours before the scheduled time, you will receive a full refund. Cancellations within 12 hours are governed by our refund terms." }
   ];
 
-  // Blog Previews
-  const blogPreviews = blogPosts.slice(0, 3);
+  // Blog Previews (Curated for the homepage)
+  const blogPreviews = [
+    blogPosts.find(p => p.id === "post-1"),
+    blogPosts.find(p => p.id === "post-2"),
+    blogPosts.find(p => p.id === "post-5")
+  ].filter((p): p is typeof blogPosts[0] => !!p);
 
   return (
     <div className="min-h-screen flex flex-col bg-bg-custom relative">
