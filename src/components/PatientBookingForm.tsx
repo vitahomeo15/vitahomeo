@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { submitToSheet } from "@/lib/submitToSheet";
-import { User, Phone, Mail, Calendar, MessageSquare, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { User, Phone, Mail, Calendar, MessageSquare, CheckCircle, AlertCircle, Loader2, Clock } from "lucide-react";
 
 export function PatientBookingForm() {
   const [formData, setFormData] = useState({
@@ -10,6 +10,7 @@ export function PatientBookingForm() {
     phone: "",
     email: "",
     preferredDate: "",
+    preferredTime: "",
     symptoms: "",
   });
 
@@ -30,12 +31,12 @@ export function PatientBookingForm() {
       newErrors.phone = "Enter a valid 10-digit Indian mobile number (e.g. 9876543210)";
     }
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+    // Email validation (optional)
+    if (formData.email.trim()) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        newErrors.email = "Please enter a valid email address";
+      }
     }
 
     if (!formData.preferredDate.trim()) {
@@ -48,6 +49,10 @@ export function PatientBookingForm() {
       if (selected < today) {
         newErrors.preferredDate = "Booking date cannot be in the past";
       }
+    }
+
+    if (!formData.preferredTime.trim()) {
+      newErrors.preferredTime = "Preferred time is required (e.g., Evening, 6:00 PM)";
     }
 
     if (!formData.symptoms.trim()) {
@@ -86,6 +91,7 @@ export function PatientBookingForm() {
       Phone: formData.phone,
       Email: formData.email,
       PreferredDate: formData.preferredDate,
+      PreferredTime: formData.preferredTime,
       ReasonforConsultation: formData.symptoms,
     };
 
@@ -98,6 +104,7 @@ export function PatientBookingForm() {
         phone: "",
         email: "",
         preferredDate: "",
+        preferredTime: "",
         symptoms: "",
       });
     } else {
@@ -112,16 +119,26 @@ export function PatientBookingForm() {
         <div className="w-16 h-16 rounded-full bg-brand/10 text-brand flex items-center justify-center mx-auto mb-6">
           <CheckCircle className="w-10 h-10" />
         </div>
-        <h2 className="text-2xl font-extrabold text-ink dark:text-white mb-3">Booking Requested!</h2>
+        <h2 className="text-2xl font-extrabold text-ink dark:text-white mb-3">Consultation Request Received</h2>
         <p className="text-sm text-body-text dark:text-[#aebba8] leading-relaxed mb-6 font-medium">
-          We have successfully received your booking. One of our coordinators will review doctor schedules and contact you within 24 hours to confirm your video appointment details.
+          Thank you. We have received your consultation request. Our team will contact you on WhatsApp to confirm the doctor&apos;s availability, appointment time, and payment details.
         </p>
-        <button
-          onClick={() => setStatus("idle")}
-          className="px-6 py-2.5 bg-brand text-white font-bold text-xs rounded-full hover:bg-brand-dark transition-all cursor-pointer"
-        >
-          Book Another Consultation
-        </button>
+        <div className="flex flex-col gap-3">
+          <a
+            href="https://wa.me/917765991145"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-full transition-all cursor-pointer shadow-sm hover:shadow-md"
+          >
+            Contact us on WhatsApp
+          </a>
+          <button
+            onClick={() => setStatus("idle")}
+            className="text-xs text-muted-text dark:text-[#71806c] hover:underline font-bold py-1.5 cursor-pointer"
+          >
+            Request Another Consultation
+          </button>
+        </div>
       </div>
     );
   }
@@ -129,9 +146,17 @@ export function PatientBookingForm() {
   return (
     <div className="bg-white dark:bg-[#101c0f] border border-[#e3eae0] dark:border-[#1d2a1a] rounded-[28px] p-6 md:p-8 shadow-lg max-w-2xl mx-auto transition-colors duration-300">
       <div className="mb-6">
-        <h2 className="text-xl md:text-2xl font-black text-ink dark:text-white mb-2">Book Consultation</h2>
+        <h2 className="text-xl md:text-2xl font-black text-ink dark:text-white mb-2">Request Consultation</h2>
         <p className="text-xs md:text-sm text-body-text dark:text-[#aebba8] font-semibold leading-relaxed">
-          Provide your details below to schedule an online homeopathy consultation with a verified practitioner. Your medical data is securely encrypted.
+          Provide your details below to request an online homeopathy consultation. Your medical details are handled securely.
+        </p>
+      </div>
+
+      {/* Manual Coordination Note */}
+      <div className="mb-6 p-4 bg-brand/5 dark:bg-brand/10 border border-brand/20 rounded-2xl flex items-start gap-3">
+        <AlertCircle className="w-5 h-5 text-brand shrink-0 mt-0.5" />
+        <p className="text-xs text-body-text dark:text-[#aebba8] font-semibold leading-relaxed">
+          <strong>Note:</strong> Submitting this form sends a consultation request. Your appointment is not confirmed yet. Our team will contact you on WhatsApp to confirm the doctor&apos;s availability and appointment time.
         </p>
       </div>
 
@@ -182,7 +207,7 @@ export function PatientBookingForm() {
           {/* Email */}
           <div className="space-y-1.5">
             <label htmlFor="email" className="text-xs font-bold text-ink dark:text-white uppercase tracking-wider flex items-center gap-1.5">
-              <Mail className="w-3.5 h-3.5 text-brand" /> Email Address
+              <Mail className="w-3.5 h-3.5 text-brand" /> Email Address (Optional)
             </label>
             <input
               type="email"
@@ -200,23 +225,46 @@ export function PatientBookingForm() {
           </div>
         </div>
 
-        {/* Preferred Date */}
-        <div className="space-y-1.5">
-          <label htmlFor="preferredDate" className="text-xs font-bold text-ink dark:text-white uppercase tracking-wider flex items-center gap-1.5">
-            <Calendar className="w-3.5 h-3.5 text-brand" /> Preferred Date
-          </label>
-          <input
-            type="date"
-            id="preferredDate"
-            name="preferredDate"
-            value={formData.preferredDate}
-            onChange={handleChange}
-            disabled={status === "submitting"}
-            className={`w-full px-4 py-3 rounded-xl bg-bg-soft dark:bg-[#0e1a0d]/50 text-xs md:text-sm font-semibold border text-ink dark:text-white focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors cursor-pointer ${
-              errors.preferredDate ? "border-red-500 focus:border-red-500" : "border-line-custom dark:border-[#1d2a1a]"
-            }`}
-          />
-          {errors.preferredDate && <p className="text-[10px] text-red-500 font-bold">{errors.preferredDate}</p>}
+        {/* Preferred Date & Time Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {/* Preferred Date */}
+          <div className="space-y-1.5">
+            <label htmlFor="preferredDate" className="text-xs font-bold text-ink dark:text-white uppercase tracking-wider flex items-center gap-1.5">
+              <Calendar className="w-3.5 h-3.5 text-brand" /> Preferred Date
+            </label>
+            <input
+              type="date"
+              id="preferredDate"
+              name="preferredDate"
+              value={formData.preferredDate}
+              onChange={handleChange}
+              disabled={status === "submitting"}
+              className={`w-full px-4 py-3 rounded-xl bg-bg-soft dark:bg-[#0e1a0d]/50 text-xs md:text-sm font-semibold border text-ink dark:text-white focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors cursor-pointer ${
+                errors.preferredDate ? "border-red-500 focus:border-red-500" : "border-line-custom dark:border-[#1d2a1a]"
+              }`}
+            />
+            {errors.preferredDate && <p className="text-[10px] text-red-500 font-bold">{errors.preferredDate}</p>}
+          </div>
+
+          {/* Preferred Time */}
+          <div className="space-y-1.5">
+            <label htmlFor="preferredTime" className="text-xs font-bold text-ink dark:text-white uppercase tracking-wider flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-brand" /> Preferred Time
+            </label>
+            <input
+              type="text"
+              id="preferredTime"
+              name="preferredTime"
+              value={formData.preferredTime}
+              onChange={handleChange}
+              placeholder="e.g., Evening, 6:00 PM - 8:00 PM"
+              disabled={status === "submitting"}
+              className={`w-full px-4 py-3 rounded-xl bg-bg-soft dark:bg-[#0e1a0d]/50 text-xs md:text-sm font-semibold border text-ink dark:text-white focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors ${
+                errors.preferredTime ? "border-red-500 focus:border-red-500 focus:ring-red-500" : "border-line-custom dark:border-[#1d2a1a]"
+              }`}
+            />
+            {errors.preferredTime && <p className="text-[10px] text-red-500 font-bold">{errors.preferredTime}</p>}
+          </div>
         </div>
 
         {/* Symptoms / Reason */}
@@ -239,8 +287,6 @@ export function PatientBookingForm() {
           {errors.symptoms && <p className="text-[10px] text-red-500 font-bold">{errors.symptoms}</p>}
         </div>
 
-        {/* Video Recording Consent Removed */}
-
         {/* Error Alert Box */}
         {status === "error" && (
           <div className="p-4 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/30 rounded-xl flex items-start gap-3 animate-in fade-in duration-200">
@@ -251,6 +297,11 @@ export function PatientBookingForm() {
           </div>
         )}
 
+        {/* Privacy Note */}
+        <p className="text-[10px] text-muted-text dark:text-[#71806c] text-center leading-relaxed font-semibold">
+          Your information is used to process your consultation request and contact you regarding your appointment.
+        </p>
+
         {/* Submit Button */}
         <button
           type="submit"
@@ -260,10 +311,10 @@ export function PatientBookingForm() {
           {status === "submitting" ? (
             <>
               <Loader2 className="w-4 h-4 animate-spin" />
-              Scheduling Appointment...
+              Sending Request...
             </>
           ) : (
-            "Request Consultation Slot"
+            "Request Consultation"
           )}
         </button>
 

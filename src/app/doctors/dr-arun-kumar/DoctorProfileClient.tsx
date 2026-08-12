@@ -116,9 +116,15 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
                 <span className="text-[10px] font-bold text-brand bg-brand/10 dark:bg-brand/20 px-2.5 py-1 rounded-full uppercase tracking-wider flex items-center gap-1">
                   <ShieldCheck className="w-3 h-3" /> Verified Practitioner
                 </span>
-                <span className="text-[10px] font-bold text-[#0ea98b] bg-[#0ea98b]/10 dark:bg-[#0ea98b]/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                  Rating {averageRating} ★
-                </span>
+                {reviews.length > 0 ? (
+                  <span className="text-[10px] font-bold text-[#0ea98b] bg-[#0ea98b]/10 dark:bg-[#0ea98b]/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    Rating {averageRating} ★
+                  </span>
+                ) : (
+                  <span className="text-[10px] font-bold text-muted-text bg-[#e6ece6]/30 dark:bg-[#1c271c]/30 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    No reviews yet
+                  </span>
+                )}
               </div>
               <h1 className="text-2xl md:text-3.5xl font-black text-ink dark:text-white leading-tight">
                 {doctor.name}
@@ -332,7 +338,7 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
             <div className="flex items-start gap-3">
               <Clock className="w-5 h-5 text-brand shrink-0 mt-0.5" />
               <div>
-                <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider">Timings</span>
+                <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider">Consultation Hours</span>
                 <span className="text-sm text-ink dark:text-white font-bold">{doctor.timing}</span>
               </div>
             </div>
@@ -340,7 +346,7 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
             <div className="flex items-start gap-3">
               <Calendar className="w-5 h-5 text-brand shrink-0 mt-0.5" />
               <div>
-                <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider">Days Available</span>
+                <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider">Available Days</span>
                 <span className="text-sm text-ink dark:text-white font-bold">{doctor.days}</span>
               </div>
             </div>
@@ -359,11 +365,11 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
             href="/book"
             className="w-full h-12 bg-gradient-to-r from-brand to-[#0ea98b] text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
-            <Calendar className="w-4 h-4" /> Book Appointment
+            <Calendar className="w-4 h-4" /> Request Consultation
           </Link>
 
           <p className="text-[10px] text-muted-text dark:text-[#71806c] text-center leading-relaxed font-semibold">
-            Safe and encrypted connection. Average video session lasts 20-30 minutes.
+            Submit your preferred date and time. Our team will contact you on WhatsApp to confirm availability and appointment details.
           </p>
         </div>
 

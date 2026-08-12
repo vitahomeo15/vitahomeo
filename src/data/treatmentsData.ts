@@ -230,7 +230,7 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     ],
     duration: "Typically 3 to 6 months of constitutional treatment.",
     faqs: [
-      { q: "Is this treatment permanent?", a: "Yes, successful constitutional desensitization provides long-term resistance to common environmental allergens." },
+      { q: "Does this treatment provide long-term relief?", a: "Successful constitutional support aims to lower sensitivity and improve long-term resilience to common environmental allergens." },
       { q: "Does it treat milk or food allergies?", a: "It can help reduce the severity of mild food sensitivities, but severe anaphylactic allergies require emergency protocols." }
     ],
     related: [
@@ -385,7 +385,7 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     ],
     duration: "Typically 3 to 6 months of constitutional treatment is required for sustainable skin healing.",
     faqs: [
-      { q: "Can eczema be permanently cured with homeopathy?", a: "Homeopathy aims to provide long-term remission and reduce relapse frequency by modulating the body's over-active immune response, rather than offering a temporary patch." },
+      { q: "How does homeopathy support eczema management?", a: "Homeopathy aims to manage symptoms and support long-term remission phases by helping modulate the body's over-active immune response." },
       { q: "Is there a specific diet I should follow?", a: "Identifying food triggers is key. Decreasing dairy, gluten, and refined sugar often supports recovery alongside constitutional remedies." }
     ],
     related: [
@@ -477,7 +477,7 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     ],
     duration: "Typically 6 to 12 months, requiring patience for skin pigmentation to restore.",
     faqs: [
-      { q: "Can vitiligo be completely cured?", a: "Homeopathy aims to halt the active spread of patches. Re-pigmentation is often successful in early-stage localized patches." },
+      { q: "Can vitiligo be managed with homeopathy?", a: "Homeopathy aims to support immune regulation and help halt the active spread of patches, encouraging re-pigmentation in early-stage localized areas." },
       { q: "Are vitiligo remedies safe?", a: "Yes. They are natural micro-dilutions that are gentle on your liver and kidneys." }
     ],
     related: [
@@ -539,8 +539,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     ],
     duration: "3 to 5 months.",
     faqs: [
-      { q: "Is homeopathy better than daily antihistamines?", a: "Yes. Antihistamines only block symptoms temporarily and cause drowsiness. Homeopathy works on your immune system for lasting resistance." },
-      { q: "Can seasonal allergies be cured?", a: "Yes, constitutional desensitization is highly effective for seasonal allergic rhinitis." }
+      { q: "How does homeopathy support allergy relief?", a: "Unlike temporary symptom blockers, constitutional homeopathy aims to support immune regulation and lower hyper-sensitivity over time." },
+      { q: "Can seasonal allergies be managed with homeopathy?", a: "Yes, constitutional homeopathic consultation aims to manage symptoms and support desensitization for seasonal allergic rhinitis." }
     ],
     related: [
       { name: "Sinusitis", slug: "sinusitis" },
@@ -632,7 +632,7 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     ],
     duration: "4 to 8 months.",
     faqs: [
-      { q: "Can homeopathy cure peanut allergies?", a: "Severe anaphylactic food allergies cannot be cured. Homeopathy helps manage mild to moderate food sensitivities and intolerances." },
+      { q: "Can homeopathy manage severe food allergies?", a: "No. Severe anaphylactic food allergies require immediate conventional emergency care. Homeopathy only helps manage mild to moderate food sensitivities and intolerances." },
       { q: "How does it help gut health?", a: "By reducing intestinal inflammation and balancing gut flora, it supports food digestion." }
     ],
     related: [
@@ -972,7 +972,7 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     ],
     duration: "6 to 12 months, monitored with inflammatory markers.",
     faqs: [
-      { q: "Does homeopathy cure ulcerative colitis?", a: "Colitis is a chronic autoimmune condition. Homeopathy aims to support healing, manage flares, and prolong remission phases." },
+      { q: "How does homeopathy support ulcerative colitis management?", a: "Colitis is a chronic autoimmune condition. Homeopathy aims to support mucosal recovery, manage flareups, and help prolong remission phases." },
       { q: "Is it safe to take alongside mesacol?", a: "Yes, constitutional homeopathic care is safe to take alongside conventional IBD medications." }
     ],
     related: [

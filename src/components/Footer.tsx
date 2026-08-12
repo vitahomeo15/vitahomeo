@@ -20,7 +20,7 @@ export function Footer() {
           <div className="flex flex-col gap-5 md:col-span-1 items-start">
             <Image src="/logo-vitahomeo.png" alt="VitaHomeo" width={150} height={56} className="h-12 w-auto object-contain" />
             <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed max-w-[240px] font-medium">
-              Natural healing, trusted care, anytime, anywhere. Connecting patients with verified homeopathic doctors across India.
+              Personalized homeopathic care, trusted practitioners, right at your home. Connecting patients with verified homeopathic doctors across India.
             </p>
             <div className="flex gap-2">
               <a href="https://www.facebook.com/profile.php?id=61590313869958" target="_blank" rel="noopener noreferrer"

@@ -104,10 +104,11 @@ function doPost(e) {
           "Email", 
           "Preferred Doctor", 
           "Preferred Date", 
+          "Preferred Time",
           "Symptoms / Reason for Consultation"
         ]);
         // Style headers
-        targetSheet.getRange("A1:G1").setFontWeight("bold").setBackground("#0EA98B").setFontColor("white");
+        targetSheet.getRange("A1:H1").setFontWeight("bold").setBackground("#0EA98B").setFontColor("white");
       }
 
       // Append row matching the PascalCase payload
@@ -118,6 +119,7 @@ function doPost(e) {
         data.Email || "",
         data.PreferredDoctor || "Any Doctor / Specialist",
         data.PreferredDate || "",
+        data.PreferredTime || "",
         data.ReasonforConsultation || ""
       ]);
 
@@ -190,6 +192,7 @@ To ensure there are no casing mismatches, here is the exact side-by-side mapping
 | **Patient** | `Email` | `data.Email` | `"Email"` |
 | **Patient** | `PreferredDoctor` | `data.PreferredDoctor` | `"Preferred Doctor"` |
 | **Patient** | `PreferredDate` | `data.PreferredDate` | `"Preferred Date"` |
+| **Patient** | `PreferredTime` | `data.PreferredTime` | `"Preferred Time"` |
 | **Patient** | `ReasonforConsultation` | `data.ReasonforConsultation`| `"Symptoms / Reason for Consultation"` |
 
 ---

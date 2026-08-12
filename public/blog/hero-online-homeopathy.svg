@@ -80,7 +80,7 @@
       
       <!-- Secure badge -->
       <rect x="10" y="160" width="70" height="15" rx="7.5" fill="#3FA535" opacity="0.1"/>
-      <text x="45" y="171" font-family="'Inter', sans-serif" font-weight="700" font-size="7" fill="#3FA535" text-anchor="middle">✓ SSL SECURE</text>
+      <text x="45" y="171" font-family="'Inter', sans-serif" font-weight="700" font-size="7" fill="#3FA535" text-anchor="middle">✓ HTTPS SECURE</text>
     </g>
   </g>
   

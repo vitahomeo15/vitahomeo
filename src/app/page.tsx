@@ -27,7 +27,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Online Homeopathy Consultations | VitaHomeo",
-  description: "Connect with verified homeopathic doctors online. Schedule secure video sessions, receive digital prescriptions, and get personalized constitutional care from home.",
+  description: "Connect with verified homeopathic doctors online. Request secure video consultations, receive digital prescriptions, and get personalized constitutional care from home.",
   alternates: {
     canonical: "https://www.vitahomeo.com",
   },
@@ -53,7 +53,7 @@ export default function Home() {
     { 
       icon: <Lock className="w-6 h-6" />, 
       title: "Private & Secure Calls", 
-      desc: "Video consultations run inside encrypted browser environments, keeping your health discussions confidential." 
+      desc: "Video consultations are conducted over secure platforms, keeping your health discussions confidential." 
     },
     { 
       icon: <ScaleIcon className="w-6 h-6" />, 
@@ -93,7 +93,7 @@ export default function Home() {
       experience: "19 Years Experience",
       specialization: "Constitutional Homeopathy & Chronic Care",
       languages: "English, Hindi",
-      rating: "5.0",
+      rating: "No reviews yet",
       availableToday: true,
       image: "/Doc photo/dr.arun kr.jpeg"
     }
@@ -113,13 +113,13 @@ export default function Home() {
 
   // Curated FAQ Section
   const faqs = [
-    { q: "How do I consult a doctor online?", a: "Browse our directory of verified practitioners, choose a convenient date and time slot, fill in your details, and request your consultation slot. You will connect directly from your browser." },
-    { q: "Are the homeopathic doctors on VitaHomeo verified?", a: "Yes. Every doctor goes through manual credential validation. We verify medical degrees (BHMS/DHMS/MD), state council registrations in India, and past clinical records." },
-    { q: "What happens after I book an appointment?", a: "Once your booking request is received, our coordinator confirms the slot with the doctor and sends you the encrypted video room link. The consultation lasts between 20 to 30 minutes." },
-    { q: "Do I need to download any mobile application?", a: "No. VitaHomeo runs inside standard web browsers. You can consult directly from your phone, tablet, or computer without installing any apps." },
-    { q: "How much does a consultation cost?", a: "Consultation fees are set by each doctor and listed transparently on their profile page. There are no hidden platform fees or registration charges." },
-    { q: "Can I get a digital prescription?", a: "Yes, your doctor will generate an official digital prescription outlining your constitutional homeopathic remedies and dosage instructions, which you can save or print." },
-    { q: "What is your refund policy?", a: "If you cancel your appointment at least 12 hours before the scheduled time, you will receive a full refund. Cancellations within 12 hours are governed by our refund terms." }
+    { q: "How do I book a consultation?", a: "Choose a doctor and submit your consultation request with your preferred date and time. Our team will contact you on WhatsApp to confirm the doctor's availability and appointment time. Once confirmed, we will share the payment details and consultation instructions." },
+    { q: "Is my appointment confirmed immediately after submitting the form?", a: "No. Submitting the form sends a consultation request. Your appointment is confirmed only after our team contacts you on WhatsApp and confirms the doctor's availability and appointment time." },
+    { q: "Can I choose my preferred time?", a: "Yes. You can provide your preferred date and time when submitting your consultation request. Our team will confirm the available appointment time with you." },
+    { q: "How will I receive consultation details?", a: "You will receive your consultation video call link and instructions directly from our team via WhatsApp once the appointment and payment are confirmed." },
+    { q: "How do I pay?", a: "After your appointment is confirmed, our team will share the available UPI payment details with you on WhatsApp." },
+    { q: "Can I get a digital prescription?", a: "Yes. Once the consultation concludes, your doctor generates an official digital prescription. This will be shared with you on WhatsApp so you can save or print it." },
+    { q: "Are the homeopathic doctors on VitaHomeo verified?", a: "Yes. Every doctor goes through manual credential validation. We verify medical degrees (BHMS/DHMS/MD), state council registrations in India, and past clinical records." }
   ];
 
   // Blog Previews (Curated for the homepage)
@@ -140,7 +140,7 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "MedicalWebPage",
             "name": "VitaHomeo - Connect With Verified Homeopathic Doctors Online",
-            "description": "Consult experienced homeopathic doctors online in India. Book secure consultations, receive digital prescriptions, and get personalized care from home.",
+            "description": "Consult experienced homeopathic doctors online in India. Request secure consultations, receive digital prescriptions, and get personalized care from home.",
             "url": "https://www.vitahomeo.com",
             "medicalSpecialty": "Homeopathic Medicine",
             "about": {
@@ -222,10 +222,10 @@ export default function Home() {
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center max-w-2xl mx-auto mb-20">
               <span className="text-xs font-bold text-brand uppercase tracking-widest">How It Works</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 font-display">Simple 3-Step Process</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 font-display">Simple 4-Step Process</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
               {howItWorksSteps.map((step, idx) => (
                 <div key={idx} className="relative bg-white dark:bg-[#141e14] border border-[#E6ECE6] dark:border-[#1d2a1a] p-8 rounded-card flex flex-col items-center text-center shadow-card-premium hover:border-brand/35 hover:shadow-floating-premium transition-all duration-300">
                   <div className="absolute top-4 left-4 text-xs font-bold text-brand/40 dark:text-brand/30 font-display">
@@ -304,7 +304,13 @@ export default function Home() {
                       </div>
                       <div>
                         <span className="text-muted-text block text-[9px] font-medium">Rating:</span>
-                        <span className="flex items-center gap-1 font-bold"><Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" /> {doc.rating} / 5</span>
+                        <span className="flex items-center gap-1 font-bold">
+                          {doc.rating === "No reviews yet" ? (
+                            "No reviews yet"
+                          ) : (
+                            <><Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" /> {doc.rating} / 5</>
+                          )}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -312,7 +318,7 @@ export default function Home() {
                   <div className="mt-8 grid grid-cols-2 gap-3">
                     <Link href="/book"
                       className="w-full h-11 rounded-button bg-brand hover:bg-brand-hover text-white text-xs font-bold flex items-center justify-center transition-all shadow-sm hover:shadow-button-premium">
-                      Book Consultation
+                      Request Consultation
                     </Link>
                     <Link href="/doctors/dr-arun-kumar"
                       className="w-full h-11 rounded-button bg-bg-soft dark:bg-[#152414] text-brand hover:bg-brand hover:text-white text-xs font-bold flex items-center justify-center transition-all border border-brand/10 shadow-sm hover:shadow-button-premium">
@@ -390,7 +396,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-brand shrink-0 mt-0.5" />
-                  <span><strong>Secure Transactions:</strong> PCI-compliant, fully encrypted UPI, card, and net banking options.</span>
+                  <span><strong>Secure Transactions:</strong> UPI payment details are shared securely via WhatsApp for easy transfer.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-brand shrink-0 mt-0.5" />
@@ -446,9 +452,9 @@ export default function Home() {
                 </p>
               </div>
               <div className="bg-[#F8FAF7] dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1c271c] p-8 rounded-card shadow-card-premium">
-                <span className="text-brand font-bold text-lg block mb-4 font-display">Secure Digital Logs</span>
+                <span className="text-brand font-bold text-lg block mb-4 font-display">Digital Prescriptions</span>
                 <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed">
-                  Receive signed digital prescriptions instantly. Manage your records, upload lab files, and track follow-ups securely in one portal.
+                  Receive signed digital prescriptions directly via WhatsApp. Keep your prescription files saved for printing or viewing at any time.
                 </p>
               </div>
             </div>
@@ -474,8 +480,8 @@ export default function Home() {
                 <p className="text-xs text-muted-text leading-relaxed">Set your consultation slots to match your schedule.</p>
               </div>
               <div className="bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1d2a1a] p-6 rounded-card shadow-card-premium">
-                <span className="text-sm font-bold text-brand block mb-2 font-display">Practice Portal</span>
-                <p className="text-xs text-muted-text leading-relaxed">Access patient case logs and generate prescriptions online.</p>
+                <span className="text-sm font-bold text-brand block mb-2 font-display">Practice Management</span>
+                <p className="text-xs text-muted-text leading-relaxed">Easily access patient consultation histories and send digital prescriptions.</p>
               </div>
               <div className="bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1d2a1a] p-6 rounded-card shadow-card-premium">
                 <span className="text-sm font-bold text-brand block mb-2 font-display">Credibility</span>

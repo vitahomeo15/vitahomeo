@@ -39,7 +39,7 @@ export default function JoinPage() {
             </div>
             <div className="bg-white dark:bg-[#101c0f]/50 border border-line-custom dark:border-[#1d2a1a] p-3 rounded-xl flex flex-col items-center gap-1">
               <Shield className="w-5 h-5 text-brand" />
-              <span>Encrypted Consultations</span>
+              <span>Private Consultations</span>
             </div>
             <div className="bg-white dark:bg-[#101c0f]/50 border border-line-custom dark:border-[#1d2a1a] p-3 rounded-xl flex flex-col items-center gap-1">
               <Stethoscope className="w-5 h-5 text-[#0ea98b]" />

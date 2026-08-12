@@ -228,7 +228,7 @@ export const blogPosts: BlogPost[] = [
         level: 3,
         paragraphs: [
           "Certain health concerns, such as PCOS, skin allergies, hair fall, or anxiety, can be deeply personal. Some patients feel self-conscious discussing these issues in a busy public clinic.",
-          "Online sessions provide a private, confidential space. Consultations are conducted via encrypted, secure video links, and your medical histories and digital prescriptions are stored securely."
+          "Online sessions provide a private, confidential space. Consultations are conducted via secure video links, and your details and digital prescriptions are handled securely."
         ]
       },
       {
@@ -244,16 +244,16 @@ export const blogPosts: BlogPost[] = [
         paragraphs: [
           "Consulting a doctor online is a straightforward, three-step process:",
           "Step 1: Choose Your Concern & Practitioner. Browse our directory of verified homeopathic doctors in India, filter by clinical experience or language, and select a practitioner.",
-          "Step 2: Join the Virtual Room. At the scheduled time, click the link to join your secure, browser-based video consultation. The doctor will conduct a detailed case review.",
-          "Step 3: Download Your Prescription. After the consultation, the doctor generates a digital homeopathy prescription. You can view, print, or download this file from your dashboard."
+          "Step 2: Join the Consultation. At the scheduled time, click the link shared with you by our coordinators on WhatsApp to join your secure video consultation. The doctor will conduct a detailed case review.",
+          "Step 3: Receive Your Prescription. After the consultation, our team will share the digital homeopathy prescription with you directly on WhatsApp so you can save or print it."
         ]
       },
       {
         heading: "Technology & Safety: Protecting Your Data",
         level: 2,
         paragraphs: [
-          "Security is a core priority for online medical care. VitaHomeo uses WebRTC technology to secure video and audio streams, protecting your consultation from unauthorized access.",
-          "All patient records, medical histories, and digital prescriptions are stored in an encrypted database. This ensures your private medical data remains confidential and accessible only to you and your authorized practitioner."
+          "Security is a core priority for online medical care. VitaHomeo coordinates consultations using secure video calling platforms to protect your privacy.",
+          "All patient records, medical histories, and digital prescriptions are handled with strict confidentiality. This ensures your private medical details are shared only with your practitioner to coordinate your care."
         ]
       },
       {

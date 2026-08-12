@@ -15,9 +15,9 @@ export default function PrivacyPage() {
   const sections = [
     { title: "Information We Collect", content: "We collect information you provide directly to us, such as your name, contact details (phone and email), preferred consultation timing, and health-related details necessary to connect you with a homeopathic practitioner. We also collect basic telemetry analytics to optimize platform speed." },
     { title: "How We Use Your Information", content: "Your information is used solely to facilitate telemedicine consultations with verified doctors, send appointment details or links, and improve our services. We strictly maintain records privacy and do not sell or lease patient records to third-party marketing networks." },
-    { title: "Data Security & Encryption", content: "All patient information and medical files are protected. Only authorized practitioners involved in your clinical care are permitted to view your uploaded health logs." },
+    { title: "Data Security & Confidentiality", content: "All patient information is handled with care and kept confidential. Only authorized practitioners involved in your clinical care are permitted to view your health details." },
     { title: "Use of Cookies", content: "We use minimal technical cookies to keep you logged in, save your layout choices (such as light or dark themes), and remember your preferences. We do not run invasive tracking scripts for advertising." },
-    { title: "Patient Rights & Record Requests", content: "Under healthcare rules, you have the right to request a copy of your records, correct any inaccuracies, or request account deletion. You can reach out to our team at support@vitahomeo.com for any requests." },
+    { title: "Patient Rights & Record Requests", content: "Under healthcare rules, you have the right to request a copy of your records, correct any inaccuracies, or request account deletion. You can reach out to our team at vitahomeo15@gmail.com for any requests." },
     { title: "Policy Modifications", content: "We may update this Privacy Policy to align with new regulations or technology changes. We will notify you of any major changes by displaying a notice on our website." },
   ];
 
