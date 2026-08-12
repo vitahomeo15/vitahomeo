@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import DoctorProfileClient from "./DoctorProfileClient";
+import DoctorProfileClient from "@/components/DoctorProfileClient";
 
 export const metadata: Metadata = {
   title: "Dr. Arun Kumar - Constitutional Homeopathy Specialist | VitaHomeo",

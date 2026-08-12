@@ -3,7 +3,10 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
 import { Metadata } from "next";
-import { MapPin, Stethoscope, Clock, IndianRupee, Star, ShieldCheck } from "lucide-react";
+import { MapPin, Stethoscope, Clock, IndianRupee, ShieldCheck } from "lucide-react";
+import { supabase } from "@/lib/supabase";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Find Homeopathic Doctors Online | VitaHomeo",
@@ -13,22 +16,58 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DoctorsPage() {
-  const doctors = [
-    { 
-      id: "dr-arun-kumar",
-      name: "Dr. Arun Kumar", 
-      degree: "DHMS", 
-      experience: "19 Years Experience", 
-      location: "Hajipur, Bihar", 
-      specialty: "Constitutional Homeopathy & Chronic Care", 
-      bio: "For the past 19 years, I have had the privilege of serving patients through homeopathy. Every consultation has reinforced my belief that personalized care begins with understanding the person, not just the symptoms.",
-      fee: "499",
-      timing: "6:00 PM - 10:00 PM",
-      days: "Mon - Sun",
-      image: "/Doc photo/dr.arun kr.jpeg"
+// Fallback hardcoded doctor: Dr. Arun Kumar
+const arunKumarFallback = {
+  id: "dr-arun-kumar",
+  slug: "dr-arun-kumar",
+  name: "Dr. Arun Kumar", 
+  degree: "DHMS", 
+  experience: "19 Years Experience", 
+  location: "Hajipur, Bihar", 
+  specialty: "Constitutional Homeopathy & Chronic Care", 
+  bio: "For the past 19 years, I have had the privilege of serving patients through homeopathy. Every consultation has reinforced my belief that personalized care begins with understanding the person, not just the symptoms.",
+  fee: "499",
+  timing: "6:00 PM - 10:00 PM",
+  days: "Mon - Sun",
+  image: "/Doc photo/dr.arun kr.jpeg"
+};
+
+export default async function DoctorsPage() {
+  let dbDoctors: any[] = [];
+  try {
+    const { data } = await supabase
+      .from("public_doctor_profiles")
+      .select("*")
+      .order("created_at", { ascending: false });
+    
+    if (data) {
+      dbDoctors = data;
     }
-  ];
+  } catch (e) {
+    console.error("Failed to query verified doctors from Supabase:", e);
+  }
+
+  // Map database entries to match layout shape
+  const normalizedDbDoctors = dbDoctors.map((doc) => ({
+    id: doc.id,
+    slug: doc.slug,
+    name: doc.full_name,
+    degree: doc.qualification,
+    experience: `${doc.experience} Years Experience`,
+    location: doc.city && doc.state ? `${doc.city}, ${doc.state}` : "India",
+    specialty: doc.specialty || "Homeopathic Specialist",
+    bio: doc.bio || "No biography details provided.",
+    fee: doc.consultation_fees ? doc.consultation_fees.toString() : "0",
+    timing: doc.preferred_hours,
+    days: doc.preferred_days,
+    image: doc.profile_photo_url || "/placeholder-doctor.png"
+  }));
+
+  // Merge lists: DB doctors first. If Dr. Arun Kumar is not present in database, append as fallback.
+  const doctors = [...normalizedDbDoctors];
+  if (!doctors.some((d) => d.slug === "dr-arun-kumar")) {
+    doctors.push(arunKumarFallback);
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-bg-custom transition-colors duration-300">
@@ -47,7 +86,7 @@ export default function DoctorsPage() {
           <div className="flex flex-col gap-6">
             {doctors.map((doc) => (
               <div 
-                key={doc.id} 
+                key={doc.slug} 
                 className="bg-white dark:bg-[#101c0f] rounded-[24px] border border-line-custom dark:border-[#1d2a1a] shadow-sm p-6 md:p-8 grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] gap-6 hover:shadow-md hover:border-brand/30 transition-all"
               >
                 {/* Profile Picture */}
@@ -132,7 +171,7 @@ export default function DoctorsPage() {
                       <Link href="/book" className="w-full h-9 rounded-xl bg-brand hover:bg-brand-hover text-white text-[11px] font-bold flex items-center justify-center transition-all shadow-sm">
                         Book Appointment
                       </Link>
-                      <Link href="/doctors/dr-arun-kumar" className="w-full h-9 rounded-xl bg-white dark:bg-[#101c0f] text-brand border border-brand/20 dark:border-[#1d2a1a] hover:bg-brand hover:text-white text-[11px] font-bold flex items-center justify-center transition-all shadow-sm">
+                      <Link href={`/doctors/${doc.slug}`} className="w-full h-9 rounded-xl bg-white dark:bg-[#101c0f] text-brand border border-brand/20 dark:border-[#1d2a1a] hover:bg-brand hover:text-white text-[11px] font-bold flex items-center justify-center transition-all shadow-sm">
                         View Profile
                       </Link>
                     </div>

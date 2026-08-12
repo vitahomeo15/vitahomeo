@@ -14,6 +14,7 @@ interface Review {
 
 interface DoctorProfileClientProps {
   doctor: {
+    id?: string;
     name: string;
     degree: string;
     experience: string;
@@ -24,6 +25,14 @@ interface DoctorProfileClientProps {
     timing: string;
     days: string;
     image: string;
+    
+    // Primary Practice Location fields (stored directly on doctors table)
+    clinic_address?: string;
+    locality?: string;
+    city?: string;
+    state?: string;
+    pin_code?: string;
+    google_maps_url?: string;
   };
 }
 
@@ -159,9 +168,6 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
             <p className="text-sm text-body-text dark:text-[#aebba8] leading-relaxed font-semibold">
               {doctor.bio}
             </p>
-            <p className="text-sm text-body-text dark:text-[#aebba8] leading-relaxed mt-4 font-semibold">
-              Dr. Arun Kumar is a dedicated practitioner based in Bihar, specializing in constitutional prescribing. He matches a deep understanding of standard homeopathy principles with modern teleconsultation facilities to provide convenient, highly personalized long-term medical care.
-            </p>
           </div>
 
           <div>
@@ -175,6 +181,50 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
             </div>
           </div>
         </div>
+
+        {/* Primary Practice Location Card */}
+        {(doctor.clinic_address || doctor.locality || doctor.city || doctor.state || doctor.pin_code) && (
+          <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[24px] p-6 md:p-8 shadow-sm space-y-4">
+            <h2 className="text-lg font-black text-ink dark:text-white flex items-center gap-2">
+              <MapPin className="w-5 h-5 text-brand" /> Primary Practice Location
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm font-semibold text-body-text dark:text-[#aebba8]">
+              {doctor.clinic_address && (
+                <div className="md:col-span-2">
+                  <span className="text-muted-text dark:text-[#71806c] block text-[10px] uppercase tracking-wider font-bold mb-0.5">Clinic Address</span>
+                  <span className="text-ink dark:text-white font-bold">{doctor.clinic_address}</span>
+                </div>
+              )}
+              {doctor.locality && (
+                <div>
+                  <span className="text-muted-text dark:text-[#71806c] block text-[10px] uppercase tracking-wider font-bold mb-0.5">Locality</span>
+                  <span className="text-ink dark:text-white font-bold">{doctor.locality}</span>
+                </div>
+              )}
+              {(doctor.city || doctor.state || doctor.pin_code) && (
+                <div>
+                  <span className="text-muted-text dark:text-[#71806c] block text-[10px] uppercase tracking-wider font-bold mb-0.5">City / State / PIN</span>
+                  <span className="text-ink dark:text-white font-bold">
+                    {[doctor.city, doctor.state].filter(Boolean).join(", ")}
+                    {doctor.pin_code ? ` - ${doctor.pin_code}` : ""}
+                  </span>
+                </div>
+              )}
+              {doctor.google_maps_url && (
+                <div className="md:col-span-2 pt-2 border-t border-line-custom/50 dark:border-[#1d2a1a]/50">
+                  <a
+                    href={doctor.google_maps_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-brand hover:underline"
+                  >
+                    <MapPin className="w-3.5 h-3.5 animate-bounce" /> View on Google Maps
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Reviews Section */}
         <div id="reviews" className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[24px] p-6 md:p-8 shadow-sm space-y-8">
