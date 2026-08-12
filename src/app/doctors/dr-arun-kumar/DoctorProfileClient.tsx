@@ -365,7 +365,7 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
             href="/book"
             className="w-full h-12 bg-gradient-to-r from-brand to-[#0ea98b] text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
-            <Calendar className="w-4 h-4" /> Request Consultation
+            <Calendar className="w-4 h-4" /> Book Appointment
           </Link>
 
           <p className="text-[10px] text-muted-text dark:text-[#71806c] text-center leading-relaxed font-semibold">

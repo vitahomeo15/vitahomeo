@@ -130,7 +130,7 @@ export default function DoctorsPage() {
 
                     <div className="flex flex-col gap-2 mt-5 pt-3 border-t border-line-custom/50 dark:border-[#1d2a1a]/50">
                       <Link href="/book" className="w-full h-9 rounded-xl bg-brand hover:bg-brand-hover text-white text-[11px] font-bold flex items-center justify-center transition-all shadow-sm">
-                        Request Consultation
+                        Book Appointment
                       </Link>
                       <Link href="/doctors/dr-arun-kumar" className="w-full h-9 rounded-xl bg-white dark:bg-[#101c0f] text-brand border border-brand/20 dark:border-[#1d2a1a] hover:bg-brand hover:text-white text-[11px] font-bold flex items-center justify-center transition-all shadow-sm">
                         View Profile

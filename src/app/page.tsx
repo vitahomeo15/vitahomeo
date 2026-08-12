@@ -179,8 +179,8 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <Link href="/doctors" 
                   className="px-8 py-4 bg-brand hover:bg-brand-hover text-white font-semibold text-sm rounded-button text-center shadow-button-premium hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-                  <Stethoscope className="w-4.5 h-4.5" />
-                  Find a Doctor
+                  <Calendar className="w-4.5 h-4.5" />
+                  Book Consultation
                 </Link>
                 <Link href="/join"
                   className="px-8 py-4 bg-white border border-brand text-brand-dark dark:text-white dark:border-white/30 hover:bg-bg-soft font-semibold text-sm rounded-button text-center shadow-button-premium hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
@@ -592,8 +592,8 @@ export default function Home() {
 
             <Link href="/doctors"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand hover:bg-[#F5F8F5] font-semibold text-sm rounded-button shadow-button-premium hover:scale-[1.02] transition-all">
-              <Stethoscope className="w-4 h-4" />
-              Find a Doctor
+              <Calendar className="w-4 h-4" />
+              Book Consultation
             </Link>
           </div>
         </section>

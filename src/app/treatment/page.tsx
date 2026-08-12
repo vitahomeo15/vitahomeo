@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Check, ChevronDown, Clock, FileText, ArrowRight, Activity, Video } from "lucide-react";
+import { Check, ChevronDown, Clock, FileText, ArrowRight, Activity, Video, Calendar } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Homeopathy Treatment Library | VitaHomeo",
@@ -151,7 +151,7 @@ export default function TreatmentHubPage() {
   ];
 
   const processSteps = [
-    { label: "Request Consultation", desc: "Select timings and submit a request slot." },
+    { label: "Book Appointment", desc: "Select timings and submit a request slot." },
     { label: "Share Case History", desc: "Share details on your physical and emotional symptoms." },
     { label: "Video Consultation", desc: "Private video call with the doctor." },
     { label: "Constitutional Analysis", desc: "Doctor evaluates systemic root causes." },
@@ -194,7 +194,8 @@ export default function TreatmentHubPage() {
                   href="/doctors" 
                   className="px-8 py-4 bg-brand hover:bg-brand-hover text-white font-semibold text-sm rounded-button text-center shadow-button-premium hover:scale-[1.02] transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  Find a Doctor
+                  <Calendar className="w-4.5 h-4.5" />
+                  Book Consultation
                 </Link>
                 <a 
                   href="#categories" 
@@ -460,8 +461,8 @@ export default function TreatmentHubPage() {
               href="/doctors" 
               className="px-8 py-3.5 bg-white text-brand hover:bg-[#f4f9f3] active:scale-[0.98] transition-all font-bold text-sm rounded-xl inline-flex items-center gap-1.5 shadow-sm"
             >
-              <Video className="w-4 h-4" />
-              Find a Doctor
+              <Calendar className="w-4 h-4" />
+              Book Consultation
             </Link>
           </div>
         </section>

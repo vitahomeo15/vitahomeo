@@ -136,7 +136,7 @@ export function PatientBookingForm() {
             onClick={() => setStatus("idle")}
             className="text-xs text-muted-text dark:text-[#71806c] hover:underline font-bold py-1.5 cursor-pointer"
           >
-            Request Another Consultation
+            Book Another Appointment
           </button>
         </div>
       </div>
@@ -146,7 +146,7 @@ export function PatientBookingForm() {
   return (
     <div className="bg-white dark:bg-[#101c0f] border border-[#e3eae0] dark:border-[#1d2a1a] rounded-[28px] p-6 md:p-8 shadow-lg max-w-2xl mx-auto transition-colors duration-300">
       <div className="mb-6">
-        <h2 className="text-xl md:text-2xl font-black text-ink dark:text-white mb-2">Request Consultation</h2>
+        <h2 className="text-xl md:text-2xl font-black text-ink dark:text-white mb-2">Book Appointment</h2>
         <p className="text-xs md:text-sm text-body-text dark:text-[#aebba8] font-semibold leading-relaxed">
           Provide your details below to request an online homeopathy consultation. Your medical details are handled securely.
         </p>
@@ -314,7 +314,7 @@ export function PatientBookingForm() {
               Sending Request...
             </>
           ) : (
-            "Request Consultation"
+            "Book Appointment"
           )}
         </button>
 

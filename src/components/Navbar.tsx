@@ -92,13 +92,13 @@ export function Navbar() {
               Join as a Doctor
             </Link>
 
-            {/* Find a Doctor button */}
+            {/* Book Consultation button */}
             <Link
               href="/doctors"
               className="hidden md:inline-flex items-center justify-center h-10 px-5 rounded-button text-sm font-semibold text-white bg-brand hover:bg-brand-hover shadow-button-premium active:scale-[0.98] transition-all gap-1.5"
             >
-              <Stethoscope className="w-4 h-4" />
-              Find a Doctor
+              <Calendar className="w-4 h-4" />
+              Book Consultation
             </Link>
 
             {/* Mobile Menu trigger */}
@@ -153,8 +153,8 @@ export function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="w-full flex items-center justify-center h-11 rounded-button font-semibold text-white bg-brand hover:bg-brand-hover shadow-button-premium gap-1.5"
               >
-                <Stethoscope className="w-4 h-4" />
-                Find a Doctor
+                <Calendar className="w-4 h-4" />
+                Book Consultation
               </Link>
             </div>
           </div>
