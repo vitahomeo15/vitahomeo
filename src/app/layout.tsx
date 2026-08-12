@@ -22,9 +22,11 @@ export const metadata: Metadata = {
   title: "VitaHomeo | Homeopathic Treatment",
   description: "Consult experienced homeopathic doctors online in India. Book secure video consultations, receive digital homeopathy prescriptions, and get personalized holistic treatment from the comfort of home.",
   icons: {
-    icon: "/icon-mark.png",
-    shortcut: "/icon-mark.png",
-    apple: "/icon-mark.png",
+    icon: [
+      { url: "/vitahomeo-favicon-512.png", sizes: "512x512", type: "image/png" }
+    ],
+    shortcut: "/vitahomeo-favicon-512.png",
+    apple: "/vitahomeo-favicon-512.png",
   },
 };
 
@@ -40,6 +42,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="icon" type="image/png" sizes="512x512" href="/vitahomeo-favicon-512.png" />
+        <link rel="apple-touch-icon" href="/vitahomeo-favicon-512.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
