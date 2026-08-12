@@ -222,10 +222,10 @@ export default function Home() {
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center max-w-2xl mx-auto mb-20">
               <span className="text-xs font-bold text-brand uppercase tracking-widest">How It Works</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 font-display">Simple 4-Step Process</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 font-display">Simple 3-Step Process</h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative">
               {howItWorksSteps.map((step, idx) => (
                 <div key={idx} className="relative bg-white dark:bg-[#141e14] border border-[#E6ECE6] dark:border-[#1d2a1a] p-8 rounded-card flex flex-col items-center text-center shadow-card-premium hover:border-brand/35 hover:shadow-floating-premium transition-all duration-300">
                   <div className="absolute top-4 left-4 text-xs font-bold text-brand/40 dark:text-brand/30 font-display">
