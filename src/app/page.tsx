@@ -6,6 +6,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { DoctorVerificationBadge } from "@/components/DoctorVerificationBadge";
 import { blogPosts } from "@/data/blogData";
+import { supabase } from "@/lib/supabase";
 import { 
   Lock, 
   CreditCard, 
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
   // Hero trust badges
   const heroTrustBadges = [
     { icon: <UserCheck className="w-5 h-5" />, text: "Verified Doctors" },
@@ -56,7 +57,7 @@ export default function Home() {
       desc: "Video consultations are conducted over secure platforms, keeping your health discussions confidential." 
     },
     { 
-      icon: <ScaleIcon className="w-6 h-6" />, 
+      icon: <Lock className="w-6 h-6" />, 
       title: "Transparent Pricing", 
       desc: "Individual consultation fees are clearly shown on each profile page before you schedule. No hidden platform costs." 
     },
@@ -84,20 +85,33 @@ export default function Home() {
     { step: "03", title: "Consult online", desc: "Meet your practitioner over a secure video or audio call directly in your browser.", icon: <Video className="w-5 h-5" /> }
   ];
 
-  // Doctor Listings (Only Arun Kumar is active)
-  const activeDoctors = [
-    {
-      id: "dr-arun-kumar",
-      name: "Dr. Arun Kumar",
-      qualification: "DHMS (Bihar Medical Council)",
-      experience: "19 Years Experience",
-      specialization: "Constitutional Homeopathy & Chronic Care",
-      languages: "English, Hindi",
-      rating: "No reviews yet",
-      availableToday: true,
-      image: "/Doc photo/dr.arun kr.jpeg"
+  // Query verified doctors from Supabase
+  let dbDoctors: any[] = [];
+  try {
+    const { data } = await supabase
+      .from("public_doctor_profiles")
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (data) {
+      dbDoctors = data;
     }
-  ];
+  } catch (e) {
+    console.error("Failed to query verified doctors for homepage:", e);
+  }
+
+  // Map to activeDoctors layout structure
+  const activeDoctors = dbDoctors.map((doc) => ({
+    id: doc.id,
+    slug: doc.slug,
+    name: doc.full_name,
+    qualification: doc.qualification,
+    experience: `${doc.experience} Years Experience`,
+    specialization: doc.specialty || "Homeopathic Specialist",
+    languages: doc.languages ? doc.languages.join(", ") : "",
+    rating: "No reviews yet",
+    availableToday: true,
+    image: doc.profile_photo_url || "/placeholder-doctor.png"
+  }));
 
   // Conditions We Treat (SEO)
   const conditions = [
@@ -255,78 +269,93 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex justify-center">
-              {activeDoctors.map((doc) => (
-                <div key={doc.id} className="group relative bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1d2a1a] rounded-card p-6 hover:border-brand/30 hover:shadow-floating-premium transition-all duration-300 flex flex-col justify-between w-full max-w-md shadow-card-premium">
-                  <div>
-                    {/* Doctor Photo */}
-                    <div className="relative w-full aspect-[4/3] rounded-image overflow-hidden mb-5">
-                      <Image 
-                        src={doc.image} 
-                        alt={`Doctor Profile picture of ${doc.name}`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 300px"
-                        className="object-cover object-top group-hover:scale-102 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                      
-                      {/* Availability status */}
-                      {doc.availableToday && (
-                        <div className="absolute top-3 left-3 bg-emerald-600/90 text-white text-[9px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
-                          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                          Available for Booking
+            <div className="flex flex-wrap justify-center gap-6">
+              {activeDoctors.length > 0 ? (
+                activeDoctors.map((doc) => (
+                  <div key={doc.id} className="group relative bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1d2a1a] rounded-card p-6 hover:border-brand/30 hover:shadow-floating-premium transition-all duration-300 flex flex-col justify-between w-full max-w-md shadow-card-premium">
+                    <div>
+                      {/* Doctor Photo */}
+                      <div className="relative w-full aspect-[4/3] rounded-image overflow-hidden mb-5">
+                        <Image 
+                          src={doc.image} 
+                          alt={`Doctor Profile picture of ${doc.name}`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 300px"
+                          className="object-cover object-top group-hover:scale-102 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                        
+                        {/* Availability status */}
+                        {doc.availableToday && (
+                          <div className="absolute top-3 left-3 bg-emerald-600/90 text-white text-[9px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+                            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                            Available for Booking
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Badge */}
+                      <div className="mb-3">
+                        <DoctorVerificationBadge type="profile" />
+                      </div>
+
+                      {/* Name & Qualification */}
+                      <h3 className="text-xl font-bold text-ink dark:text-white leading-tight font-display">{doc.name}</h3>
+                      <p className="text-xs text-muted-text dark:text-muted/70 font-semibold mt-1">{doc.qualification}</p>
+
+                      {/* Metadata details */}
+                      <div className="mt-5 pt-4 border-t border-[#e6ece6] dark:border-[#1d2a1a]/50 grid grid-cols-2 gap-y-3 text-[11px] text-body-text dark:text-[#aebba8] font-semibold">
+                        <div>
+                          <span className="text-muted-text block text-[9px] font-medium">Experience:</span>
+                          <span>{doc.experience}</span>
                         </div>
-                      )}
+                        <div>
+                          <span className="text-muted-text block text-[9px] font-medium">Specialization:</span>
+                          <span className="line-clamp-1">{doc.specialization}</span>
+                        </div>
+                        <div>
+                          <span className="text-muted-text block text-[9px] font-medium">Languages:</span>
+                          <span className="line-clamp-1">{doc.languages}</span>
+                        </div>
+                        <div>
+                          <span className="text-muted-text block text-[9px] font-medium">Rating:</span>
+                          <span className="flex items-center gap-1 font-bold">
+                            {doc.rating === "No reviews yet" ? (
+                              "No reviews yet"
+                            ) : (
+                              <><Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" /> {doc.rating} / 5</>
+                            )}
+                          </span>
+                        </div>
+                      </div>
                     </div>
 
-                    {/* Badge */}
-                    <div className="mb-3">
-                      <DoctorVerificationBadge type="profile" />
-                    </div>
-
-                    {/* Name & Qualification */}
-                    <h3 className="text-xl font-bold text-ink dark:text-white leading-tight font-display">{doc.name}</h3>
-                    <p className="text-xs text-muted-text dark:text-muted/70 font-semibold mt-1">{doc.qualification}</p>
-
-                    {/* Metadata details */}
-                    <div className="mt-5 pt-4 border-t border-[#e6ece6] dark:border-[#1d2a1a]/50 grid grid-cols-2 gap-y-3 text-[11px] text-body-text dark:text-[#aebba8] font-semibold">
-                      <div>
-                        <span className="text-muted-text block text-[9px] font-medium">Experience:</span>
-                        <span>{doc.experience}</span>
-                      </div>
-                      <div>
-                        <span className="text-muted-text block text-[9px] font-medium">Specialization:</span>
-                        <span className="line-clamp-1">{doc.specialization}</span>
-                      </div>
-                      <div>
-                        <span className="text-muted-text block text-[9px] font-medium">Languages:</span>
-                        <span className="line-clamp-1">{doc.languages}</span>
-                      </div>
-                      <div>
-                        <span className="text-muted-text block text-[9px] font-medium">Rating:</span>
-                        <span className="flex items-center gap-1 font-bold">
-                          {doc.rating === "No reviews yet" ? (
-                            "No reviews yet"
-                          ) : (
-                            <><Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" /> {doc.rating} / 5</>
-                          )}
-                        </span>
-                      </div>
+                    <div className="mt-8 grid grid-cols-2 gap-3">
+                      <Link href="/book"
+                        className="w-full h-11 rounded-button bg-brand hover:bg-brand-hover text-white text-xs font-bold flex items-center justify-center transition-all shadow-sm hover:shadow-button-premium">
+                        Request Consultation
+                      </Link>
+                      <Link href={`/doctors/${doc.slug}`}
+                        className="w-full h-11 rounded-button bg-bg-soft dark:bg-[#152414] text-brand hover:bg-brand hover:text-white text-xs font-bold flex items-center justify-center transition-all border border-brand/10 shadow-sm hover:shadow-button-premium">
+                        View Profile
+                      </Link>
                     </div>
                   </div>
-
-                  <div className="mt-8 grid grid-cols-2 gap-3">
-                    <Link href="/book"
-                      className="w-full h-11 rounded-button bg-brand hover:bg-brand-hover text-white text-xs font-bold flex items-center justify-center transition-all shadow-sm hover:shadow-button-premium">
-                      Request Consultation
-                    </Link>
-                    <Link href="/doctors/dr-arun-kumar"
-                      className="w-full h-11 rounded-button bg-bg-soft dark:bg-[#152414] text-brand hover:bg-brand hover:text-white text-xs font-bold flex items-center justify-center transition-all border border-brand/10 shadow-sm hover:shadow-button-premium">
-                      View Profile
+                ))
+              ) : (
+                <div className="bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1d2a1a] rounded-[24px] p-10 text-center shadow-card-premium max-w-md w-full">
+                  <Stethoscope className="w-12 h-12 text-brand/40 mx-auto mb-4 animate-pulse" />
+                  <h3 className="text-xl font-bold text-ink dark:text-white mb-2 font-display">Doctors Coming Soon...</h3>
+                  <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-semibold">
+                    We are currently vetting and onboarding homeopathic specialists. Please check back shortly for available online consultations.
+                  </p>
+                  <div className="mt-6 flex justify-center">
+                    <Link href="/join" className="px-5 py-2.5 bg-brand hover:bg-brand-hover text-white text-xs font-bold rounded-xl shadow-sm text-center">
+                      Join as a Doctor
                     </Link>
                   </div>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </section>
