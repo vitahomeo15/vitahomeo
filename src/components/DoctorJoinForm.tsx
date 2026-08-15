@@ -341,7 +341,6 @@ export function DoctorJoinForm() {
     }
 
     if (currentStep === 5) {
-      if (!formData.clinicAddress.trim()) newErrors.clinicAddress = "Clinic address is required";
       if (!formData.city.trim()) newErrors.city = "City is required";
       if (!formData.state.trim()) newErrors.state = "State is required";
       
@@ -491,7 +490,7 @@ export function DoctorJoinForm() {
             slug: slug,
             profile_status: "submitted",
             verification_status: "pending",
-            clinic_address: formData.clinicAddress,
+            clinic_address: formData.clinicAddress || null,
             locality: formData.locality || null,
             city: formData.city,
             state: formData.state,
@@ -867,7 +866,7 @@ export function DoctorJoinForm() {
       {/* Clinic Address */}
       <div className="space-y-1">
         <label htmlFor="clinicAddress" className="text-xs font-bold text-ink dark:text-white uppercase tracking-wider flex items-center gap-1">
-          <MapPin className="w-3.5 h-3.5 text-brand" /> Clinic / Practice Address
+          <MapPin className="w-3.5 h-3.5 text-brand" /> Clinic / Practice Address (Optional)
         </label>
         <input
           type="text"
@@ -1188,7 +1187,12 @@ export function DoctorJoinForm() {
               </button>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-body-text dark:text-[#aebba8]">
-              <div className="sm:col-span-2"><span className="text-muted-text block text-[9px] uppercase tracking-wider mb-0.5">Clinic Address</span><span className="text-ink dark:text-white font-bold">{formData.clinicAddress}</span></div>
+              {formData.clinicAddress && (
+                <div className="sm:col-span-2">
+                  <span className="text-muted-text block text-[9px] uppercase tracking-wider mb-0.5">Clinic Address</span>
+                  <span className="text-ink dark:text-white font-bold">{formData.clinicAddress}</span>
+                </div>
+              )}
               {formData.locality && <div><span className="text-muted-text block text-[9px] uppercase tracking-wider mb-0.5">Locality / Area</span><span className="text-ink dark:text-white font-bold">{formData.locality}</span></div>}
               <div><span className="text-muted-text block text-[9px] uppercase tracking-wider mb-0.5">City</span><span className="text-ink dark:text-white font-bold">{formData.city}</span></div>
               <div><span className="text-muted-text block text-[9px] uppercase tracking-wider mb-0.5">State / PIN</span><span className="text-ink dark:text-white font-bold">{formData.state} - {formData.pinCode}</span></div>

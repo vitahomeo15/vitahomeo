@@ -268,7 +268,7 @@ export default function DoctorReviewPanel({ doctor }: DoctorReviewPanelProps) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold text-body-text dark:text-[#aebba8]">
               <div className="sm:col-span-2">
                 <span className="text-muted-text block text-[9px] uppercase tracking-wider font-bold mb-0.5">Clinic Address</span>
-                <span className="text-ink dark:text-white font-bold">{doctor.clinic_address}</span>
+                <span className="text-ink dark:text-white font-bold">{doctor.clinic_address || "Not Provided"}</span>
               </div>
               {doctor.locality && (
                 <div>
