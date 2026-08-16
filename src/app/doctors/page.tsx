@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { MapPin, Stethoscope, Clock, IndianRupee, ShieldCheck } from "lucide-react";
 import { supabase } from "@/lib/supabase";
+import { groupAvailability } from "@/lib/availability";
 
 export const dynamic = "force-dynamic";
 
@@ -14,22 +15,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.vitahomeo.com/doctors",
   },
-};
-
-// Fallback hardcoded doctor: Dr. Arun Kumar
-const arunKumarFallback = {
-  id: "dr-arun-kumar",
-  slug: "dr-arun-kumar",
-  name: "Dr. Arun Kumar", 
-  degree: "DHMS", 
-  experience: "19 Years Experience", 
-  location: "Hajipur, Bihar", 
-  specialty: "Constitutional Homeopathy & Chronic Care", 
-  bio: "For the past 19 years, I have had the privilege of serving patients through homeopathy. Every consultation has reinforced my belief that personalized care begins with understanding the person, not just the symptoms.",
-  fee: "499",
-  timing: "6:00 PM - 10:00 PM",
-  days: "Mon - Sun",
-  image: "/Doc photo/dr.arun kr.jpeg"
 };
 
 export default async function DoctorsPage() {
@@ -47,21 +32,27 @@ export default async function DoctorsPage() {
     console.error("Failed to query verified doctors from Supabase:", e);
   }
 
-  // Map database entries to match layout shape
-  const normalizedDbDoctors = dbDoctors.map((doc) => ({
-    id: doc.id,
-    slug: doc.slug,
-    name: doc.full_name,
-    degree: doc.qualification,
-    experience: `${doc.experience} Years Experience`,
-    location: doc.city && doc.state ? `${doc.city}, ${doc.state}` : "India",
-    specialty: doc.specialty || "Homeopathic Specialist",
-    bio: doc.bio || "No biography details provided.",
-    fee: doc.consultation_fees ? doc.consultation_fees.toString() : "0",
-    timing: doc.preferred_hours,
-    days: doc.preferred_days,
-    image: doc.profile_photo_url || "/placeholder-doctor.png"
-  }));
+  // Map database entries to match layout shape, grouping availability timings
+  const normalizedDbDoctors = dbDoctors.map((doc) => {
+    const grouped = groupAvailability(doc.preferred_hours, doc.preferred_days);
+    const daysStr = grouped.map((g) => g.days).join(", ");
+    const timingStr = grouped.map((g) => g.hours).join(" | ");
+
+    return {
+      id: doc.id,
+      slug: doc.slug,
+      name: doc.full_name,
+      degree: doc.qualification,
+      experience: `${doc.experience} Years Experience`,
+      location: doc.city && doc.state ? `${doc.city}, ${doc.state}` : "India",
+      specialty: doc.specialty || "Homeopathic Specialist",
+      bio: doc.bio || "No biography details provided.",
+      fee: doc.consultation_fees ? doc.consultation_fees.toString() : "0",
+      timing: timingStr,
+      days: daysStr,
+      image: doc.profile_photo_url || "/placeholder-doctor.png"
+    };
+  });
 
   const doctors = [...normalizedDbDoctors];
 

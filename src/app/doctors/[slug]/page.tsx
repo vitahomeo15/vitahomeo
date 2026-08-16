@@ -13,26 +13,6 @@ interface RouteParams {
   params: Promise<{ slug: string }>;
 }
 
-// Fallback hardcoded doctor data for Dr. Arun Kumar
-const arunKumarFallback = {
-  name: "Dr. Arun Kumar",
-  degree: "DHMS (Bihar Medical Council)",
-  experience: "19 Years Experience",
-  location: "Hajipur, Bihar",
-  specialty: "Constitutional Homeopathy & Chronic Care",
-  bio: "For the past 19 years, I have had the privilege of serving patients through homeopathy. Every consultation has reinforced my belief that true healing begins with understanding the person, not just the symptoms.",
-  fee: "499",
-  timing: "6:00 PM - 10:00 PM",
-  days: "Mon - Sun",
-  image: "/Doc photo/dr.arun kr.jpeg",
-  clinic_address: "Anjanpir Chowk, near Lalganj Road",
-  locality: "Anjanpir",
-  city: "Hajipur",
-  state: "Bihar",
-  pin_code: "844101",
-  google_maps_url: "https://maps.google.com/?q=Hajipur+Bihar"
-};
-
 export async function generateMetadata({ params }: RouteParams): Promise<Metadata> {
   const resolvedParams = await params;
   const slug = resolvedParams.slug.toLowerCase();
@@ -40,24 +20,18 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
   let doctorName = "Doctor Profile";
   let specialty = "Homeopathic Specialist";
 
-  if (slug === "dr-arun-kumar") {
-    doctorName = arunKumarFallback.name;
-    specialty = arunKumarFallback.specialty;
-  } else {
-    // Attempt to read doctor details from database for metadata
-    try {
-      const { data } = await supabase
-        .from("public_doctor_profiles")
-        .select("full_name, specialty")
-        .eq("slug", slug)
-        .single();
-      if (data) {
-        doctorName = data.full_name;
-        specialty = data.specialty || "Homeopathic Specialist";
-      }
-    } catch (e) {
-      // Ignore database errors during metadata generation
+  try {
+    const { data } = await supabase
+      .from("public_doctor_profiles")
+      .select("full_name, specialty")
+      .eq("slug", slug)
+      .single();
+    if (data) {
+      doctorName = data.full_name;
+      specialty = data.specialty || "Homeopathic Specialist";
     }
+  } catch (e) {
+    // Ignore database errors during metadata generation
   }
 
   return {
@@ -75,54 +49,34 @@ export default async function DoctorProfilePage({ params }: RouteParams) {
 
   let doctorData: any = null;
 
-  if (slug === "dr-arun-kumar") {
-    // Attempt to fetch from database first to allow overrides, default to fallback
-    try {
-      const { data } = await supabase
-        .from("public_doctor_profiles")
-        .select("*")
-        .eq("slug", slug)
-        .single();
-      if (data) {
-        doctorData = data;
-      }
-    } catch (e) {
-      // Ignore database check issues and use fallback
-    }
+  // Fetch from database directly
+  const { data, error } = await supabase
+    .from("public_doctor_profiles")
+    .select("*")
+    .eq("slug", slug)
+    .single();
 
-    if (!doctorData) {
-      doctorData = arunKumarFallback;
-    }
-  } else {
-    // Fetch from database
-    const { data, error } = await supabase
-      .from("public_doctor_profiles")
-      .select("*")
-      .eq("slug", slug)
-      .single();
-
-    if (error || !data) {
-      notFound();
-    }
-    doctorData = data;
+  if (error || !data) {
+    notFound();
   }
+  doctorData = data;
 
-  // Normalize data for DoctorProfileClient component
+  // Normalize data for DoctorProfileClient component using database as single source of truth
   const normalizedDoctor = {
-    name: doctorData.full_name || doctorData.name,
-    degree: doctorData.qualification || doctorData.degree,
+    name: doctorData.full_name,
+    degree: doctorData.qualification,
     experience: typeof doctorData.experience === "number" 
       ? `${doctorData.experience} Years Experience` 
-      : doctorData.experience,
+      : doctorData.experience || "Homeopathic Practitioner",
     location: doctorData.city && doctorData.state 
       ? `${doctorData.city}, ${doctorData.state}` 
-      : doctorData.location,
+      : "India",
     specialty: doctorData.specialty || "Homeopathic Specialist",
     bio: doctorData.bio || "No biography details provided.",
-    fee: doctorData.consultation_fees ? doctorData.consultation_fees.toString() : doctorData.fee,
-    timing: doctorData.preferred_hours || doctorData.timing,
-    days: doctorData.preferred_days || doctorData.days,
-    image: doctorData.profile_photo_url || doctorData.image || "/placeholder-doctor.png",
+    fee: doctorData.consultation_fees ? doctorData.consultation_fees.toString() : "0",
+    timing: doctorData.preferred_hours,
+    days: doctorData.preferred_days,
+    image: doctorData.profile_photo_url || "/placeholder-doctor.png",
     
     // Address location fields
     clinic_address: doctorData.clinic_address,

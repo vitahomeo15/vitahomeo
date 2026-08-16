@@ -7,6 +7,7 @@ import {
   ShieldAlert, CheckCircle2, FileText, AlertCircle, Loader2, ArrowLeft, 
   MapPin, Clock, Calendar, Check, X, ClipboardCheck, Send 
 } from "lucide-react";
+import { groupAvailability } from "@/lib/availability";
 
 interface DoctorReviewPanelProps {
   doctor: {
@@ -245,17 +246,14 @@ export default function DoctorReviewPanel({ doctor }: DoctorReviewPanelProps) {
             </div>
             
             <div className="border-t border-line-custom/40 dark:border-[#1d2a1a]/40 pt-4 space-y-2">
-              <span className="text-muted-text block text-[9px] uppercase tracking-wider font-bold">Availability Timings per day</span>
-              <div className="space-y-1">
-                {doctor.preferred_hours.split("; ").map((hoursStr) => {
-                  const parts = hoursStr.split(": ");
-                  return (
-                    <div key={hoursStr} className="flex justify-between items-center text-xs py-1 border-b border-line-custom/20 last:border-b-0">
-                      <span className="font-bold text-ink dark:text-white uppercase tracking-wider text-[10px]">{parts[0]}</span>
-                      <span className="font-bold text-muted-text">{parts[1]}</span>
-                    </div>
-                  );
-                })}
+              <span className="text-muted-text block text-[9px] uppercase tracking-wider font-bold">Grouped Availability Timings</span>
+              <div className="space-y-2">
+                {groupAvailability(doctor.preferred_hours, doctor.preferred_days).map((g, idx) => (
+                  <div key={idx} className="flex flex-col p-3 bg-bg-soft dark:bg-[#162315]/50 border border-line-custom/50 dark:border-[#1d2a1a]/50 rounded-xl">
+                    <span className="font-bold text-ink dark:text-white uppercase tracking-wider text-[10px]">{g.days}</span>
+                    <span className="font-bold text-brand text-xs mt-0.5">{g.hours}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

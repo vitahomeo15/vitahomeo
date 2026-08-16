@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { supabase } from "@/lib/supabase";
+import { submitDoctorOnboarding } from "@/app/admin/adminActions";
 import { 
   User, Phone, Mail, Award, Clock, FileText, CheckCircle, AlertCircle, 
   Loader2, CalendarDays, Upload, Image as ImageIcon, MapPin, ArrowLeft, 
@@ -396,6 +396,19 @@ export function DoctorJoinForm() {
   // ==========================================
   // 5. SUBMISSION FLOW & DUP CHECKS
   // ==========================================
+  const getBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const base64Str = reader.result as string;
+        const cleanBase64 = base64Str.split(",")[1];
+        resolve(cleanBase64);
+      };
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateStep(step)) return;
@@ -409,51 +422,22 @@ export function DoctorJoinForm() {
     setErrorMessage("");
 
     try {
-      // A. Check for obvious duplicate email / registration number
-      const { data: dupData, error: dupError } = await supabase
-        .from("doctors")
-        .select("id, email, registration_number")
-        .or(`email.eq.${formData.email.trim()},registration_number.eq.${formData.registrationNumber.trim()}`);
-
-      if (dupError) {
-        throw new Error(`Database verification check failed: ${dupError.message}`);
-      }
-
-      if (dupData && dupData.length > 0) {
-        const isEmailDup = dupData.some((d) => d.email.toLowerCase() === formData.email.trim().toLowerCase());
-        const isRegDup = dupData.some((d) => d.registration_number.toLowerCase() === formData.registrationNumber.trim().toLowerCase());
-        
-        let dupMsg = "An onboarding profile has already been submitted with these credentials. ";
-        if (isEmailDup) dupMsg += "Email address is already in use. ";
-        if (isRegDup) dupMsg += "Medical Registration Number is already registered. ";
-        
-        throw new Error(dupMsg + "To prevent duplicate profiles, this submission has been blocked.");
-      }
-
-      // B. Upload Photo file
-      let profilePhotoUrl = "";
+      // A. Prepare photo base64 data if present
+      let imageInfo = null;
       if (imageFile) {
-        const fileExt = imageFile.name.split(".").pop();
-        const fileName = `profile_${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
-        const { error: uploadError } = await supabase.storage
-          .from("doctor-photos")
-          .upload(fileName, imageFile);
-
-        if (uploadError) {
-          throw new Error(`Profile photo upload failed: ${uploadError.message}`);
+        try {
+          const base64 = await getBase64(imageFile);
+          imageInfo = {
+            base64,
+            name: imageFile.name,
+            type: imageFile.type,
+          };
+        } catch (err) {
+          throw new Error("Failed to process profile photo. Please try again.");
         }
-
-        const { data: { publicUrl } } = supabase.storage
-          .from("doctor-photos")
-          .getPublicUrl(fileName);
-
-        profilePhotoUrl = publicUrl;
-      } else {
-        // Fallback in case photo state mismatch
-        profilePhotoUrl = doctorImage;
       }
 
-      // C. Serialize availabilities
+      // B. Serialize availabilities
       const serializedHours = preferredDays
         .map((day) => {
           const config = hoursConfig[day];
@@ -462,52 +446,38 @@ export function DoctorJoinForm() {
         })
         .join("; ");
 
-      // D. Generate slug
-      const cleanName = formData.fullName.replace(/^Dr\.\s+/i, "");
-      const slug = "dr-" + cleanName
-        .toLowerCase()
-        .trim()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/(^-|-$)/g, "");
-
-      // E. Write to doctors table
       const finalQual = formData.qualification === "Other" ? formData.customQualification : formData.qualification;
 
-      const { error: dbError } = await supabase
-        .from("doctors")
-        .insert([
-          {
-            full_name: formData.fullName,
-            phone: formData.phone,
-            email: formData.email,
-            qualification: finalQual,
-            experience: parseInt(formData.experience, 10),
-            registration_number: formData.registrationNumber,
-            preferred_hours: serializedHours,
-            preferred_days: preferredDays.join(", "),
-            consultation_fees: parseFloat(formData.consultationFees),
-            profile_photo_url: profilePhotoUrl,
-            slug: slug,
-            profile_status: "submitted",
-            verification_status: "pending",
-            clinic_address: formData.clinicAddress || null,
-            locality: formData.locality || null,
-            city: formData.city,
-            state: formData.state,
-            pin_code: formData.pinCode,
-            google_maps_url: formData.googleMapsUrl || null,
-            expertise: preferredExpertise,
-            languages: preferredLanguages,
-            consultation_type: formData.consultationType,
-            bio: formData.bio,
-          }
-        ]);
+      // C. Submit via Server Action
+      const payload = {
+        fullName: formData.fullName,
+        phone: formData.phone,
+        email: formData.email,
+        qualification: finalQual,
+        experience: formData.experience,
+        registrationNumber: formData.registrationNumber,
+        preferredHours: serializedHours,
+        preferredDays: preferredDays.join(", "),
+        consultationFees: formData.consultationFees,
+        doctorImage: doctorImage,
+        clinicAddress: formData.clinicAddress || null,
+        locality: formData.locality || null,
+        city: formData.city,
+        state: formData.state,
+        pinCode: formData.pinCode,
+        googleMapsUrl: formData.googleMapsUrl || null,
+        expertise: preferredExpertise,
+        languages: preferredLanguages,
+        consultationType: formData.consultationType,
+        bio: formData.bio,
+      };
 
-      if (dbError) {
-        throw new Error(`Onboarding database submission failed: ${dbError.message}`);
+      const result = await submitDoctorOnboarding(payload, imageInfo);
+      if (!result.success) {
+        throw new Error(result.error);
       }
 
-      // F. Clear draft local storage backup
+      // D. Clear draft local storage backup
       localStorage.removeItem("vitahomeo_doctor_onboarding_draft");
       setStatus("success");
     } catch (err: any) {

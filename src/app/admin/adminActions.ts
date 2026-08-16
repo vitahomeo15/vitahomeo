@@ -127,3 +127,103 @@ export async function updateProfileStatus(id: string, status: string) {
     return { success: false, error: err.message || "Failed to update profile status." };
   }
 }
+
+export async function submitDoctorOnboarding(
+  formData: any,
+  imageInfo: { base64: string; name: string; type: string } | null
+) {
+  try {
+    // 1. Check duplicate email / registration number in database
+    const { data: dupData, error: dupError } = await supabaseAdmin
+      .from("doctors")
+      .select("id, email, registration_number")
+      .or(`email.eq.${formData.email.trim()},registration_number.eq.${formData.registrationNumber.trim()}`);
+
+    if (dupError) {
+      throw new Error(`Database verification check failed: ${dupError.message}`);
+    }
+
+    if (dupData && dupData.length > 0) {
+      const isEmailDup = dupData.some((d) => d.email.toLowerCase() === formData.email.trim().toLowerCase());
+      const isRegDup = dupData.some((d) => d.registration_number.toLowerCase() === formData.registrationNumber.trim().toLowerCase());
+      
+      let dupMsg = "An onboarding profile has already been submitted with these credentials. ";
+      if (isEmailDup) dupMsg += "Email address is already in use. ";
+      if (isRegDup) dupMsg += "Medical Registration Number is already registered. ";
+      
+      throw new Error(dupMsg + "To prevent duplicate profiles, this submission has been blocked.");
+    }
+
+    // 2. Upload Photo if provided
+    let profilePhotoUrl = "";
+    if (imageInfo) {
+      const fileExt = imageInfo.name.split(".").pop();
+      const fileName = `profile_${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
+      const buffer = Buffer.from(imageInfo.base64, "base64");
+
+      const { error: uploadError } = await supabaseAdmin.storage
+        .from("doctor-photos")
+        .upload(fileName, buffer, {
+          contentType: imageInfo.type,
+        });
+
+      if (uploadError) {
+        throw new Error(`Profile photo upload failed: ${uploadError.message}`);
+      }
+
+      const { data: { publicUrl } } = supabaseAdmin.storage
+        .from("doctor-photos")
+        .getPublicUrl(fileName);
+
+      profilePhotoUrl = publicUrl;
+    }
+
+    // 3. Generate slug
+    const cleanName = formData.fullName.replace(/^Dr\.\s+/i, "");
+    const slug = "dr-" + cleanName
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+
+    // 4. Write to doctors table
+    const { error: dbError } = await supabaseAdmin
+      .from("doctors")
+      .insert([
+        {
+          full_name: formData.fullName,
+          phone: formData.phone,
+          email: formData.email,
+          qualification: formData.qualification,
+          experience: parseInt(formData.experience, 10),
+          registration_number: formData.registrationNumber,
+          preferred_hours: formData.preferredHours,
+          preferred_days: formData.preferredDays,
+          consultation_fees: parseFloat(formData.consultationFees),
+          profile_photo_url: profilePhotoUrl || formData.doctorImage || null,
+          slug: slug,
+          profile_status: "submitted",
+          verification_status: "pending",
+          clinic_address: formData.clinicAddress || null,
+          locality: formData.locality || null,
+          city: formData.city,
+          state: formData.state,
+          pin_code: formData.pinCode,
+          google_maps_url: formData.googleMapsUrl || null,
+          expertise: formData.expertise,
+          languages: formData.languages,
+          consultation_type: formData.consultationType,
+          bio: formData.bio,
+        }
+      ]);
+
+    if (dbError) {
+      throw new Error(`Onboarding database submission failed: ${dbError.message}`);
+    }
+
+    return { success: true };
+  } catch (err: any) {
+    console.error("Onboarding submission error:", err);
+    return { success: false, error: err.message || "An unexpected error occurred during submission." };
+  }
+}

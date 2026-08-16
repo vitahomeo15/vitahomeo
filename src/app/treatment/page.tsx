@@ -162,7 +162,7 @@ export default function TreatmentHubPage() {
     { q: "Does homeopathy really work?", a: "Yes. Homeopathy operates on the principle of individual constitutional prescribing, utilizing highly diluted natural substances to trigger the body's self-healing mechanisms. Modern clinical studies continue to document its efficacy." },
     { q: "Is consultation online?", a: "Absolutely. VitaHomeo provides a virtual directory where you can choose a specialist, request consultations, and join secure video calls from home." },
     { q: "How long is treatment?", a: "Treatment duration varies. Acute conditions can respond in days, whereas chronic conditions like eczema, PCOS, or migraines typically require 3 to 6 months of constitutional care." },
-    { q: "How much does a consultation cost?", a: "Consultation fees are displayed transparently before requesting. Dr. Arun Kumar's session fee is ₹499." },
+    { q: "How much does a consultation cost?", a: "Consultation fees are displayed transparently before requesting. You can view each doctor's specific session fee on their profile page." },
     { q: "Are doctors verified?", a: "Yes. All doctors undergo strict qualification and registration council verification before onboarding." }
   ];
 

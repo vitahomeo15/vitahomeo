@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { MapPin, Stethoscope, Clock, IndianRupee, Star, Calendar, MessageSquare, User, ShieldCheck, CheckCircle } from "lucide-react";
+import { groupAvailability } from "@/lib/availability";
 
 interface Review {
   name: string;
@@ -385,23 +386,25 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
 
           {/* Timing details */}
           <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <Clock className="w-5 h-5 text-brand shrink-0 mt-0.5" />
-              <div>
-                <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider">Consultation Hours</span>
-                <span className="text-sm text-ink dark:text-white font-bold">{doctor.timing}</span>
-              </div>
-            </div>
+            {(() => {
+              const availabilityGroups = groupAvailability(doctor.timing, doctor.days);
+              return (
+                <div className="flex items-start gap-3">
+                  <Calendar className="w-5 h-5 text-brand shrink-0 mt-1" />
+                  <div className="space-y-3 flex-1">
+                    <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider">Consultation Availability</span>
+                    {availabilityGroups.map((g, idx) => (
+                      <div key={idx} className="border-l-2 border-brand/20 pl-3 py-0.5">
+                        <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-extrabold uppercase tracking-wider">{g.days}</span>
+                        <span className="text-sm text-ink dark:text-white font-bold">{g.hours}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
 
-            <div className="flex items-start gap-3">
-              <Calendar className="w-5 h-5 text-brand shrink-0 mt-0.5" />
-              <div>
-                <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider">Available Days</span>
-                <span className="text-sm text-ink dark:text-white font-bold">{doctor.days}</span>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-3 border-t border-line-custom/50 dark:border-[#1d2a1a]/50 pt-3">
               <MessageSquare className="w-5 h-5 text-[#0ea98b] shrink-0 mt-0.5" />
               <div>
                 <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider">Type of Session</span>
