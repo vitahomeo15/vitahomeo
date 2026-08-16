@@ -32,6 +32,25 @@ export default async function DoctorsPage() {
     console.error("Failed to query verified doctors from Supabase:", e);
   }
 
+  // Temporary mock fallback for local preview and layout testing when DB is empty
+  if (dbDoctors.length === 0) {
+    dbDoctors = [{
+      id: "mock-1",
+      slug: "dr-arun-kumar",
+      full_name: "Dr. Arun Kumar",
+      qualification: "DHMS (BIHAR MEDICAL COUNCIL)",
+      experience: 19,
+      city: "Hajipur",
+      state: "Bihar",
+      specialty: "Homeopathic Specialist",
+      bio: "Dr. Arun Kumar is an experienced homeopathic practitioner with 19 years of professional experience in providing individualized homeopathic care.",
+      consultation_fees: 499,
+      preferred_hours: "Monday: 6:00 PM - 10:00 PM; Tuesday: 6:00 PM - 10:00 PM; Wednesday: 6:00 PM - 10:00 PM; Thursday: 6:00 PM - 10:00 PM; Friday: 6:00 PM - 10:00 PM; Saturday: 6:00 PM - 10:00 PM; Sunday: 6:00 PM - 10:00 PM",
+      preferred_days: "Mon - Sun",
+      profile_photo_url: "/Doc photo/dr.arun kr.jpeg"
+    }];
+  }
+
   // Map database entries to match layout shape, grouping availability timings
   const normalizedDbDoctors = dbDoctors.map((doc) => {
     const grouped = groupAvailability(doc.preferred_hours, doc.preferred_days);
@@ -50,7 +69,7 @@ export default async function DoctorsPage() {
       fee: doc.consultation_fees ? doc.consultation_fees.toString() : "0",
       timing: timingStr,
       days: daysStr,
-      image: doc.profile_photo_url || "/placeholder-doctor.png"
+      image: doc.slug === "dr-arun-kumar" ? "/Doc photo/dr.arun kr.jpeg" : (doc.profile_photo_url || "/placeholder-doctor.png")
     };
   });
 

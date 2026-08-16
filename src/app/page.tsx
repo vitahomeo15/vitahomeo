@@ -110,7 +110,7 @@ export default async function Home() {
     languages: doc.languages ? doc.languages.join(", ") : "",
     rating: "No reviews yet",
     availableToday: true,
-    image: doc.profile_photo_url || "/placeholder-doctor.png"
+    image: doc.slug === "dr-arun-kumar" ? "/Doc photo/dr.arun kr.jpeg" : (doc.profile_photo_url || "/placeholder-doctor.png")
   }));
 
   // Conditions We Treat (SEO)

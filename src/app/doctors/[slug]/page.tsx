@@ -76,7 +76,7 @@ export default async function DoctorProfilePage({ params }: RouteParams) {
     fee: doctorData.consultation_fees ? doctorData.consultation_fees.toString() : "0",
     timing: doctorData.preferred_hours,
     days: doctorData.preferred_days,
-    image: doctorData.profile_photo_url || "/placeholder-doctor.png",
+    image: doctorData.slug === "dr-arun-kumar" ? "/Doc photo/dr.arun kr.jpeg" : (doctorData.profile_photo_url || "/placeholder-doctor.png"),
     
     // Address location fields
     clinic_address: doctorData.clinic_address,
