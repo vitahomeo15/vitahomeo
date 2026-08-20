@@ -149,21 +149,15 @@ function doPost(e) {
  */
 function doOptions(e) {
   return ContentService.createTextOutput("")
-    .setMimeType(ContentService.MimeType.TEXT)
-    .setHeader("Access-Control-Allow-Origin", "*")
-    .setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
-    .setHeader("Access-Control-Allow-Headers", "Content-Type");
+    .setMimeType(ContentService.MimeType.TEXT);
 }
 
 /**
- * Helper to build CORS-enabled JSON output response
+ * Helper to build JSON output response
  */
 function createJsonResponse(responseObject, statusCode) {
   var output = ContentService.createTextOutput(JSON.stringify(responseObject))
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeader("Access-Control-Allow-Origin", "*")
-    .setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
-    .setHeader("Access-Control-Allow-Headers", "Content-Type");
+    .setMimeType(ContentService.MimeType.JSON);
   return output;
 }
 ```

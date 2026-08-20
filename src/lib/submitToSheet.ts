@@ -5,12 +5,11 @@ export async function submitToSheet(
   formType: "doctor" | "patient",
   formData: Record<string, any>
 ): Promise<{ success: boolean; message: string }> {
-  const submitUrl = process.env.NEXT_PUBLIC_FORM_SUBMIT_URL;
+  let submitUrl = process.env.NEXT_PUBLIC_FORM_SUBMIT_URL;
 
   if (!submitUrl) {
-    const errMsg = "Configuration error: NEXT_PUBLIC_FORM_SUBMIT_URL is not set in environment variables.";
-    console.error(`[submitToSheet] ${errMsg}`);
-    return { success: false, message: errMsg };
+    console.warn("[submitToSheet] NEXT_PUBLIC_FORM_SUBMIT_URL is not set in env variables. Falling back to default '/api/appointments'.");
+    submitUrl = "/api/appointments";
   }
 
   const payload = {
