@@ -246,9 +246,66 @@ export function DoctorJoinForm() {
   };
 
   // ==========================================
-  // 3. IMAGE UPLOAD HANDLING
+  // 3. IMAGE UPLOAD & CLIENT COMPRESSION
   // ==========================================
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const compressImage = (file: File): Promise<{ dataUrl: string; base64: string; compressedFile: File }> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const maxDim = 1200;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
+          }
+
+          const canvas = document.createElement("canvas");
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          if (!ctx) {
+            const rawUrl = e.target?.result as string;
+            resolve({
+              dataUrl: rawUrl,
+              base64: rawUrl.split(",")[1] || "",
+              compressedFile: file,
+            });
+            return;
+          }
+
+          ctx.drawImage(img, 0, 0, width, height);
+          const dataUrl = canvas.toDataURL("image/jpeg", 0.82);
+          const cleanBase64 = dataUrl.split(",")[1] || "";
+
+          canvas.toBlob(
+            (blob) => {
+              const compressedFile = blob
+                ? new File([blob], file.name.replace(/\.[^/.]+$/, ".jpg"), { type: "image/jpeg" })
+                : file;
+              resolve({ dataUrl, base64: cleanBase64, compressedFile });
+            },
+            "image/jpeg",
+            0.82
+          );
+        };
+        img.onerror = () => reject(new Error("Failed to load image for processing"));
+        img.src = e.target?.result as string;
+      };
+      reader.onerror = () => reject(new Error("Failed to read image file"));
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -257,24 +314,36 @@ export function DoctorJoinForm() {
       return;
     }
 
-    if (file.size > 2 * 1024 * 1024) {
-      setErrors((prev) => ({ ...prev, doctorImage: "Photo size must be less than 2MB" }));
+    if (file.size > 10 * 1024 * 1024) {
+      setErrors((prev) => ({ ...prev, doctorImage: "Photo size must be less than 10MB" }));
       return;
     }
 
-    setDoctorImageName(file.name);
-    setImageFile(file);
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      setDoctorImage(reader.result as string);
+    try {
+      setDoctorImageName(file.name);
+      const { dataUrl, compressedFile } = await compressImage(file);
+      setImageFile(compressedFile);
+      setDoctorImage(dataUrl);
       setErrors((prevErr) => {
         const copy = { ...prevErr };
         delete copy.doctorImage;
         return copy;
       });
-    };
-    reader.readAsDataURL(file);
+    } catch (err) {
+      console.error("Image optimization error", err);
+      setDoctorImageName(file.name);
+      setImageFile(file);
+      const reader = new FileReader();
+      reader.onload = () => {
+        setDoctorImage(reader.result as string);
+        setErrors((prevErr) => {
+          const copy = { ...prevErr };
+          delete copy.doctorImage;
+          return copy;
+        });
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   // ==========================================
@@ -424,17 +493,13 @@ export function DoctorJoinForm() {
     try {
       // A. Prepare photo base64 data if present
       let imageInfo = null;
-      if (imageFile) {
-        try {
-          const base64 = await getBase64(imageFile);
-          imageInfo = {
-            base64,
-            name: imageFile.name,
-            type: imageFile.type,
-          };
-        } catch (err) {
-          throw new Error("Failed to process profile photo. Please try again.");
-        }
+      if (doctorImage) {
+        const cleanBase64 = doctorImage.includes(",") ? doctorImage.split(",")[1] : doctorImage;
+        imageInfo = {
+          base64: cleanBase64,
+          name: doctorImageName || "profile.jpg",
+          type: "image/jpeg",
+        };
       }
 
       // B. Serialize availabilities
@@ -448,7 +513,7 @@ export function DoctorJoinForm() {
 
       const finalQual = formData.qualification === "Other" ? formData.customQualification : formData.qualification;
 
-      // C. Submit via Server Action
+      // C. Submit via Server Action (do not duplicate base64 string in payload)
       const payload = {
         fullName: formData.fullName,
         phone: formData.phone,
@@ -459,7 +524,7 @@ export function DoctorJoinForm() {
         preferredHours: serializedHours,
         preferredDays: preferredDays.join(", "),
         consultationFees: formData.consultationFees,
-        doctorImage: doctorImage,
+        doctorImage: "",
         clinicAddress: formData.clinicAddress || null,
         locality: formData.locality || null,
         city: formData.city,
@@ -483,7 +548,17 @@ export function DoctorJoinForm() {
     } catch (err: any) {
       console.error("Onboarding submission error", err);
       setStatus("error");
-      setErrorMessage(err.message || "An unexpected error occurred during submission. Please try again.");
+      const rawMsg = err?.message || "";
+      let userFriendlyMsg = rawMsg;
+      if (
+        rawMsg.includes("Server Components render") ||
+        rawMsg.includes("digest") ||
+        rawMsg.includes("omitted in production") ||
+        rawMsg.includes("Body exceeded")
+      ) {
+        userFriendlyMsg = "Unable to process profile submission at this moment. If you uploaded a very high-resolution photo, please try again or select a smaller image.";
+      }
+      setErrorMessage(userFriendlyMsg || "An unexpected error occurred during submission. Please try again.");
     }
   };
 
@@ -575,7 +650,7 @@ export function DoctorJoinForm() {
       {/* Profile Photo */}
       <div className="space-y-2 pt-2">
         <label className="text-xs font-bold text-ink dark:text-white uppercase tracking-wider flex items-center gap-1.5">
-          <Upload className="w-3.5 h-3.5 text-brand" /> Profile Photo (Max 2MB)
+          <Upload className="w-3.5 h-3.5 text-brand" /> Profile Photo (PNG, JPG — auto-optimized)
         </label>
         
         <div className="flex flex-col sm:flex-row items-center gap-4 p-4 rounded-xl border border-dashed border-line-custom dark:border-[#1d2a1a] bg-bg-soft/30 dark:bg-[#0e1a0d]/20">

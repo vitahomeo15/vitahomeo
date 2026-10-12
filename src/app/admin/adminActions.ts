@@ -156,26 +156,30 @@ export async function submitDoctorOnboarding(
 
     // 2. Upload Photo if provided
     let profilePhotoUrl = "";
-    if (imageInfo) {
-      const fileExt = imageInfo.name.split(".").pop();
-      const fileName = `profile_${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
-      const buffer = Buffer.from(imageInfo.base64, "base64");
+    if (imageInfo && imageInfo.base64) {
+      try {
+        const fileExt = (imageInfo.name && imageInfo.name.includes(".")) ? imageInfo.name.split(".").pop() : "jpg";
+        const fileName = `profile_${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
+        const buffer = Buffer.from(imageInfo.base64, "base64");
 
-      const { error: uploadError } = await supabaseAdmin.storage
-        .from("doctor-photos")
-        .upload(fileName, buffer, {
-          contentType: imageInfo.type,
-        });
+        const { error: uploadError } = await supabaseAdmin.storage
+          .from("doctor-photos")
+          .upload(fileName, buffer, {
+            contentType: imageInfo.type || "image/jpeg",
+          });
 
-      if (uploadError) {
-        throw new Error(`Profile photo upload failed: ${uploadError.message}`);
+        if (uploadError) {
+          console.warn(`[submitDoctorOnboarding] Supabase storage upload warning: ${uploadError.message}`);
+        } else {
+          const { data: { publicUrl } } = supabaseAdmin.storage
+            .from("doctor-photos")
+            .getPublicUrl(fileName);
+
+          profilePhotoUrl = publicUrl;
+        }
+      } catch (storageErr: any) {
+        console.warn(`[submitDoctorOnboarding] Storage upload exception:`, storageErr);
       }
-
-      const { data: { publicUrl } } = supabaseAdmin.storage
-        .from("doctor-photos")
-        .getPublicUrl(fileName);
-
-      profilePhotoUrl = publicUrl;
     }
 
     // 3. Generate slug
