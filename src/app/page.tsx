@@ -4,9 +4,7 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { DoctorVerificationBadge } from "@/components/DoctorVerificationBadge";
 import { blogPosts } from "@/data/blogData";
-import { supabase } from "@/lib/supabase";
 import { 
   Lock, 
   CreditCard, 
@@ -19,7 +17,6 @@ import {
   Clock, 
   ChevronRight, 
   ChevronDown, 
-  Star, 
   UserCheck, 
   FileHeart,
   Laptop,
@@ -84,54 +81,6 @@ export default async function Home() {
     { step: "02", title: "Book a consultation", desc: "Pick a date and timing slot that matches your schedule, and fill in your details to secure the booking.", icon: <Calendar className="w-5 h-5" /> },
     { step: "03", title: "Consult online", desc: "Meet your practitioner over a secure video or audio call directly in your browser.", icon: <Video className="w-5 h-5" /> }
   ];
-
-  // Query verified doctors from Supabase
-  let dbDoctors: any[] = [];
-  try {
-    const { data } = await supabase
-      .from("public_doctor_profiles")
-      .select("*")
-      .order("created_at", { ascending: false });
-    if (data) {
-      dbDoctors = data;
-    }
-  } catch (e) {
-    console.error("Failed to query verified doctors for homepage:", e);
-  }
-
-  // Temporary mock fallback for local preview and layout testing when DB is empty
-  if (dbDoctors.length === 0) {
-    dbDoctors = [{
-      id: "mock-1",
-      slug: "dr-arun-kumar",
-      full_name: "Dr. Arun Kumar",
-      qualification: "DHMS (BIHAR MEDICAL COUNCIL)",
-      experience: 19,
-      city: "Hajipur",
-      state: "Bihar",
-      specialty: "Homeopathic Specialist",
-      bio: "Dr. Arun Kumar is an experienced homeopathic practitioner with 19 years of professional experience in providing individualized homeopathic care.",
-      consultation_fees: 499,
-      preferred_hours: "Monday: 6:00 PM - 10:00 PM; Tuesday: 6:00 PM - 10:00 PM; Wednesday: 6:00 PM - 10:00 PM; Thursday: 6:00 PM - 10:00 PM; Friday: 6:00 PM - 10:00 PM; Saturday: 6:00 PM - 10:00 PM; Sunday: 6:00 PM - 10:00 PM",
-      preferred_days: "Mon - Sun",
-      profile_photo_url: "/Doc photo/dr.arun kr.jpeg",
-      languages: ["English", "Hindi"]
-    }];
-  }
-
-  // Map to activeDoctors layout structure
-  const activeDoctors = dbDoctors.map((doc) => ({
-    id: doc.id,
-    slug: doc.slug,
-    name: doc.full_name,
-    qualification: doc.qualification,
-    experience: `${doc.experience} Years Experience`,
-    specialization: doc.specialty || "Homeopathic Specialist",
-    languages: doc.languages ? doc.languages.join(", ") : "",
-    rating: "No reviews yet",
-    availableToday: true,
-    image: doc.slug === "dr-arun-kumar" ? "/Doc photo/dr.arun kr.jpeg" : (doc.profile_photo_url || "/placeholder-doctor.png")
-  }));
 
   // Conditions We Treat (SEO)
   const conditions = [
@@ -278,114 +227,8 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* ============ 3. MEET OUR DOCTORS ============ */}
-        <section className="py-28 bg-[#F8FAF7] dark:bg-[#0e1a0d]/30 border-y border-line-custom dark:border-[#1d2a1a]">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="text-center max-w-2xl mx-auto mb-20">
-              <span className="text-xs font-bold text-brand uppercase tracking-widest">Directory</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-2 font-display">Available Doctors</h2>
-              <p className="text-xs md:text-sm text-body-text dark:text-[#aebba8] mt-4 font-medium">
-                Consult with verified homeopathic doctors online in India, specializing in chronic constitutional care.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-6">
-              {activeDoctors.length > 0 ? (
-                activeDoctors.map((doc) => (
-                  <div key={doc.id} className="group relative bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1d2a1a] rounded-[24px] p-6 md:p-8 hover:border-brand/30 hover:shadow-floating-premium transition-all duration-300 flex flex-col sm:flex-row gap-6 w-full max-w-2xl shadow-card-premium">
-                    {/* Doctor Photo */}
-                    <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-[20px] overflow-hidden flex-shrink-0 bg-bg-soft border border-line-custom dark:border-white/10 shadow-sm self-center sm:self-start">
-                      <Image 
-                        src={doc.image} 
-                        alt={`Doctor Profile picture of ${doc.name}`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 150px"
-                        className="object-cover object-top group-hover:scale-102 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                      
-                      {/* Availability status */}
-                      {doc.availableToday && (
-                        <div className="absolute top-2 left-2 bg-emerald-600/90 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
-                          <span className="w-1 h-1 rounded-full bg-white animate-pulse" />
-                          Live
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Content Area */}
-                    <div className="flex-1 flex flex-col justify-between">
-                      <div>
-                        {/* Badge */}
-                        <div className="mb-2">
-                          <DoctorVerificationBadge type="profile" />
-                        </div>
-
-                        {/* Name & Qualification */}
-                        <h3 className="text-xl md:text-2xl font-bold text-ink dark:text-white leading-tight font-display">{doc.name}</h3>
-                        <p className="text-xs text-muted-text dark:text-muted/70 font-semibold mt-1">{doc.qualification}</p>
-
-                        {/* Metadata details */}
-                        <div className="mt-4 pt-4 border-t border-[#e6ece6] dark:border-[#1d2a1a]/50 grid grid-cols-2 gap-x-4 gap-y-2 text-[11px] text-body-text dark:text-[#aebba8] font-semibold">
-                          <div>
-                            <span className="text-muted-text block text-[9px] font-medium">Experience:</span>
-                            <span>{doc.experience}</span>
-                          </div>
-                          <div>
-                            <span className="text-muted-text block text-[9px] font-medium">Specialization:</span>
-                            <span className="line-clamp-1">{doc.specialization}</span>
-                          </div>
-                          <div>
-                            <span className="text-muted-text block text-[9px] font-medium">Languages:</span>
-                            <span className="line-clamp-1">{doc.languages}</span>
-                          </div>
-                          <div>
-                            <span className="text-muted-text block text-[9px] font-medium">Rating:</span>
-                            <span className="flex items-center gap-1 font-bold">
-                              {doc.rating === "No reviews yet" ? (
-                                "No reviews yet"
-                              ) : (
-                                <><Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" /> {doc.rating} / 5</>
-                              )}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* CTAs */}
-                      <div className="mt-6 flex flex-wrap gap-3">
-                        <Link href="/book"
-                          className="px-5 py-2.5 bg-brand hover:bg-brand-hover text-white text-xs font-bold rounded-xl transition-all shadow-sm hover:shadow-button-premium">
-                          Request Consultation
-                        </Link>
-                        <Link href={`/doctors/${doc.slug}`}
-                          className="px-5 py-2.5 bg-bg-soft dark:bg-[#152414] text-brand hover:bg-brand hover:text-white text-xs font-bold rounded-xl transition-all border border-brand/10 shadow-sm hover:shadow-button-premium">
-                          View Profile
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className="bg-white dark:bg-[#141e14] border border-[#e6ece6] dark:border-[#1d2a1a] rounded-[24px] p-10 text-center shadow-card-premium max-w-md w-full">
-                  <Stethoscope className="w-12 h-12 text-brand/40 mx-auto mb-4 animate-pulse" />
-                  <h3 className="text-xl font-bold text-ink dark:text-white mb-2 font-display">Doctors Coming Soon...</h3>
-                  <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-semibold">
-                    We are currently vetting and onboarding homeopathic specialists. Please check back shortly for available online consultations.
-                  </p>
-                  <div className="mt-6 flex justify-center">
-                    <Link href="/join" className="px-5 py-2.5 bg-brand hover:bg-brand-hover text-white text-xs font-bold rounded-xl shadow-sm text-center">
-                      Join as a Doctor
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* ============ 4. WHY PATIENTS CHOOSE VITAHOMEO ============ */}
-        <section className="py-28 bg-[#F8FAF7] dark:bg-[#0e1a0d]/30 transition-colors">
+        {/* ============ 3. WHY PATIENTS CHOOSE VITAHOMEO ============ */}
+        <section className="py-28 bg-[#F8FAF7] dark:bg-[#0e1a0d]/30 border-t border-line-custom dark:border-[#1d2a1a] transition-colors">
           <div className="max-w-5xl mx-auto px-6">
             <div className="text-center max-w-2xl mx-auto mb-20">
               <span className="text-xs font-bold text-brand uppercase tracking-widest">Our Benefits</span>
