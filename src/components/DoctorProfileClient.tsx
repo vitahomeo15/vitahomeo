@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { MapPin, Stethoscope, Clock, IndianRupee, Star, Calendar, MessageSquare, User, ShieldCheck, CheckCircle } from "lucide-react";
+import { MapPin, Stethoscope, Clock, IndianRupee, Star, MessageCircle, MessageSquare, User, ShieldCheck, CheckCircle } from "lucide-react";
 import { groupAvailability } from "@/lib/availability";
 
 interface Review {
@@ -12,6 +12,11 @@ interface Review {
   comment: string;
   condition: string;
 }
+
+const WHATSAPP_NUMBER = "917765991145";
+const WHATSAPP_MESSAGE = encodeURIComponent(
+  "Hi VitaHomeo! I'd like to book a consultation with one of your homeopathic doctors. Could you please help me?"
+);
 
 interface DoctorProfileClientProps {
   doctor: {
@@ -26,8 +31,9 @@ interface DoctorProfileClientProps {
     timing: string;
     days: string;
     image: string;
-    
-    // Primary Practice Location fields (stored directly on doctors table)
+    expertise?: string[];
+
+    // Primary Practice Location fields
     clinic_address?: string;
     locality?: string;
     city?: string;
@@ -171,16 +177,18 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
             </p>
           </div>
 
-          <div>
-            <h2 className="text-lg font-black text-ink dark:text-white mb-3">Areas of Expertise</h2>
-            <div className="flex flex-wrap gap-2 text-xs font-bold text-ink dark:text-white">
-              {["Constitutional Treatment", "Chronic Skin Conditions", "Eczema & Dermatitis", "Migraine & Chronic Headaches", "Allergic Rhinitis & Asthma", "Digestive & Gastrointestinal Issues"].map((exp) => (
-                <span key={exp} className="bg-bg-soft dark:bg-[#162315] border border-line-custom dark:border-[#1d2a1a] px-3.5 py-2 rounded-xl">
-                  {exp}
-                </span>
-              ))}
+          {doctor.expertise && doctor.expertise.length > 0 && (
+            <div>
+              <h2 className="text-lg font-black text-ink dark:text-white mb-3">Areas of Expertise</h2>
+              <div className="flex flex-wrap gap-2 text-xs font-bold text-ink dark:text-white">
+                {doctor.expertise.map((exp) => (
+                  <span key={exp} className="bg-bg-soft dark:bg-[#162315] border border-line-custom dark:border-[#1d2a1a] px-3.5 py-2 rounded-xl">
+                    {exp}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Primary Practice Location Card */}
@@ -413,16 +421,18 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
             </div>
           </div>
 
-          {/* Booking Button */}
-          <Link
-            href="/book"
-            className="w-full h-12 bg-gradient-to-r from-brand to-[#0ea98b] text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
+          {/* WhatsApp Booking Button */}
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full h-12 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
-            <Calendar className="w-4 h-4" /> Book Appointment
-          </Link>
+            <MessageCircle className="w-4 h-4" /> Book via WhatsApp
+          </a>
 
           <p className="text-[10px] text-muted-text dark:text-[#71806c] text-center leading-relaxed font-semibold">
-            Submit your preferred date and time. Our team will contact you on WhatsApp to confirm availability and appointment details.
+            Chat with our team on WhatsApp. We&apos;ll confirm the doctor&apos;s availability, share the Google Form, and coordinate your appointment.
           </p>
         </div>
 

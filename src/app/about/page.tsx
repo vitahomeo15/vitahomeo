@@ -8,7 +8,8 @@ import {
   Mail, 
   MessageSquare,
   AlertTriangle,
-  Stethoscope
+  Stethoscope,
+  MessageCircle
 } from "lucide-react";
 
 export const metadata: Metadata = {

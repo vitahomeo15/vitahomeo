@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTheme } from "@/components/ThemeProvider";
-import { Calendar, Stethoscope } from "lucide-react";
+import { Calendar, Stethoscope, MessageCircle } from "lucide-react";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -93,13 +93,15 @@ export function Navbar() {
             </Link>
 
             {/* Book Consultation button */}
-            <Link
-              href="/doctors"
+            <a
+              href={`https://wa.me/917765991145?text=${encodeURIComponent("Hi VitaHomeo! I'd like to book a consultation. Could you please help me?")}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden md:inline-flex items-center justify-center h-10 px-5 rounded-button text-sm font-semibold text-white bg-brand hover:bg-brand-hover shadow-button-premium active:scale-[0.98] transition-all gap-1.5"
             >
-              <Calendar className="w-4 h-4" />
-              Book Consultation
-            </Link>
+              <MessageCircle className="w-4 h-4" />
+              Book via WhatsApp
+            </a>
 
             {/* Mobile Menu trigger */}
             <button
@@ -148,14 +150,16 @@ export function Navbar() {
                 <Stethoscope className="w-4.5 h-4.5" />
                 Join as a Doctor
               </Link>
-              <Link
-                href="/doctors"
+              <a
+                href={`https://wa.me/917765991145?text=${encodeURIComponent("Hi VitaHomeo! I'd like to book a consultation. Could you please help me?")}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMenuOpen(false)}
                 className="w-full flex items-center justify-center h-11 rounded-button font-semibold text-white bg-brand hover:bg-brand-hover shadow-button-premium gap-1.5"
               >
-                <Calendar className="w-4 h-4" />
-                Book Consultation
-              </Link>
+                <MessageCircle className="w-4 h-4" />
+                Book via WhatsApp
+              </a>
             </div>
           </div>
         </div>

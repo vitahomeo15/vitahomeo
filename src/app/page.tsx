@@ -10,6 +10,7 @@ import {
   CreditCard, 
   Video, 
   FileText, 
+  MessageCircle,
   MessageSquare, 
   Check, 
   Search, 
@@ -160,11 +161,15 @@ export default async function Home() {
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <Link href="/doctors" 
-                  className="px-8 py-4 bg-brand hover:bg-brand-hover text-white font-semibold text-sm rounded-button text-center shadow-button-premium hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-                  <Calendar className="w-4.5 h-4.5" />
-                  Book Consultation
-                </Link>
+                <a
+                  href={`https://wa.me/917765991145?text=${encodeURIComponent("Hi VitaHomeo! I'd like to book a consultation with one of your homeopathic doctors. Could you please help me?")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-4 bg-brand hover:bg-brand-hover text-white font-semibold text-sm rounded-button text-center shadow-button-premium hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Book via WhatsApp
+                </a>
                 <Link href="/join"
                   className="px-8 py-4 bg-white border border-brand text-brand-dark dark:text-white dark:border-white/30 hover:bg-bg-soft font-semibold text-sm rounded-button text-center shadow-button-premium hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
                   <Stethoscope className="w-4.5 h-4.5" />
@@ -486,11 +491,15 @@ export default async function Home() {
               Book a secure video consultation with verified practitioners and receive personalized care from home.
             </p>
 
-            <Link href="/doctors"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand hover:bg-[#F5F8F5] font-semibold text-sm rounded-button shadow-button-premium hover:scale-[1.02] transition-all">
-              <Calendar className="w-4 h-4" />
-              Book Consultation
-            </Link>
+            <a
+              href={`https://wa.me/917765991145?text=${encodeURIComponent("Hi VitaHomeo! I'd like to book a consultation with one of your homeopathic doctors. Could you please help me?")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand hover:bg-[#F5F8F5] font-semibold text-sm rounded-button shadow-button-premium hover:scale-[1.02] transition-all"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Book via WhatsApp
+            </a>
           </div>
         </section>
 
