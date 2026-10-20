@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { MapPin, Stethoscope, Clock, IndianRupee, Star, MessageCircle, MessageSquare, User, ShieldCheck, CheckCircle } from "lucide-react";
+import { MapPin, Stethoscope, Clock, IndianRupee, Star, MessageCircle, MessageSquare, User, ShieldCheck, CheckCircle, Calendar } from "lucide-react";
 import { groupAvailability } from "@/lib/availability";
 
 interface Review {
