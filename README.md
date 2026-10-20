@@ -1,8 +1,8 @@
-# SociVeda 🌿
+# VitaHomeo 🌿
 
 > **India's Premier Platform for Online Homeopathic Healthcare**
 
-SociVeda connects patients across India with verified, experienced homeopathic doctors through secure video and audio consultations. Every treatment is personalized, every prescription is digital, and care is delivered entirely from the comfort of home.
+VitaHomeo connects patients across India with verified, experienced homeopathic doctors through secure video and audio consultations. Every treatment is personalized, every prescription is digital, and care is delivered entirely from the comfort of home.
 
 ---
 
