@@ -9,6 +9,20 @@ export interface GroupedAvailability {
 }
 
 const DAYS_ORDER = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const DAY_PREFIXES = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+/**
+ * Checks if a string contains day-based scheduling (e.g. "Monday: 5 PM - 9 PM")
+ * rather than a plain timing range (e.g. "6:00 PM - 10:00 PM").
+ */
+function isDayScheduleFormat(str: string): boolean {
+  if (!str) return false;
+  if (str.includes(";")) return true;
+  const idx = str.indexOf(":");
+  if (idx === -1) return false;
+  const prefix = str.substring(0, idx).trim().toLowerCase();
+  return DAY_PREFIXES.some((d) => prefix.startsWith(d));
+}
 
 /**
  * Parses the semicolon-separated preferred hours string from the database.
@@ -23,14 +37,19 @@ export function parsePreferredHours(preferredHoursStr: string): DaySchedule[] {
     .map((part) => {
       const idx = part.indexOf(":");
       if (idx === -1) return { day: part, hours: "" };
-      const day = part.substring(0, idx).trim();
+      const possibleDay = part.substring(0, idx).trim();
+      const isDay = DAY_PREFIXES.some((d) => possibleDay.toLowerCase().startsWith(d));
+      if (!isDay) {
+        return { day: "", hours: part };
+      }
+      const day = possibleDay;
       const hours = part.substring(idx + 1).trim();
       return { day, hours };
     });
 }
 
 /**
- * Formats a time string into standard 12-hour format: h:mm A (e.g. 17:00 -> 5:00 PM).
+ * Formats a time string into standard 12-hour format: hh:mm A (e.g. 6:00 PM -> 06:00 PM, 17:00 -> 05:00 PM).
  * This operates purely on string values to avoid UTC/timezone offsets.
  */
 function formatTime(timeStr: string): string {
@@ -44,13 +63,13 @@ function formatTime(timeStr: string): string {
     const ampm = hour >= 12 ? 'PM' : 'AM';
     hour = hour % 12;
     if (hour === 0) hour = 12;
-    return `${hour}:${minute} ${ampm}`;
+    return `${String(hour).padStart(2, '0')}:${minute} ${ampm}`;
   }
   
   // Case B: 12-hour time with AM/PM but maybe missing minutes, e.g. "5 PM" or "5:00 PM"
   const match12 = cleaned.match(/^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)$/);
   if (match12) {
-    const hour = match12[1];
+    const hour = match12[1].padStart(2, '0');
     const minute = match12[2] || '00';
     const ampm = match12[3];
     return `${hour}:${minute} ${ampm}`;
@@ -61,12 +80,12 @@ function formatTime(timeStr: string): string {
   if (matchNum) {
     let hour = parseInt(matchNum[1], 10);
     if (hour <= 12) {
-      return `${hour}:00 PM`;
+      return `${String(hour).padStart(2, '0')}:00 PM`;
     } else {
       const ampm = hour >= 12 ? 'PM' : 'AM';
       hour = hour % 12;
       if (hour === 0) hour = 12;
-      return `${hour}:00 ${ampm}`;
+      return `${String(hour).padStart(2, '0')}:00 ${ampm}`;
     }
   }
   
@@ -74,7 +93,7 @@ function formatTime(timeStr: string): string {
 }
 
 /**
- * Standardizes raw hours ranges to clean 12-hour ranges (e.g. "Evening (5 PM - 9 PM)" -> "5:00 PM – 9:00 PM").
+ * Standardizes raw hours ranges to clean 12-hour ranges (e.g. "Evening (5 PM - 9 PM)" -> "05:00 PM – 09:00 PM").
  */
 export function standardizeHours(hoursStr: string): string {
   let cleaned = hoursStr.trim();
@@ -130,8 +149,8 @@ export function groupAvailability(preferredHoursStr: string, fallbackDays: strin
     return [{ days: fallbackDays || "Available Days", hours: "Contact for hours" }];
   }
   
-  if (!preferredHoursStr.includes(":")) {
-    return [{ days: fallbackDays || "Available Days", hours: preferredHoursStr }];
+  if (!isDayScheduleFormat(preferredHoursStr)) {
+    return [{ days: fallbackDays || "Available Days", hours: standardizeHours(preferredHoursStr) }];
   }
 
   try {

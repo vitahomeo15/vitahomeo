@@ -48,7 +48,7 @@ export const doctors: Doctor[] = [
     bio: "Dr. Arun Kumar is an experienced homeopathic practitioner with 19 years of professional experience in providing individualized homeopathic care. He specializes in constitutional prescribing for chronic skin conditions, digestive disorders, and allergic diseases.",
     fee: "499",
     days: "Mon - Sun",
-    timing: "6:00 PM - 10:00 PM",
+    timing: "06:00 PM - 10:00 PM",
     image: "/doc-photos/dr-arun-kumar.jpeg",
     expertise: [
       "Constitutional Treatment",
