@@ -248,7 +248,7 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
 
               <div className="pt-2 border-t border-line-custom/50 dark:border-[#1d2a1a]/50 text-center">
                 <Link 
-                  href="/reviews"
+                  href="/treatment#testimonials"
                   className="text-[10px] font-bold text-brand hover:underline"
                 >
                   Read Verified Testimonials →
