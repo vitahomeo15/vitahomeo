@@ -10,18 +10,17 @@ import { doctors } from "@/data/doctorsData";
 export const metadata: Metadata = {
   title: "Find Homeopathic Doctors Online | VitaHomeo",
   description:
-    "Browse verified, experienced homeopathic specialists on VitaHomeo. View qualifications, consultation fees, and connect directly via WhatsApp.",
+    "Browse experienced homeopathic specialists on VitaHomeo. View qualifications, medical registrations, consultation details, and connect directly via WhatsApp.",
   alternates: {
     canonical: "https://www.vitahomeo.com/doctors",
   },
 };
 
 const WHATSAPP_NUMBER = "917765991145";
-const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Hi VitaHomeo! I'd like to book a consultation with one of your homeopathic doctors. Could you please help me?"
-);
 
 export default function DoctorsPage() {
+  const verifiedCount = doctors.filter((d) => d.verification_status === "verified").length;
+
   return (
     <div className="min-h-screen flex flex-col bg-bg-custom transition-colors duration-300">
       <Navbar />
@@ -32,117 +31,156 @@ export default function DoctorsPage() {
             <span className="text-xs font-bold text-brand bg-brand/10 dark:bg-brand/20 px-3 py-1 rounded-full uppercase tracking-wider">
               Practitioners Directory
             </span>
-            <h1 className="text-3xl font-bold text-ink dark:text-white mt-3">Verified Specialists</h1>
+            <h1 className="text-3xl font-bold text-ink dark:text-white mt-3">Homeopathic Specialists</h1>
             <p className="text-sm text-body-text dark:text-[#aebba8] mt-1">
-              Showing {doctors.length} verified homeopathic {doctors.length === 1 ? "doctor" : "doctors"}
+              Showing {doctors.length} homeopathic {doctors.length === 1 ? "specialist" : "specialists"}
+              {verifiedCount < doctors.length ? ` (${verifiedCount} verified)` : ""}
             </p>
           </div>
 
           {doctors.length > 0 ? (
             <div className="flex flex-col gap-6">
-              {doctors.map((doc) => (
-                <div
-                  key={doc.slug}
-                  className="bg-white dark:bg-[#101c0f] rounded-[24px] border border-line-custom dark:border-[#1d2a1a] shadow-sm p-6 md:p-8 grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] gap-6 hover:shadow-md hover:border-brand/30 transition-all"
-                >
-                  {/* Profile Picture */}
-                  <div className="col-start-1 col-end-2 row-start-1 row-end-2 md:col-start-1 md:col-end-2 md:row-start-1 md:row-span-2 flex flex-col items-center flex-shrink-0 justify-start">
-                    <div className="w-16 h-16 md:w-28 md:h-28 rounded-full md:rounded-[20px] overflow-hidden border border-line-custom dark:border-[#1d2a1a]/50 shadow-sm bg-bg-soft">
-                      <Image
-                        src={doc.image}
-                        alt={doc.name}
-                        width={112}
-                        height={112}
-                        className="w-full h-full object-cover object-top"
-                      />
-                    </div>
-                  </div>
+              {doctors.map((doc) => {
+                const whatsappMsg = encodeURIComponent(
+                  `Hi VitaHomeo! I'd like to book a consultation with ${doc.name}. Could you please help me?`
+                );
 
-                  {/* Header (Name, Degree, Verified) */}
-                  <div className="col-start-2 col-end-3 row-start-1 row-end-2 md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2 flex flex-col justify-center md:justify-start md:border-r md:border-line-custom md:dark:border-[#1d2a1a] md:pr-6">
-                    <div className="flex items-center gap-2.5 mb-1.5 flex-wrap">
-                      <h2 className="text-xl md:text-2xl font-bold text-ink dark:text-white leading-tight">
-                        {doc.name}
-                      </h2>
-                      <span className="text-[10px] font-bold text-brand bg-brand/10 px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-0.5 border border-brand/15">
-                        <ShieldCheck className="w-3 h-3" /> Verified
-                      </span>
-                    </div>
-                    <div className="text-xs text-muted-text dark:text-[#71806c] font-bold uppercase tracking-wide">
-                      {doc.degree}
-                    </div>
-                  </div>
-
-                  {/* Details (Specialty, Exp, Loc, Bio) */}
-                  <div className="col-span-2 row-start-2 row-end-3 md:col-start-2 md:col-end-3 md:row-start-2 md:row-end-3 border-b md:border-b-0 md:border-r border-line-custom dark:border-[#1d2a1a] pb-6 md:pb-0 md:pr-6">
-                    <div className="flex flex-col gap-2 mt-4 text-xs font-semibold text-body-text dark:text-[#aebba8]">
-                      <div className="flex items-center">
-                        <Stethoscope className="w-4 h-4 mr-2 text-brand shrink-0" />
-                        <span className="text-ink dark:text-white">{doc.specialty}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-4 h-4 mr-2 text-brand shrink-0" />
-                        <span>{doc.experience}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <MapPin className="w-4 h-4 mr-2 text-brand shrink-0" />
-                        <span>{doc.location}</span>
+                return (
+                  <div
+                    key={doc.slug}
+                    className="bg-white dark:bg-[#101c0f] rounded-[24px] border border-line-custom dark:border-[#1d2a1a] shadow-sm p-6 md:p-8 grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] gap-6 hover:shadow-md hover:border-brand/30 transition-all"
+                  >
+                    {/* Profile Picture */}
+                    <div className="col-start-1 col-end-2 row-start-1 row-end-2 md:col-start-1 md:col-end-2 md:row-start-1 md:row-span-2 flex flex-col items-center flex-shrink-0 justify-start">
+                      <div className="w-16 h-16 md:w-28 md:h-28 rounded-full md:rounded-[20px] overflow-hidden border border-line-custom dark:border-[#1d2a1a]/50 shadow-sm bg-bg-soft">
+                        <Image
+                          src={doc.image}
+                          alt={doc.name}
+                          width={112}
+                          height={112}
+                          className="w-full h-full object-cover object-top"
+                        />
                       </div>
                     </div>
-                    <p className="text-xs text-body-text dark:text-[#aebba8] mt-4 leading-relaxed line-clamp-3 font-medium">
-                      {doc.bio}
-                    </p>
-                  </div>
 
-                  {/* Consultation Details */}
-                  <div className="col-span-2 row-start-3 row-end-4 md:col-start-3 md:col-end-4 md:row-start-1 md:row-span-2 pt-6 md:pt-0 md:pl-6 flex flex-col md:w-[220px]">
-                    <div className="bg-bg-soft dark:bg-[#162315] p-5 rounded-2xl border border-line-custom dark:border-[#1d2a1a] h-full flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center justify-between mb-4 border-b border-line-custom dark:border-[#1d2a1a] pb-2">
-                          <span className="text-xs text-body-text dark:text-[#aebba8] font-bold">Session Fee</span>
-                          <div className="flex items-center text-brand font-black">
-                            <IndianRupee className="w-3.5 h-3.5" />
-                            <span className="text-lg">{doc.fee}</span>
-                          </div>
+                    {/* Header (Name, Degree, Registration, Verified status) */}
+                    <div className="col-start-2 col-end-3 row-start-1 row-end-2 md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2 flex flex-col justify-center md:justify-start md:border-r md:border-line-custom md:dark:border-[#1d2a1a] md:pr-6">
+                      <div className="flex items-center gap-2.5 mb-1.5 flex-wrap">
+                        <h2 className="text-xl md:text-2xl font-bold text-ink dark:text-white leading-tight">
+                          {doc.name}
+                        </h2>
+                        {doc.verification_status === "verified" ? (
+                          <span className="text-[10px] font-bold text-brand bg-brand/10 px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-0.5 border border-brand/15">
+                            <ShieldCheck className="w-3 h-3" /> Verified
+                          </span>
+                        ) : (
+                          <span className="text-[10px] font-bold text-amber-700 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-0.5 border border-amber-500/20">
+                            <Clock className="w-3 h-3" /> Verification Pending
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-xs text-muted-text dark:text-[#71806c] font-bold uppercase tracking-wide">
+                        {doc.degree}
+                      </div>
+                      {doc.registration_number && (
+                        <div className="text-[11px] text-body-text/80 dark:text-[#8ea088] font-semibold mt-1">
+                          Reg. No: <span className="font-bold text-ink dark:text-white">{doc.registration_number}</span>
+                          {doc.registration_authority ? ` • ${doc.registration_authority}` : ""}
                         </div>
-                        <div className="flex flex-col gap-3">
-                          <div className="text-xs">
-                            <span className="text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider text-[9px] mb-0.5">
-                              Available Days
-                            </span>
-                            <span className="text-ink dark:text-white font-bold">{doc.days}</span>
+                      )}
+                    </div>
+
+                    {/* Details (Specialty, Exp, Loc, Bio) */}
+                    <div className="col-span-2 row-start-2 row-end-3 md:col-start-2 md:col-end-3 md:row-start-2 md:row-end-3 border-b md:border-b-0 md:border-r border-line-custom dark:border-[#1d2a1a] pb-6 md:pb-0 md:pr-6">
+                      <div className="flex flex-col gap-2 mt-4 text-xs font-semibold text-body-text dark:text-[#aebba8]">
+                        <div className="flex items-center">
+                          <Stethoscope className="w-4 h-4 mr-2 text-brand shrink-0" />
+                          <span className="text-ink dark:text-white">{doc.specialty}</span>
+                        </div>
+                        {doc.experience && (
+                          <div className="flex items-center">
+                            <Clock className="w-4 h-4 mr-2 text-brand shrink-0" />
+                            <span>{doc.experience}</span>
                           </div>
-                          <div className="text-xs">
-                            <span className="text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider text-[9px] mb-0.5">
-                              Consultation Hours
-                            </span>
-                            <span className="text-ink dark:text-white font-bold">{doc.timing}</span>
-                          </div>
+                        )}
+                        <div className="flex items-center">
+                          <MapPin className="w-4 h-4 mr-2 text-brand shrink-0" />
+                          <span>{doc.location}</span>
                         </div>
                       </div>
+                      <p className="text-xs text-body-text dark:text-[#aebba8] mt-4 leading-relaxed line-clamp-3 font-medium">
+                        {doc.bio}
+                      </p>
+                    </div>
 
-                      <div className="flex flex-col gap-2 mt-5 pt-3 border-t border-line-custom/50 dark:border-[#1d2a1a]/50">
-                        {/* WhatsApp Book Button */}
-                        <a
-                          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full h-9 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-[11px] font-bold flex items-center justify-center gap-1.5 transition-all shadow-sm"
-                        >
-                          <MessageCircle className="w-3.5 h-3.5" />
-                          Book via WhatsApp
-                        </a>
-                        <Link
-                          href={`/doctors/${doc.slug}`}
-                          className="w-full h-9 rounded-xl bg-white dark:bg-[#101c0f] text-brand border border-brand/20 dark:border-[#1d2a1a] hover:bg-brand hover:text-white text-[11px] font-bold flex items-center justify-center transition-all shadow-sm"
-                        >
-                          View Profile
-                        </Link>
+                    {/* Consultation Details */}
+                    <div className="col-span-2 row-start-3 row-end-4 md:col-start-3 md:col-end-4 md:row-start-1 md:row-span-2 pt-6 md:pt-0 md:pl-6 flex flex-col md:w-[220px]">
+                      <div className="bg-bg-soft dark:bg-[#162315] p-5 rounded-2xl border border-line-custom dark:border-[#1d2a1a] h-full flex flex-col justify-between">
+                        <div>
+                          <div className="flex items-center justify-between mb-4 border-b border-line-custom dark:border-[#1d2a1a] pb-2">
+                            <span className="text-xs text-body-text dark:text-[#aebba8] font-bold">Session Fee</span>
+                            {doc.fee ? (
+                              <div className="flex items-center text-brand font-black">
+                                <IndianRupee className="w-3.5 h-3.5" />
+                                <span className="text-lg">{doc.fee}</span>
+                              </div>
+                            ) : (
+                              <span className="text-xs font-semibold text-muted-text dark:text-[#71806c] italic">
+                                Upon Request
+                              </span>
+                            )}
+                          </div>
+                          <div className="flex flex-col gap-3">
+                            <div className="text-xs">
+                              <span className="text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider text-[9px] mb-0.5">
+                                Available Days
+                              </span>
+                              <span className="text-ink dark:text-white font-bold">
+                                {doc.days || "To be confirmed"}
+                              </span>
+                            </div>
+                            <div className="text-xs">
+                              <span className="text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider text-[9px] mb-0.5">
+                                Consultation Hours
+                              </span>
+                              <span className="text-ink dark:text-white font-bold">{doc.timing}</span>
+                            </div>
+                            {doc.consultation_type && (
+                              <div className="text-xs">
+                                <span className="text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider text-[9px] mb-0.5">
+                                  Consultation Mode
+                                </span>
+                                <span className="text-ink dark:text-white font-bold text-[11px]">
+                                  {doc.consultation_type}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="flex flex-col gap-2 mt-5 pt-3 border-t border-line-custom/50 dark:border-[#1d2a1a]/50">
+                          {/* WhatsApp Book Button */}
+                          <a
+                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMsg}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full h-9 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-[11px] font-bold flex items-center justify-center gap-1.5 transition-all shadow-sm"
+                          >
+                            <MessageCircle className="w-3.5 h-3.5" />
+                            Book via WhatsApp
+                          </a>
+                          <Link
+                            href={`/doctors/${doc.slug}`}
+                            className="w-full h-9 rounded-xl bg-white dark:bg-[#101c0f] text-brand border border-brand/20 dark:border-[#1d2a1a] hover:bg-brand hover:text-white text-[11px] font-bold flex items-center justify-center transition-all shadow-sm"
+                          >
+                            View Profile
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <div className="bg-white dark:bg-[#101c0f] border border-[#e3eae0] dark:border-[#1d2a1a] rounded-[24px] p-12 text-center shadow-sm max-w-lg mx-auto">

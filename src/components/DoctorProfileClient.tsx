@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { MapPin, Stethoscope, Clock, IndianRupee, Star, MessageCircle, MessageSquare, User, ShieldCheck, CheckCircle, Calendar } from "lucide-react";
+import { MapPin, Stethoscope, Clock, IndianRupee, Star, MessageCircle, MessageSquare, ShieldCheck, CheckCircle, Calendar } from "lucide-react";
 import { groupAvailability } from "@/lib/availability";
 
 interface Review {
@@ -14,24 +14,28 @@ interface Review {
 }
 
 const WHATSAPP_NUMBER = "917765991145";
-const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Hi VitaHomeo! I'd like to book a consultation with one of your homeopathic doctors. Could you please help me?"
-);
 
 interface DoctorProfileClientProps {
   doctor: {
     id?: string;
+    slug?: string;
     name: string;
     degree: string;
-    experience: string;
+    experience?: string;
     location: string;
     specialty: string;
     bio: string;
-    fee: string;
-    timing: string;
-    days: string;
+    fee?: string;
+    timing?: string;
+    days?: string;
     image: string;
     expertise?: string[];
+    registration_number?: string;
+    registration_authority?: string;
+    verification_status?: "pending" | "under_review" | "verified" | "rejected";
+    consultation_type?: string;
+    submitted_availability_hours?: string;
+    selected_consultation_period?: string;
 
     // Primary Practice Location fields
     clinic_address?: string;
@@ -44,7 +48,7 @@ interface DoctorProfileClientProps {
 }
 
 export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps) {
-  // Empty state by default for launch
+  // Empty state by default for launch (no fabricated reviews)
   const [reviews, setReviews] = useState<Review[]>([]);
 
   // Write Review Form State
@@ -102,7 +106,11 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
 
   const averageRating = reviews.length > 0 
     ? (reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length).toFixed(1)
-    : "5.0";
+    : null;
+
+  const whatsappMessage = encodeURIComponent(
+    `Hi VitaHomeo! I'd like to book a consultation with ${doctor.name}. Could you please help me?`
+  );
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -129,10 +137,16 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
           <div className="flex-1 space-y-4">
             <div>
               <div className="flex flex-wrap items-center gap-2.5 mb-2">
-                <span className="text-[10px] font-bold text-brand bg-brand/10 dark:bg-brand/20 px-2.5 py-1 rounded-full uppercase tracking-wider flex items-center gap-1">
-                  <ShieldCheck className="w-3 h-3" /> Verified Practitioner
-                </span>
-                {reviews.length > 0 ? (
+                {doctor.verification_status === "verified" ? (
+                  <span className="text-[10px] font-bold text-brand bg-brand/10 dark:bg-brand/20 px-2.5 py-1 rounded-full uppercase tracking-wider flex items-center gap-1">
+                    <ShieldCheck className="w-3 h-3" /> Verified Practitioner
+                  </span>
+                ) : (
+                  <span className="text-[10px] font-bold text-amber-700 dark:text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-full uppercase tracking-wider flex items-center gap-1 border border-amber-500/20">
+                    <Clock className="w-3 h-3" /> Verification Pending
+                  </span>
+                )}
+                {averageRating ? (
                   <span className="text-[10px] font-bold text-[#0ea98b] bg-[#0ea98b]/10 dark:bg-[#0ea98b]/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
                     Rating {averageRating} ★
                   </span>
@@ -148,6 +162,14 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
               <p className="text-sm font-bold text-body-text dark:text-[#aebba8] uppercase tracking-wide mt-1">
                 {doctor.degree}
               </p>
+              {doctor.registration_number && (
+                <div className="text-xs font-semibold text-body-text/90 dark:text-[#8ea088] mt-2 flex items-center gap-1.5 flex-wrap">
+                  <span className="font-bold text-ink dark:text-white">Medical Registration:</span> {doctor.registration_number}
+                  {doctor.registration_authority && (
+                    <span className="text-muted-text dark:text-[#71806c]">({doctor.registration_authority})</span>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Icon Metadata list */}
@@ -156,10 +178,12 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
                 <Stethoscope className="w-4 h-4 text-brand shrink-0" />
                 <span>{doctor.specialty}</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-brand shrink-0" />
-                <span>{doctor.experience}</span>
-              </div>
+              {doctor.experience && (
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-brand shrink-0" />
+                  <span>{doctor.experience}</span>
+                </div>
+              )}
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-brand shrink-0" />
                 <span>{doctor.location}</span>
@@ -195,7 +219,7 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
         {(doctor.clinic_address || doctor.locality || doctor.city || doctor.state || doctor.pin_code) && (
           <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[24px] p-6 md:p-8 shadow-sm space-y-4">
             <h2 className="text-lg font-black text-ink dark:text-white flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-brand" /> Primary Practice Location
+              <MapPin className="w-5 h-5 text-brand" /> Practice Location
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm font-semibold text-body-text dark:text-[#aebba8]">
               {doctor.clinic_address && (
@@ -212,7 +236,7 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
               )}
               {(doctor.city || doctor.state || doctor.pin_code) && (
                 <div>
-                  <span className="text-muted-text dark:text-[#71806c] block text-[10px] uppercase tracking-wider font-bold mb-0.5">City / State / PIN</span>
+                  <span className="text-muted-text dark:text-[#71806c] block text-[10px] uppercase tracking-wider font-bold mb-0.5">City / State</span>
                   <span className="text-ink dark:text-white font-bold">
                     {[doctor.city, doctor.state].filter(Boolean).join(", ")}
                     {doctor.pin_code ? ` - ${doctor.pin_code}` : ""}
@@ -243,8 +267,14 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
               <p className="text-xs text-muted-text dark:text-[#71806c] mt-0.5 font-bold">Feedback from verified consultations</p>
             </div>
             <div className="text-right">
-              <span className="text-2xl font-black text-ink dark:text-white block">{averageRating} ★</span>
-              <span className="text-[10px] font-bold text-muted-text dark:text-[#71806c] uppercase tracking-wider">{reviews.length} {reviews.length === 1 ? "Review" : "Reviews"}</span>
+              {averageRating ? (
+                <>
+                  <span className="text-2xl font-black text-ink dark:text-white block">{averageRating} ★</span>
+                  <span className="text-[10px] font-bold text-muted-text dark:text-[#71806c] uppercase tracking-wider">{reviews.length} {reviews.length === 1 ? "Review" : "Reviews"}</span>
+                </>
+              ) : (
+                <span className="text-xs font-semibold text-muted-text dark:text-[#71806c] italic block">No reviews yet</span>
+              )}
             </div>
           </div>
 
@@ -386,44 +416,61 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
           {/* Fee Header */}
           <div className="flex justify-between items-center border-b border-line-custom dark:border-[#1d2a1a] pb-4">
             <span className="text-xs font-bold text-body-text dark:text-[#aebba8] uppercase tracking-wider">Consultation Fee</span>
-            <div className="flex items-center text-brand font-black text-2xl">
-              <IndianRupee className="w-5 h-5 shrink-0" />
-              <span>{doctor.fee}</span>
-            </div>
+            {doctor.fee ? (
+              <div className="flex items-center text-brand font-black text-2xl">
+                <IndianRupee className="w-5 h-5 shrink-0" />
+                <span>{doctor.fee}</span>
+              </div>
+            ) : (
+              <span className="text-sm font-semibold text-muted-text dark:text-[#71806c] italic">
+                Fee Upon Request
+              </span>
+            )}
           </div>
 
           {/* Timing details */}
           <div className="space-y-4">
-            {(() => {
-              const availabilityGroups = groupAvailability(doctor.timing, doctor.days);
-              return (
-                <div className="flex items-start gap-3">
-                  <Calendar className="w-5 h-5 text-brand shrink-0 mt-1" />
-                  <div className="space-y-3 flex-1">
-                    <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider">Consultation Availability</span>
-                    {availabilityGroups.map((g, idx) => (
-                      <div key={idx} className="border-l-2 border-brand/20 pl-3 py-0.5">
-                        <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-extrabold uppercase tracking-wider">{g.days}</span>
-                        <span className="text-sm text-ink dark:text-white font-bold">{g.hours}</span>
-                      </div>
-                    ))}
-                  </div>
+            <div className="flex items-start gap-3">
+              <Calendar className="w-5 h-5 text-brand shrink-0 mt-1" />
+              <div className="space-y-2 flex-1">
+                <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider">
+                  Consultation Availability
+                </span>
+                <div className="border-l-2 border-brand/30 pl-3 py-0.5">
+                  <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-extrabold uppercase tracking-wider">
+                    {doctor.days || "Selected Session"}
+                  </span>
+                  <span className="text-sm text-ink dark:text-white font-bold">
+                    {doctor.timing || "Morning: 09:00 AM – 12:00 PM"}
+                  </span>
                 </div>
-              );
-            })()}
+                {doctor.submitted_availability_hours && (
+                  <div className="pt-2 text-[11px] text-muted-text dark:text-[#71806c] border-t border-line-custom/30 dark:border-[#1d2a1a]/30">
+                    <span className="font-semibold block text-[10px] uppercase tracking-wider mb-0.5 text-muted-text/80">
+                      Submitted Hours (General):
+                    </span>
+                    <span>{doctor.submitted_availability_hours}</span>
+                  </div>
+                )}
+              </div>
+            </div>
 
             <div className="flex items-start gap-3 border-t border-line-custom/50 dark:border-[#1d2a1a]/50 pt-3">
               <MessageSquare className="w-5 h-5 text-[#0ea98b] shrink-0 mt-0.5" />
               <div>
-                <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider">Type of Session</span>
-                <span className="text-sm text-ink dark:text-white font-bold">Video Consultations</span>
+                <span className="text-[10px] text-muted-text dark:text-[#71806c] block font-bold uppercase tracking-wider">
+                  Consultation Mode
+                </span>
+                <span className="text-sm text-ink dark:text-white font-bold">
+                  {doctor.consultation_type || "Online Consultation Available"}
+                </span>
               </div>
             </div>
           </div>
 
           {/* WhatsApp Booking Button */}
           <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full h-12 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
@@ -432,7 +479,7 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
           </a>
 
           <p className="text-[10px] text-muted-text dark:text-[#71806c] text-center leading-relaxed font-semibold">
-            Chat with our team on WhatsApp. We&apos;ll confirm the doctor&apos;s availability, share the Google Form, and coordinate your appointment.
+            Chat with our team on WhatsApp. We&apos;ll confirm the doctor&apos;s availability and coordinate your appointment.
           </p>
         </div>
 

@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import DoctorProfileClient from "@/components/DoctorProfileClient";
+import DoctorProfileArunKumar from "@/components/DoctorProfileArunKumar";
+import DoctorProfileTejaswi from "@/components/DoctorProfileTejaswi";
 import { getDoctorBySlug, doctors } from "@/data/doctorsData";
 
 interface RouteParams {
@@ -22,10 +24,11 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
 
   const doctorName = doc?.name ?? "Doctor Profile";
   const specialty = doc?.specialty ?? "Homeopathic Specialist";
+  const verificationTag = doc?.verification_status === "verified" ? "verified homeopathic doctor" : "homeopathic doctor";
 
   return {
     title: `${doctorName} - ${specialty} | VitaHomeo`,
-    description: `Consult ${doctorName}, verified homeopathic doctor. Connect via WhatsApp for a personalized constitutional homeopathy consultation.`,
+    description: `Consult ${doctorName}, ${verificationTag}. Connect via WhatsApp or book online for a personalized constitutional homeopathy consultation.`,
     alternates: {
       canonical: `https://www.vitahomeo.com/doctors/${resolvedParams.slug}`,
     },
@@ -40,8 +43,10 @@ export default async function DoctorProfilePage({ params }: RouteParams) {
     notFound();
   }
 
-  // Shape the data for DoctorProfileClient
+  // Shape the data for the profile components
   const normalizedDoctor = {
+    id: doc.slug,
+    slug: doc.slug,
     name: doc.name,
     degree: doc.degree,
     experience: doc.experience,
@@ -59,7 +64,15 @@ export default async function DoctorProfilePage({ params }: RouteParams) {
     locality: doc.locality,
     pin_code: doc.pin_code,
     google_maps_url: doc.google_maps_url,
+    registration_number: doc.registration_number,
+    registration_authority: doc.registration_authority,
+    verification_status: doc.verification_status,
+    consultation_type: doc.consultation_type,
+    submitted_availability_hours: doc.submitted_availability_hours,
+    selected_consultation_period: doc.selected_consultation_period,
   };
+
+  const isArunKumar = doc.slug === "dr-arun-kumar";
 
   return (
     <div className="min-h-screen flex flex-col bg-bg-custom relative transition-colors duration-300">
@@ -76,7 +89,14 @@ export default async function DoctorProfilePage({ params }: RouteParams) {
             <span className="text-ink dark:text-white font-bold">{normalizedDoctor.name}</span>
           </div>
 
-          <DoctorProfileClient doctor={normalizedDoctor} />
+          {/* Doctor Profile view by slug */}
+          {doc.slug === "dr-arun-kumar" ? (
+            <DoctorProfileArunKumar doctor={normalizedDoctor} />
+          ) : doc.slug === "dr-rachamsetty-tejaswi" ? (
+            <DoctorProfileTejaswi doctor={normalizedDoctor} />
+          ) : (
+            <DoctorProfileClient doctor={normalizedDoctor} />
+          )}
         </div>
       </main>
 
