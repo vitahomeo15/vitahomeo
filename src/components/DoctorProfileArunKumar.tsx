@@ -796,8 +796,8 @@ export default function DoctorProfileArunKumar({ doctor }: DoctorProfileArunKuma
                 <div className="space-y-0.5">
                   <div className="flex items-center gap-2 flex-wrap">
                     <h3 className="text-sm font-bold text-ink dark:text-white">Dr. Rachamsetty Tejaswi</h3>
-                    <span className="text-[9px] font-bold text-amber-700 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full">
-                      Verification Pending
+                    <span className="text-[9px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                      Verified Doctor
                     </span>
                   </div>
                   <span className="text-[11px] text-muted-text dark:text-[#71806c] font-semibold block">

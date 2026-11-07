@@ -847,7 +847,7 @@ export default function DoctorProfileTejaswi({ doctor }: DoctorProfileTejaswiPro
                   <div className="flex items-center gap-2 flex-wrap">
                     <h3 className="text-sm font-bold text-ink dark:text-white">Dr. Arun Kumar</h3>
                     <span className="text-[9px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
-                      Verified Specialist
+                      Verified Doctor
                     </span>
                   </div>
                   <span className="text-[11px] text-muted-text dark:text-[#71806c] font-semibold block">
