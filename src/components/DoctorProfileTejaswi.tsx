@@ -198,8 +198,8 @@ export default function DoctorProfileTejaswi({ doctor }: DoctorProfileTejaswiPro
       a: "After you choose your preferred date and slot, our care team confirms your booking on WhatsApp. At your consultation time, you receive a direct link for a secure 30-40 minute video or audio session with Dr. Tejaswi for comprehensive case analysis and dietary assessment."
     },
     {
-      q: "What is included in the ₹499 consultation fee?",
-      a: "The ₹499 fee includes a 1-on-1 constitutional consultation, detailed medical history review, personalized clinical nutrition and diet advice, and follow-up guidance for 7 days."
+      q: "What is included in the ₹999 consultation fee?",
+      a: "The ₹999 fee includes a 1-on-1 constitutional consultation, detailed medical history review, personalized clinical nutrition and diet advice, and follow-up guidance for 7 days."
     },
     {
       q: "Can Dr. Tejaswi advise on clinical nutrition alongside homeopathy?",
@@ -898,7 +898,7 @@ export default function DoctorProfileTejaswi({ doctor }: DoctorProfileTejaswiPro
               </div>
               <div className="flex items-center text-brand font-black text-2xl">
                 <IndianRupee className="w-5 h-5 shrink-0" />
-                <span>{doctor.fee || "499"}</span>
+                <span>{doctor.fee || "999"}</span>
               </div>
             </div>
 
@@ -1087,7 +1087,7 @@ export default function DoctorProfileTejaswi({ doctor }: DoctorProfileTejaswiPro
           </span>
           <div className="flex items-center text-brand font-black text-lg leading-tight">
             <IndianRupee className="w-4 h-4" />
-            <span>{doctor.fee || "499"}</span>
+            <span>{doctor.fee || "999"}</span>
           </div>
         </div>
 

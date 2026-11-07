@@ -21,7 +21,7 @@ export interface Doctor {
   specialty: string;      // e.g. "Homeopathic Specialist"
   location: string;       // e.g. "Hajipur, Bihar"
   bio: string;            // Short paragraph about the doctor
-  fee?: string;           // Consultation fee in INR (number as string). e.g. "499"
+  fee?: string;           // Consultation fee in INR (number as string). e.g. "999"
   days?: string;          // Available days. e.g. "Mon - Sat"
   timing?: string;        // Available hours. e.g. "6:00 PM - 10:00 PM"
   image: string;          // Path to photo in /public. e.g. "/doc-photos/dr-arun.jpeg"
@@ -54,7 +54,7 @@ export const doctors: Doctor[] = [
     specialty: "Homeopathic & Electro-Homeopathic Specialist",
     location: "Hajipur, Bihar",
     bio: "Dr. Arun Kumar is an experienced homeopathic practitioner with 19 years of professional experience in providing individualized homeopathic care. He specializes in constitutional prescribing for chronic skin conditions, digestive disorders, and allergic diseases.",
-    fee: "499",
+    fee: "999",
     days: "Mon - Sun",
     timing: "06:00 PM - 10:00 PM",
     image: "/doc-photos/dr-arun-kumar.jpeg",
@@ -85,7 +85,7 @@ export const doctors: Doctor[] = [
     specialty: "Homeopathic Physician & Clinical Nutritionist",
     location: "Vijayawada, Andhra Pradesh",
     bio: "Clinically trained healthcare professional with MD (Hom), BHMS, and MSc in Clinical Nutrition, with 2+ years of experience in patient evaluation, medical case review, clinical documentation, and telemedicine. Experienced in managing complex clinical cases including Autism Spectrum Disorder (ASD), women's health, and pediatric care, with integrated clinical nutrition and lifestyle management for chronic conditions.",
-    fee: "499",
+    fee: "999",
     days: "Mon - Sat",
     timing: "Morning (9am - 12pm), Afternoon (12pm - 4pm), Evening (4pm - 8pm)",
     submitted_availability_hours: "Morning: 9:00 AM–12:00 PM; Afternoon: 12:00 PM–4:00 PM; Evening: 4:00 PM–8:00 PM",

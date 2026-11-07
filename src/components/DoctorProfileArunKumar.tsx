@@ -197,8 +197,8 @@ export default function DoctorProfileArunKumar({ doctor }: DoctorProfileArunKuma
       a: "After you select your preferred date and slot, our care team confirms your booking on WhatsApp. At your scheduled consultation time, you receive a secure video consultation link (WhatsApp Video or Google Meet) to speak directly with Dr. Arun Kumar in a private, unhurried 30-40 minute session."
     },
     {
-      q: "What is included in the ₹499 consultation fee?",
-      a: "The ₹499 fee includes a comprehensive 1-on-1 constitutional case-taking consultation, personalized lifestyle and dietary guidance, and follow-up support for 7 days regarding your prescribed plan."
+      q: "What is included in the ₹999 consultation fee?",
+      a: "The ₹999 fee includes a comprehensive 1-on-1 constitutional case-taking consultation, personalized lifestyle and dietary guidance, and follow-up support for 7 days regarding your prescribed plan."
     },
     {
       q: "How will I receive the prescribed homeopathic medicines?",
@@ -849,7 +849,7 @@ export default function DoctorProfileArunKumar({ doctor }: DoctorProfileArunKuma
               </div>
               <div className="flex items-center text-brand font-black text-2xl">
                 <IndianRupee className="w-5 h-5 shrink-0" />
-                <span>{doctor.fee || "499"}</span>
+                <span>{doctor.fee || "999"}</span>
               </div>
             </div>
 
@@ -988,7 +988,7 @@ export default function DoctorProfileArunKumar({ doctor }: DoctorProfileArunKuma
           </span>
           <div className="flex items-center text-brand font-black text-lg leading-tight">
             <IndianRupee className="w-4 h-4" />
-            <span>{doctor.fee || "499"}</span>
+            <span>{doctor.fee || "999"}</span>
           </div>
         </div>
 
