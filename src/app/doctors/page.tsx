@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
 import { MapPin, Stethoscope, Clock, IndianRupee, ShieldCheck, MessageCircle } from "lucide-react";
-import { doctors } from "@/data/doctorsData";
+import { getDoctors } from "@/lib/doctors";
 
 export const metadata: Metadata = {
   title: "Find Homeopathic Doctors Online | VitaHomeo",
@@ -18,7 +18,8 @@ export const metadata: Metadata = {
 
 const WHATSAPP_NUMBER = "917765991145";
 
-export default function DoctorsPage() {
+export default async function DoctorsPage() {
+  const doctors = await getDoctors();
   const verifiedCount = doctors.filter((d) => d.verification_status === "verified").length;
 
   return (

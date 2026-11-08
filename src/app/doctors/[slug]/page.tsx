@@ -7,20 +7,21 @@ import { Footer } from "@/components/Footer";
 import DoctorProfileClient from "@/components/DoctorProfileClient";
 import DoctorProfileArunKumar from "@/components/DoctorProfileArunKumar";
 import DoctorProfileTejaswi from "@/components/DoctorProfileTejaswi";
-import { getDoctorBySlug, doctors } from "@/data/doctorsData";
+import { getDoctorBySlug, getDoctors } from "@/lib/doctors";
 
 interface RouteParams {
   params: Promise<{ slug: string }>;
 }
 
-// Generate static paths at build time for all doctors in the data file
+// Generate static paths at build time for all doctors
 export async function generateStaticParams() {
-  return doctors.map((doc) => ({ slug: doc.slug }));
+  const allDoctors = await getDoctors();
+  return allDoctors.map((doc) => ({ slug: doc.slug }));
 }
 
 export async function generateMetadata({ params }: RouteParams): Promise<Metadata> {
   const resolvedParams = await params;
-  const doc = getDoctorBySlug(resolvedParams.slug);
+  const doc = await getDoctorBySlug(resolvedParams.slug);
 
   const doctorName = doc?.name ?? "Doctor Profile";
   const specialty = doc?.specialty ?? "Homeopathic Specialist";
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
 
 export default async function DoctorProfilePage({ params }: RouteParams) {
   const resolvedParams = await params;
-  const doc = getDoctorBySlug(resolvedParams.slug);
+  const doc = await getDoctorBySlug(resolvedParams.slug);
 
   if (!doc) {
     notFound();
