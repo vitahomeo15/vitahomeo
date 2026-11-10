@@ -1,10 +1,20 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { treatmentsData, ConditionInfo } from "@/data/treatmentsData";
-import { Check, Clock, FileText, ArrowRight, Activity } from "lucide-react";
+import { treatmentsData, ConditionInfo, REVIEWER_TEJASWI } from "@/data/treatmentsData";
+import { 
+  Check, 
+  Clock, 
+  ArrowRight, 
+  ShieldCheck, 
+  MessageCircle, 
+  Stethoscope, 
+  CheckCircle2, 
+  AlertTriangle 
+} from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
@@ -12,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const condition = treatmentsData[slug];
   const title = condition ? `${condition.title} Homeopathy Treatment | VitaHomeo` : "Homeopathy Treatment | VitaHomeo";
   const description = condition 
-    ? `Learn about the symptoms, causes, and homeopathic treatment approach for ${condition.title}. Consult verified doctors online.`
+    ? `Learn about the symptoms, causes, and individualized homeopathic care approach for ${condition.title}. Medically reviewed by verified clinical specialists.`
     : "Consult experienced homeopathic doctors online for constitutional care.";
   
   return {
@@ -41,44 +51,76 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
       "Reduced physical energy or structural stress"
     ],
     causes: [
-      "Systemic root causes and constitutional imbalances",
-      "Environmental stressors or genetic sensitivities",
-      "Metabolic or immune feedback loop dysfunction"
+      "Systemic constitutional factors and metabolic imbalances",
+      "Environmental stressors or individual sensitivities",
+      "Immune or neurovascular reactivity patterns"
     ],
     whenToSee: "Consult a verified medical professional if symptoms recur frequently, interfere with your quality of life, or worsen over time.",
-    howHelps: "Homeopathy focuses on the full constitutional profile, choosing remedies that stimulate natural healing pathways rather than suppressive relief.",
+    howHelps: "Homeopathy focuses on the full constitutional profile, choosing gentle micro-dilutions that support natural bodily recuperation alongside lifestyle adjustments.",
     approach: [
       "Comprehensive physical and metabolic case study mapping.",
-      "Custom dynamic micro-dilutions tailored to patient constitution.",
+      "Individualized constitutional remedies tailored to patient symptom picture.",
       "Guidance on diet, triggers, and stress mitigation."
     ],
-    duration: "Typically 3 to 6 months of constitutional treatment is recommended for chronic complaints.",
+    duration: "Individualized progress is evaluated over 3 to 6 months of systematic constitutional care.",
     faqs: [
-      { q: "Is homeopathy suitable for chronic conditions?", a: "Yes, constitutional homeopathy is designed specifically to trace back chronic symptoms to their metabolic roots for long-term relief." },
-      { q: "Can I consult online?", a: "Yes, VitaHomeo offers complete online consultations via secure video/audio calls with verified doctors." }
+      { q: "Is homeopathy suitable for chronic conditions?", a: "Yes, constitutional homeopathy is designed specifically to address individual chronic susceptibilities with personalized, non-suppressive remedies." },
+      { q: "Can I consult online?", a: "Yes, VitaHomeo offers complete online consultations via secure video/audio calls with verified specialists." }
     ],
     related: [
       { name: "Skin Care", slug: "eczema" },
       { name: "PCOS Management", slug: "pcos-pcod" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   };
 
-  // Structured Schema data JSON-LD for individual condition
-  const jsonLdSchema = {
+  const reviewer = condition.reviewer || REVIEWER_TEJASWI;
+  const whatsappBookingUrl = `https://wa.me/917765991145?text=${encodeURIComponent(
+    `Hi VitaHomeo! I would like to book a consultation for ${condition.title} with ${reviewer.name} (Fee: ₹999). Could you please guide me with available slots?`
+  )}`;
+
+  // Structured Schema data JSON-LD (MedicalWebPage + FAQPage)
+  const jsonLdGraph = {
     "@context": "https://schema.org",
-    "@type": "MedicalCondition",
-    "name": condition.title,
-    "description": `Comprehensive educational information and constitutional homeopathic treatment approach for ${condition.title}.`,
-    "possibleTreatment": [
+    "@graph": [
       {
-        "@type": "MedicalTherapy",
-        "name": "Constitutional Homeopathy"
+        "@type": "MedicalWebPage",
+        "name": `${condition.title} Homeopathy Treatment Guide`,
+        "url": `https://www.vitahomeo.com/treatments/${slug}`,
+        "description": `Comprehensive clinical guide on symptoms, causes, and constitutional homeopathic care for ${condition.title}.`,
+        "reviewedBy": {
+          "@type": "Physician",
+          "name": reviewer.name,
+          "medicalSpecialty": reviewer.title,
+          "telephone": "+91-77659-91145"
+        },
+        "about": {
+          "@type": "MedicalCondition",
+          "name": condition.title,
+          "possibleTreatment": [
+            {
+              "@type": "MedicalTherapy",
+              "name": "Constitutional Homeopathy"
+            }
+          ],
+          "signOrSymptom": condition.symptoms.map(s => ({
+            "@type": "MedicalSignOrSymptom",
+            "name": s
+          }))
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": condition.faqs.map(f => ({
+          "@type": "Question",
+          "name": f.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": f.a
+          }
+        }))
       }
-    ],
-    "signOrSymptom": condition.symptoms.map(s => ({
-      "@type": "MedicalSignOrSymptom",
-      "name": s
-    }))
+    ]
   };
 
   return (
@@ -87,12 +129,12 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
       {/* Schema Injection */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }}
       />
 
       <Navbar />
 
-      <main className="flex-1 w-full pb-20 pt-28 space-y-16">
+      <main className="flex-1 w-full pb-20 pt-28 space-y-12">
         
         {/* Breadcrumb */}
         <div className="max-w-5xl mx-auto px-4 text-xs text-muted-text dark:text-[#71806c] font-semibold flex items-center gap-2">
@@ -109,23 +151,82 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
             <div className="absolute top-0 right-0 w-32 h-32 bg-brand/5 rounded-full blur-2xl pointer-events-none" />
             
             <div className="space-y-4 max-w-xl">
-              <span className="inline-block text-[10px] font-bold text-brand bg-brand/10 dark:bg-brand/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                Homeopathy Treatment Guide
-              </span>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="inline-block text-[10px] font-bold text-brand bg-brand/10 dark:bg-brand/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                  Homeopathy Treatment Guide
+                </span>
+                <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full flex items-center gap-1">
+                  <ShieldCheck className="w-3 h-3" /> Medically Reviewed
+                </span>
+              </div>
+
               {/* Exactly one H1 for SEO */}
               <h1 className="text-3xl md:text-5xl font-black text-ink dark:text-white leading-tight">
                 {condition.title} Treatment in Homeopathy
               </h1>
               <p className="text-xs md:text-sm text-body-text dark:text-[#aebba8] font-semibold leading-relaxed">
-                Learn about symptoms, root causes, and how personalized constitutional homeopathy supports long-term healing.
+                Explore symptoms, constitutional causes, and individualized clinical care options. Consult verified practitioners online for tailored support.
               </p>
             </div>
 
-            <Link 
-              href="/book" 
-              className="px-6 py-3 bg-brand hover:bg-brand-dark text-white font-bold text-xs rounded-xl shadow-sm hover:scale-[1.01] transition-transform shrink-0"
+            <div className="flex flex-col sm:flex-row md:flex-col gap-2.5 w-full md:w-auto shrink-0">
+              <a 
+                href={whatsappBookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm hover:scale-[1.01] transition-all flex items-center justify-center gap-2"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Consult Specialist (₹999)</span>
+              </a>
+              <Link 
+                href={`/doctors/${reviewer.slug}`} 
+                className="px-6 py-3 bg-white dark:bg-[#101c0f] text-brand border border-brand/20 dark:border-[#1d2a1a] hover:bg-brand hover:text-white font-bold text-xs rounded-xl shadow-sm transition-all text-center"
+              >
+                View Reviewer Profile
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* E-E-A-T Medical Reviewer Banner */}
+        <section className="max-w-5xl mx-auto px-4">
+          <div className="p-4 md:p-5 rounded-2xl bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl overflow-hidden border border-line-custom dark:border-[#1d2a1a] bg-bg-soft shrink-0">
+                <Image
+                  src={reviewer.image}
+                  alt={reviewer.name}
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-[10px] font-bold text-brand uppercase tracking-wider flex items-center gap-1">
+                    <ShieldCheck className="w-3.5 h-3.5 text-brand" /> Clinical Review
+                  </span>
+                  <span className="text-[10px] text-muted-text dark:text-[#71806c] font-semibold">• E-E-A-T Verified</span>
+                </div>
+                <Link 
+                  href={`/doctors/${reviewer.slug}`}
+                  className="text-sm font-bold text-ink dark:text-white hover:text-brand transition-colors block"
+                >
+                  {reviewer.name}
+                </Link>
+                <p className="text-[11px] text-body-text/80 dark:text-[#8ea088] font-medium">
+                  {reviewer.degree} · <span className="font-semibold text-ink dark:text-white">{reviewer.registration}</span>
+                </p>
+              </div>
+            </div>
+
+            <Link
+              href={`/doctors/${reviewer.slug}`}
+              className="text-xs font-bold text-brand hover:underline inline-flex items-center gap-1 shrink-0 self-end sm:self-center"
             >
-              Book Consultation
+              <span>Read Full Credentials</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </section>
@@ -139,7 +240,7 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
             {/* Symptoms & Causes */}
             <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[24px] p-6 shadow-sm space-y-6">
               <div>
-                <h2 className="text-base font-extrabold text-ink dark:text-white mb-3">Symptoms</h2>
+                <h2 className="text-base font-extrabold text-ink dark:text-white mb-3">Recognized Symptoms</h2>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-body-text dark:text-[#aebba8]">
                   {condition.symptoms.map((sym, idx) => (
                     <li key={idx} className="flex items-start gap-2">
@@ -151,7 +252,7 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
               </div>
 
               <div className="pt-6 border-t border-line-custom/50 dark:border-[#1d2a1a]/50">
-                <h2 className="text-base font-extrabold text-ink dark:text-white mb-3">Causes</h2>
+                <h2 className="text-base font-extrabold text-ink dark:text-white mb-3">Potential Triggers & Causes</h2>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-body-text dark:text-[#aebba8]">
                   {condition.causes.map((cause, idx) => (
                     <li key={idx} className="flex items-start gap-2">
@@ -166,14 +267,14 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
             {/* When to see doctor & How homeopathy helps */}
             <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[24px] p-6 shadow-sm space-y-6">
               <div>
-                <h2 className="text-base font-extrabold text-ink dark:text-white mb-2">When to See a Doctor</h2>
+                <h2 className="text-base font-extrabold text-ink dark:text-white mb-2">When to Seek Medical Attention</h2>
                 <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-semibold">
                   {condition.whenToSee}
                 </p>
               </div>
 
               <div className="pt-6 border-t border-line-custom/50 dark:border-[#1d2a1a]/50 space-y-3">
-                <h2 className="text-base font-extrabold text-ink dark:text-white">How Homeopathy Helps</h2>
+                <h2 className="text-base font-extrabold text-ink dark:text-white">How Homeopathic Care Approaches This Condition</h2>
                 <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed font-semibold">
                   {condition.howHelps}
                 </p>
@@ -183,7 +284,7 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
             {/* Treatment Approach & Duration */}
             <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[24px] p-6 shadow-sm space-y-6">
               <div>
-                <h2 className="text-base font-extrabold text-ink dark:text-white mb-3">Treatment Approach</h2>
+                <h2 className="text-base font-extrabold text-ink dark:text-white mb-3">Clinical Evaluation Approach</h2>
                 <ul className="space-y-3 text-xs font-semibold text-body-text dark:text-[#aebba8]">
                   {condition.approach.map((ap, idx) => (
                     <li key={idx} className="flex items-start gap-2">
@@ -199,15 +300,15 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
               <div className="pt-6 border-t border-line-custom/50 dark:border-[#1d2a1a]/50 flex items-center gap-3">
                 <Clock className="w-6 h-6 text-brand shrink-0" />
                 <div>
-                  <h2 className="text-xs text-muted-text dark:text-[#71806c] uppercase tracking-wider font-bold">Expected Duration</h2>
+                  <h2 className="text-xs text-muted-text dark:text-[#71806c] uppercase tracking-wider font-bold">Treatment Evaluation Timeline</h2>
                   <span className="text-xs font-bold text-ink dark:text-white block mt-0.5">{condition.duration}</span>
                 </div>
               </div>
             </div>
 
-            {/* Condition Specific FAQs (using native details Summary tag for server-component friendliness) */}
+            {/* Condition Specific FAQs */}
             <div className="space-y-3">
-              <h2 className="text-base font-extrabold text-ink dark:text-white mb-4">FAQs</h2>
+              <h2 className="text-base font-extrabold text-ink dark:text-white mb-4">Frequently Asked Questions</h2>
               {condition.faqs.map((faq, fIdx) => (
                 <details 
                   key={fIdx} 
@@ -226,39 +327,68 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
 
           </div>
 
-          {/* Right Column: CTA & Related Conditions */}
+          {/* Right Column: High-Converting Specialist Booking Pathway */}
           <div className="md:col-span-4 space-y-6 sticky top-24">
             
-            {/* Consultation Widget */}
+            {/* Direct Specialist Card */}
             <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[24px] p-6 shadow-sm space-y-4">
-              <div className="w-10 h-10 rounded-full bg-brand/10 text-brand flex items-center justify-center">
-                <Activity className="w-5 h-5" />
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl overflow-hidden border border-line-custom dark:border-[#1d2a1a] bg-bg-soft shrink-0">
+                  <Image
+                    src={reviewer.image}
+                    alt={reviewer.name}
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-brand uppercase tracking-wider block">Recommended Specialist</span>
+                  <h3 className="text-sm font-bold text-ink dark:text-white">{reviewer.name}</h3>
+                  <span className="text-[10px] text-muted-text dark:text-[#71806c] font-semibold block">{reviewer.title}</span>
+                </div>
               </div>
-              <h3 className="text-sm font-extrabold text-ink dark:text-white">Personalized Constitutional Care</h3>
-              <p className="text-[11px] text-body-text dark:text-[#aebba8] leading-relaxed font-semibold">
-                Homeopathy relies on matching full systemic patient profiles. Consult verified doctors for custom dosage remedies shipped to your address.
-              </p>
-              
-              <Link
-                href="/book"
-                className="w-full h-10 bg-brand hover:bg-brand-dark text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 shadow-sm transition-all"
-              >
-                Schedule Consultation
-              </Link>
 
-              <div className="pt-2 border-t border-line-custom/50 dark:border-[#1d2a1a]/50 text-center">
-                <Link 
-                  href="/treatment#testimonials"
-                  className="text-[10px] font-bold text-brand hover:underline"
-                >
-                  Read Verified Testimonials →
-                </Link>
+              <div className="p-3 rounded-xl bg-bg-soft/70 dark:bg-[#162315]/70 border border-line-custom/60 dark:border-[#1d2a1a] space-y-1.5 text-[11px] font-semibold text-body-text dark:text-[#aebba8]">
+                <div className="flex items-center justify-between text-xs font-bold text-ink dark:text-white pb-1.5 border-b border-line-custom/50 dark:border-[#1d2a1a]">
+                  <span>Consultation Fee</span>
+                  <span className="text-brand text-sm">₹999</span>
+                </div>
+                <div className="flex items-center gap-1.5 pt-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>30–40 Min In-Depth Video Call</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>Digital Prescription on WhatsApp</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>Doorstep Remedy Delivery Across India</span>
+                </div>
               </div>
+              
+              <a
+                href={whatsappBookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full h-11 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 shadow-sm transition-all"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Book on WhatsApp (₹999)</span>
+              </a>
+
+              <Link
+                href={`/doctors/${reviewer.slug}`}
+                className="w-full h-9 bg-bg-soft dark:bg-[#162315] hover:bg-brand/10 text-brand font-bold text-[11px] rounded-xl flex items-center justify-center transition-all border border-brand/20 dark:border-[#1d2a1a]"
+              >
+                View Doctor Profile & Reviews
+              </Link>
             </div>
 
             {/* Related Conditions */}
             <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[24px] p-6 shadow-sm space-y-3">
-              <h3 className="text-xs font-black text-ink dark:text-white uppercase tracking-wider">Related Conditions</h3>
+              <h3 className="text-xs font-black text-ink dark:text-white uppercase tracking-wider">Related Clinical Guides</h3>
               <ul className="space-y-2">
                 {condition.related.map((rel) => (
                   <li key={rel.slug}>
@@ -278,10 +408,16 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
 
         </section>
 
-        {/* Medical disclaimer note */}
+        {/* Regulatory & Safety Clinical Disclaimer */}
         <section className="max-w-5xl mx-auto px-4">
-          <div className="p-4 rounded-xl border border-line-custom dark:border-[#1d2a1a] bg-bg-soft dark:bg-[#162315] text-[10px] text-muted-text dark:text-[#71806c] font-semibold leading-relaxed text-center">
-            The information provided above is purely educational and does not constitute medical advice or specific remedy dosage prescriptions. Always consult a verified medical professional before beginning any homeopathic treatment plans.
+          <div className="p-5 rounded-2xl border border-line-custom dark:border-[#1d2a1a] bg-bg-soft dark:bg-[#162315] space-y-2">
+            <div className="flex items-center gap-2 text-amber-700 dark:text-amber-400 font-bold text-xs uppercase tracking-wider">
+              <AlertTriangle className="w-4 h-4" />
+              <span>Medical & Statutory Disclaimer</span>
+            </div>
+            <p className="text-[11px] text-body-text/85 dark:text-[#8ea088] font-medium leading-relaxed">
+              The clinical guides on VitaHomeo are authored and reviewed by registered medical practitioners solely for general health literacy. In compliance with the Drugs and Magic Remedies (Objectionable Advertisements) Act, 1954 and Indian Telemedicine Guidelines, VitaHomeo does not guarantee absolute cures or immediate resolution of chronic pathology. Homeopathic care acts as an individualized constitutional modality. Patients should never alter, reduce, or stop essential pharmaceutical prescriptions (such as for hypertension, cardiac care, or diabetes) without direct clinical authorization from their primary treating physician.
+            </p>
           </div>
         </section>
 

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { X, Shield } from "lucide-react";
+import { updateConsentState } from "@/lib/analytics";
 
 export function CookieBanner() {
   const [visible, setVisible] = useState(false);
@@ -14,16 +15,20 @@ export function CookieBanner() {
         setVisible(true);
       }, 2000);
       return () => clearTimeout(timer);
+    } else {
+      updateConsentState(consent === "accepted");
     }
   }, []);
 
   const handleAccept = () => {
     localStorage.setItem("vitahomeo_consent", "accepted");
+    updateConsentState(true);
     setVisible(false);
   };
 
   const handleDecline = () => {
     localStorage.setItem("vitahomeo_consent", "declined");
+    updateConsentState(false);
     setVisible(false);
   };
 

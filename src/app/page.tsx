@@ -103,7 +103,7 @@ export default async function Home() {
     { q: "How will I receive consultation details?", a: "You will receive your consultation video call link and instructions directly from our team via WhatsApp once the appointment and payment are confirmed." },
     { q: "How do I pay?", a: "After your appointment is confirmed, our team will share the available UPI payment details with you on WhatsApp." },
     { q: "Can I get a digital prescription?", a: "Yes. Once the consultation concludes, your doctor generates an official digital prescription. This will be shared with you on WhatsApp so you can save or print it." },
-    { q: "Are the homeopathic doctors on VitaHomeo verified?", a: "Yes. Every doctor goes through manual credential validation. We verify medical degrees (BHMS/DHMS/MD), state council registrations in India, and past clinical records." }
+    { q: "Are the homeopathic doctors on VitaHomeo verified?", a: "Yes. Every practitioner undergoes rigorous, independent credential validation. We verify formal qualifications and statutory registrations across Classical Homoeopathy (such as BHMS, MD Homoeopathy with State Boards of Homoeopathy) and Electro-Homeopathy (such as B.E.M.S., M.B.E.H. with the Board of Electro Homoeopathic Medicine, Bihar) directly against statutory and council records before onboarding." }
   ];
 
   // Blog Previews (Curated for the homepage)

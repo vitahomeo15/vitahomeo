@@ -29,7 +29,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Homeopathy Treatment Directory & Clinical Library | VitaHomeo",
-  description: "Explore 36+ evidence-informed constitutional homeopathic treatments for chronic diseases, skin disorders, women's health (PCOS), allergies, and gut health. Consult verified DHMS/BHMS doctors online.",
+  description: "Explore 36+ evidence-informed constitutional homeopathic treatments for chronic conditions, skin disorders, women's health (PCOS), allergies, and gut health. Consult verified clinical specialists online.",
   keywords: [
     "homeopathy treatment",
     "constitutional homeopathy",
@@ -206,11 +206,11 @@ export default function TreatmentHubPage() {
     },
     {
       q: "How long does it take to see tangible improvement?",
-      a: "Acute complaints (like seasonal allergies, indigestion flares, or mild sinus pain) frequently respond within 3 to 7 days. Long-standing chronic complaints (such as eczema, psoriasis, PCOS, or rheumatoid arthritis) typically exhibit structural improvements within 6 to 12 weeks of continuous constitutional care."
+      a: "Healing timelines vary based on chronicity, vitality, and individual response. Mild acute episodes may show symptomatic easing within several days, whereas long-standing chronic conditions (such as eczema, recurrent allergies, or hormonal imbalances) typically require progressive constitutional care evaluated over 8 to 12 week clinical reviews."
     },
     {
       q: "Are the treating doctors verified and qualified?",
-      a: "Every doctor on VitaHomeo holds a certified DHMS/BHMS medical degree from recognized institutions and is registered with official State and Central Medical Councils. Our lead practitioner, Dr. Arun Kumar, brings over 19 years of verified clinical experience."
+      a: "Every practitioner on VitaHomeo is independently vetted. Dr. Rachamsetty Tejaswi holds BHMS, MD (Homoeopathy), and MSc (Clinical Nutrition), registered with the Andhra Board for Homoeopathy (Reg. No. 8809/H/2019). Dr. Arun Kumar holds B.E.M.S. / M.B.E.H., registered with the Board of Electro Homoeopathic Medicine, Bihar (Reg. No. 7979), bringing over 19 years of dedicated clinical practice."
     }
   ];
 
@@ -296,12 +296,12 @@ export default function TreatmentHubPage() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-ink dark:text-white leading-[1.08] tracking-tight font-display max-w-3xl mx-auto">
-            Root-Cause Healing, <br/>
+            Constitutional Care, <br/>
             <span className="text-brand">Designed for Your Biology.</span>
           </h1>
 
           <p className="text-base sm:text-lg text-body-text dark:text-[#aebba8] leading-relaxed font-semibold max-w-2xl mx-auto">
-            Consult state council registered homeopathic specialists online. In-depth constitutional case taking, 100% non-steroidal customized remedies, and doorstep medicine delivery across India.
+            Consult verified clinical homeopathic specialists online. In-depth constitutional case taking, non-steroidal customized remedies, and doorstep medicine delivery across India.
           </p>
 
           {/* Action Buttons */}
@@ -340,7 +340,7 @@ export default function TreatmentHubPage() {
                 <div>
                   <h4 className="text-sm font-extrabold text-ink dark:text-white">Zero Steroids or Toxins</h4>
                   <p className="text-xs text-body-text dark:text-[#aebba8] font-semibold mt-0.5 leading-snug">
-                    100% natural dynamized dilutions with zero side-effects or hormonal rebound.
+                    Prepared to pharmacopoeia standards; gentle micro-dilutions with an established clinical safety record.
                   </p>
                 </div>
               </div>
@@ -352,7 +352,7 @@ export default function TreatmentHubPage() {
                 <div>
                   <h4 className="text-sm font-extrabold text-ink dark:text-white">Council Verified Doctors</h4>
                   <p className="text-xs text-body-text dark:text-[#aebba8] font-semibold mt-0.5 leading-snug">
-                    Qualified DHMS & BHMS physicians with over 19 years of verified clinical experience.
+                    Verified practitioners with statutory registrations and up to 19+ years of clinical experience.
                   </p>
                 </div>
               </div>
@@ -505,7 +505,7 @@ export default function TreatmentHubPage() {
               {
                 step: "02",
                 title: "30-Min Video Consult",
-                desc: "Meet Dr. Arun Kumar on a private, confidential video call to explore the systemic root causes.",
+                desc: "Meet your matched clinical specialist on a private, confidential video call for personalized case analysis.",
                 icon: <Video className="w-5 h-5 text-brand" />
               },
               {
@@ -615,7 +615,7 @@ export default function TreatmentHubPage() {
             </h2>
 
             <p className="text-white/90 text-sm sm:text-base max-w-xl mx-auto font-medium mb-8 leading-relaxed">
-              Book a comprehensive constitutional video consultation with Dr. Arun Kumar today and receive sealed, custom-diluted remedies couriered directly to your home.
+              Book a comprehensive constitutional video consultation with our verified clinical specialists today and receive sealed, custom-diluted remedies couriered directly to your home.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

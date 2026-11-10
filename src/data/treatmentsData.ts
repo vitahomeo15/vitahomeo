@@ -8,6 +8,16 @@ export interface RelatedCondition {
   slug: string;
 }
 
+export interface MedicalReviewer {
+  name: string;
+  title: string;
+  degree: string;
+  registration: string;
+  slug: string;
+  image: string;
+  fee: string;
+}
+
 export interface ConditionInfo {
   title: string;
   symptoms: string[];
@@ -18,7 +28,28 @@ export interface ConditionInfo {
   duration: string;
   faqs: FAQ[];
   related: RelatedCondition[];
+  reviewer?: MedicalReviewer;
 }
+
+export const REVIEWER_TEJASWI: MedicalReviewer = {
+  name: "Dr. Rachamsetty Tejaswi",
+  title: "Homeopathic Physician & Clinical Nutritionist",
+  degree: "BHMS, MD (Homoeopathy), MSc (Clinical Nutrition)",
+  registration: "Andhra Board for Homoeopathy (Reg. No. 8809/H/2019)",
+  slug: "dr-rachamsetty-tejaswi",
+  image: "/doc-photos/dr-rachamsetty-tejaswi.png",
+  fee: "999"
+};
+
+export const REVIEWER_ARUN: MedicalReviewer = {
+  name: "Dr. Arun Kumar",
+  title: "Electro-Homeopathy & Constitutional Care Specialist",
+  degree: "B.E.M.S. / M.B.E.H. (19+ Years Practice)",
+  registration: "Board of Electro Homoeopathic Medicine, Bihar (Reg. No. 7979)",
+  slug: "dr-arun-kumar",
+  image: "/doc-photos/dr-arun-kumar.jpeg",
+  fee: "999"
+};
 
 export const treatmentsData: Record<string, ConditionInfo> = {
   "diabetes-support": {
@@ -50,7 +81,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Hypertension", slug: "hypertension" },
       { name: "Thyroid Disorders", slug: "thyroid-disorders" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "hypertension": {
     title: "Hypertension",
@@ -67,21 +99,22 @@ export const treatmentsData: Record<string, ConditionInfo> = {
       "Excessive sodium intake and metabolic sluggishness"
     ],
     whenToSee: "Consult a specialist if blood pressure readings remain consistently above 140/90 mmHg, or if you experience severe headaches, vision changes, or chest pain.",
-    howHelps: "Homeopathic care targets vascular elasticity and calms nervous system triggers. By addressing emotional stressors and constitutional variables, it supports the natural regulation of arterial pressure.",
+    howHelps: "Homeopathy provides supportive constitutional care to ease nervous tension, support cardiovascular wellness, and promote healthy lifestyle habits alongside your ongoing medical care.",
     approach: [
       "Stress triggers mapping and neurovascular evaluation.",
       "Constitutional remedies targeted at vascular health.",
       "Heart-healthy lifestyle and salt-restriction tracking."
     ],
-    duration: "Normally 3 to 6 months of systematic treatment to see stabilized pressure metrics.",
+    duration: "Individualized progress is evaluated over 3 to 6 months of supportive constitutional care alongside regular physician monitoring.",
     faqs: [
-      { q: "Can homeopathy replace conventional BP tablets?", a: "Constitutional remedies can be taken alongside conventional BP tablets. Gradually, as BP levels stabilize, your physician can assess safe dosage adjustments." },
+      { q: "Can homeopathy replace conventional BP tablets?", a: "No. Homeopathy provides supportive constitutional care and must not replace prescribed blood pressure medication. Any medication adjustments must be made exclusively by your treating cardiologist or physician." },
       { q: "How does stress link to hypertension in homeopathy?", a: "Homeopathy views emotional stressors as a major trigger for arterial tightening. Remedies are chosen to moderate the nervous system's response to stress." }
     ],
     related: [
       { name: "Diabetes Support", slug: "diabetes-support" },
       { name: "Stress & Burnout", slug: "stress-burnout" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "arthritis": {
     title: "Arthritis Care",
@@ -112,7 +145,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Joint Pain General", slug: "joint-pain-general" },
       { name: "Senior General Wellness", slug: "senior-general-wellness" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "recurrent-infections": {
     title: "Recurrent Infections",
@@ -143,7 +177,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Child Allergies", slug: "child-allergies" },
       { name: "Growth & Development", slug: "growth-development" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "behavioural-concerns": {
     title: "Behavioral Concerns",
@@ -174,7 +209,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Growth & Development", slug: "growth-development" },
       { name: "Sleep Disorders", slug: "sleep-disorders" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "growth-development": {
     title: "Growth & Development",
@@ -205,7 +241,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Recurrent Infections", slug: "recurrent-infections" },
       { name: "Child Allergies", slug: "child-allergies" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "child-allergies": {
     title: "Child Allergies",
@@ -236,7 +273,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Recurrent Infections", slug: "recurrent-infections" },
       { name: "Eczema", slug: "eczema" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "anxiety": {
     title: "Anxiety",
@@ -267,7 +305,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Depression Support", slug: "depression" },
       { name: "Sleep Disorders", slug: "sleep-disorders" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "depression": {
     title: "Depression Support",
@@ -298,7 +337,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Anxiety", slug: "anxiety" },
       { name: "Sleep Disorders", slug: "sleep-disorders" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "stress-burnout": {
     title: "Stress & Burnout",
@@ -329,7 +369,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Anxiety", slug: "anxiety" },
       { name: "Sleep Disorders", slug: "sleep-disorders" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "sleep-disorders": {
     title: "Sleep Disorders",
@@ -360,7 +401,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Stress & Burnout", slug: "stress-burnout" },
       { name: "Anxiety", slug: "anxiety" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "eczema": {
     title: "Eczema",
@@ -391,7 +433,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Psoriasis", slug: "psoriasis" },
       { name: "Acne", slug: "acne" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "psoriasis": {
     title: "Psoriasis",
@@ -422,7 +465,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Eczema", slug: "eczema" },
       { name: "Arthritis Care", slug: "arthritis" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "acne": {
     title: "Acne",
@@ -453,7 +497,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "PCOS / PCOD", slug: "pcos-pcod" },
       { name: "Eczema", slug: "eczema" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "vitiligo": {
     title: "Vitiligo",
@@ -483,7 +528,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Psoriasis", slug: "psoriasis" },
       { name: "Thyroid Disorders", slug: "thyroid-disorders" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "urticaria": {
     title: "Urticaria",
@@ -514,7 +560,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Allergic Rhinitis", slug: "allergic-rhinitis" },
       { name: "Food Allergies", slug: "food-allergies" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "allergic-rhinitis": {
     title: "Allergic Rhinitis",
@@ -545,7 +592,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Sinusitis", slug: "sinusitis" },
       { name: "Asthma", slug: "asthma" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "asthma": {
     title: "Asthma Care",
@@ -576,7 +624,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Allergic Rhinitis", slug: "allergic-rhinitis" },
       { name: "Eczema", slug: "eczema" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "sinusitis": {
     title: "Sinusitis",
@@ -607,7 +656,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Allergic Rhinitis", slug: "allergic-rhinitis" },
       { name: "Asthma", slug: "asthma" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "food-allergies": {
     title: "Food Allergies",
@@ -638,7 +688,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Digestive Health", slug: "ibs" },
       { name: "Urticaria", slug: "urticaria" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "hair-fall": {
     title: "Hair Fall Control",
@@ -669,7 +720,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Thyroid Disorders", slug: "thyroid-disorders" },
       { name: "PCOS / PCOD", slug: "pcos-pcod" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "alopecia": {
     title: "Alopecia Areata",
@@ -700,7 +752,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Hair Fall", slug: "hair-fall" },
       { name: "Thyroid Disorders", slug: "thyroid-disorders" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "dandruff": {
     title: "Dandruff",
@@ -731,7 +784,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Hair Fall", slug: "hair-fall" },
       { name: "Eczema", slug: "eczema" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "premature-greying": {
     title: "Premature Greying",
@@ -761,7 +815,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Hair Fall", slug: "hair-fall" },
       { name: "Stress & Burnout", slug: "stress-burnout" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "pcos-pcod": {
     title: "PCOS / PCOD",
@@ -792,7 +847,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Thyroid Disorders", slug: "thyroid-disorders" },
       { name: "Migraine Relief", slug: "migraine" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "menstrual-disorders": {
     title: "Menstrual Disorders",
@@ -823,7 +879,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "PCOS / PCOD", slug: "pcos-pcod" },
       { name: "Anxiety", slug: "anxiety" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "fertility-support": {
     title: "Fertility Support",
@@ -854,7 +911,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "PCOS / PCOD", slug: "pcos-pcod" },
       { name: "Menstrual Disorders", slug: "menstrual-disorders" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "menopause": {
     title: "Menopause Support",
@@ -885,7 +943,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Sleep Disorders", slug: "sleep-disorders" },
       { name: "Thyroid Disorders", slug: "thyroid-disorders" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "ibs": {
     title: "IBS (Irritable Bowel Syndrome)",
@@ -916,7 +975,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Acidity & GERD", slug: "acidity-gerd" },
       { name: "Anxiety", slug: "anxiety" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "acidity-gerd": {
     title: "Acidity & GERD",
@@ -942,12 +1002,13 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     duration: "2 to 4 months.",
     faqs: [
       { q: "Can I stop antacid tablets immediately?", a: "Do not stop them abruptly. As your acidity levels normalize with homeopathy, you can gradually reduce antacids safely." },
-      { q: "Is homeopathy safe for chronic GERD?", a: "Yes. It supports natural digestion without causing rebound acidity." }
+      { q: "Is homeopathy safe for chronic GERD?", a: "Yes. It provides gentle constitutional support for digestive comfort alongside dietary and lifestyle management." }
     ],
     related: [
       { name: "IBS", slug: "ibs" },
       { name: "Constipation", slug: "constipation" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "ulcerative-colitis": {
     title: "Ulcerative Colitis Support",
@@ -978,7 +1039,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "IBS", slug: "ibs" },
       { name: "Acidity & GERD", slug: "acidity-gerd" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "constipation": {
     title: "Constipation Relief",
@@ -1009,7 +1071,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "IBS", slug: "ibs" },
       { name: "Acidity & GERD", slug: "acidity-gerd" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "thyroid-disorders": {
     title: "Thyroid Disorders",
@@ -1040,7 +1103,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "PCOS / PCOD", slug: "pcos-pcod" },
       { name: "Hair Fall", slug: "hair-fall" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "joint-pain-general": {
     title: "Joint Pain General",
@@ -1071,7 +1135,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Arthritis Care", slug: "arthritis" },
       { name: "Senior General Wellness", slug: "senior-general-wellness" }
-    ]
+    ],
+    reviewer: REVIEWER_ARUN
   },
   "senior-general-wellness": {
     title: "Senior General Wellness",
@@ -1102,7 +1167,8 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Arthritis Care", slug: "arthritis" },
       { name: "Sleep Disorders", slug: "sleep-disorders" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   },
   "immunity-support": {
     title: "Immunity Support",
@@ -1133,6 +1199,7 @@ export const treatmentsData: Record<string, ConditionInfo> = {
     related: [
       { name: "Allergic Rhinitis", slug: "allergic-rhinitis" },
       { name: "Senior General Wellness", slug: "senior-general-wellness" }
-    ]
+    ],
+    reviewer: REVIEWER_TEJASWI
   }
 };

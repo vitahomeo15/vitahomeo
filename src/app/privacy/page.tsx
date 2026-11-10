@@ -13,12 +13,30 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   const sections = [
-    { title: "Information We Collect", content: "We collect information you provide directly to us, such as your name, contact details (phone and email), preferred consultation timing, and health-related details necessary to connect you with a homeopathic practitioner. We also collect basic telemetry analytics to optimize platform speed." },
-    { title: "How We Use Your Information", content: "Your information is used solely to facilitate telemedicine consultations with verified doctors, send appointment details or links, and improve our services. We strictly maintain records privacy and do not sell or lease patient records to third-party marketing networks." },
-    { title: "Data Security & Confidentiality", content: "All patient information is handled with care and kept confidential. Only authorized practitioners involved in your clinical care are permitted to view your health details." },
-    { title: "Use of Cookies", content: "We use minimal technical cookies to keep you logged in, save your layout choices (such as light or dark themes), and remember your preferences. We do not run invasive tracking scripts for advertising." },
-    { title: "Patient Rights & Record Requests", content: "Under healthcare rules, you have the right to request a copy of your records, correct any inaccuracies, or request account deletion. You can reach out to our team at vitahomeo15@gmail.com for any requests." },
-    { title: "Policy Modifications", content: "We may update this Privacy Policy to align with new regulations or technology changes. We will notify you of any major changes by displaying a notice on our website." },
+    { 
+      title: "Information We Collect", 
+      content: "We collect information you provide directly to us when requesting a consultation, including your name, contact phone number, preferred consultation schedule, and general health concerns necessary to connect you with an appropriate clinical specialist. We also record technical telemetry such as page navigation to monitor platform reliability and speed." 
+    },
+    { 
+      title: "How We Use Your Information", 
+      content: "Your information is used strictly to facilitate telemedicine appointments with verified doctors, confirm consultation timings on WhatsApp, dispatch prescribed remedies, and communicate care updates. We never sell, lease, or monetize patient contact details or health records to third-party marketing networks." 
+    },
+    { 
+      title: "Clinical Data Security & Strict Isolation", 
+      content: "In compliance with applicable healthcare data norms and the Digital Personal Data Protection (DPDP) Act, all clinical communications, consultation notes, and health records remain strictly confidential between you and your licensed treating practitioner. Health-related inquiry data is isolated and is never passed to advertising platforms or used for commercial profiling." 
+    },
+    { 
+      title: "Cookies, Analytics & Campaign Measurement", 
+      content: "We utilize technical cookies to preserve your interface preferences (such as light or dark themes) and session state. To evaluate advertising campaign effectiveness (such as Google and Meta campaigns) and measure booking journeys, we use privacy-compliant measurement tags operating under Google Consent Mode. Marketing and analytics tracking only activate upon your consent via our Cookie Banner, and you may modify or decline tracking at any time." 
+    },
+    { 
+      title: "Patient Rights & Record Requests", 
+      content: "You retain the right to review your registered details, request updates to inaccurate records, or ask for the deletion of your consultation contact history, subject to statutory medical record-keeping requirements. To make any data inquiry, contact our data protection coordinator at vitahomeo15@gmail.com." 
+    },
+    { 
+      title: "Policy Updates", 
+      content: "This policy is reviewed periodically to adhere to evolving telemedicine regulations and digital privacy laws. Material updates will be highlighted via our website." 
+    },
   ];
 
   return (

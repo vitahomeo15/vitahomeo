@@ -52,7 +52,26 @@ export default function RootLayout({
                   var savedTheme = localStorage.getItem('theme') || 'light';
                   document.documentElement.setAttribute('data-theme', savedTheme);
                 } catch (e) {}
-              })()
+              })();
+
+              // Consent Mode v2 initialization
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              
+              var consentState = 'denied';
+              try {
+                if (localStorage.getItem('vitahomeo_consent') === 'accepted') {
+                  consentState = 'granted';
+                }
+              } catch(e) {}
+
+              gtag('consent', 'default', {
+                'analytics_storage': consentState,
+                'ad_storage': consentState,
+                'ad_user_data': consentState,
+                'ad_personalization': consentState,
+                'wait_for_update': 500
+              });
             `,
           }}
         />
@@ -75,7 +94,7 @@ export default function RootLayout({
             `,
           }}
         />
-        
+
         <ThemeProvider>
           {children}
           <CookieBanner />

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { submitToSheet } from "@/lib/submitToSheet";
 import { User, Phone, Mail, Calendar, MessageSquare, CheckCircle, AlertCircle, Loader2, Clock } from "lucide-react";
+import { trackConsultationLead } from "@/lib/analytics";
 
 export function PatientBookingForm() {
   const [formData, setFormData] = useState({
@@ -98,6 +99,11 @@ export function PatientBookingForm() {
     const result = await submitToSheet("patient", payload);
 
     if (result.success) {
+      trackConsultationLead({
+        condition: formData.symptoms,
+        consultationType: "Appointment Request Form",
+        source: "booking_page_form",
+      });
       setStatus("success");
       setFormData({
         fullName: "",

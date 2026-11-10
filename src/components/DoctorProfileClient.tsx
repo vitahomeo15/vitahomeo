@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { MapPin, Stethoscope, Clock, IndianRupee, Star, MessageCircle, MessageSquare, ShieldCheck, CheckCircle, Calendar } from "lucide-react";
 import { groupAvailability } from "@/lib/availability";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 interface Review {
   name: string;
@@ -473,6 +474,7 @@ export default function DoctorProfileClient({ doctor }: DoctorProfileClientProps
             href={`https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick({ source: "doctor_profile_client", doctorName: doctor.name, fee: doctor.fee || "999" })}
             className="w-full h-12 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
             <MessageCircle className="w-4 h-4" /> Book via WhatsApp

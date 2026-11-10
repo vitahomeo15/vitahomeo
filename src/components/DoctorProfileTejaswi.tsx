@@ -27,6 +27,7 @@ import {
   GraduationCap,
   FlaskConical
 } from "lucide-react";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 interface Review {
   name: string;
@@ -1051,6 +1052,7 @@ export default function DoctorProfileTejaswi({ doctor }: DoctorProfileTejaswiPro
                 href={whatsappBookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick({ source: "doctor_profile_sidebar", doctorName: doctor.name, doctorSlug: "dr-rachamsetty-tejaswi", fee: doctor.fee || "999" })}
                 className="w-full h-12 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold text-xs md:text-sm rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4" />
@@ -1095,6 +1097,7 @@ export default function DoctorProfileTejaswi({ doctor }: DoctorProfileTejaswiPro
           href={whatsappBookingUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsAppClick({ source: "doctor_profile_mobile_sticky", doctorName: doctor.name, doctorSlug: "dr-rachamsetty-tejaswi", fee: doctor.fee || "999" })}
           className="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-xs rounded-xl shadow-md flex items-center gap-2"
         >
           <MessageCircle className="w-4 h-4" />
