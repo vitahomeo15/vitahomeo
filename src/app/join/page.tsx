@@ -8,6 +8,9 @@ import { Stethoscope, Globe, Shield, Sparkles } from "lucide-react";
 export const metadata: Metadata = {
   title: "Doctor Partnership & Onboarding Agreement - VitaHomeo",
   description: "Read the VitaHomeo Doctor Partnership Agreement, accept our onboarding terms, and connect on WhatsApp for your doctor registration form.",
+  alternates: {
+    canonical: "https://www.vitahomeo.com/join",
+  },
 };
 
 export default function JoinPage() {

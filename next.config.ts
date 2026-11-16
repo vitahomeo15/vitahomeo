@@ -13,6 +13,21 @@ const nextConfig: NextConfig = {
         destination: "/treatment",
         permanent: true,
       },
+      {
+        source: "/doctor",
+        destination: "/doctors",
+        permanent: true,
+      },
+      {
+        source: "/reviews",
+        destination: "/treatment",
+        permanent: true,
+      },
+      {
+        source: "/reviews/write",
+        destination: "/treatment",
+        permanent: true,
+      },
     ];
   },
 };

@@ -24,7 +24,8 @@ import {
   Stethoscope, 
   Sparkles,
   HeartHandshake,
-  AlertCircle
+  AlertCircle,
+  FileText
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -201,8 +202,8 @@ export default function TreatmentHubPage() {
       a: "Yes. Homeopathic micro-dilutions do not interfere with standard pharmaceutical metabolic pathways. For chronic conditions like hypertension or diabetes, we advise patients never to stop essential allopathic prescriptions abruptly. As constitutional health improves, your primary physician may adjust your dosage."
     },
     {
-      q: "How does the online consultation and medicine delivery work?",
-      a: "You select a convenient time slot and share your medical history. During a 30-45 minute private video call, the doctor conducts in-depth constitutional case taking. Following the consult, your digital prescription is generated and custom-formulated remedies are dispatched via tracked courier to your doorstep across India."
+      q: "How does the online video consultation work?",
+      a: "You select a convenient time slot and share your medical history. During a 30-45 minute private video call, the doctor conducts in-depth constitutional case taking. Following the consult, your official digital prescription and personalized dosage regimen are generated and sent directly to your WhatsApp."
     },
     {
       q: "How long does it take to see tangible improvement?",
@@ -301,7 +302,7 @@ export default function TreatmentHubPage() {
           </h1>
 
           <p className="text-base sm:text-lg text-body-text dark:text-[#aebba8] leading-relaxed font-semibold max-w-2xl mx-auto">
-            Consult verified clinical homeopathic specialists online. In-depth constitutional case taking, non-steroidal customized remedies, and doorstep medicine delivery across India.
+            Consult verified clinical homeopathic specialists online. In-depth constitutional case taking, non-steroidal customized treatment plans, and official digital prescriptions on WhatsApp across India.
           </p>
 
           {/* Action Buttons */}
@@ -371,12 +372,12 @@ export default function TreatmentHubPage() {
 
               <div className="flex items-start gap-3.5">
                 <div className="w-10 h-10 rounded-xl bg-brand/10 text-brand flex items-center justify-center shrink-0 mt-0.5">
-                  <PackageCheck className="w-5 h-5" />
+                  <FileText className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-extrabold text-ink dark:text-white">Doorstep Courier Delivery</h4>
+                  <h4 className="text-sm font-extrabold text-ink dark:text-white">Official Digital Prescription</h4>
                   <p className="text-xs text-body-text dark:text-[#aebba8] font-semibold mt-0.5 leading-snug">
-                    Tamper-proof medical packaging dispatched directly to your home anywhere in India.
+                    Council-compliant digital prescriptions and dosage instructions delivered instantly on WhatsApp.
                   </p>
                 </div>
               </div>
@@ -510,9 +511,9 @@ export default function TreatmentHubPage() {
               },
               {
                 step: "03",
-                title: "Remedy Dispatch",
-                desc: "Personalized German/Indian standard dilutions are custom-formulated and shipped to your doorstep.",
-                icon: <PackageCheck className="w-5 h-5 text-brand" />
+                title: "Digital Prescription",
+                desc: "Your doctor issues an authorized digital prescription and clear dosage guide sent directly via WhatsApp.",
+                icon: <FileText className="w-5 h-5 text-brand" />
               },
               {
                 step: "04",
@@ -615,7 +616,7 @@ export default function TreatmentHubPage() {
             </h2>
 
             <p className="text-white/90 text-sm sm:text-base max-w-xl mx-auto font-medium mb-8 leading-relaxed">
-              Book a comprehensive constitutional video consultation with our verified clinical specialists today and receive sealed, custom-diluted remedies couriered directly to your home.
+              Book a comprehensive constitutional video consultation with our verified clinical specialists today and receive authorized digital prescriptions and continuous guidance directly on WhatsApp.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

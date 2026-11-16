@@ -364,7 +364,7 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Doorstep Remedy Delivery Across India</span>
+                  <span>Personalized Dosage & Care Guidance</span>
                 </div>
               </div>
               

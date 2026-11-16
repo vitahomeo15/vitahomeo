@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Book a Consultation | VitaHomeo",
   description:
     "Book your online homeopathy consultation via WhatsApp. Our team will coordinate availability, send you a form, and confirm your appointment.",
+  alternates: {
+    canonical: "https://www.vitahomeo.com/book",
+  },
 };
 
 const WHATSAPP_NUMBER = "917765991145";
