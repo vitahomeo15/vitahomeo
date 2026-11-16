@@ -21,17 +21,17 @@ import {
 } from "lucide-react";
 
 interface RouteParams {
-  params: Promise<{ city: string }>;
+  params: Promise<{ location: string }>;
 }
 
 export async function generateStaticParams() {
-  return Object.keys(locationsData).map((city) => ({ city }));
+  return Object.keys(locationsData).map((location) => ({ location }));
 }
 
 export async function generateMetadata({ params }: RouteParams): Promise<Metadata> {
   const resolvedParams = await params;
-  const citySlug = (resolvedParams?.city || "").toLowerCase();
-  const location = locationsData[citySlug];
+  const locationSlug = (resolvedParams?.location || "").toLowerCase();
+  const location = locationsData[locationSlug];
 
   if (!location) {
     return {
@@ -44,20 +44,20 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
     title: `Homeopathic Doctors in ${location.displayName} | Online Consultation — VitaHomeo`,
     description: `Consult verified homeopathic doctors online in ${location.displayName}. In-depth constitutional video care and authorized digital prescriptions on WhatsApp. Fee ₹999.`,
     alternates: {
-      canonical: `https://www.vitahomeo.com/doctors/in/${citySlug}`,
+      canonical: `https://www.vitahomeo.com/doctor/${locationSlug}`,
     },
     openGraph: {
       title: `Homeopathic Doctors in ${location.displayName} | VitaHomeo`,
       description: `Consult verified homeopathic physicians online in ${location.displayName}. In-depth video consultations with official digital prescriptions.`,
-      url: `https://www.vitahomeo.com/doctors/in/${citySlug}`,
+      url: `https://www.vitahomeo.com/doctor/${locationSlug}`,
     },
   };
 }
 
 export default async function LocationDoctorPage({ params }: RouteParams) {
   const resolvedParams = await params;
-  const citySlug = (resolvedParams?.city || "").toLowerCase();
-  const location: LocationInfo | undefined = locationsData[citySlug];
+  const locationSlug = (resolvedParams?.location || "").toLowerCase();
+  const location: LocationInfo | undefined = locationsData[locationSlug];
 
   if (!location) {
     notFound();
@@ -89,7 +89,7 @@ export default async function LocationDoctorPage({ params }: RouteParams) {
       {
         "@type": "MedicalWebPage",
         "name": `Verified Homeopathic Doctors in ${location.displayName}`,
-        "url": `https://www.vitahomeo.com/doctors/in/${location.slug}`,
+        "url": `https://www.vitahomeo.com/doctor/${location.slug}`,
         "description": location.description,
         "about": {
           "@type": "MedicalOrganization",
@@ -420,7 +420,7 @@ export default async function LocationDoctorPage({ params }: RouteParams) {
                 .map((loc) => (
                   <Link
                     key={loc.slug}
-                    href={`/doctors/in/${loc.slug}`}
+                    href={`/doctor/${loc.slug}`}
                     className="px-3.5 py-2 rounded-xl bg-bg-soft dark:bg-[#162315] hover:bg-brand/10 text-xs font-semibold text-ink dark:text-white border border-line-custom/70 dark:border-[#1d2a1a] hover:border-brand/40 transition-colors flex items-center justify-between"
                   >
                     <span>{loc.displayName}</span>

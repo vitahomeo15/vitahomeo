@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/doctors/in/:location*",
+        destination: "/doctor/:location*",
+        permanent: true,
+      },
+      {
         source: "/doctor",
         destination: "/doctors",
         permanent: true,

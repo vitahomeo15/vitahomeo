@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Dedicated city location doctor routes (Programmatic Local SEO)
   const locationRoutes: MetadataRoute.Sitemap = allLocationsList.map((loc) => ({
-    url: `${baseUrl}/doctors/in/${loc.slug}`,
+    url: `${baseUrl}/doctor/${loc.slug}`,
     lastModified: LAST_RELEASE,
     changeFrequency: 'weekly',
     priority: 0.85,

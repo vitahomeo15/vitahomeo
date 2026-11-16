@@ -347,7 +347,7 @@ export default function DoctorsDirectoryClient({ initialDoctors }: DoctorsDirect
           {allLocationsList.map((loc) => (
             <Link
               key={loc.slug}
-              href={`/doctors/in/${loc.slug}`}
+              href={`/doctor/${loc.slug}`}
               className="group p-3.5 rounded-xl bg-bg-soft/70 dark:bg-[#162315]/70 border border-line-custom/60 dark:border-[#1d2a1a] hover:border-brand/50 hover:bg-white dark:hover:bg-[#101c0f] transition-all flex items-center justify-between shadow-xs"
             >
               <div>
