@@ -10,6 +10,21 @@ function mapSupabaseDoctor(d: any): Doctor {
     ? `${d.experience}${d.experience === 1 ? " Year" : "+ Years"} Experience`
     : undefined;
 
+  const practiceCity = d.practice_city || d.city || "India";
+  const practiceState = d.practice_state || d.state || "India";
+  const languages = Array.isArray(d.languages) && d.languages.length > 0
+    ? d.languages
+    : (d.slug === "dr-rachamsetty-tejaswi" ? ["Telugu", "Hindi", "English"] : ["Hindi", "English"]);
+
+  const isElectro = (d.qualification || d.degree || "").toLowerCase().includes("electro") ||
+                    (d.registration_authority || "").toLowerCase().includes("electro");
+
+  const practitionerCategory = d.practitioner_category || (isElectro ? "electro_homoeopathy" : "homoeopathy");
+  const practitionerClassification = d.practitioner_classification || (
+    isElectro ? "Verified Electro Homoeopathy Practitioner" : "Verified Homoeopathy Practitioner"
+  );
+  const schemaType = d.schema_type || (isElectro ? "Person" : "Physician");
+
   return {
     slug: d.slug,
     name: d.full_name || d.name,
@@ -23,16 +38,32 @@ function mapSupabaseDoctor(d: any): Doctor {
     timing: d.timing || d.submitted_availability_hours || "06:00 PM – 10:00 PM",
     image: d.profile_photo_url || d.image || "/doc-photos/dr-arun-kumar.jpeg",
     expertise: Array.isArray(d.expertise) && d.expertise.length > 0 ? d.expertise : [],
+    
+    // Expanded Location & Service Area
+    practiceCity: practiceCity,
+    practiceState: practiceState,
+    physicalClinicAvailable: Boolean(d.physical_clinic_available),
+    onlineConsultationAvailable: d.online_consultation_available !== undefined ? Boolean(d.online_consultation_available) : true,
+    serviceCities: Array.isArray(d.service_cities) ? d.service_cities : [practiceCity, "All India (Online Video)"],
+    languages: languages,
+    consultationModes: Array.isArray(d.consultation_modes) ? d.consultation_modes : ["Video Consultation", "Audio Consultation"],
+
     city: d.city,
     state: d.state,
     clinic_address: d.clinic_address || undefined,
     locality: d.locality || undefined,
     pin_code: d.pin_code || undefined,
     google_maps_url: d.google_maps_url || undefined,
+    
+    // Regulatory Credential Classification
+    practitionerCategory: practitionerCategory,
+    practitionerClassification: practitionerClassification,
+    schemaType: schemaType,
     registration_number: d.registration_number,
     registration_authority: d.registration_authority,
     verification_status: d.verification_status,
-    consultation_type: d.consultation_type,
+    verificationDate: d.verification_date || d.created_at,
+    consultation_type: d.consultation_type || "Online Video & Audio Consultation",
     submitted_availability_hours: d.submitted_availability_hours,
     selected_consultation_period: d.selected_consultation_period,
   };

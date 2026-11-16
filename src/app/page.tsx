@@ -122,19 +122,28 @@ export default async function Home() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "MedicalWebPage",
-            "name": "VitaHomeo - Connect With Verified Homeopathic Doctors Online",
-            "description": "Consult experienced homeopathic doctors online in India. Request secure consultations, receive digital prescriptions, and get personalized care from home.",
-            "url": "https://www.vitahomeo.com",
-            "medicalSpecialty": "Homeopathic Medicine",
-            "about": {
-              "@type": "MedicalBusiness",
-              "name": "VitaHomeo Telehealth",
-              "logo": "https://www.vitahomeo.com/logo-vitahomeo.png",
-              "telephone": "+91-77659-91145",
-              "priceRange": "$$",
-              "areaServed": "IN"
-            }
+            "@graph": [
+              {
+                "@type": "Organization",
+                "name": "VitaHomeo",
+                "alternateName": "VitaHomeo Telemedicine",
+                "url": "https://www.vitahomeo.com",
+                "logo": "https://www.vitahomeo.com/logo-vitahomeo.png",
+                "telephone": "+91-77659-91145",
+                "sameAs": [
+                  "https://x.com/VitaHomeo",
+                  "https://www.instagram.com/vitahomeo.heal",
+                  "https://www.linkedin.com/company/124603936"
+                ]
+              },
+              {
+                "@type": "MedicalWebPage",
+                "name": "VitaHomeo - Connect With Verified Homeopathic Doctors Online",
+                "description": "Consult experienced homeopathic and electro-homeopathic practitioners online in India. Request secure consultations, receive digital prescriptions, and get personalized care from home.",
+                "url": "https://www.vitahomeo.com",
+                "medicalSpecialty": "Homeopathic Medicine"
+              }
+            ]
           })
         }}
       />

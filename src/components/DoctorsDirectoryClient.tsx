@@ -15,7 +15,8 @@ import {
   CheckCircle2, 
   ArrowRight,
   Globe,
-  FileText
+  FileText,
+  Languages
 } from "lucide-react";
 import { Doctor } from "@/data/doctorsData";
 import { allLocationsList, LocationInfo } from "@/data/locationsData";
@@ -196,7 +197,7 @@ export default function DoctorsDirectoryClient({ initialDoctors }: DoctorsDirect
                     </h2>
                     {doc.verification_status === "verified" ? (
                       <span className="text-[10px] font-bold text-brand bg-brand/10 px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-0.5 border border-brand/15">
-                        <ShieldCheck className="w-3 h-3" /> Verified Practitioner
+                        <ShieldCheck className="w-3 h-3" /> {doc.practitionerClassification || "Verified Practitioner"}
                       </span>
                     ) : (
                       <span className="text-[10px] font-bold text-amber-700 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-0.5 border border-amber-500/20">
@@ -215,7 +216,7 @@ export default function DoctorsDirectoryClient({ initialDoctors }: DoctorsDirect
                   )}
                 </div>
 
-                {/* Details (Specialty, Exp, Loc, Bio) */}
+                {/* Details (Specialty, Exp, Loc, Languages, Bio) */}
                 <div className="col-span-2 row-start-2 row-end-3 md:col-start-2 md:col-end-3 md:row-start-2 md:row-end-3 border-b md:border-b-0 md:border-r border-line-custom dark:border-[#1d2a1a] pb-6 md:pb-0 md:pr-6">
                   <div className="flex flex-col gap-2 mt-4 text-xs font-semibold text-body-text dark:text-[#aebba8]">
                     <div className="flex items-center">
@@ -230,8 +231,14 @@ export default function DoctorsDirectoryClient({ initialDoctors }: DoctorsDirect
                     )}
                     <div className="flex items-center">
                       <MapPin className="w-4 h-4 mr-2 text-brand shrink-0" />
-                      <span>{doc.location} (Available via Online Video Pan-India)</span>
+                      <span>Based in {doc.practiceCity || doc.city}, {doc.practiceState || doc.state} · Video Call Pan-India</span>
                     </div>
+                    {doc.languages && doc.languages.length > 0 && (
+                      <div className="flex items-center">
+                        <Languages className="w-4 h-4 mr-2 text-brand shrink-0" />
+                        <span>Languages: {doc.languages.join(", ")}</span>
+                      </div>
+                    )}
                   </div>
 
                   <p className="text-xs text-body-text dark:text-[#aebba8] mt-3 line-clamp-2 leading-relaxed">

@@ -50,6 +50,7 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <h5 className="font-bold text-xs text-ink dark:text-white uppercase tracking-widest">Platform</h5>
             <ul className="flex flex-col gap-3 text-xs text-body-text dark:text-[#aebba8] font-medium">
+              <li><Link href="/online-homeopathy-consultation" className="hover:text-brand transition-colors">Online Consultation</Link></li>
               <li><Link href="/doctors" className="hover:text-brand transition-colors">Find Doctors</Link></li>
               <li><Link href="/join" className="hover:text-brand transition-colors">For Doctors</Link></li>
               <li><Link href="/about" className="hover:text-brand transition-colors">About Us</Link></li>

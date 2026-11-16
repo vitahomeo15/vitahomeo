@@ -15,6 +15,7 @@ export function Navbar() {
 
   const navLinks = [
     { label: "Home", href: "/" },
+    { label: "Online Consult", href: "/online-homeopathy-consultation" },
     { label: "Treatments", href: "/treatment" },
     { label: "Find Doctors", href: "/doctors" },
     { label: "For Doctors", href: "/join" },

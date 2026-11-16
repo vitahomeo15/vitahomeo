@@ -19,30 +19,51 @@ export default async function DoctorsPage() {
 
   const jsonLdDirectory = {
     "@context": "https://schema.org",
-    "@type": "MedicalWebPage",
-    "name": "VitaHomeo Verified Homeopathic Doctors Directory",
-    "url": "https://www.vitahomeo.com/doctors",
-    "description": "Find state-council verified homeopathic specialists for online video consultations across India.",
-    "about": {
-      "@type": "MedicalOrganization",
-      "name": "VitaHomeo Telemedicine",
-      "url": "https://www.vitahomeo.com",
-      "telephone": "+91-77659-91145"
-    },
-    "mainEntity": {
-      "@type": "ItemList",
-      "itemListElement": doctors.map((doc, idx) => ({
-        "@type": "ListItem",
-        "position": idx + 1,
-        "item": {
-          "@type": "Physician",
-          "name": doc.name,
-          "medicalSpecialty": doc.specialty,
-          "url": `https://www.vitahomeo.com/doctors/${doc.slug}`,
-          "priceRange": "₹999"
+    "@graph": [
+      {
+        "@type": "MedicalWebPage",
+        "name": "VitaHomeo Verified Homeopathic Doctors Directory",
+        "url": "https://www.vitahomeo.com/doctors",
+        "description": "Find state-council verified homeopathic and electro-homeopathic specialists for online video consultations across India.",
+        "about": {
+          "@type": "Organization",
+          "name": "VitaHomeo Telemedicine",
+          "url": "https://www.vitahomeo.com",
+          "telephone": "+91-77659-91145"
+        },
+        "mainEntity": {
+          "@type": "ItemList",
+          "itemListElement": doctors.map((doc, idx) => ({
+            "@type": "ListItem",
+            "position": idx + 1,
+            "item": {
+              "@type": doc.schemaType || (doc.slug === "dr-rachamsetty-tejaswi" ? "Physician" : "Person"),
+              "name": doc.name,
+              ...(doc.schemaType === "Physician" ? { "medicalSpecialty": "Homeopathic Medicine" } : { "jobTitle": doc.specialty }),
+              "url": `https://www.vitahomeo.com/doctors/${doc.slug}`,
+              "priceRange": "₹999"
+            }
+          }))
         }
-      }))
-    }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.vitahomeo.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Doctors",
+            "item": "https://www.vitahomeo.com/doctors"
+          }
+        ]
+      }
+    ]
   };
 
   return (

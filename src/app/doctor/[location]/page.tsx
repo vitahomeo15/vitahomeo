@@ -17,7 +17,8 @@ import {
   Video, 
   CheckCircle2, 
   ArrowRight,
-  FileText
+  FileText,
+  Languages
 } from "lucide-react";
 
 interface RouteParams {
@@ -111,6 +112,29 @@ export default async function LocationDoctorPage({ params }: RouteParams) {
             "text": faq.a
           }
         }))
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.vitahomeo.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Doctors",
+            "item": "https://www.vitahomeo.com/doctors"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": location.displayName,
+            "item": `https://www.vitahomeo.com/doctor/${location.slug}`
+          }
+        ]
       }
     ]
   };
@@ -228,6 +252,34 @@ export default async function LocationDoctorPage({ params }: RouteParams) {
           </div>
         </section>
 
+        {/* Regional Health Focus */}
+        {location.popularConditions && location.popularConditions.length > 0 && (
+          <section className="max-w-5xl mx-auto px-4">
+            <div className="bg-white dark:bg-[#101c0f] border border-line-custom dark:border-[#1d2a1a] rounded-[24px] p-6 shadow-sm space-y-3">
+              <span className="text-[10px] font-bold text-brand uppercase tracking-wider block">
+                Regional Health Inquiries
+              </span>
+              <h3 className="text-base md:text-lg font-black text-ink dark:text-white">
+                Frequently Consulted Health Concerns in {location.displayName}
+              </h3>
+              <p className="text-xs text-body-text dark:text-[#aebba8] leading-relaxed">
+                Patients from {location.displayName} commonly consult our verified practitioners for constitutional evaluation of:
+              </p>
+              <div className="flex flex-wrap gap-2 pt-1">
+                {location.popularConditions.map((cond, cIdx) => (
+                  <span
+                    key={cIdx}
+                    className="px-3 py-1.5 rounded-xl bg-bg-soft dark:bg-[#162315] border border-line-custom/80 dark:border-[#1d2a1a] text-xs font-semibold text-ink dark:text-white flex items-center gap-1.5"
+                  >
+                    <CheckCircle2 className="w-3.5 h-3.5 text-brand" />
+                    {cond}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Available Doctors List */}
         <section className="max-w-5xl mx-auto px-4 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-line-custom/60 dark:border-[#1d2a1a] pb-3">
@@ -275,7 +327,7 @@ export default async function LocationDoctorPage({ params }: RouteParams) {
                         {doc.name}
                       </h3>
                       <span className="text-[10px] font-bold text-brand bg-brand/10 px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-0.5 border border-brand/15">
-                        <ShieldCheck className="w-3 h-3" /> Verified Doctor
+                        <ShieldCheck className="w-3 h-3" /> {doc.practitionerClassification || "Verified Practitioner"}
                       </span>
                     </div>
 
@@ -306,8 +358,14 @@ export default async function LocationDoctorPage({ params }: RouteParams) {
                       )}
                       <div className="flex items-center">
                         <MapPin className="w-4 h-4 mr-2 text-brand shrink-0" />
-                        <span>Based in {doc.location} (Available in {location.state} via Online Video)</span>
+                        <span>Based in {doc.practiceCity || doc.city}, {doc.practiceState || doc.state} · Available in {location.displayName} via Video</span>
                       </div>
+                      {doc.languages && doc.languages.length > 0 && (
+                        <div className="flex items-center">
+                          <Languages className="w-4 h-4 mr-2 text-brand shrink-0" />
+                          <span>Languages: {doc.languages.join(", ")}</span>
+                        </div>
+                      )}
                     </div>
 
                     <p className="text-xs text-body-text dark:text-[#aebba8] mt-3 line-clamp-2 leading-relaxed">
@@ -376,6 +434,36 @@ export default async function LocationDoctorPage({ params }: RouteParams) {
                 </div>
               );
             })}
+          </div>
+        </section>
+
+        {/* Localized Telemedicine Advisory */}
+        <section className="max-w-5xl mx-auto px-4">
+          <div className="bg-emerald-500/5 dark:bg-emerald-500/10 border border-emerald-500/20 rounded-[24px] p-6 md:p-8 space-y-4">
+            <h3 className="text-sm font-black text-emerald-950 dark:text-emerald-200 uppercase tracking-wider flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              Telemedicine &amp; Care Guidance for {location.displayName}
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+              <div className="p-4 rounded-xl bg-white dark:bg-[#101c0f] border border-emerald-500/15 space-y-1.5 shadow-2xs">
+                <span className="font-bold text-ink dark:text-white block">100% Online Appointments</span>
+                <p className="text-body-text dark:text-[#aebba8] leading-relaxed text-[11px]">
+                  VitaHomeo operates as a telemedicine service. There are no walk-in clinics in {location.displayName}; you meet practitioners on private video calls from home.
+                </p>
+              </div>
+              <div className="p-4 rounded-xl bg-white dark:bg-[#101c0f] border border-emerald-500/15 space-y-1.5 shadow-2xs">
+                <span className="font-bold text-ink dark:text-white block">Languages Supported</span>
+                <p className="text-body-text dark:text-[#aebba8] leading-relaxed text-[11px]">
+                  Consultations are conducted comfortably in English, Hindi, and regional languages (including Telugu for South Indian patients).
+                </p>
+              </div>
+              <div className="p-4 rounded-xl bg-white dark:bg-[#101c0f] border border-emerald-500/15 space-y-1.5 shadow-2xs">
+                <span className="font-bold text-ink dark:text-white block">Authorized Digital Prescriptions</span>
+                <p className="text-body-text dark:text-[#aebba8] leading-relaxed text-[11px]">
+                  Following your 30–40 min constitutional case taking, your signed digital prescription is generated and sent via WhatsApp.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 

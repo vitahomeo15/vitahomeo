@@ -23,15 +23,33 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
   const resolvedParams = await params;
   const doc = await getDoctorBySlug(resolvedParams.slug);
 
-  const doctorName = doc?.name ?? "Doctor Profile";
-  const specialty = doc?.specialty ?? "Homeopathic Specialist";
-  const verificationTag = doc?.verification_status === "verified" ? "verified homeopathic doctor" : "homeopathic doctor";
+  if (!doc) {
+    return {
+      title: "Doctor Profile | VitaHomeo",
+      description: "Consult verified homeopathic practitioners online via secure video call.",
+    };
+  }
+
+  const doctorName = doc.name;
+  const classification = doc.practitionerClassification || "Verified Practitioner";
+  const practiceLoc = doc.practiceCity ? `${doc.practiceCity}, ${doc.practiceState}` : doc.location;
 
   return {
-    title: `${doctorName} - ${specialty} | VitaHomeo`,
-    description: `Consult ${doctorName}, ${verificationTag}. Connect via WhatsApp or book online for a personalized constitutional homeopathy consultation.`,
+    title: `${doctorName} | ${classification} in ${practiceLoc} — VitaHomeo`,
+    description: `Consult ${doctorName} (${doc.degree}). ${classification} registered with ${doc.registration_authority}. Available for 30–40 min private online video consultations across India. Fee: ₹999.`,
     alternates: {
       canonical: `https://www.vitahomeo.com/doctors/${resolvedParams.slug}`,
+    },
+    openGraph: {
+      title: `${doctorName} | ${classification} — VitaHomeo`,
+      description: `Consult ${doctorName} online. ${classification} (${doc.degree}), registered with ${doc.registration_authority}.`,
+      url: `https://www.vitahomeo.com/doctors/${resolvedParams.slug}`,
+      images: [
+        {
+          url: doc.image.startsWith("http") ? doc.image : `https://www.vitahomeo.com${doc.image}`,
+          alt: doctorName,
+        },
+      ],
     },
   };
 }
@@ -52,9 +70,18 @@ export default async function DoctorProfilePage({ params }: RouteParams) {
     degree: doc.degree,
     experience: doc.experience,
     location: doc.location,
+    practiceCity: doc.practiceCity || doc.city,
+    practiceState: doc.practiceState || doc.state,
+    physicalClinicAvailable: doc.physicalClinicAvailable || false,
+    onlineConsultationAvailable: doc.onlineConsultationAvailable ?? true,
+    serviceCities: doc.serviceCities || [doc.city || "All India"],
+    languages: doc.languages || ["Hindi", "English"],
+    consultationModes: doc.consultationModes || ["Video Consultation", "Audio Consultation"],
+    practitionerCategory: doc.practitionerCategory || "homoeopathy",
+    practitionerClassification: doc.practitionerClassification || "Verified Practitioner",
     specialty: doc.specialty,
     bio: doc.bio,
-    fee: doc.fee,
+    fee: doc.fee || "999",
     timing: doc.timing,
     days: doc.days,
     image: doc.image,
@@ -68,15 +95,73 @@ export default async function DoctorProfilePage({ params }: RouteParams) {
     registration_number: doc.registration_number,
     registration_authority: doc.registration_authority,
     verification_status: doc.verification_status,
+    verificationDate: doc.verificationDate,
     consultation_type: doc.consultation_type,
     submitted_availability_hours: doc.submitted_availability_hours,
     selected_consultation_period: doc.selected_consultation_period,
+  };
+
+  // Structured Data Schema Strategy:
+  // Physician ONLY for registered Homoeopathic Doctors (e.g. Dr. Tejaswi - MD Hom, BHMS)
+  // Person for Electro-Homoeopathic specialists (e.g. Dr. Arun Kumar - BEMS/MBEH)
+  const isPhysician = doc.schemaType === "Physician";
+  const doctorJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": isPhysician ? "Physician" : "Person",
+        "name": doc.name,
+        "description": doc.bio,
+        "url": `https://www.vitahomeo.com/doctors/${doc.slug}`,
+        "image": doc.image.startsWith("http") ? doc.image : `https://www.vitahomeo.com${doc.image}`,
+        ...(isPhysician ? { "medicalSpecialty": "Homeopathic Medicine" } : { "jobTitle": doc.specialty }),
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "degree",
+            "name": doc.degree,
+          }
+        ],
+        ...(doc.registration_number ? {
+          "identifier": `Reg. No. ${doc.registration_number} (${doc.registration_authority})`
+        } : {}),
+        "knowsLanguage": normalizedDoctor.languages,
+        "priceRange": "₹999",
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.vitahomeo.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Doctors",
+            "item": "https://www.vitahomeo.com/doctors"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": doc.name,
+            "item": `https://www.vitahomeo.com/doctors/${doc.slug}`
+          }
+        ]
+      }
+    ]
   };
 
   const isArunKumar = doc.slug === "dr-arun-kumar";
 
   return (
     <div className="min-h-screen flex flex-col bg-bg-custom relative transition-colors duration-300">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(doctorJsonLd) }}
+      />
       <Navbar />
 
       <main className="flex-1 w-full pb-20 pt-28">
